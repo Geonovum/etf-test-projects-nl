@@ -1,5 +1,5 @@
 # ETF Test Projecten
-Voor het testen van geo-webservices (als WMS, WFS, Atom) op INSPIRE eisen en Nederlandse profielen, is in Nederland het ETF in gebruik. Er is een desktop en online versie van deze test software, die gebruik maakt van [SoapUI](http://www.soapui.org/). Zie [de Geonovum website voor meer informatie over het ETF](http://www.geonovum.nl/validator-inspire-view-en-downloadservices)
+Voor het testen van geo-webservices (als WMS, WFS, Atom) op INSPIRE eisen en Nederlandse profielen, is in Nederland het ETF in gebruik. Er is al enkele jaren een desktop versie van deze test software, die gebruik maakt van [SoapUI](http://www.soapui.org/). Zie [de Geonovum website voor meer informatie over het ETF](http://www.geonovum.nl/validator-inspire-view-en-downloadservices). Inmiddels is er ook een online ETF validator beschikbaar, momenteel in beta.
 
 Deze repository bevat de SoapUI test projecten om services geautomatiseerd te testen op conformiteit aan INSPIRE eisen en Nederlandse profielen. Naast de automatisch te testen eisen, kunnen er nog handmatige tests nodig zijn. Deze staan beschreven in [Conformiteits toetsen van Geonovum](http://www.geonovum.nl/wegwijzer/validatie).
 
