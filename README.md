@@ -13,17 +13,19 @@ Globaal gaat het testen van een service als volgt:
 
 2) Start test. Kies de service uit de lijst met bestaande test objecten en kies op welke standaard getest moet worden via de test projecten. Indien gewenst, pas de beschrijving van de test aan en kies Start. Voor sommige tests zijn er nog geavanceerde opties beschikbaar via "Test sessie opties".
 
-3) De test gaat draaien. In een scherm is de voortgang en log-informatie te zien. Een test kan enkele minuten duren. Na afronding, verschijnt het testrapport. Met per controle informatie over het slagen of falen ervan. Daarin zijn meer en minder details op te geven.
+3) De test gaat draaien. In een scherm is de voortgang en log-informatie te zien. Een test kan enkele minuten duren. 
+
+4) Na afronding, verschijnt het testrapport. Met per controle informatie over het slagen of falen ervan. Daarin zijn meer en minder details op te geven.
 
 Via het menu (linksboven) zijn meer functies beschikbaar, zoals het raadplegen van oude test rapporten.
 
 Er zijn wat beperkingen, zoals dat test rapporten momenteel altijd blijven bestaan (wel handmatig te verwijderen). Deze beperkingen staan in de issue-lijst.
+
+## Issues melden
+Komt u een probleem tegen? Raadpleeg dan de [issue-lijst](https://github.com/Geonovum/etf-test-projects/issues) voor de bekende problemen en voeg desgewenst informatie toe. Staat het issue er niet tussen, maak dan via de [issue-lijst](https://github.com/Geonovum/etf-test-projects/issues) een nieuw issue aan.
 
 ## Eerste versie tests voor Nederlandse profielen via online ETF
 Ook de validator voor de Nederlandse profielen voor WMS en WFS gaat op den duur via het online ETF draaien. De broncode van deze test projecten is in deze repository beschikbaar.
 
 ## Broncode INSPIRE testen
 Volgt later. Zie [https://github.com/Geonovum/etf-test-projects/tree/master/src/inspire](https://github.com/Geonovum/etf-test-projects/tree/master/src/inspire)
-
-## Issues melden
-Komt u een probleem tegen? Raadpleeg dan de [issue-lijst](https://github.com/Geonovum/etf-test-projects/issues) voor de bekende problemen en voeg desgewenst informatie toe. Staat het issue er niet tussen, maak dan via [https://github.com/Geonovum/etf-test-projects/issues](https://github.com/Geonovum/etf-test-projects/issues) een nieuw issue aan.
