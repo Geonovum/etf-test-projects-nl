@@ -3,6 +3,8 @@ Voor het testen van geo-webservices (als WMS, WFS, Atom) op INSPIRE eisen en Ned
 
 Deze repository bevat de SoapUI test projecten om services geautomatiseerd te testen op conformiteit aan INSPIRE eisen en Nederlandse profielen. Naast de automatisch te testen eisen, kunnen er nog handmatige tests nodig zijn. Deze staan beschreven in [Conformiteits toetsen van Geonovum](http://www.geonovum.nl/wegwijzer/validatie).
 
+De documenten zijn Nederlandstalig, om het voor dataproviders makkelijker te maken.
+
 ## Online ETF validator
 De online validator is via [http://validatie.geostandaarden.nl/](http://validatie.geostandaarden.nl/) te benaderen.
 
@@ -22,7 +24,7 @@ Via het menu (linksboven) zijn meer functies beschikbaar, zoals het raadplegen v
 Er zijn wat beperkingen, zoals dat test rapporten momenteel altijd blijven bestaan (wel handmatig te verwijderen). Deze beperkingen staan in de issue-lijst.
 
 ## Issues melden
-Komt u een probleem tegen? Raadpleeg dan de [issue-lijst](https://github.com/Geonovum/etf-test-projects/issues) voor de bekende problemen en voeg desgewenst informatie toe. Staat het issue er niet tussen, maak dan via de [issue-lijst](https://github.com/Geonovum/etf-test-projects/issues) een nieuw issue aan.
+Komt u een probleem tegen? Raadpleeg dan de [issue-lijst](https://github.com/Geonovum/etf-test-projects/issues) voor de bekende problemen en voeg desgewenst informatie toe. Staat het issue er niet tussen, maak dan via de [issue-lijst](https://github.com/Geonovum/etf-test-projects/issues) een nieuw issue aan. Issues en opmerkingen graag in het Nederlands of Engels.
 
 ## Eerste versie tests voor Nederlandse profielen via online ETF
 Ook de validator voor de Nederlandse profielen voor WMS en WFS gaat op den duur via het online ETF draaien. De broncode van deze test projecten is in deze repository beschikbaar.
