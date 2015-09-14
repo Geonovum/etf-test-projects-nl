@@ -9,7 +9,7 @@ De documenten zijn Nederlandstalig, om het voor dataproviders makkelijker te mak
 De online validator is via [http://validatie.geostandaarden.nl/](http://validatie.geostandaarden.nl/) te benaderen.
 
 ## De online validator gebruiken
-Zie [de help pagina](./www/html/html-nl.md) voor instructies over het gebruik van de validator.
+Zie [de help pagina](./www/html/help-nl.md) voor instructies over het gebruik van de validator.
 
 ## Issues melden
 Komt u een probleem tegen? Raadpleeg dan de [issue-lijst](https://github.com/Geonovum/etf-test-projects/issues) voor de bekende problemen en voeg desgewenst informatie toe. Staat het issue er niet tussen, maak dan via de [issue-lijst](https://github.com/Geonovum/etf-test-projects/issues) een nieuw issue aan. Issues en opmerkingen graag in het Nederlands of Engels.
