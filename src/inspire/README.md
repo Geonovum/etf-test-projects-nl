@@ -1,1 +1,1 @@
-Code van INSPIRE projecten wordt op een later moment toegevoegd. Deze code staat namelijk nog in een interne repository van de ontwikkelaar van de ETF software.
+De INSPIRE tests zijn te vinden in een aparte repository: [https://github.com/Geonovum/etf-test-projects-inspire ](https://github.com/Geonovum/etf-test-projects-inspire)
