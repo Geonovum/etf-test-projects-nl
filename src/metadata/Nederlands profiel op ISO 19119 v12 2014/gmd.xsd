@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 2010-09-29: Geonovum WQ: Adapted for implementation in Generic Validator for 19119 validation. -->
+<!-- import of srv.xsd -->
+<!-- 2009-12-01: Geonovum PJA: Adapted for implementation in Generic Validator -->
+<!-- Validator can not implement XSD sets which have not uniquely named XSD's -->
+<!-- Renaming of gco/basicTypes.xsd to gco/gco_basicTypes.xsd -->
+<!-- 2009-11-24: Geonovum PJA: Adapted for implementation in Generic Validator -->
+<!-- gmd.xsd in root -->
+<!-- reference to gmd.xsd changed in referenceSystems.xsd, coordinateOpereations.xsd -->
+<!-- /gmd/gmd.xsd name changed to gmd_notUsed.xsd -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:gmd="http://www.isotc211.org/2005/gmd" targetNamespace="http://www.isotc211.org/2005/gmd" elementFormDefault="qualified" version="0.1">
+	<!-- ================================= Annotation ================================ -->
+	<xs:annotation>
+		<xs:documentation>This file was generated from ISO TC/211 UML class diagrams == 01-26-2005 12:40:04 ====== </xs:documentation>
+	</xs:annotation>
+	<!-- ================================== Imports ================================== -->
+	<xs:import namespace="http://www.isotc211.org/2005/srv" schemaLocation="srv/srv.xsd"/>
+	<xs:include schemaLocation="gmd/metadataApplication.xsd"/>
+	<!-- ########################################################################### -->
+	<!-- ########################################################################### -->
+	<!-- ================================== Classes ================================= -->
+</xs:schema>

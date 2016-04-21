@@ -1,0 +1,54 @@
+<Assertions>
+<!-- <Group id="Encoding">
+  <name>Encoding tests</name>
+  <version>0.1</version>
+  <author>interactive instruments GmbH</author>
+  <creationDate>2015-08-18T12:00:00.000+02:00</creationDate>
+  <lastEditor>Clemens Portele</lastEditor>
+  <lastUpdateDate>2015-08-18T12:00:00.000+02:00</lastUpdateDate>
+</Group>
+<Subgroup id="Encoding.GML">
+  <name>GML profile</name>
+</Subgroup>
+<Assertion id="Encoding.GML.05" enabled="true" severity="error" mode="global">
+<name>gml:name and gml:description</name>
+<shortDescription>gml:name and gml:description are not used</shortDescription>
+<description>count(//gml:name)+count(//gml:description) = 0.</description>
+<specReference>n/a</specReference>
+<expression>
+let $featuresWithErrors := $features[gml:name or gml:description][position() le $limitErrors]
+return
+ (local:statistics-info($featuresWithErrors),
+  for $feature in $featuresWithErrors
+   order by $feature/@gml:id
+   let $text := 'The object has gml:name or gml:description.'
+   return local:object-message($feature, $text))
+</expression>
+</Assertion> -->
+<Group id="Other">
+  <name>Other tests</name>
+  <version>0.1</version>
+  <author>interactive instruments GmbH</author>
+  <creationDate>2015-08-18T12:00:00.000+02:00</creationDate>
+  <lastEditor>Clemens Portele</lastEditor>
+  <lastUpdateDate>2015-08-18T12:00:00.000+02:00</lastUpdateDate>
+</Group>
+<Subgroup id="Other.Geometry">
+  <name>Geometry tests</name>
+</Subgroup>
+<Assertion id="Other.Geometry.01" enabled="true" severity="error" mode="global">
+<name>CRS</name>
+<shortDescription>...</shortDescription>
+<description>...</description>
+<specReference>n/a</specReference>
+<expression>
+let $featuresWithErrors := $features[//@srsName[.!='http://www.opengis.net/def/crs/EPSG/0/28992']][position() le $limitErrors]
+return
+ (local:statistics-info($featuresWithErrors),
+  for $feature in $featuresWithErrors
+   order by $feature/@gml:id
+   let $text := concat('CRS ',data(($feature//@srsName[.!='http://www.opengis.net/def/crs/EPSG/0/28992'])[1]),' is not http://www.opengis.net/def/crs/EPSG/0/28992.')
+   return local:object-message($feature, $text))
+</expression>
+</Assertion>
+</Assertions>

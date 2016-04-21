@@ -1,0 +1,14 @@
+versie info:
+
+20101011: Lokale referenties gemaakt in /srv/serviceMetadata en serviceModel
+
+20100929:
+-in gmd.xsd een regel toegevoegd voor import namespace srv. De generieke validator kent maar 1 root xsd
+-de files in de srv dir hadden allemaal de extensie .xml. Is nu veranderd naar .xsd. Dat is de originele naam.
+
+20100808:testversie
+zip file van metadata voor geografie ge-update met folder /srv/ voor services
+Nu dus ook 19119, validatie voor web services.
+
+20090112:validatie voor metadata voor geografie. ISO 19115.
+19115 files van http://schemas.opengis.net/iso/19139/20060504. Schema's voor validatie van 19115 metadata
