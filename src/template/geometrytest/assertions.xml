@@ -25,6 +25,62 @@ return
    return local:object-message($feature, $text))
 </expression>
 </Assertion>
+<Assertion id="Other.Geometry.02" enabled="true" severity="error" mode="global">
+<name>Valid GML geometry (2D) all at once</name>
+<shortDescription>Test geometry on being valid GML geometry for 2D</shortDescription>
+<description>Test geometry on being valid GML geometry for 2D, all tests at once</description>
+<specReference>GML 3</specReference>
+<expression>
+let $featuresWithErrors := $features[local:checkgeometry(., '111') != 'VVV'][position() le $limitErrors]
+return
+ (local:statistics-info($featuresWithErrors),
+  for $feature in $featuresWithErrors
+   let $text := concat('invalid geometry test: ',local:checkgeometry($feature,'111'))
+   return local:object-message($feature, $text))
+</expression>
+</Assertion>
+<Assertion id="Other.Geometry.03" enabled="true" severity="error" mode="global">
+<name>Valid GML geometry (2D) General Validation</name>
+<shortDescription>Test geometry on being valid GML geometry for 2D - General Validation</shortDescription>
+<description>Test geometry on being valid GML geometry for 2D - General Validation</description>
+<specReference>GML 3</specReference>
+<expression>
+let $featuresWithErrors := $features[local:checkgeometry(., '1') != 'VSS'][position() le $limitErrors]
+return
+ (local:statistics-info($featuresWithErrors),
+  for $feature in $featuresWithErrors
+   let $text := concat('geometry is not valid: ',local:checkgeometry($feature,'1'))
+   return local:object-message($feature, $text))
+</expression>
+</Assertion>
+<Assertion id="Other.Geometry.04" enabled="true" severity="error" mode="global">
+<name>Valid GML geometry (2D) Polygon Patch Connectivity</name>
+<shortDescription>Test geometry on being valid GML geometry for 2D - Polygon Patch Connectivity</shortDescription>
+<description>Test geometry on being valid GML geometry for 2D - Polygon Patch Connectivity</description>
+<specReference>GML 3</specReference>
+<expression>
+let $featuresWithErrors := $features[local:checkgeometry(., '01') != 'SVS'][position() le $limitErrors]
+return
+ (local:statistics-info($featuresWithErrors),
+  for $feature in $featuresWithErrors
+   let $text := concat('geometry is not valid: ',local:checkgeometry($feature,'01'))
+   return local:object-message($feature, $text))
+</expression>
+</Assertion>
+<Assertion id="Other.Geometry.05" enabled="true" severity="error" mode="global">
+<name>Valid GML geometry (2D) Repetition of Position in CurveSegments</name>
+<shortDescription>Test geometry on being valid GML geometry for 2D - Repetition of Position in CurveSegments</shortDescription>
+<description>Test geometry on being valid GML geometry for 2D - Repetition of Position in CurveSegments</description>
+<specReference>GML 3</specReference>
+<expression>
+let $featuresWithErrors := $features[local:checkgeometry(., '001') != 'SSV'][position() le $limitErrors]
+return
+ (local:statistics-info($featuresWithErrors),
+  for $feature in $featuresWithErrors
+   let $text := concat('geometry is not valid: ',local:checkgeometry($feature,'001'))
+   return local:object-message($feature, $text))
+</expression>
+</Assertion>
 <!-- Codelist
 <Subgroup id="Other.Codelist">
   <name>Codelist tests</name>

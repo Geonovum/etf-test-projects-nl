@@ -8,6 +8,9 @@ declare namespace rdf='http://www.w3.org/1999/02/22-rdf-syntax-ns#';
 declare namespace etf='http://www.interactive-instruments.de/etf/1.0';
 declare namespace ii='http://www.interactive-instruments.de/ii/1.0';
 
+import module namespace ggeo='de.interactive_instruments.etf.bsxm.GmlGeoX';
+
+
 (: Parameters as strings :)
 declare variable $files_to_test external := ".*";
 
@@ -29,7 +32,7 @@ declare variable $paramerror := xs:QName("etf:ParameterError");
 
 (: Parameter checks :)
 
-try { let $x := matches('nas.gml',$files_to_test) 
+try { let $x := matches('nas.gml',$files_to_test)
 return ()
 } catch * {
 error($paramerror,concat("Parameter $files_to_test must be a valid regular expression. Found: '",data($files_to_test),"', error reported was:&#xa; '",data($err:description),"'&#xa;"))

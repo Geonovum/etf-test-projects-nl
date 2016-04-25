@@ -8,11 +8,19 @@ declare namespace rdf='http://www.w3.org/1999/02/22-rdf-syntax-ns#';
 declare namespace etf='http://www.interactive-instruments.de/etf/1.0';
 declare namespace ii='http://www.interactive-instruments.de/ii/1.0';
 
+import module namespace ggeo='de.interactive_instruments.etf.bsxm.GmlGeoX';
+declare function local:checkgeometry($feature as element()*, $mask as xs:string?) as xs:string?
+{
+  let $check := ggeo:validate($feature,$mask)
+  return $check
+};
+
 declare function local:disabled($id as xs:string, $enabled as xs:string) as xs:string?
 {
    if ($enabled='false') then "deactivated"
    else ()
 };
+
 
 declare function local:execute($db as document-node()*, $nam as xs:string, $features as element()*, $query as xs:string, $disabled as xs:string?, $severity as xs:string?, $mode as xs:string?) as element()
 {
@@ -31,6 +39,7 @@ else
 </etf:AssertionResult>
 };
 
+
 declare function local:finalMessage($errorCount as xs:integer) as xs:string?
 {
   if ($errorCount>=$limitErrors) then '... and many additional messages&#xa;'
@@ -38,9 +47,15 @@ declare function local:finalMessage($errorCount as xs:integer) as xs:string?
   else ()
 };
 
+
 declare function local:execquery($db as document-node()*, $features as element()*, $query as xs:string, $severity as xs:string?, $mode as xs:string?, $start as xs:integer) as element()*
 {
-let $declarationsLocal := concat("declare namespace cit='http://www.opengis.net/citygml/2.0'; declare namespace imgeo='http://www.geostandaarden.nl/imgeo/2.1'; declare namespace skos='http://www.w3.org/2004/02/skos/core#'; declare namespace rdf='http://www.w3.org/1999/02/22-rdf-syntax-ns#'; declare namespace gml='http://www.opengis.net/gml'; declare namespace xsi='http://www.w3.org/2001/XMLSchema-instance'; declare namespace xlink='http://www.w3.org/1999/xlink'; import module namespace functx = 'http://www.functx.com'; declare variable $file external; declare variable $features external; declare variable $filename external; declare variable $projDir external; declare variable $limitErrors external := ", data($limitErrors), ";
+let $declarationsLocal := concat("declare namespace cit='http://www.opengis.net/citygml/2.0'; declare namespace imgeo='http://www.geostandaarden.nl/imgeo/2.1'; declare namespace skos='http://www.w3.org/2004/02/skos/core#'; declare namespace rdf='http://www.w3.org/1999/02/22-rdf-syntax-ns#'; declare namespace gml='http://www.opengis.net/gml'; declare namespace xsi='http://www.w3.org/2001/XMLSchema-instance'; declare namespace xlink='http://www.w3.org/1999/xlink'; import module namespace functx = 'http://www.functx.com'; import module namespace ggeo='de.interactive_instruments.etf.bsxm.GmlGeoX'; declare variable $file external; declare variable $features external; declare variable $filename external; declare variable $projDir external; declare variable $limitErrors external := ", data($limitErrors), ";
+declare function local:checkgeometry($feature as element()*, $mask as xs:string?) as xs:string?
+{
+  let $check := ggeo:validate($feature,$mask)
+  return $check
+};
 declare function local:strippath($path as xs:string) as xs:string
 {
   let $sep := file:dir-separator()
@@ -76,7 +91,12 @@ declare function local:file-message($text as xs:string) as element()
 <Message type='file' file='{data($filename)}' text='{data($text)}'/>
 };")
 
-let $declarationsGlobal := concat("declare namespace cit='http://www.opengis.net/citygml/2.0'; declare namespace imgeo='http://www.geostandaarden.nl/imgeo/2.1'; declare namespace skos='http://www.w3.org/2004/02/skos/core#'; declare namespace rdf='http://www.w3.org/1999/02/22-rdf-syntax-ns#'; declare namespace gml='http://www.opengis.net/gml'; declare namespace xsi='http://www.w3.org/2001/XMLSchema-instance'; declare namespace xlink='http://www.w3.org/1999/xlink'; import module namespace functx = 'http://www.functx.com'; declare variable $validationErrors external; declare variable $file external; declare variable $features external; declare variable $projDir external; declare variable $db external; declare variable $limitErrors external := ", data($limitErrors), ";
+let $declarationsGlobal := concat("declare namespace cit='http://www.opengis.net/citygml/2.0'; declare namespace imgeo='http://www.geostandaarden.nl/imgeo/2.1'; declare namespace skos='http://www.w3.org/2004/02/skos/core#'; declare namespace rdf='http://www.w3.org/1999/02/22-rdf-syntax-ns#'; declare namespace gml='http://www.opengis.net/gml'; declare namespace xsi='http://www.w3.org/2001/XMLSchema-instance'; declare namespace xlink='http://www.w3.org/1999/xlink'; import module namespace functx = 'http://www.functx.com'; import module namespace ggeo='de.interactive_instruments.etf.bsxm.GmlGeoX'; declare variable $validationErrors external; declare variable $file external; declare variable $features external; declare variable $projDir external; declare variable $db external; declare variable $limitErrors external := ", data($limitErrors), ";
+declare function local:checkgeometry($feature as element()*, $mask as xs:string?) as xs:string?
+{
+  let $check := ggeo:validate($feature,$mask)
+  return $check
+};
 declare function local:strippath($path as xs:string) as xs:string
 {
   let $sep := file:dir-separator()
@@ -289,7 +309,7 @@ declare function local:statistics($db as document-node()*, $features as element(
     return
     	for $feature in $file//cit:cityObjectMember/*
       let $ft := $feature/local-name()
-    		group by $ft 
+    		group by $ft
     		order by $ft
     	return local:statistics_row($ft,count($feature),local:file($file))}
   </table>,
@@ -399,14 +419,14 @@ declare function local:test($db as document-node()*, $features as element()*, $d
 <etf:SubRequirements>
 {
   for $assertion in $def[local-name()='Assertion']
-  return 
+  return
   <etf:Requirement>{$assertion/name/text()}</etf:Requirement>
 }
 </etf:SubRequirements>
 </etf:Requirement>
 {
   for $assertion in $def[local-name()='Assertion']
-  return 
+  return
   local:requirement($assertion)
 }
 </etf:Requirements>
@@ -444,7 +464,7 @@ error($paramerror,concat("System error: Parameter $dbCount must be an integer. F
 
 if ($count ge 0) then () else error($paramerror,concat("System error: Parameter $dbCount must be a positive integer. Found: '",data($dbCount),"'&#xa;")),
 
-try { let $x := matches('nas.gml',$files_to_test) 
+try { let $x := matches('nas.gml',$files_to_test)
 return ()
 } catch * {
 error($paramerror,concat("Parameter $files_to_test must be a valid regular expression. Found: '",data($files_to_test),"', error reported was:&#xa; '",data($err:description),"'&#xa;"))
