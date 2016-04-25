@@ -19,3 +19,6 @@ Ook de validator voor de Nederlandse profielen voor WMS en WFS gaat op den duur 
 
 ## Broncode INSPIRE testen
 De INSPIRE tests zijn te vinden in een aparte repository: [https://github.com/Geonovum/etf-test-projects-inspire ](https://github.com/Geonovum/etf-test-projects-inspire)
+
+## Aanmaken test projecten data / metadata validatie
+Zie [src/template/README.md](src/template/README.md) voor instructies hoe nieuwe tests / validators aan te maken voor data validatie.
