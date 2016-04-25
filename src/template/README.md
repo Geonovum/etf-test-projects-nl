@@ -10,7 +10,9 @@ Onderdeel van: "NL Data"
 
 1. download de code van de test projecten en templates via Github [https://github.com/Geonovum/etf-test-projects-nl/](https://github.com/Geonovum/etf-test-projects-nl/), of als ZIP-bestand: [https://github.com/Geonovum/etf-test-projects-nl/archive/master.zip](https://github.com/Geonovum/etf-test-projects-nl/archive/master.zip). En pak dit bestand uit.
 1. Voor een XSD + schematron test, kopieer de directory:
-```/etf-test-projects-nl/src/template/xsdschematrontest```
+```
+/etf-test-projects-nl/src/template/xsdschematrontest
+```
 1. verander de naam van de directory in de naam van de standaard / het profiel dat je wilt testen. Er mogen spaties in staan. Hier gebruiken we "Standaard X - versie 1.1". Andere voorbeelden:
  * INSPIRE Download Service: Atom (TG 3.1)
  * Nederlands profiel op ISO 19119 v12 2014
