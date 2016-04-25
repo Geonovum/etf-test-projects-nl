@@ -24,7 +24,7 @@ Onderdeel van: "NL Data"
 1. Schematron: vervang de inhoud van het bestand schematron.sch met de schematron regels van de standaard (**houd de naam van het bestand dus wel schematron.sch**)
 1. XSD validatie:
  1. verwijder het bestand dummyschema.xsd en plaats je eigen schema, inclusief andere geimporteerde schema's. Deze mogen in een subdirectory staan.
- 1. vervang de naam van het bestand "dummyschema.xsd" door de naam van het XML schema in deze twee bestanden:
+ 1. vervang de naam van het bestand "dummyschema.xsd" door de naam van het XML schema in deze twee bestanden (zie ook de beschrijving hieronder bij Details aanpassen schema locatie):
   * ...-basex.xq
   * ...-bsxpc.xq
 1. werk het bestand ...1.1.etftp.properties (bijvoorbeeld Standaard X - versie 1.1.etftp.properties) bij, met de gewenste waardes:
@@ -33,3 +33,38 @@ Onderdeel van: "NL Data"
  * etf.LastUpdateDate = 2016-04-25
  * etf.Version = 1.0.1
 1. In principe is hiermee de validator gereed voor plaatsing in het ETF (in de directory ```{etf-data}/projects/bsx```)
+
+## Details aanpassen schema locatie
+
+"...-basex.xq" en "...-bsxpc.xq" bij de parameters:
+
+ ```
+ declare variable $Schema_file external := "dummyschema.xsd";
+ ```
+
+ Deze parameters zijn te vinden bij:
+ ```
+ (:===========================:)
+ (: Parameters as strings :)
+ (:===========================:)
+ ```
+
+
+ Bijvoorbeeld met een bestandsnaam gmd.xsd:
+
+ ```
+ (:===========================:)
+ (: Parameters as strings :)
+ (:===========================:)
+
+ declare variable $Files_to_test external := ".*";
+ (: ggfs. durch Auswahl der Schematron-Phase ersetzen declare variable $Tests_to_perform external := ".*"; :)
+ declare variable $Maximum_number_of_error_messages_per_test external := "100";
+ declare variable $Testsystem external := "unknown";
+ declare variable $Tester external := "unknown";
+
+ declare variable $Schema_file external := "dummyschema.xsd";
+
+ ```
+
+ **Let op:** zorg ervoor dat in de directory ook de schema's beschikbaar zijn. In dit geval moet er dus een bestand **dummyschema.xsd** in de directory staan, met de eventuele geïmporteerde schema's.
