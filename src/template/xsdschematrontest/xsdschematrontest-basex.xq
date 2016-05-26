@@ -31,7 +31,7 @@ declare namespace svrlii='http://www.interactive-instruments.de/svrl';
 
 
 declare function local:create-messages($failedAssertsOrReports as element()*, $svrlii as element(), $printExactLocationEvaluated as xs:boolean) as element() {
-  
+
   let $idsOfFailedAssertsOrReports := distinct-values($failedAssertsOrReports/@id)
   let $resultsWithFailedAssertsOrReports := $svrlii/svrlii:result[exists(svrlii:activePattern/svrlii:firedRule/*[@id = $idsOfFailedAssertsOrReports])]
   let $fileErrors := count($resultsWithFailedAssertsOrReports)
@@ -56,12 +56,12 @@ declare function local:create-messages($failedAssertsOrReports as element()*, $s
              '&#xa;'
             )
          ,'&#xa;'
-        )    
+        )
   )
-  
+
   return
    if ($countElements > 0) then
-     <etf:Messages><etf:Message xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="stringDataContainer" name="Meldungen">{$messages}</etf:Message></etf:Messages>     
+     <etf:Messages><etf:Message xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="stringDataContainer" name="Meldungen">{$messages}</etf:Message></etf:Messages>
    else
      <etf:Messages xsi:nil='true'/>
 };
@@ -77,7 +77,7 @@ declare function local:strippath($path as xs:string) as xs:string
 };
 
 declare function local:validateSingleFile($file as document-node(), $sch as document-node(), $schAsXslt as document-node(), $xslSvrlFormatting1 as document-node(), $xslSvrlFormatting2 as document-node()) as element() {
-  
+
   <svrlii:result>
   {
   let $filename := local:strippath(db:path($file))
@@ -92,7 +92,7 @@ declare function local:validateSingleFile($file as document-node(), $sch as docu
     (<svrlii:fileName>{$filename}</svrlii:fileName>,
     for $activePattern in $result/*/svrl:active-pattern
     order by $activePattern/@id
-    return 
+    return
       <svrlii:activePattern id="{string($activePattern/@id)}">
       {
         let $idsOfFiredRulesOfPattern := distinct-values($activePattern/svrl:fired-rule/string(@id))
@@ -130,16 +130,16 @@ declare function local:validateAndCombineSvrl($dbs as document-node()*, $sch as 
       ($svrlii,
       <svrlii:totalDuration>{$validationDuration}</svrlii:totalDuration>)
   }
-  </svrlii:SvrlResults>    
+  </svrlii:SvrlResults>
 };
 
-(: 
+(:
   $svrlii -> the processed svrl result(s)
   $sch -> the schematron to check with (must not contain abstract patterns or rules; all patterns, rules, asserts and reports shall have a unique id attribute)
   $startTimeStamp -> the date and time when the validation process was started
 :)
 declare function local:evaluate($svrlii as element(), $sch as document-node(), $startTimeStamp as xs:dateTime, $printExactLocationEvaluated as xs:boolean) as element() {
-  
+
 <etf:TestReport id="{$reportId}" testObjectId="{$testObjectId}" version="0.4.0" generator="ETF-BaseX-SCH-XQ-0.0.2" finalized="true">
 <etf:TestingTool>BaseX 7.9</etf:TestingTool>
 <etf:StartTimestamp>{$startTimeStamp}</etf:StartTimestamp>
@@ -163,7 +163,7 @@ declare function local:evaluate($svrlii as element(), $sch as document-node(), $
   <etf:Duration>{$svrlii/svrlii:totalDuration/text()}</etf:Duration>
   <etf:Label>Schematron Validation</etf:Label>
   <etf:TestCaseResults>
-  
+
     <etf:TestCaseResult id="Result.Etf.Internal" testCaseRef="Etf.Internal">
       <etf:ResultStatus>{if($validationErrors) then 'FAILED' else 'OK'}</etf:ResultStatus>
       <etf:TestStepResults>
@@ -190,7 +190,7 @@ declare function local:evaluate($svrlii as element(), $sch as document-node(), $
       </etf:TestStepResults>
     </etf:TestCaseResult>
 {
-           
+
     for $pattern in $sch/*/iso:pattern
       let $patternId := $pattern/@id
       let $occurrencesOfActivePattern := $svrlii/svrlii:result/svrlii:activePattern[@id = $patternId]
@@ -205,7 +205,7 @@ declare function local:evaluate($svrlii as element(), $sch as document-node(), $
         for $rule in $pattern/iso:rule
         let $ruleId := $rule/@id
         let $occurrencesOfFiredRule := $occurrencesOfActivePattern/svrlii:firedRule[@id = $ruleId]
-        let $ruleFired := if ($patternWasActive) then exists($occurrencesOfFiredRule) else false()        
+        let $ruleFired := if ($patternWasActive) then exists($occurrencesOfFiredRule) else false()
         let $failedAssertExistsInRule := if($ruleFired) then exists($occurrencesOfFiredRule/svrl:failed-assert) else false()
         let $successfulReportExistsInRule := if($ruleFired) then exists($occurrencesOfFiredRule/svrl:successful-report) else false()
         return
@@ -241,7 +241,7 @@ declare function local:evaluate($svrlii as element(), $sch as document-node(), $
           </etf:TestStepResult>
       }
       </etf:TestStepResults>
-    </etf:TestCaseResult> 
+    </etf:TestCaseResult>
 
 }
     </etf:TestCaseResults>
@@ -313,7 +313,7 @@ declare function local:evaluate($svrlii as element(), $sch as document-node(), $
       <etf:TestSteps>
       {
         for $rule in $pattern/iso:rule
-          let $ruleId := $rule/@id        
+          let $ruleId := $rule/@id
           return
           <etf:TestStep id="{$patternId}.{$ruleId}">
           <etf:Label>{data($ruleId)}</etf:Label>
@@ -321,7 +321,7 @@ declare function local:evaluate($svrlii as element(), $sch as document-node(), $
           <etf:Assertions>
           {
             for $assert in $rule/iso:assert
-              let $assertId := $assert/@id            
+              let $assertId := $assert/@id
               return
               <etf:Assertion id="{$patternId}.{$ruleId}.{$assertId}">
               <etf:Label>{data($assertId)}</etf:Label>
@@ -341,7 +341,7 @@ declare function local:evaluate($svrlii as element(), $sch as document-node(), $
           }
           {
             for $report in $rule/iso:report
-              let $reportId := $report/@id            
+              let $reportId := $report/@id
               return
               <etf:Assertion id="{$patternId}.{$ruleId}.{$reportId}">
               <etf:Label>{data($reportId)}</etf:Label>
@@ -415,22 +415,22 @@ declare function local:evaluate($svrlii as element(), $sch as document-node(), $
           </ii:Item>
       </ii:Items>
   </etf:Properties>
-  <etf:SubRequirements>    
+  <etf:SubRequirements>
   {
     for $assertOrReport in $sch//*[local-name() = 'assert' or local-name() = 'report']
       return
-        <etf:Requirement>{$requirementsId}#{string($assertOrReport/@id)}</etf:Requirement>            
+        <etf:Requirement>{$requirementsId}#{string($assertOrReport/@id)}</etf:Requirement>
   }
   </etf:SubRequirements>
-  </etf:Requirement>  
+  </etf:Requirement>
   {
      for $assertOrReport in $sch//*[local-name() = 'assert' or local-name() = 'report']
        let $assertOrReportId := string($assertOrReport/@id)
       return
-              
+
       <etf:Requirement id="{$requirementsId}#{$assertOrReportId}">
         <etf:VersionData/>
-        <etf:Label>{$assertOrReportId}</etf:Label>      
+        <etf:Label>{$assertOrReportId}</etf:Label>
         <etf:Properties>
             <ii:Items>
               <ii:Item name="Name">
@@ -513,7 +513,7 @@ error($paramerror,concat("System error: parameter $dbCount must be an integer. F
 
 if ($count ge 0) then () else error($paramerror,concat("System error: parameter $dbCount must be a positive integer. Found '",data($dbCount),"'&#xa;")),
 
-try { let $x := matches('any.valid.regex',$Files_to_test) 
+try { let $x := matches('any.valid.regex',$Files_to_test)
 return ()
 } catch * {
 error($paramerror,concat("The value of parameter $Files_to_test must be a valid regular expression. Given value was '",data($Files_to_test),"', which leads to the following application error:&#xa; '",data($err:description),"'&#xa;"))
@@ -536,16 +536,16 @@ let $printExactLocationEvaluated := if(matches($printExactLocation,"\s*[Tt][Rr][
 
 let $schFile := concat($projDir, file:dir-separator(),"schematron.sch")
 
-let $xslIsoDsdlIncludeFile := concat($projDir, file:dir-separator(), "iso-schematron-xslt1", file:dir-separator(),"iso_dsdl_include.xsl")
-let $xslIsoAbstractExpandFile := concat($projDir, file:dir-separator(), "iso-schematron-xslt1", file:dir-separator(), "iso_abstract_expand.xsl")
+let $xslIsoDsdlIncludeFile := concat($projDir, file:dir-separator(), "iso-schematron-xslt2", file:dir-separator(),"iso_dsdl_include.xsl")
+let $xslIsoAbstractExpandFile := concat($projDir, file:dir-separator(), "iso-schematron-xslt2", file:dir-separator(), "iso_abstract_expand.xsl")
 
-let $xslIIAbstractRuleExpandFile := concat($projDir, file:dir-separator(), "iso-schematron-xslt1", file:dir-separator(), "ii_abstract_rule_expand.xsl")
-let $xslIdsForPatternsRulesAssertsFile := concat($projDir, file:dir-separator(), "iso-schematron-xslt1", file:dir-separator(), "ii_ids_for_patterns_and_rules.xsl")
+let $xslIIAbstractRuleExpandFile := concat($projDir, file:dir-separator(), "iso-schematron-xslt2", file:dir-separator(), "ii_abstract_rule_expand.xsl")
+let $xslIdsForPatternsRulesAssertsFile := concat($projDir, file:dir-separator(), "iso-schematron-xslt2", file:dir-separator(), "ii_ids_for_patterns_and_rules.xsl")
 
-let $xslSvrlForXsltFile := concat($projDir, file:dir-separator(), "iso-schematron-xslt1", file:dir-separator(), "iso_svrl_for_xslt1.xsl")
+let $xslSvrlForXsltFile := concat($projDir, file:dir-separator(), "iso-schematron-xslt2", file:dir-separator(), "iso_svrl_for_xslt2.xsl")
 
-let $xslSvrlFormatting1File := concat($projDir, file:dir-separator(), "iso-schematron-xslt1", file:dir-separator(), "ii_svrl_formatting_1.xsl")
-let $xslSvrlFormatting2File := concat($projDir, file:dir-separator(), "iso-schematron-xslt1", file:dir-separator(), "ii_svrl_formatting_2.xsl")
+let $xslSvrlFormatting1File := concat($projDir, file:dir-separator(), "iso-schematron-xslt2", file:dir-separator(), "ii_svrl_formatting_1.xsl")
+let $xslSvrlFormatting2File := concat($projDir, file:dir-separator(), "iso-schematron-xslt2", file:dir-separator(), "ii_svrl_formatting_2.xsl")
 
 let $sch :=
 try{

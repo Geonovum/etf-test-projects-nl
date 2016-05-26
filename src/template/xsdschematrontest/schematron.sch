@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<sch:schema xmlns:sch="http://purl.oclc.org/dsdl/schematron">
+<sch:schema xmlns:sch="http://purl.oclc.org/dsdl/schematron" queryBinding="xslt2">
     <sch:ns prefix="gml" uri="http://www.opengis.net/gml/3.2"/>
-    <!-- 
+    <!--
         - The schematron file implements the validation of the restricted
         - subset of GML 3.2 defined in the GML simple features profile
         - compliance level SF2. The scope of the validation consists of
@@ -38,7 +38,7 @@
             </sch:assert>
             <!-- Rule for constraints on GeometryPropertyType -->
             <sch:assert test="not(self::gml:Solid|self::gml:MultiSolid|self::gml:CompositeSolid|self::gml:CompositeCurve|self::gml:Grid)">
-                Supported geometry types are restricted to point, curve with 
+                Supported geometry types are restricted to point, curve with
                 linear and/or circular arc interpolation, planar surface,
                 or aggregates thereof.
             </sch:assert>

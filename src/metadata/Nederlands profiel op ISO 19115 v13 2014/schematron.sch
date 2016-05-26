@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<sch:schema xmlns:sch="http://purl.oclc.org/dsdl/schematron" queryBinding="xslt">
+<sch:schema xmlns:sch="http://purl.oclc.org/dsdl/schematron" queryBinding="xslt2">
 	<sch:ns uri="http://www.isotc211.org/2005/gmd" prefix="gmd"/>
 	<sch:ns uri="http://www.isotc211.org/2005/gco" prefix="gco"/>
 	<sch:ns uri="http://www.opengis.net/gml" prefix="gml"/>

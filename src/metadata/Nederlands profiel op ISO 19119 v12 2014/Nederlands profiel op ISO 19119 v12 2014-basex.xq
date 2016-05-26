@@ -536,16 +536,16 @@ let $printExactLocationEvaluated := if(matches($printExactLocation,"\s*[Tt][Rr][
 
 let $schFile := concat($projDir, file:dir-separator(),"schematron.sch")
 
-let $xslIsoDsdlIncludeFile := concat($projDir, file:dir-separator(), "iso-schematron-xslt1", file:dir-separator(),"iso_dsdl_include.xsl")
-let $xslIsoAbstractExpandFile := concat($projDir, file:dir-separator(), "iso-schematron-xslt1", file:dir-separator(), "iso_abstract_expand.xsl")
+let $xslIsoDsdlIncludeFile := concat($projDir, file:dir-separator(), "iso-schematron-xslt2", file:dir-separator(),"iso_dsdl_include.xsl")
+let $xslIsoAbstractExpandFile := concat($projDir, file:dir-separator(), "iso-schematron-xslt2", file:dir-separator(), "iso_abstract_expand.xsl")
 
-let $xslIIAbstractRuleExpandFile := concat($projDir, file:dir-separator(), "iso-schematron-xslt1", file:dir-separator(), "ii_abstract_rule_expand.xsl")
-let $xslIdsForPatternsRulesAssertsFile := concat($projDir, file:dir-separator(), "iso-schematron-xslt1", file:dir-separator(), "ii_ids_for_patterns_and_rules.xsl")
+let $xslIIAbstractRuleExpandFile := concat($projDir, file:dir-separator(), "iso-schematron-xslt2", file:dir-separator(), "ii_abstract_rule_expand.xsl")
+let $xslIdsForPatternsRulesAssertsFile := concat($projDir, file:dir-separator(), "iso-schematron-xslt2", file:dir-separator(), "ii_ids_for_patterns_and_rules.xsl")
 
-let $xslSvrlForXsltFile := concat($projDir, file:dir-separator(), "iso-schematron-xslt1", file:dir-separator(), "iso_svrl_for_xslt1.xsl")
+let $xslSvrlForXsltFile := concat($projDir, file:dir-separator(), "iso-schematron-xslt2", file:dir-separator(), "iso_svrl_for_xslt2.xsl")
 
-let $xslSvrlFormatting1File := concat($projDir, file:dir-separator(), "iso-schematron-xslt1", file:dir-separator(), "ii_svrl_formatting_1.xsl")
-let $xslSvrlFormatting2File := concat($projDir, file:dir-separator(), "iso-schematron-xslt1", file:dir-separator(), "ii_svrl_formatting_2.xsl")
+let $xslSvrlFormatting1File := concat($projDir, file:dir-separator(), "iso-schematron-xslt2", file:dir-separator(), "ii_svrl_formatting_1.xsl")
+let $xslSvrlFormatting2File := concat($projDir, file:dir-separator(), "iso-schematron-xslt2", file:dir-separator(), "ii_svrl_formatting_2.xsl")
 
 let $sch :=
 try{
