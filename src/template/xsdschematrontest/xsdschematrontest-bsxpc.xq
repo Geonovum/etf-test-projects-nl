@@ -37,7 +37,7 @@ declare variable $Tester external := "unknown";
 
 declare variable $Schema_file external := "dummyschema.xsd";
 
-declare variable $printExactLocation external := "true"; (: if set to true - ignoring case and leading or trailing whitespace - the XPath of the element that caused an assertion to fail or a report to be generated will be included in messages:)
+declare variable $printExactLocation external := "false"; (: if set to true - ignoring case and leading or trailing whitespace - the XPath of the element that caused an assertion to fail or a report to be generated will be included in messages:)
 
 (:===========================:)
 (: Default ETF parameters :)
@@ -66,7 +66,7 @@ declare variable $paramerror := xs:QName("etf:ParameterError");
 (: Parameter checks :)
 (:===========================:)
 
-try { let $x := matches('any.valid.regex',$Files_to_test) 
+try { let $x := matches('any.valid.regex',$Files_to_test)
 return ()
 } catch * {
 error($paramerror,concat("The value of parameter $Files_to_test must be a valid regular expression. Given value was '",data($Files_to_test),"', which leads to the following application error:&#xa; '",data($err:description),"'&#xa;"))

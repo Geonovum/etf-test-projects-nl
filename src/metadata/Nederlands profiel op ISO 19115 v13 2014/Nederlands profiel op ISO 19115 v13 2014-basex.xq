@@ -159,9 +159,9 @@ declare function local:evaluate($svrlii as element(), $sch as document-node(), $
 </etf:TestRunProperties>
 <etf:Statistics/>
 <etf:TestSuiteResults>
-<etf:TestSuiteResult id="Schematron Validation">
+<etf:TestSuiteResult id="Validation results">
   <etf:Duration>{$svrlii/svrlii:totalDuration/text()}</etf:Duration>
-  <etf:Label>Schematron Validation</etf:Label>
+  <etf:Label>Validation results</etf:Label>
   <etf:TestCaseResults>
 
     <etf:TestCaseResult id="Result.Etf.Internal" testCaseRef="Etf.Internal">
@@ -251,8 +251,8 @@ declare function local:evaluate($svrlii as element(), $sch as document-node(), $
 <etf:TestCases>
 
   <etf:TestCase id="Etf.Internal">
-    <etf:Label>ETF standard checks</etf:Label>
-    <etf:Description>Standard checks performed by ETF</etf:Description>
+    <etf:Label>XML validation</etf:Label>
+    <etf:Description>Standard XML validation performed by ETF</etf:Description>
     <etf:VersionData>
       <etf:Version>0.1</etf:Version>
       <etf:CreationDate>2016-01-22T17:00:00+0100</etf:CreationDate>
@@ -267,20 +267,20 @@ declare function local:evaluate($svrlii as element(), $sch as document-node(), $
     <etf:Properties>
       <ii:Items xmlns:ii="http://www.interactive-instruments.de/ii/1.0">
         <ii:Item name="ShortDescription">
-          <ii:value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:string">Standard checks</ii:value>
+          <ii:value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:string">Standard XML validation</ii:value>
         </ii:Item>
         <ii:Item name="Reference">
-          <ii:value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:string">Standard ETF behavior</ii:value>
+          <ii:value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:string">Standard XML validation</ii:value>
         </ii:Item>
       </ii:Items>
     </etf:Properties>
     <etf:TestSteps>
       <etf:TestStep id="Etf.Internal.Validation">
-        <etf:Label>Validation</etf:Label>
+        <etf:Label>Validation result</etf:Label>
         <etf:Description/>
         <etf:Assertions>
           <etf:Assertion id="Etf.Internal.Validation.Xml">
-            <etf:Label>XML Validation</etf:Label>
+            <etf:Label>XML schema validation</etf:Label>
             <etf:Properties>
               <ii:Items xmlns:ii="http://www.interactive-instruments.de/ii/1.0">
                 <ii:Item name="RequirementReference">
@@ -471,7 +471,7 @@ declare variable $Testsystem external := "unknown";
 declare variable $Tester external := "unknown";
 declare variable $Schema_file external := "gmd.xsd";
 
-declare variable $printExactLocation external := "true"; (: if set to true - ignoring case and leading or trailing whitespace - the XPath of the element that caused an assertion to fail or a report to be generated will be included in messages:)
+declare variable $printExactLocation external := "false"; (: if set to true - ignoring case and leading or trailing whitespace - the XPath of the element that caused an assertion to fail or a report to be generated will be included in messages:)
 
 
 (:===========================:)

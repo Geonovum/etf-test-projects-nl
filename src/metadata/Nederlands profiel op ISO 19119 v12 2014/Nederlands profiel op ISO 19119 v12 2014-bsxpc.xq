@@ -36,7 +36,7 @@ declare variable $Testsystem external := "unknown";
 declare variable $Tester external := "unknown";
 declare variable $Schema_file external := "gmd.xsd";
 
-declare variable $printExactLocation external := "true"; (: if set to true - ignoring case and leading or trailing whitespace - the XPath of the element that caused an assertion to fail or a report to be generated will be included in messages:)
+declare variable $printExactLocation external := "false"; (: if set to true - ignoring case and leading or trailing whitespace - the XPath of the element that caused an assertion to fail or a report to be generated will be included in messages:)
 
 (:===========================:)
 (: Default ETF parameters :)

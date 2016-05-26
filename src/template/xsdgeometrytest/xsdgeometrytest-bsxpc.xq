@@ -30,7 +30,7 @@ declare variable $paramerror := xs:QName("etf:ParameterError");
 
 (: Parameter checks :)
 
-try { let $x := matches('nas.gml',$files_to_test) 
+try { let $x := matches('nas.gml',$files_to_test)
 return ()
 } catch * {
 error($paramerror,concat("Parameter $files_to_test must be a valid regular expression. Found: '",data($files_to_test),"', error reported was:&#xa; '",data($err:description),"'&#xa;"))
