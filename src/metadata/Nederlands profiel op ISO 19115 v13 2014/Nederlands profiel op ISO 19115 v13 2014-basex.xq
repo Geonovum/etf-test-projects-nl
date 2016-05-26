@@ -37,7 +37,7 @@ declare function local:create-messages($failedAssertsOrReports as element()*, $s
   let $fileErrors := count($resultsWithFailedAssertsOrReports)
   let $countElements := count($failedAssertsOrReports)
   let $messages := (
-    if ($fileErrors>0) then concat('Files with errors: ',data($fileErrors),'.&#xa;&#xa;') else (),
+    if ($fileErrors>0) then concat('Files: ',data($fileErrors),'.&#xa;&#xa;') else (),
     for $result in $resultsWithFailedAssertsOrReports
     let $resultFileName := $result/svrlii:fileName/text()
     order by $resultFileName

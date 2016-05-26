@@ -11,7 +11,7 @@
 	<sch:let name="gemet-nl" value="document('GEMET-InspireThemes-nl.rdf')"/>
 
 	-->
-	<sch:pattern id="DutchMetadataCoreSet">
+	<sch:pattern id="Dutch Metadata Core Set">
 		<sch:title>Validatie tegen het Nederlands metadata profiel op ISO 19115 voor geografie v 1.3.1</sch:title>
 	<!-- INSPIRE Thesaurus en Conformiteit-->
 		<sch:let name="thesaurus1" value="normalize-space(/gmd:MD_Metadata/gmd:identificationInfo/gmd:MD_DataIdentification/gmd:descriptiveKeywords[1]/gmd:MD_Keywords/gmd:thesaurusName/gmd:CI_Citation/gmd:title/gco:CharacterString)"/>
@@ -27,13 +27,13 @@
 		<sch:let name="conformity_Spec_Title_All" value="concat(string($conformity_Spec_Title1),string($conformity_Spec_Title2),string($conformity_Spec_Title3),string($conformity_Spec_Title4))"/>
 		<sch:let name="conformity_Spec_Title_Exsists" value="contains($conformity_Spec_Title_All,'VERORDENING (EU) Nr. 1089/2010 VAN DE COMMISSIE van 23 november 2010 ter uitvoering van Richtlijn 2007/2/EG van het Europees Parlement en de Raad betreffende de interoperabiliteit van verzamelingen ruimtelijke gegevens en van diensten met betrekking tot ruimtelijke gegevens')"/>
 
-		<sch:rule context="/gmd:MD_Metadata">
+		<sch:rule id="MD_Metadata"  context="/gmd:MD_Metadata">
 
 		<!-- schemalocatie controleren, overeenkomstig inspire en nl profiel -->
 
-			<sch:assert test="contains(normalize-space(@xsi:schemaLocation), 'http://schemas.opengis.net/iso/19139/20060504/gmd/gmd.xsd')">Het ISO 19139 XML document mist een verplichte schema locatie. De schema locatie http://schemas.opengis.net/iso/19139/20060504/gmd/gmd.xsd moet aanwezig zijn.
+			<sch:assert id="Schema locatie" test="contains(normalize-space(@xsi:schemaLocation), 'http://schemas.opengis.net/iso/19139/20060504/gmd/gmd.xsd')">Het ISO 19139 XML document mist een verplichte schema locatie. De schema locatie http://schemas.opengis.net/iso/19139/20060504/gmd/gmd.xsd moet aanwezig zijn.
 			</sch:assert>
-			<sch:report test="contains(normalize-space(@xsi:schemaLocation), 'http://schemas.opengis.net/iso/19139/20060504/gmd/gmd.xsd')">Het ISO 19139 XML document bevat de schema locatie http://schemas.opengis.net/iso/19139/20060504/gmd/gmd.xsd
+			<sch:report id="Schema locatie info" test="contains(normalize-space(@xsi:schemaLocation), 'http://schemas.opengis.net/iso/19139/20060504/gmd/gmd.xsd')">Het ISO 19139 XML document bevat de schema locatie http://schemas.opengis.net/iso/19139/20060504/gmd/gmd.xsd
 			</sch:report>
 
 		<!--  fileIdentifier for report -->
@@ -73,43 +73,43 @@
 
 		<!-- rules and assertions -->
 
-			<sch:assert test="$fileIdentifier">Er is geen Metadata ID (ISO nr. 2) opgegeven.</sch:assert>
-			<sch:report test="$fileIdentifier">Metadata ID: <sch:value-of select="$fileIdentifier"/>
+			<sch:assert id="Metadata ID (ISO nr. 2)" test="$fileIdentifier">Er is geen Metadata ID (ISO nr. 2) opgegeven.</sch:assert>
+			<sch:report id="Metadata ID (ISO nr. 2) info" test="$fileIdentifier">Metadata ID: <sch:value-of select="$fileIdentifier"/>
 			</sch:report>
-			<sch:assert test="$mdLanguage">De metadata taal (ISO nr. 3) ontbreekt of heeft een verkeerde waarde. Dit hoort een waarde en verwijzing naar de codelijst te zijn.</sch:assert>
-			<sch:report test="$mdLanguage">Metadata taal (ISO nr. 3) voldoet
+			<sch:assert id="Metadata taal (ISO nr. 3)" test="$mdLanguage">De metadata taal (ISO nr. 3) ontbreekt of heeft een verkeerde waarde. Dit hoort een waarde en verwijzing naar de codelijst te zijn.</sch:assert>
+			<sch:report id="Metadata taal (ISO nr. 3) info" test="$mdLanguage">Metadata taal (ISO nr. 3) voldoet
 			 </sch:report>
 
-			<sch:assert test="$hierarchyLevel">Metadata hierarchieniveau (ISO nr. 6) ontbreekt of heeft een verkeerde waarde</sch:assert>
-			<sch:report test="$hierarchyLevel">Metadata hierarchieniveau (ISO nr. 6) voldoet</sch:report>
+			<sch:assert id="Metadata hierarchieniveau (ISO nr. 6)" test="$hierarchyLevel">Metadata hierarchieniveau (ISO nr. 6) ontbreekt of heeft een verkeerde waarde</sch:assert>
+			<sch:report id="Metadata hierarchieniveau (ISO nr. 6) info" test="$hierarchyLevel">Metadata hierarchieniveau (ISO nr. 6) voldoet</sch:report>
 
-        	<sch:assert test="not($hierarchyLevel_value = 'series' and not($hierarchyLevelName))">Beschrijving hierarchisch niveau (ISO nr. 7) ontbreekt. Dit is verplicht als hierarchieniveau = 'series'.</sch:assert>
-			<sch:report test="$hierarchyLevelName">Tenminste 1 beschrijving hierarchisch niveau (ISO nr. 7) is gevonden
+        	<sch:assert id="Beschrijving hierarchisch niveau (ISO nr. 7)" test="not($hierarchyLevel_value = 'series' and not($hierarchyLevelName))">Beschrijving hierarchisch niveau (ISO nr. 7) ontbreekt. Dit is verplicht als hierarchieniveau = 'series'.</sch:assert>
+			<sch:report id="Beschrijving hierarchisch niveau (ISO nr. 7) info" test="$hierarchyLevelName">Tenminste 1 beschrijving hierarchisch niveau (ISO nr. 7) is gevonden
 			</sch:report>
-			<sch:assert test="$mdResponsibleParty_Organisation">Naam organisatie metadata (ISO nr. 376) ontbreekt</sch:assert>
-			<sch:report test="$mdResponsibleParty_Organisation">Naam organisatie metadata (ISO nr. 376): <sch:value-of select="$mdResponsibleParty_Organisation"/>
+			<sch:assert id="Naam organisatie metadata (ISO nr. 376)" test="$mdResponsibleParty_Organisation">Naam organisatie metadata (ISO nr. 376) ontbreekt</sch:assert>
+			<sch:report id="Naam organisatie metadata (ISO nr. 376) info" test="$mdResponsibleParty_Organisation">Naam organisatie metadata (ISO nr. 376): <sch:value-of select="$mdResponsibleParty_Organisation"/>
 			</sch:report>
-			<sch:assert test="$mdResponsibleParty_Role">Rol organisatie metadata (ISO nr. 379) ontbreekt of heeft een verkeerde waarde</sch:assert>
-			<sch:report test="$mdResponsibleParty_Role">Rol organisatie metadata (ISO nr. 379): <sch:value-of select="$mdResponsibleParty_Role"/>
+			<sch:assert id="Rol organisatie metadata (ISO nr. 379)" test="$mdResponsibleParty_Role">Rol organisatie metadata (ISO nr. 379) ontbreekt of heeft een verkeerde waarde</sch:assert>
+			<sch:report id="Rol organisatie metadata (ISO nr. 379) info" test="$mdResponsibleParty_Role">Rol organisatie metadata (ISO nr. 379): <sch:value-of select="$mdResponsibleParty_Role"/>
 			</sch:report>
 		<!-- INSPIRE in combi met specificatie INSPIRE -->
-			<sch:assert test="not($conformity_Spec_Title_Exsists) or ($conformity_Spec_Title_Exsists and $mdResponsibleParty_Role_INSPIRE)">Rol organisatie metadata (ISO nr. 379) ontbreekt of heeft een verkeerde waarde, deze dient voor INSPIRE contactpunt te zijn</sch:assert>
+			<sch:assert id="Rol organisatie metadata (ISO nr. 379)" test="not($conformity_Spec_Title_Exsists) or ($conformity_Spec_Title_Exsists and $mdResponsibleParty_Role_INSPIRE)">Rol organisatie metadata (ISO nr. 379) ontbreekt of heeft een verkeerde waarde, deze dient voor INSPIRE contactpunt te zijn</sch:assert>
 		<!-- eind INSPIRE in combi met specificatie INSPIRE -->
-			<sch:assert test="$mdResponsibleParty_Mail">E-mail organisatie metadata (ISO nr. 386) ontbreekt</sch:assert>
-			<sch:report test="$mdResponsibleParty_Mail">E-mail organisatie metadata (ISO nr. 386): <sch:value-of select="$mdResponsibleParty_Mail"/>
+			<sch:assert id="E-mail organisatie metadata (ISO nr. 386)"  test="$mdResponsibleParty_Mail">E-mail organisatie metadata (ISO nr. 386) ontbreekt</sch:assert>
+			<sch:report id="E-mail organisatie metadata (ISO nr. 386) info" test="$mdResponsibleParty_Mail">E-mail organisatie metadata (ISO nr. 386): <sch:value-of select="$mdResponsibleParty_Mail"/>
 			</sch:report>
-			<sch:assert test="((number(substring(substring-before($dateStamp,'-'),1,4)) &gt; 1000 ))">Metadata datum (ISO nr. 9) ontbreekt of heeft het verkeerde formaat (YYYY-MM-DD)</sch:assert>
-			<sch:report test="$dateStamp">Metadata datum (ISO nr. 9): <sch:value-of select="$dateStamp"/>
+			<sch:assert id="Metadata datum (ISO nr. 9)" test="((number(substring(substring-before($dateStamp,'-'),1,4)) &gt; 1000 ))">Metadata datum (ISO nr. 9) ontbreekt of heeft het verkeerde formaat (YYYY-MM-DD)</sch:assert>
+			<sch:report id="Metadata datum (ISO nr. 9) info" test="$dateStamp">Metadata datum (ISO nr. 9): <sch:value-of select="$dateStamp"/>
 			</sch:report>
 
-			<sch:assert test="$metadataStandardName = 'ISO 19115'">Metadatastandaard naam (ISO nr. 10) ontbreekt of is niet correct ingevuld, Metadatastandaard naam dient de waarde 'ISO 19115' te hebben</sch:assert>
-			<sch:report test="$metadataStandardName">Metadatastandaard naam (ISO nr. 10): <sch:value-of select="$metadataStandardName"/>
+			<sch:assert id="Metadatastandaard naam (ISO nr. 10)" test="$metadataStandardName = 'ISO 19115'">Metadatastandaard naam (ISO nr. 10) ontbreekt of is niet correct ingevuld, Metadatastandaard naam dient de waarde 'ISO 19115' te hebben</sch:assert>
+			<sch:report id="Metadatastandaard naam (ISO nr. 10) info" test="$metadataStandardName">Metadatastandaard naam (ISO nr. 10): <sch:value-of select="$metadataStandardName"/>
 			</sch:report>
-			<sch:assert test="contains($metadataStandardVersion, 'PROFIEL OP ISO 19115')">Versie metadatastandaard  (ISO nr. 11) ontbreekt of is niet correct ingevuld, Metadatastandaard versie dient de waarde 'Nederlands metadata profiel op ISO 19115 voor geografie 1.3' te bevatten</sch:assert>
-			<sch:report test="$metadataStandardVersion">Versie metadatastandaard  (ISO nr. 11): <sch:value-of select="$metadataStandardVersion"/>
+			<sch:assert id="Versie metadatastandaard (ISO nr. 11)" test="contains($metadataStandardVersion, 'PROFIEL OP ISO 19115')">Versie metadatastandaard  (ISO nr. 11) ontbreekt of is niet correct ingevuld, Metadatastandaard versie dient de waarde 'Nederlands metadata profiel op ISO 19115 voor geografie 1.3' te bevatten</sch:assert>
+			<sch:report id="Versie metadatastandaard (ISO nr. 11) info" test="$metadataStandardVersion">Versie metadatastandaard (ISO nr. 11): <sch:value-of select="$metadataStandardVersion"/>
 			</sch:report>
-			<sch:assert test="not($metadataCharacterset) or $metadataCharacterset_value">Metadata karakterset (ISO nr. 4) ontbreekt of heeft een verkeerde waarde</sch:assert>
-			<sch:report test="not($metadataCharacterset) or $metadataCharacterset_value">Metadata karakterset (ISO nr. 4) voldoet</sch:report>
+			<sch:assert id="Metadata karakterset (ISO nr. 4)" test="not($metadataCharacterset) or $metadataCharacterset_value">Metadata karakterset (ISO nr. 4) ontbreekt of heeft een verkeerde waarde</sch:assert>
+			<sch:report id="Metadata karakterset (ISO nr. 4) info" test="not($metadataCharacterset) or $metadataCharacterset_value">Metadata karakterset (ISO nr. 4) voldoet</sch:report>
 
 		<!-- alle regels over elementen binnen gmd:identificationInfo -->
 		<!-- Dataset titel -->
@@ -181,88 +181,87 @@
 			<sch:let name="referenceSystemInfo" value="gmd:referenceSystemInfo"/>
 
 		<!-- rules and assertions -->
-			<sch:assert test="$datasetTitle">Dataset titel (ISO nr. 360) ontbreekt</sch:assert>
-			<sch:report test="$datasetTitle">Dataset titel (ISO nr. 360): <sch:value-of select="$datasetTitle"/>
+			<sch:assert id="Dataset titel (ISO nr. 360)" test="$datasetTitle">Dataset titel (ISO nr. 360) ontbreekt</sch:assert>
+			<sch:report id="Dataset titel (ISO nr. 360) info" test="$datasetTitle">Dataset titel (ISO nr. 360): <sch:value-of select="$datasetTitle"/>
 			</sch:report>
-			<sch:assert test="$publicationDate or $creationDate or $revisionDate">Datum van de bron(ISO nr. 394) of Datatype (ISO nr.395) ontbreken of heeft het verkeerde formaat (YYYY-MM-DD)</sch:assert>
-			<sch:report test="$publicationDate or $creationDate or $revisionDate">Tenminste 1 datum van de bron  (ISO nr. 394) is gevonden
+			<sch:assert id="Datum van de bron(ISO nr. 394) en Datatype (ISO nr.395)" test="$publicationDate or $creationDate or $revisionDate">Datum van de bron(ISO nr. 394) of Datatype (ISO nr.395) ontbreken of heeft het verkeerde formaat (YYYY-MM-DD)</sch:assert>
+			<sch:report id="Datum van de bron(ISO nr. 394) en Datatype (ISO nr.395) info" test="$publicationDate or $creationDate or $revisionDate">Tenminste 1 datum van de bron (ISO nr. 394) is gevonden
 			</sch:report>
-			<sch:assert test="$abstract">Samenvatting (ISO nr. 25) ontbreekt</sch:assert>
-			<sch:report test="$abstract">Samenvatting (ISO nr. 25): <sch:value-of select="$abstract"/>
+			<sch:assert id="Samenvatting (ISO nr. 25)" test="$abstract">Samenvatting (ISO nr. 25) ontbreekt</sch:assert>
+			<sch:report id="Samenvatting (ISO nr. 25) info" test="$abstract">Samenvatting (ISO nr. 25): <sch:value-of select="$abstract"/>
 			</sch:report>
-			<sch:assert test="$status">Status (ISO nr. 28) ontbreekt of heeft een verkeerde waarde</sch:assert>
-			<sch:report test="$status">Status (ISO nr. 28) voldoet
+			<sch:assert id="Status (ISO nr. 28)" test="$status">Status (ISO nr. 28) ontbreekt of heeft een verkeerde waarde</sch:assert>
+			<sch:report id="Status (ISO nr. 28) info" test="$status">Status (ISO nr. 28) voldoet
 			</sch:report>
-			<sch:assert test="$responsibleParty_Organisation">Verantwoordelijke organisatie bron (ISO nr. 376) ontbreekt</sch:assert>
-			<sch:report test="$responsibleParty_Organisation">Verantwoordelijke organisatie bron (ISO nr. 376): <sch:value-of select="$responsibleParty_Organisation"/>
+			<sch:assert id="Verantwoordelijke organisatie bron (ISO nr. 376)" test="$responsibleParty_Organisation">Verantwoordelijke organisatie bron (ISO nr. 376) ontbreekt</sch:assert>
+			<sch:report id="Verantwoordelijke organisatie bron (ISO nr. 376) info" test="$responsibleParty_Organisation">Verantwoordelijke organisatie bron (ISO nr. 376): <sch:value-of select="$responsibleParty_Organisation"/>
 			</sch:report>
-			<sch:assert test="$responsibleParty_Role">Rol verantwoordelijke organisatie bron (ISO nr. 379) ontbreekt of heeft een verkeerde waarde</sch:assert>
-			<sch:report test="$responsibleParty_Role">Rol verantwoordelijke organisatie bron (ISO nr. 379) voldoet
+			<sch:assert id="Rol verantwoordelijke organisatie bron (ISO nr. 379)" test="$responsibleParty_Role">Rol verantwoordelijke organisatie bron (ISO nr. 379) ontbreekt of heeft een verkeerde waarde</sch:assert>
+			<sch:report id="Rol verantwoordelijke organisatie bron (ISO nr. 379) info" test="$responsibleParty_Role">Rol verantwoordelijke organisatie bron (ISO nr. 379) voldoet
 			</sch:report>
-			<sch:assert test="$responsibleParty_Mail">E-mail verantwoordelijke organisatie bron (ISO nr. 386) ontbreekt</sch:assert>
-			<sch:report test="$responsibleParty_Mail">E-mail verantwoordelijke organisatie bron (ISO nr. 386): <sch:value-of select="$responsibleParty_Mail"/>
+			<sch:assert id="E-mail verantwoordelijke organisatie bron (ISO nr. 386)" test="$responsibleParty_Mail">E-mail verantwoordelijke organisatie bron (ISO nr. 386) ontbreekt</sch:assert>
+			<sch:report id="E-mail verantwoordelijke organisatie bron (ISO nr. 386) info" test="$responsibleParty_Mail">E-mail verantwoordelijke organisatie bron (ISO nr. 386): <sch:value-of select="$responsibleParty_Mail"/>
 			</sch:report>
-			<sch:assert test="$keyword">Trefwoorden (ISO nr. 53) ontbreken</sch:assert>
-			<sch:report test="$keyword">Tenminste 1 trefwoord (ISO nr. 53) is gevonden
+			<sch:assert id="Trefwoorden (ISO nr. 53)" test="$keyword">Trefwoorden (ISO nr. 53) ontbreken</sch:assert>
+			<sch:report id="Trefwoorden (ISO nr. 53) info" test="$keyword">Tenminste 1 trefwoord (ISO nr. 53) is gevonden
 			</sch:report>
 		<!-- Thesaurus alleen voor INSPIRE-->
 		<!--
-			<sch:assert test="$thesaurus_INSPIRE_Exsists">Thesaurus (ISO nr. 360), datum en datumtype ontbreekt</sch:assert>
+			<sch:assert id="Thesaurus (ISO nr. 360)" test="$thesaurus_INSPIRE_Exsists">Thesaurus (ISO nr. 360), datum en datumtype ontbreekt</sch:assert>
 		-->
 		<!-- eind Thesaurus alleen voor INSPIRE-->
 
 		<!-- Als  de GEMET INSPIRE themes thesaurus voorkomt, is verwijzing naar inspire specificatie verplicht -->
 
-		<sch:assert test="not($thesaurus_INSPIRE_Exsists) or ($thesaurus_INSPIRE_Exsists and $conformity_Spec_Title_Exsists)">Specificatie (ISO nr. 360) mist de verplichte waarde voor INSPIRE datasets, Als dit geen INSPIRE dataset is verwijder dan de thesaurus GEMET -INSPIRE themes, voor INSPIRE datasets in specificatie opnemen; VERORDENING (EU) Nr. 1089/2010 VAN DE COMMISSIE van 23 november 2010 ter uitvoering van Richtlijn 2007/2/EG van het Europees Parlement en de Raad betreffende de interoperabiliteit van verzamelingen ruimtelijke gegevens en van diensten met betrekking tot ruimtelijke gegevens</sch:assert>
+		<sch:assert id="Specificatie (ISO nr. 360)" test="not($thesaurus_INSPIRE_Exsists) or ($thesaurus_INSPIRE_Exsists and $conformity_Spec_Title_Exsists)">Specificatie (ISO nr. 360) mist de verplichte waarde voor INSPIRE datasets, Als dit geen INSPIRE dataset is verwijder dan de thesaurus GEMET -INSPIRE themes, voor INSPIRE datasets in specificatie opnemen; VERORDENING (EU) Nr. 1089/2010 VAN DE COMMISSIE van 23 november 2010 ter uitvoering van Richtlijn 2007/2/EG van het Europees Parlement en de Raad betreffende de interoperabiliteit van verzamelingen ruimtelijke gegevens en van diensten met betrekking tot ruimtelijke gegevens</sch:assert>
 
 		<!-- eind	-->
-			<sch:assert test="$identifier">Unieke Identifier van de bron (ISO nr. 207) ontbreekt</sch:assert>
-			<sch:report test="$identifier">Unieke Identifier van de bron (ISO nr. 207): <sch:value-of select="$identifier"/>
+			<sch:assert id="Unieke Identifier van de bron (ISO nr. 207)" test="$identifier">Unieke Identifier van de bron (ISO nr. 207) ontbreekt</sch:assert>
+			<sch:report id="Unieke Identifier van de bron (ISO nr. 207) info" test="$identifier">Unieke Identifier van de bron (ISO nr. 207): <sch:value-of select="$identifier"/>
 			</sch:report>
-			<sch:report test="$language">Dataset taal (ISO nr. 39): <sch:value-of select="$language"/>
+			<sch:report id="Dataset taal (ISO nr. 39) info" test="$language">Dataset taal (ISO nr. 39): <sch:value-of select="$language"/>
 			</sch:report>
-			<sch:assert test="not($characterset) or $characterset_value">Dataset karakterset (ISO nr. 40) ontbreekt of heeft een verkeerde waarde</sch:assert>
-			<sch:report test="$characterset_value">Dataset karakterset (ISO nr. 40) voldoet
+			<sch:assert id="Dataset karakterset (ISO nr. 40)" test="not($characterset) or $characterset_value">Dataset karakterset (ISO nr. 40) ontbreekt of heeft een verkeerde waarde</sch:assert>
+			<sch:report id="Dataset karakterset (ISO nr. 40) info" test="$characterset_value">Dataset karakterset (ISO nr. 40) voldoet
 			</sch:report>
-			<sch:assert test="$topicCategory">Onderwerp(ISO nr. 41) ontbreekt of heeft een verkeerde waarde</sch:assert>
-			<sch:report test="$topicCategory">Onderwerp (ISO nr. 41) voldoet
+			<sch:assert id="Onderwerp(ISO nr. 41)" test="$topicCategory">Onderwerp(ISO nr. 41) ontbreekt of heeft een verkeerde waarde</sch:assert>
+			<sch:report id="Onderwerp(ISO nr. 41) info" test="$topicCategory">Onderwerp (ISO nr. 41) voldoet
 			</sch:report>
-			<sch:assert test="(-180.00 &lt; $west) and ( $west &lt; 180.00) or ( $west = 0.00 ) or ( $west = -180.00 ) or ( $west = 180.00 )">Minimum x-coördinaat (ISO nr. 344) ontbreekt of heeft een verkeerde waarde</sch:assert>
-			<sch:report test="(-180.00 &lt; $west) and ( $west &lt; 180.00) or ( $west = 0.00 ) or ( $west = -180.00 ) or ( $west = 180.00 )">Minimum x-coördinaat (ISO nr. 344): <sch:value-of select="$west"/>
+			<sch:assert id="Minimum x-coordinaat (ISO nr. 344)"  test="(-180.00 &lt; $west) and ( $west &lt; 180.00) or ( $west = 0.00 ) or ( $west = -180.00 ) or ( $west = 180.00 )">Minimum x-coördinaat (ISO nr. 344) ontbreekt of heeft een verkeerde waarde</sch:assert>
+			<sch:report id="Minimum x-coordinaat (ISO nr. 344) info" test="(-180.00 &lt; $west) and ( $west &lt; 180.00) or ( $west = 0.00 ) or ( $west = -180.00 ) or ( $west = 180.00 )">Minimum x-coördinaat (ISO nr. 344): <sch:value-of select="$west"/>
 			</sch:report>
-			<sch:assert test="(-180.00 &lt; $east) and ($east &lt; 180.00) or ( $east = 0.00 ) or ( $east = -180.00 ) or ( $east = 180.00 )">Maximum x-coördinaat (ISO nr. 345) ontbreekt of heeft een verkeerde waarde</sch:assert>
-			<sch:report test="(-180.00 &lt; $east) and ($east &lt; 180.00) or ( $east = 0.00 ) or ( $east = -180.00 ) or ( $east = 180.00 )">Maximum x-coördinaat (ISO nr. 345): <sch:value-of select="$east"/>
+			<sch:assert id="Maximum x-coordinaat (ISO nr. 345)"  test="(-180.00 &lt; $east) and ($east &lt; 180.00) or ( $east = 0.00 ) or ( $east = -180.00 ) or ( $east = 180.00 )">Maximum x-coördinaat (ISO nr. 345) ontbreekt of heeft een verkeerde waarde</sch:assert>
+			<sch:report id="Maximum x-coordinaat (ISO nr. 345) info"  test="(-180.00 &lt; $east) and ($east &lt; 180.00) or ( $east = 0.00 ) or ( $east = -180.00 ) or ( $east = 180.00 )">Maximum x-coördinaat (ISO nr. 345): <sch:value-of select="$east"/>
 			</sch:report>
-			<sch:assert test="(-90.00 &lt; $south) and ($south &lt; $north) or (-90.00 = $south) or ($south = $north)">Minimum y-coördinaat (ISO nr. 346) ontbreekt of heeft een verkeerde waarde</sch:assert>
-			<sch:report test="(-90.00 &lt; $south) and ($south &lt; $north) or (-90.00 = $south) or ($south = $north)">Minimum y-coördinaat (ISO nr. 346): <sch:value-of select="$south"/>
+			<sch:assert id="Minimum y-coordinaat (ISO nr. 346)" test="(-90.00 &lt; $south) and ($south &lt; $north) or (-90.00 = $south) or ($south = $north)">Minimum y-coördinaat (ISO nr. 346) ontbreekt of heeft een verkeerde waarde</sch:assert>
+			<sch:report id="Minimum y-coordinaat (ISO nr. 346) info" test="(-90.00 &lt; $south) and ($south &lt; $north) or (-90.00 = $south) or ($south = $north)">Minimum y-coördinaat (ISO nr. 346): <sch:value-of select="$south"/>
 			</sch:report>
-			<sch:assert test="($south &lt; $north) and ($north &lt; 90.00) or ($south = $north) or ($north = 90.00)">Maximum y-coördinaat (ISO nr. 347) ontbreekt of heeft een verkeerde waarde</sch:assert>
-			<sch:report test="($south &lt; $north) and ($north &lt; 90.00) or ($south = $north) or ($north = 90.00)">Maximum y-coördinaat (ISO nr. 347): <sch:value-of select="$north"/>
+			<sch:assert id="Maximum y-coordinaat (ISO nr. 347)" test="($south &lt; $north) and ($north &lt; 90.00) or ($south = $north) or ($north = 90.00)">Maximum y-coördinaat (ISO nr. 347) ontbreekt of heeft een verkeerde waarde</sch:assert>
+			<sch:report id="Maximum y-coordinaat (ISO nr. 347) info" test="($south &lt; $north) and ($north &lt; 90.00) or ($south = $north) or ($north = 90.00)">Maximum y-coördinaat (ISO nr. 347): <sch:value-of select="$north"/>
 			</sch:report>
 			<!-- optineel geworden in v1.3
-			<sch:assert test="$begin_beginPosition or $begin_begintimePosition or $begin_timePosition">Temporele dekking - BeginDatum (ISO nr. 351) ontbreekt</sch:assert>
-			<sch:report test="$begin_beginPosition or $begin_begintimePosition or $begin_timePosition">Temporele dekking - BeginDatum (ISO nr. 351): <sch:value-of select="$begin_beginPosition"/><sch:value-of select="$begin_begintimePosition"/><sch:value-of select="$begin_timePosition"/>
+			<sch:assert id="Temporele dekking - BeginDatum (ISO nr. 351)" test="$begin_beginPosition or $begin_begintimePosition or $begin_timePosition">Temporele dekking - BeginDatum (ISO nr. 351) ontbreekt</sch:assert>
+			<sch:report id="Temporele dekking - BeginDatum (ISO nr. 351) info" test="$begin_beginPosition or $begin_begintimePosition or $begin_timePosition">Temporele dekking - BeginDatum (ISO nr. 351): <sch:value-of select="$begin_beginPosition"/><sch:value-of select="$begin_begintimePosition"/><sch:value-of select="$begin_timePosition"/>
 			</sch:report>
 			 -->
 
-			<sch:assert test="$useLimitation">Gebruiksbeperkingen (ISO nr. 68) ontbreken</sch:assert>
-			<sch:report test="$useLimitation">Gebruiksbeperkingen (ISO nr. 68): <sch:value-of select="$useLimitation"/>
+			<sch:assert id="Gebruiksbeperkingen (ISO nr. 68)" test="$useLimitation">Gebruiksbeperkingen (ISO nr. 68) ontbreken</sch:assert>
+			<sch:report id="Gebruiksbeperkingen (ISO nr. 68) info" test="$useLimitation">Gebruiksbeperkingen (ISO nr. 68): <sch:value-of select="$useLimitation"/>
 			</sch:report>
-			<sch:assert test="$accessConstraints_value and $otherConstraints ">(Juridische) toegangsrestricties (ISO nr. 70)en Overige beperkingen (ISO nr 72)  dient ingevuld te zijn</sch:assert>
-			<sch:assert test="$accessConstraints_value">(Juridische) toegangsrestricties (ISO nr. 70) dient de waarde 'anders' te hebben in combinatie met een publiek domein, CC0 of geogedeelt licentie bij overige beperkingen (ISO nr. 72)</sch:assert>
-			<sch:assert test="not($accessConstraints_value = 'otherRestrictions') or ($accessConstraints_value = 'otherRestrictions' and $otherConstraint1 and $otherConstraint2)">Het element overige beperkingen (ISO nr. 72) dient twee maal binnen dezelfde toegangsrestricties voor te komen; één met de beschrijving en één met de URL naar de publiek domein, CC0 of geogedeelt licentie,als (juridische) toegangsrestricties (ISO nr. 70) de waarde 'anders' heeft</sch:assert>
-			<sch:report test="$otherConstraint1">Overige beperkingen (ISO nr 72) 1: <sch:value-of select="$otherConstraint1"/>
+			<sch:assert id="(Juridische) toegangsrestricties (ISO nr. 70) en Overige beperkingen (ISO nr 72)" test="$accessConstraints_value and $otherConstraints ">(Juridische) toegangsrestricties (ISO nr. 70) en Overige beperkingen (ISO nr 72) dient ingevuld te zijn</sch:assert>
+			<sch:assert id="(Juridische) toegangsrestricties (ISO nr. 70)" test="$accessConstraints_value">(Juridische) toegangsrestricties (ISO nr. 70) dient de waarde 'anders' te hebben in combinatie met een publiek domein, CC0 of geogedeelt licentie bij overige beperkingen (ISO nr. 72)</sch:assert>
+			<sch:assert id="Overige beperkingen (ISO nr 72)" test="not($accessConstraints_value = 'otherRestrictions') or ($accessConstraints_value = 'otherRestrictions' and $otherConstraint1 and $otherConstraint2)">Het element overige beperkingen (ISO nr. 72) dient twee maal binnen dezelfde toegangsrestricties voor te komen; één met de beschrijving en één met de URL naar de publiek domein, CC0 of geogedeelt licentie,als (juridische) toegangsrestricties (ISO nr. 70) de waarde 'anders' heeft</sch:assert>
+			<sch:report id="Overige beperkingen (ISO nr 72) 1 info" test="$otherConstraint1">Overige beperkingen (ISO nr 72) 1: <sch:value-of select="$otherConstraint1"/>
 			</sch:report>
-			<sch:report test="$otherConstraint2">Overige beperkingen (ISO nr 72) 2: <sch:value-of select="$otherConstraint2"/>
-			</sch:report>
-
-
-			<sch:report test="$accessConstraints_value">(Juridische) toegangsrestricties (ISO nr. 70) voldoet: <sch:value-of select="$accessConstraints_value"/>
+			<sch:report id="Overige beperkingen (ISO nr 72) 1 info" test="$otherConstraint2">Overige beperkingen (ISO nr 72) 2: <sch:value-of select="$otherConstraint2"/>
 			</sch:report>
 
-			<sch:assert test="$spatialResolution">Toepassingsschaal (ISO nr. 57) of Resolutie (ISO nr. 61) is verplicht als hij gespecificeerd kan worden. </sch:assert>
+			<sch:report id="(Juridische) toegangsrestricties (ISO nr. 70) info"  test="$accessConstraints_value">(Juridische) toegangsrestricties (ISO nr. 70) voldoet: <sch:value-of select="$accessConstraints_value"/>
+			</sch:report>
 
-			<sch:assert test="$referenceSystemInfo">Code referentiesysteem (ISO nr. 207) ontbreekt en verantwoordelijke organisatie voor namespace referentiesysteem (ISO nr. 208.1) ontbreekt</sch:assert>
+			<sch:assert id="Toepassingsschaal (ISO nr. 57) of Resolutie (ISO nr. 61)" test="$spatialResolution">Toepassingsschaal (ISO nr. 57) of Resolutie (ISO nr. 61) is verplicht als hij gespecificeerd kan worden. </sch:assert>
+
+			<sch:assert id="Code referentiesysteem (ISO nr. 207) ontbreekt en verantwoordelijke organisatie voor namespace referentiesysteem (ISO nr. 208.1)" test="$referenceSystemInfo">Code referentiesysteem (ISO nr. 207) ontbreekt en verantwoordelijke organisatie voor namespace referentiesysteem (ISO nr. 208.1) ontbreekt</sch:assert>
 
 		<!-- alle regels over elementen binnen distributionInfo -->
 
@@ -272,14 +271,14 @@
 
 		<!-- distributie format voor INSPIRE geharmoniseerd -->
 		<!--
-			<sch:assert test="$distributionFormatName">Naam distributie formaat (ISO nr. 285) ontbreekt</sch:assert>
-			<sch:report test="$distributionFormatName">Naam distributie formaat (ISO nr. 285): <sch:value-of select="$distributionFormatName"/>
+			<sch:assert id="Naam distributie formaat (ISO nr. 285)" test="$distributionFormatName">Naam distributie formaat (ISO nr. 285) ontbreekt</sch:assert>
+			<sch:report id="Naam distributie formaat (ISO nr. 285) info" test="$distributionFormatName">Naam distributie formaat (ISO nr. 285): <sch:value-of select="$distributionFormatName"/>
 			</sch:report>
-			<sch:assert test="$distributionFormatVersion">Versie distributie formaat (ISO nr. 286) ontbreekt</sch:assert>
-			<sch:report test="$distributionFormatVersion">Versie distributie formaat (ISO nr. 286): <sch:value-of select="$distributionFormatVersion"/>
+			<sch:assert id="Versie distributie formaat (ISO nr. 286)" test="$distributionFormatVersion">Versie distributie formaat (ISO nr. 286) ontbreekt</sch:assert>
+			<sch:report id="Versie distributie formaat (ISO nr. 286) info" test="$distributionFormatVersion">Versie distributie formaat (ISO nr. 286): <sch:value-of select="$distributionFormatVersion"/>
 			</sch:report>
-			<sch:assert test="$distributionFormatSpecification">Specificatie distributie formaat (ISO nr. 288) ontbreekt</sch:assert>
-			<sch:report test="$distributionFormatSpecification">Specificatie distributie formaat (ISO nr. 288): <sch:value-of select="$distributionFormatSpecification"/>
+			<sch:assert id="Specificatie distributie formaat (ISO nr. 288)" test="$distributionFormatSpecification">Specificatie distributie formaat (ISO nr. 288) ontbreekt</sch:assert>
+			<sch:report id="Specificatie distributie formaat (ISO nr. 288) info" test="$distributionFormatSpecification">Specificatie distributie formaat (ISO nr. 288): <sch:value-of select="$distributionFormatSpecification"/>
 			</sch:report>
 		-->
 		<!-- eind distributie format voor INSPIRE geharmoniseerd -->
@@ -292,26 +291,24 @@
 		<!--  Niveau kwaliteitsbeschrijving  -->
 			<sch:let name="level" value="string($dataQualityInfo/gmd:scope/gmd:DQ_Scope/gmd:level/*/@codeListValue[. = 'dataset' or . = 'series' or . = 'featureType'])"/>
 		<!-- rules and assertions -->
-			<sch:assert test="$statement">Algemene beschrijving herkomst (ISO nr. 83) ontbreekt</sch:assert>
-			<sch:report test="$statement">Algemene beschrijving herkomst (ISO nr. 83): <sch:value-of select="$statement"/>
+			<sch:assert id="Algemene beschrijving herkomst (ISO nr. 83)" test="$statement">Algemene beschrijving herkomst (ISO nr. 83) ontbreekt</sch:assert>
+			<sch:report id="Algemene beschrijving herkomst (ISO nr. 83) info" test="$statement">Algemene beschrijving herkomst (ISO nr. 83): <sch:value-of select="$statement"/>
 			</sch:report>
-			<sch:assert test="$level">Niveau kwaliteitsbeschrijving (ISO nr.139) ontbreekt</sch:assert>
-			<sch:report test="$level">Niveau kwaliteitsbeschrijving (ISO nr.139): <sch:value-of select="$level"/>
+			<sch:assert id="Niveau kwaliteitsbeschrijving (ISO nr.139)" test="$level">Niveau kwaliteitsbeschrijving (ISO nr.139) ontbreekt</sch:assert>
+			<sch:report id="Niveau kwaliteitsbeschrijving (ISO nr.139) info" test="$level">Niveau kwaliteitsbeschrijving (ISO nr.139): <sch:value-of select="$level"/>
 			</sch:report>
 
 		</sch:rule>
 
 
-
-
 		<!-- URL  naar een service -->
 
-		 <sch:rule context="//gmd:MD_Metadata/gmd:distributionInfo/gmd:MD_Distribution/gmd:transferOptions/gmd:MD_DigitalTransferOptions/gmd:onLine/gmd:CI_OnlineResource">
+		 <sch:rule id="URL service" context="//gmd:MD_Metadata/gmd:distributionInfo/gmd:MD_Distribution/gmd:transferOptions/gmd:MD_DigitalTransferOptions/gmd:onLine/gmd:CI_OnlineResource">
 		<sch:let name="all_transferOptions_URL" value="ancestor::gmd:MD_DigitalTransferOptions/gmd:onLine/gmd:CI_OnlineResource/gmd:linkage"/>
 
 		<!-- URL voor INSPIRE in combi met specificatie INSPIRE -->
 
-		 	<sch:assert test="not($conformity_Spec_Title_Exsists) or ($conformity_Spec_Title_Exsists and $all_transferOptions_URL[normalize-space(*/text())])">URL (ISO nr. 397) onbreekt, voor INSPIRE is de link naar de gerelateerde services (view en download) verplicht.</sch:assert>
+		 	<sch:assert id="URL (ISO nr. 397)" test="not($conformity_Spec_Title_Exsists) or ($conformity_Spec_Title_Exsists and $all_transferOptions_URL[normalize-space(*/text())])">URL (ISO nr. 397) onbreekt, voor INSPIRE is de link naar de gerelateerde services (view en download) verplicht.</sch:assert>
 
 		<!-- eind  URL voor INSPIRE  -->
 		</sch:rule>
