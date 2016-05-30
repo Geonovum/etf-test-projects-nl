@@ -11,7 +11,7 @@
 	<sch:let name="gemet-nl" value="document('GEMET-InspireThemes-nl.rdf')"/>
 
 	-->
-	<sch:pattern id="Dutch Metadata Core Set">
+	<sch:pattern id="Validatie tegen het Nederlands metadata profiel op ISO 19115">
 		<sch:title>Validatie tegen het Nederlands metadata profiel op ISO 19115 voor geografie v 1.3.1</sch:title>
 	<!-- INSPIRE Thesaurus en Conformiteit-->
 		<sch:let name="thesaurus1" value="normalize-space(/gmd:MD_Metadata/gmd:identificationInfo/gmd:MD_DataIdentification/gmd:descriptiveKeywords[1]/gmd:MD_Keywords/gmd:thesaurusName/gmd:CI_Citation/gmd:title/gco:CharacterString)"/>
@@ -27,7 +27,7 @@
 		<sch:let name="conformity_Spec_Title_All" value="concat(string($conformity_Spec_Title1),string($conformity_Spec_Title2),string($conformity_Spec_Title3),string($conformity_Spec_Title4))"/>
 		<sch:let name="conformity_Spec_Title_Exsists" value="contains($conformity_Spec_Title_All,'VERORDENING (EU) Nr. 1089/2010 VAN DE COMMISSIE van 23 november 2010 ter uitvoering van Richtlijn 2007/2/EG van het Europees Parlement en de Raad betreffende de interoperabiliteit van verzamelingen ruimtelijke gegevens en van diensten met betrekking tot ruimtelijke gegevens')"/>
 
-		<sch:rule id="MD_Metadata"  context="/gmd:MD_Metadata">
+		<sch:rule id="Algemene metadata regels"  context="/gmd:MD_Metadata">
 
 		<!-- schemalocatie controleren, overeenkomstig inspire en nl profiel -->
 
@@ -253,15 +253,15 @@
 			<sch:assert id="Overige beperkingen (ISO nr 72)" test="not($accessConstraints_value = 'otherRestrictions') or ($accessConstraints_value = 'otherRestrictions' and $otherConstraint1 and $otherConstraint2)">Het element overige beperkingen (ISO nr. 72) dient twee maal binnen dezelfde toegangsrestricties voor te komen; één met de beschrijving en één met de URL naar de publiek domein, CC0 of geogedeelt licentie,als (juridische) toegangsrestricties (ISO nr. 70) de waarde 'anders' heeft</sch:assert>
 			<sch:report id="Overige beperkingen (ISO nr 72) 1 info" test="$otherConstraint1">Overige beperkingen (ISO nr 72) 1: <sch:value-of select="$otherConstraint1"/>
 			</sch:report>
-			<sch:report id="Overige beperkingen (ISO nr 72) 1 info" test="$otherConstraint2">Overige beperkingen (ISO nr 72) 2: <sch:value-of select="$otherConstraint2"/>
+			<sch:report id="Overige beperkingen (ISO nr 72) 2 info" test="$otherConstraint2">Overige beperkingen (ISO nr 72) 2: <sch:value-of select="$otherConstraint2"/>
 			</sch:report>
 
 			<sch:report id="(Juridische) toegangsrestricties (ISO nr. 70) info"  test="$accessConstraints_value">(Juridische) toegangsrestricties (ISO nr. 70) voldoet: <sch:value-of select="$accessConstraints_value"/>
 			</sch:report>
 
-			<sch:assert id="Toepassingsschaal (ISO nr. 57) of Resolutie (ISO nr. 61)" test="$spatialResolution">Toepassingsschaal (ISO nr. 57) of Resolutie (ISO nr. 61) is verplicht als hij gespecificeerd kan worden. </sch:assert>
+			<sch:assert id="Toepassingsschaal (ISO nr. 57) Resolutie (ISO nr. 61)" test="$spatialResolution">Toepassingsschaal (ISO nr. 57) of Resolutie (ISO nr. 61) is verplicht als hij gespecificeerd kan worden. </sch:assert>
 
-			<sch:assert id="Code referentiesysteem (ISO nr. 207) ontbreekt en verantwoordelijke organisatie voor namespace referentiesysteem (ISO nr. 208.1)" test="$referenceSystemInfo">Code referentiesysteem (ISO nr. 207) ontbreekt en verantwoordelijke organisatie voor namespace referentiesysteem (ISO nr. 208.1) ontbreekt</sch:assert>
+			<sch:assert id="Code referentiesysteem (ISO nr. 207)  en verantwoordelijke organisatie voor namespace referentiesysteem (ISO nr. 208.1)" test="$referenceSystemInfo">Code referentiesysteem (ISO nr. 207) ontbreekt en verantwoordelijke organisatie voor namespace referentiesysteem (ISO nr. 208.1) ontbreekt</sch:assert>
 
 		<!-- alle regels over elementen binnen distributionInfo -->
 
@@ -303,7 +303,7 @@
 
 		<!-- URL  naar een service -->
 
-		 <sch:rule id="URL service" context="//gmd:MD_Metadata/gmd:distributionInfo/gmd:MD_Distribution/gmd:transferOptions/gmd:MD_DigitalTransferOptions/gmd:onLine/gmd:CI_OnlineResource">
+		 <sch:rule id="INSPIRE Online toegang tot de bron" context="//gmd:MD_Metadata/gmd:distributionInfo/gmd:MD_Distribution/gmd:transferOptions/gmd:MD_DigitalTransferOptions/gmd:onLine/gmd:CI_OnlineResource">
 		<sch:let name="all_transferOptions_URL" value="ancestor::gmd:MD_DigitalTransferOptions/gmd:onLine/gmd:CI_OnlineResource/gmd:linkage"/>
 
 		<!-- URL voor INSPIRE in combi met specificatie INSPIRE -->
@@ -316,7 +316,7 @@
 
 		<!-- regels voor meerdere transfer options-->
 
-		<sch:rule context="//gmd:MD_Metadata/gmd:distributionInfo/gmd:MD_Distribution/gmd:transferOptions/gmd:MD_DigitalTransferOptions/gmd:onLine">
+		<sch:rule id="Online toegang tot de bron" context="//gmd:MD_Metadata/gmd:distributionInfo/gmd:MD_Distribution/gmd:transferOptions/gmd:MD_DigitalTransferOptions/gmd:onLine">
 		<!-- URL -->
 			<sch:let name="transferOptions_URL" value="normalize-space(gmd:CI_OnlineResource/gmd:linkage/gmd:URL)"/>
 		<!-- Protocol -->
@@ -327,19 +327,19 @@
 
 		<!-- asssertions and report -->
 
-			<sch:assert test="not($transferOptions_URL) or ($transferOptions_URL and $transferOptions_Protocol)">Protocol (ISO nr. 398) is verplicht als URL (ISO nr. 397) is ingevuld.</sch:assert>
-			<sch:assert test="not($transferOptions_Protocol) or ($transferOptions_Protocol and $transferOptions_URL)">Protocol (ISO nr. 398) alleen opnemen als URL (ISO nr. 397) is ingevuld.</sch:assert>
-			<sch:report test="$transferOptions_URL"> URL (ISO nr. 397): <sch:value-of select="$transferOptions_URL"/>
+			<sch:assert id="Protocol (ISO nr. 398) en URL (ISO nr. 397)" test="not($transferOptions_URL) or ($transferOptions_URL and $transferOptions_Protocol)">Protocol (ISO nr. 398) is verplicht als URL (ISO nr. 397) is ingevuld.</sch:assert>
+			<sch:assert id="URL (ISO nr. 397) en Protocol (ISO nr. 398)" test="not($transferOptions_Protocol) or ($transferOptions_Protocol and $transferOptions_URL)">Protocol (ISO nr. 398) alleen opnemen als URL (ISO nr. 397) is ingevuld.</sch:assert>
+			<sch:report id="URL (ISO nr. 397) info" test="$transferOptions_URL"> URL (ISO nr. 397): <sch:value-of select="$transferOptions_URL"/>
 			</sch:report>
-			<sch:report test="$transferOptions_Protocol">Protocol (ISO nr. 398): <sch:value-of select="gmd:CI_OnlineResource/gmd:protocol/*/text()"/>
+			<sch:report id="Protocol (ISO nr. 398) info" test="$transferOptions_Protocol">Protocol (ISO nr. 398): <sch:value-of select="gmd:CI_OnlineResource/gmd:protocol/*/text()"/>
 			</sch:report>
-			<sch:assert test="not($transferOptions_Protocol_isOGCService) or ($transferOptions_Protocol_isOGCService and $transferOptions_Name)">Naam (ISO nr. 400) is verplicht als  Protocol (ISO nr. 398) de waarde OGC:WMS, OGC:WFS of OGC:WCS heeft.</sch:assert>
-			<sch:report test="$transferOptions_Name">Naam (ISO nr. 400) is : <sch:value-of select="$transferOptions_Name"/>
+			<sch:assert id="Naam (ISO nr. 400)" test="not($transferOptions_Protocol_isOGCService) or ($transferOptions_Protocol_isOGCService and $transferOptions_Name)">Naam (ISO nr. 400) is verplicht als  Protocol (ISO nr. 398) de waarde OGC:WMS, OGC:WFS of OGC:WCS heeft.</sch:assert>
+			<sch:report id="Naam (ISO nr. 400) info" test="$transferOptions_Name">Naam (ISO nr. 400) is : <sch:value-of select="$transferOptions_Name"/>
 			</sch:report>
 		</sch:rule>
 
 		<!--  Conformiteitindicatie meerdere specificaties -->
-		<sch:rule context="//gmd:MD_Metadata/gmd:dataQualityInfo/gmd:DQ_DataQuality/gmd:report/gmd:DQ_DomainConsistency/gmd:result/gmd:DQ_ConformanceResult">
+		<sch:rule id="Conformiteit specificaties" context="//gmd:MD_Metadata/gmd:dataQualityInfo/gmd:DQ_DataQuality/gmd:report/gmd:DQ_DomainConsistency/gmd:result/gmd:DQ_ConformanceResult">
 
 		<!-- Specificatie title -->
 			<sch:let name="conformity_SpecTitle" value="normalize-space(gmd:specification/gmd:CI_Citation/gmd:title/gco:CharacterString)"/>
@@ -358,11 +358,11 @@
 
 		<!-- Specificatie alleen voor INSPIRE-->
 			<!--
-			<sch:assert test="$conformity_SpecTitle">Specificatie (ISO nr. 360 ) ontbreekt.</sch:assert>
-			<sch:assert test="$conformity_Explanation">Verklaring (ISO nr. 131) ontbreekt.</sch:assert>
-			<sch:assert test="$conformity_Date">Specificatie datum (ISO nr. 394) ontbreekt.</sch:assert>
-			<sch:assert test="$conformity_Datetype">Specificatiedatum type (ISO nr. 395) ontbreekt.</sch:assert>
-			<sch:assert test="$conformity_Pass">Conformiteitindicatie met de specificatie  (ISO nr. 132) ontbreekt.</sch:assert>
+			<sch:assert id="INSPIRE Specificatie (ISO nr. 360 )" test="$conformity_SpecTitle">Specificatie (ISO nr. 360 ) ontbreekt.</sch:assert>
+			<sch:assert id="INSPIRE Verklaring (ISO nr. 131)" test="$conformity_Explanation">Verklaring (ISO nr. 131) ontbreekt.</sch:assert>
+			<sch:assert id="INSPIRE Specificatie datum (ISO nr. 394" test="$conformity_Date">Specificatie datum (ISO nr. 394) ontbreekt.</sch:assert>
+			<sch:assert id="INSPIRE Specificatiedatum type (ISO nr. 395)" test="$conformity_Datetype">Specificatiedatum type (ISO nr. 395) ontbreekt.</sch:assert>
+			<sch:assert id="INSPIRE Conformiteitindicatie met de specificatie  (ISO nr. 132)" test="$conformity_Pass">Conformiteitindicatie met de specificatie  (ISO nr. 132) ontbreekt.</sch:assert>
 
 		-->
 		<!-- eind Specificatie alleen voor INSPIRE-->
@@ -370,38 +370,38 @@
 
 		<!-- Voor niet INSPIRE data als title is ingevuld, moeten date, datetype, explanation en pass ingevuld zijn -->
 
-			<sch:assert test="not($conformity_SpecTitle) or ($conformity_SpecTitle and $conformity_Explanation)">Verklaring (ISO nr. 131) is verplicht als een specificatie is opgegeven.</sch:assert>
-			<sch:assert test="not($conformity_SpecTitle and not($conformity_Date))">Datum (ISO nr. 394) is verplicht als een specificatie is opgegeven. </sch:assert>
-			<sch:assert test="not($conformity_SpecTitle and not($conformity_Datetype))">Datumtype (ISO nr. 395) is verplicht als een specificatie is opgegeven. </sch:assert>
-			<sch:assert test="not($conformity_SpecTitle) or ($conformity_SpecTitle and $conformity_Pass)">Conformiteit (ISO nr. 132) is verplicht als een specificatie is opgegeven.</sch:assert>
+			<sch:assert id="Verklaring (ISO nr. 131) en Specificatie (ISO nr. 360)" test="not($conformity_SpecTitle) or ($conformity_SpecTitle and $conformity_Explanation)">Verklaring (ISO nr. 131) is verplicht als een specificatie is opgegeven.</sch:assert>
+			<sch:assert id="Datum (ISO nr. 394) en Specificatie (ISO nr. 360)" test="not($conformity_SpecTitle and not($conformity_Date))">Datum (ISO nr. 394) is verplicht als een specificatie is opgegeven. </sch:assert>
+			<sch:assert id="Datumtype (ISO nr. 395)  en Specificatie (ISO nr. 360)" test="not($conformity_SpecTitle and not($conformity_Datetype))">Datumtype (ISO nr. 395) is verplicht als een specificatie is opgegeven. </sch:assert>
+			<sch:assert id="Conformiteit (ISO nr. 132)  en Specificatie (ISO nr. 360)" test="not($conformity_SpecTitle) or ($conformity_SpecTitle and $conformity_Pass)">Conformiteit (ISO nr. 132) is verplicht als een specificatie is opgegeven.</sch:assert>
 
 
 		<!-- als er geen titel is ingevuld, moeten date, dattype explanation en pass leeg zijn -->
-			<sch:assert test="not($conformity_Explanation) or ($conformity_Explanation and $conformity_SpecTitle)">Verklaring (ISO nr. 131) hoort leeg als geen specificatie is opgegeven</sch:assert>
-			<sch:assert test="not($conformity_Date and not($conformity_SpecTitle))">Datum (ISO nr. 394)  hoort leeg als geen specificatie is opgegeven.. </sch:assert>
-			<sch:assert test="not($conformity_Datetype and not($conformity_SpecTitle))">Datumtype (ISO nr. 395) hoort leeg als geen specificatie is opgegeven.. </sch:assert>
-			<sch:assert test="not($conformity_Pass) or ($conformity_Pass and $conformity_SpecTitle)">Conformiteit (ISO nr. 132) hoort leeg als geen specificatie is opgegeven..</sch:assert>
+			<sch:assert id="Verklaring (ISO nr. 131)" test="not($conformity_Explanation) or ($conformity_Explanation and $conformity_SpecTitle)">Verklaring (ISO nr. 131) hoort leeg als geen specificatie is opgegeven</sch:assert>
+			<sch:assert id="Datum (ISO nr. 394)" test="not($conformity_Date and not($conformity_SpecTitle))">Datum (ISO nr. 394)  hoort leeg als geen specificatie is opgegeven.. </sch:assert>
+			<sch:assert id="Datumtype (ISO nr. 395)" test="not($conformity_Datetype and not($conformity_SpecTitle))">Datumtype (ISO nr. 395) hoort leeg als geen specificatie is opgegeven.. </sch:assert>
+			<sch:assert id="Conformiteit (ISO nr. 132" test="not($conformity_Pass) or ($conformity_Pass and $conformity_SpecTitle)">Conformiteit (ISO nr. 132) hoort leeg als geen specificatie is opgegeven..</sch:assert>
 
 
-			<sch:report test="$conformity_Explanation">Verklaring (ISO nr. 131): <sch:value-of select="$conformity_Explanation"/>
+			<sch:report id="Verklaring (ISO nr. 131) info" test="$conformity_Explanation">Verklaring (ISO nr. 131): <sch:value-of select="$conformity_Explanation"/>
 			</sch:report>
-			<sch:report test="$conformity_Pass">Conformiteitindicatie met de specificatie (ISO nr. 132): <sch:value-of select="$conformity_Pass"/>
+			<sch:report id="Conformiteitindicatie met de specificatie (ISO nr. 132) info" test="$conformity_Pass">Conformiteitindicatie met de specificatie (ISO nr. 132): <sch:value-of select="$conformity_Pass"/>
 			</sch:report>
-			<sch:report test="$conformity_SpecTitle">Specificatie (ISO nr. 360): <sch:value-of select="$conformity_SpecTitle"/>
+			<sch:report id="Specificatie (ISO nr. 360) info" test="$conformity_SpecTitle">Specificatie (ISO nr. 360): <sch:value-of select="$conformity_SpecTitle"/>
 			</sch:report>
-			<sch:report test="$conformity_SpecCreationDate or $conformity_SpecPublicationDate or $conformity_SpecRevisionDate">Datum (ISO nr. 394) en datum type (ISO nr. 395) is aanwezig voor specificatie.</sch:report>
+			<sch:report id="Datum (ISO nr. 394) en datum type (ISO nr. 395) info" test="$conformity_SpecCreationDate or $conformity_SpecPublicationDate or $conformity_SpecRevisionDate">Datum (ISO nr. 394) en datum type (ISO nr. 395) is aanwezig voor specificatie.</sch:report>
 		</sch:rule>
 
 		<!-- INSPIRE specification titel -->
 		<!--
-			<sch:rule context="//gmd:MD_Metadata/gmd:dataQualityInfo/gmd:DQ_DataQuality/gmd:report/gmd:DQ_DomainConsistency/gmd:result/gmd:DQ_ConformanceResult/gmd:specification/gmd:CI_Citation">
+			<sch:rule id="INSPIRE specificaties" context="//gmd:MD_Metadata/gmd:dataQualityInfo/gmd:DQ_DataQuality/gmd:report/gmd:DQ_DomainConsistency/gmd:result/gmd:DQ_ConformanceResult/gmd:specification/gmd:CI_Citation">
 
 		    <sch:let name="all_conformity_Spec_Titles" value="ancestor::gmd:DQ_DataQuality/gmd:report/gmd:DQ_DomainConsistency/gmd:result/gmd:DQ_ConformanceResult/gmd:specification/gmd:CI_Citation/gmd:title"/>
 
 			<sch:let name="INSPIRE_conformity_Spec_Title" value="normalize-space(gmd:title/gco:CharacterString)"/>
 
-				<sch:assert test="$all_conformity_Spec_Titles[normalize-space(*/text()) =  'VERORDENING (EU) Nr. 1089/2010 VAN DE COMMISSIE van 23 november 2010 ter uitvoering van Richtlijn 2007/2/EG van het Europees Parlement en de Raad betreffende de interoperabiliteit van verzamelingen ruimtelijke gegevens en van diensten met betrekking tot ruimtelijke gegevens']">Specificatie (ISO nr. 360) verwijst niet naar de VERORDENING (EU) Nr. 1089/2010 VAN DE COMMISSIE van 23 november 2010 ter uitvoering van Richtlijn 2007/2/EG van het Europees Parlement en de Raad betreffende de interoperabiliteit van verzamelingen ruimtelijke gegevens en van diensten met betrekking tot ruimtelijke gegevens</sch:assert>
-				<sch:report test="$INSPIRE_conformity_Spec_Title">Specificatie titel (ISO nr. 360) is: <sch:value-of select="$INSPIRE_conformity_Spec_Title"/></sch:report>
+				<sch:assert id="INSPIRE Specificatie (ISO nr. 360) titel" test="$all_conformity_Spec_Titles[normalize-space(*/text()) =  'VERORDENING (EU) Nr. 1089/2010 VAN DE COMMISSIE van 23 november 2010 ter uitvoering van Richtlijn 2007/2/EG van het Europees Parlement en de Raad betreffende de interoperabiliteit van verzamelingen ruimtelijke gegevens en van diensten met betrekking tot ruimtelijke gegevens']">Specificatie (ISO nr. 360) verwijst niet naar de VERORDENING (EU) Nr. 1089/2010 VAN DE COMMISSIE van 23 november 2010 ter uitvoering van Richtlijn 2007/2/EG van het Europees Parlement en de Raad betreffende de interoperabiliteit van verzamelingen ruimtelijke gegevens en van diensten met betrekking tot ruimtelijke gegevens</sch:assert>
+				<sch:report id="INSPIRE Specificatie (ISO nr. 360) titel info" test="$INSPIRE_conformity_Spec_Title">Specificatie titel (ISO nr. 360) is: <sch:value-of select="$INSPIRE_conformity_Spec_Title"/></sch:report>
 
 			</sch:rule>
 		-->
@@ -409,56 +409,56 @@
 
 
    		<!-- Resolutie en toepassingschaal -->
-       		<sch:rule context="//gmd:identificationInfo/gmd:MD_DataIdentification">
+		<sch:rule id="Resolutie en toepassingschaal" context="//gmd:identificationInfo/gmd:MD_DataIdentification">
        			<sch:let name="distance" value="gmd:spatialResolution/gmd:MD_Resolution/gmd:distance/*/text()"/>
        			<sch:let name="denominator" value="gmd:spatialResolution/gmd:MD_Resolution/gmd:equivalentScale/gmd:MD_RepresentativeFraction/gmd:denominator/*/text()"/>
 
-       			<sch:assert test="$denominator or $distance ">Toepassingsschaal (ISO nr. 57) of Resolutie (ISO nr. 61) ontbreekt, vul een van deze in</sch:assert>
-       			<sch:assert test="not($denominator and  $distance) ">Toepassingsschaal (ISO nr. 57) of Resolutie (ISO nr. 61) invullen, niet beide</sch:assert>
+			<sch:assert id="Toepassingsschaal (ISO nr. 57) of Resolutie (ISO nr. 61)" test="$denominator or $distance ">Toepassingsschaal (ISO nr. 57) of Resolutie (ISO nr. 61) ontbreekt, vul een van deze in</sch:assert>
+			<sch:assert id="Toepassingsschaal (ISO nr. 57) en Resolutie (ISO nr. 61)" test="not($denominator and  $distance) ">Toepassingsschaal (ISO nr. 57) of Resolutie (ISO nr. 61) invullen, niet beide</sch:assert>
        		</sch:rule>
 
 		<!-- Spatial resolution equivalentScale -->
-		<sch:rule context="//gmd:spatialResolution/gmd:MD_Resolution/gmd:equivalentScale/gmd:MD_RepresentativeFraction/gmd:denominator/gco:Integer">
+		<sch:rule id="Toepassingsschaal" context="//gmd:spatialResolution/gmd:MD_Resolution/gmd:equivalentScale/gmd:MD_RepresentativeFraction/gmd:denominator/gco:Integer">
 			<sch:let name="denominator" value="text()"/>
-			<sch:assert test="not(string(number($denominator))='NaN')">Toepassingsschaal (ISO nr. 57) heeft een verkeerde waarde, toepassingsschaal is niet numeriek of is leeg.</sch:assert>
+			<sch:assert id="Toepassingsschaal (ISO nr. 57)" test="not(string(number($denominator))='NaN')">Toepassingsschaal (ISO nr. 57) heeft een verkeerde waarde, toepassingsschaal is niet numeriek of is leeg.</sch:assert>
 
-			<sch:report test="$denominator">Toepassingsschaal (ISO nr. 57): <sch:value-of select="$denominator"/>
+			<sch:report id="Toepassingsschaal (ISO nr. 57) info" test="$denominator">Toepassingsschaal (ISO nr. 57): <sch:value-of select="$denominator"/>
 			</sch:report>
 		</sch:rule>
 
 		<!-- Spatial resolution distance -->
-		<sch:rule context="//gmd:spatialResolution/gmd:MD_Resolution/gmd:distance/gco:Distance">
+		<sch:rule id="Resolutie" context="//gmd:spatialResolution/gmd:MD_Resolution/gmd:distance/gco:Distance">
 
 			<sch:let name="distance" value="text()"/>
 			<sch:let name="distance_UOM" value="@uom= 'meters' "/>
 
-			<sch:assert test="not(string(number($distance))='NaN')">Resolutie (ISO nr. 61) heeft een verkeerde waarde, resolutie is niet numeriek of is leeg</sch:assert>
-			<sch:report test="$distance">Resolutie (ISO nr. 61) is: <sch:value-of select="$distance"/>
+			<sch:assert id="Resolutie (ISO nr. 61)" test="not(string(number($distance))='NaN')">Resolutie (ISO nr. 61) heeft een verkeerde waarde, resolutie is niet numeriek of is leeg</sch:assert>
+			<sch:report id="Resolutie (ISO nr. 61) info" test="$distance">Resolutie (ISO nr. 61) is: <sch:value-of select="$distance"/>
 			</sch:report>
 
-			<sch:assert test="$distance_UOM">Resolutie (ISO nr. 61) heeft geen of een verkeerde waarde voor Unit of measure, de waarde moet meters zijn.</sch:assert>
-			<sch:report test="$distance_UOM">Unit of measure voor Resolutie (ISO nr. 61): <sch:value-of select="$distance_UOM"/>
+			<sch:assert id="Resolutie (ISO nr. 61) meeteenheid" test="$distance_UOM">Resolutie (ISO nr. 61) heeft geen of een verkeerde waarde voor Unit of measure, de waarde moet meters zijn.</sch:assert>
+			<sch:report id="Resolutie (ISO nr. 61) meeteenheid info" test="$distance_UOM">Unit of measure voor Resolutie (ISO nr. 61): <sch:value-of select="$distance_UOM"/>
 			</sch:report >
 		</sch:rule>
 
 
 		<!-- Referentiesysteem  -->
-		<sch:rule context="//gmd:MD_Metadata/gmd:referenceSystemInfo/gmd:MD_ReferenceSystem">
+		<sch:rule id="Referentiesysteem" context="//gmd:MD_Metadata/gmd:referenceSystemInfo/gmd:MD_ReferenceSystem">
 
 			<sch:let name="referenceSystemInfo_Code" value="normalize-space(gmd:referenceSystemIdentifier/gmd:RS_Identifier/gmd:code/gco:CharacterString)"/>
 		<!-- Referentiesysteem (Verantwoordelijke organisatie) -->
 			<sch:let name="referenceSystemInfo_Organisation" value="normalize-space(gmd:referenceSystemIdentifier/gmd:RS_Identifier/gmd:codeSpace/gco:CharacterString)"/>
-			<sch:assert test="$referenceSystemInfo_Code">Code referentiesysteem (ISO nr. 207) ontbreekt</sch:assert>
-			<sch:report test="$referenceSystemInfo_Code">Code referentiesysteem (ISO nr. 207): <sch:value-of select="$referenceSystemInfo_Code"/>
+			<sch:assert id="Code referentiesysteem (ISO nr. 207)" test="$referenceSystemInfo_Code">Code referentiesysteem (ISO nr. 207) ontbreekt</sch:assert>
+			<sch:report id="Code referentiesysteem (ISO nr. 207) info" test="$referenceSystemInfo_Code">Code referentiesysteem (ISO nr. 207): <sch:value-of select="$referenceSystemInfo_Code"/>
 			</sch:report>
-			<sch:assert test="$referenceSystemInfo_Organisation">Verantwoordelijke organisatie voor namespace referentiesysteem (ISO nr. 208.1) ontbreekt</sch:assert>
-			<sch:report test="$referenceSystemInfo_Organisation">Verantwoordelijke organisatie voor namespace referentiesysteem (ISO nr. 208.1): <sch:value-of select="$referenceSystemInfo_Organisation"/>
+			<sch:assert id="Verantwoordelijke organisatie voor namespace referentiesysteem (ISO nr. 208.1)" test="$referenceSystemInfo_Organisation">Verantwoordelijke organisatie voor namespace referentiesysteem (ISO nr. 208.1) ontbreekt</sch:assert>
+			<sch:report id="Verantwoordelijke organisatie voor namespace referentiesysteem (ISO nr. 208.1) info" test="$referenceSystemInfo_Organisation">Verantwoordelijke organisatie voor namespace referentiesysteem (ISO nr. 208.1): <sch:value-of select="$referenceSystemInfo_Organisation"/>
 			</sch:report>
         		</sch:rule>
 
 
         		<!-- Controlled originating vocabulary -->
-		<sch:rule context="//gmd:MD_Metadata/gmd:identificationInfo/gmd:MD_DataIdentification/gmd:descriptiveKeywords/gmd:MD_Keywords/gmd:thesaurusName/gmd:CI_Citation">
+		<sch:rule id="Thesaurus" context="//gmd:MD_Metadata/gmd:identificationInfo/gmd:MD_DataIdentification/gmd:descriptiveKeywords/gmd:MD_Keywords/gmd:thesaurusName/gmd:CI_Citation">
 
 			<!--Thesaurus title -->
 			<sch:let name="all_thesaurus_Titles" value="ancestor::gmd:MD_DataIdentification/gmd:descriptiveKeywords/gmd:MD_Keywords/gmd:thesaurusName/gmd:CI_Citation/gmd:title"/>
@@ -476,26 +476,26 @@
             <!-- Thesaurus titel alleen voor INSPIRE -->
 			<!--
 
-			<sch:assert test="$all_thesaurus_Titles[normalize-space(*/text()) = 'GEMET - INSPIRE themes, version 1.0']">Thesaurus title (ISO nr. 360) ontbreekt of heeft de verkeerde waarde. Eén Thesaurus titel dient de waarde 'GEMET - INSPIRE themes, version 1.0 ' te bevatten.</sch:assert>
-			 <sch:report test="$thesaurus_Title">Thesaurus title (ISO nr. 360) is: <sch:value-of select="$thesaurus_Title"/></sch:report>
+			<sch:assert id="INSPIRE Thesaurus title (ISO nr. 360)" test="$all_thesaurus_Titles[normalize-space(*/text()) = 'GEMET - INSPIRE themes, version 1.0']">Thesaurus title (ISO nr. 360) ontbreekt of heeft de verkeerde waarde. Eén Thesaurus titel dient de waarde 'GEMET - INSPIRE themes, version 1.0 ' te bevatten.</sch:assert>
+			 <sch:report id="INSPIRE Thesaurus title (ISO nr. 360) info" test="$thesaurus_Title">Thesaurus title (ISO nr. 360) is: <sch:value-of select="$thesaurus_Title"/></sch:report>
 			-->
         	<!-- Eind Thesaurus titel alleen voor INSPIRE-->
 
         	<!-- Thesaurus datum en datumtype  -->
 
-			<sch:assert test="not($thesaurus_Title and not($thesaurus_CreationDate or $thesaurus_PublicationDate or $thesaurus_RevisionDate))">Een thesaurus datum (ISO nr.394) en datumtype (ISO nr. 395) is verplicht als Thesaurus title (ISO nr. 360) is opgegeven. Datum formaat moet YYYY-MM-DD zijn. </sch:assert>
+			<sch:assert id="thesaurus datum (ISO nr.394) en datumtype (ISO nr. 395)" test="not($thesaurus_Title and not($thesaurus_CreationDate or $thesaurus_PublicationDate or $thesaurus_RevisionDate))">Een thesaurus datum (ISO nr.394) en datumtype (ISO nr. 395) is verplicht als Thesaurus title (ISO nr. 360) is opgegeven. Datum formaat moet YYYY-MM-DD zijn. </sch:assert>
 
 		</sch:rule>
 
 
-		<sch:rule context="//gmd:MD_Metadata/gmd:identificationInfo/gmd:MD_DataIdentification/gmd:descriptiveKeywords
+		<sch:rule id="INSPIRE Thesaurus trefwoorden" context="//gmd:MD_Metadata/gmd:identificationInfo/gmd:MD_DataIdentification/gmd:descriptiveKeywords
 			[normalize-space(gmd:MD_Keywords/gmd:thesaurusName/gmd:CI_Citation/gmd:title) = 'GEMET - INSPIRE themes, version 1.0']
 			/gmd:MD_Keywords/gmd:keyword">
 
 			<!-- Controlled originating vocabulary -->
 
 <sch:let name="quote" value="&quot;'&quot;"/>
-	            		<sch:assert test="((normalize-space(current())='Administratieve eenheden'
+			<sch:assert id="INSPIRE Trefwoorden (ISO nr. 53)" test="((normalize-space(current())='Administratieve eenheden'
 )
 		        or (normalize-space(current())='Adressen'
 )
@@ -542,7 +542,7 @@ Deze keywords  moeten uit GEMET- INSPIRE themes thesaurus komen. gevonden keywor
 		 <!--  voor externe thesaurus
  		-->
 		 <!--
-     		<sch:assert test="$gemet-nl//skos:prefLabel[normalize-space(text()) = normalize-space(current())]">Keywords [<sch:value-of select="$gemet-nl//skos:prefLabel "/>]   moeten uit GEMET- INSPIRE themes thesaurus komen. gevonden keywords: <sch:value-of select="."/></sch:assert>
+     		<sch:assert id="INSPIRE thesaurus Trefwoorden (ISO nr. 53)" test="$gemet-nl//skos:prefLabel[normalize-space(text()) = normalize-space(current())]">Keywords [<sch:value-of select="$gemet-nl//skos:prefLabel "/>]   moeten uit GEMET- INSPIRE themes thesaurus komen. gevonden keywords: <sch:value-of select="."/></sch:assert>
 		 -->
 
 		</sch:rule>

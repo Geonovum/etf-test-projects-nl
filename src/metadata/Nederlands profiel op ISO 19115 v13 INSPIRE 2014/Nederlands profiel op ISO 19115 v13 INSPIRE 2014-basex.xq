@@ -199,7 +199,7 @@ declare function local:evaluate($svrlii as element(), $sch as document-node(), $
       let $successfulReportExists := if($patternWasActive) then exists($occurrencesOfActivePattern/*/svrl:successful-report) else false()
     return
     <etf:TestCaseResult id="{generate-id($pattern)}" testCaseRef="{data($patternId)}">
-      <etf:ResultStatus>{if ($failedAssertExists) then 'FAILED' else if ($successfulReportExists) then 'WARNING' else if ($patternWasActive) then 'OK' else 'SKIPPED'}</etf:ResultStatus>
+      <etf:ResultStatus>{if ($failedAssertExists) then 'FAILED' else if ($successfulReportExists) then 'OK' else if ($patternWasActive) then 'OK' else 'SKIPPED'}</etf:ResultStatus>
       <etf:TestStepResults>
       {
         for $rule in $pattern/iso:rule
@@ -210,7 +210,7 @@ declare function local:evaluate($svrlii as element(), $sch as document-node(), $
         let $successfulReportExistsInRule := if($ruleFired) then exists($occurrencesOfFiredRule/svrl:successful-report) else false()
         return
         <etf:TestStepResult id="Result.{$patternId}.{$ruleId}" testStepRef="{$patternId}.{$ruleId}">
-          <etf:ResultStatus>{if ($failedAssertExistsInRule) then 'FAILED' else if ($successfulReportExistsInRule) then 'WARNING' else if ($ruleFired) then 'OK' else 'SKIPPED'}</etf:ResultStatus>
+          <etf:ResultStatus>{if ($failedAssertExistsInRule) then 'FAILED' else if ($successfulReportExistsInRule) then 'OK' else if ($ruleFired) then 'OK' else 'SKIPPED'}</etf:ResultStatus>
           <etf:Duration/>
           <etf:StartTimestamp/>
           <etf:Resource>Database: '{$dbBaseName}'; Files: '{$Files_to_test}';</etf:Resource>
@@ -231,11 +231,11 @@ declare function local:evaluate($svrlii as element(), $sch as document-node(), $
               let $reportId := $report/@id
               let $successfulReports := $occurrencesOfFiredRule/svrl:successful-report[@id = $reportId]
               return
-               <etf:AssertionResult id="Result.{$patternId}.{$ruleId}.{$reportId}" testAssertionRef="{$patternId}.{$ruleId}.{$reportId}">
+              <!-- <etf:AssertionResult id="Result.{$patternId}.{$ruleId}.{$reportId}" testAssertionRef="{$patternId}.{$ruleId}.{$reportId}">
                   {local:create-messages($successfulReports,$svrlii,$printExactLocationEvaluated)}
                  <etf:Duration/>
                  <etf:ResultStatus>OK</etf:ResultStatus>
-               </etf:AssertionResult>
+               </etf:AssertionResult> -->
           }
           </etf:AssertionResults>
           </etf:TestStepResult>
@@ -343,7 +343,7 @@ declare function local:evaluate($svrlii as element(), $sch as document-node(), $
             for $report in $rule/iso:report
               let $reportId := $report/@id
               return
-              <etf:Assertion id="{$patternId}.{$ruleId}.{$reportId}">
+              <!-- <etf:Assertion id="{$patternId}.{$ruleId}.{$reportId}">
               <etf:Label>{data($reportId)}</etf:Label>
               <etf:Properties>
                 <ii:Items>
@@ -357,7 +357,7 @@ declare function local:evaluate($svrlii as element(), $sch as document-node(), $
               <etf:Type>Schematron report</etf:Type>
               <etf:Expression/>
               <etf:Status>IMPLEMENTED</etf:Status>
-              </etf:Assertion>
+              </etf:Assertion> -->
           }
           </etf:Assertions>
           </etf:TestStep>

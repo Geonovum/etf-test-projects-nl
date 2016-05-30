@@ -231,11 +231,11 @@ declare function local:evaluate($svrlii as element(), $sch as document-node(), $
               let $reportId := $report/@id
               let $successfulReports := $occurrencesOfFiredRule/svrl:successful-report[@id = $reportId]
               return
-               <etf:AssertionResult id="Result.{$patternId}.{$ruleId}.{$reportId}" testAssertionRef="{$patternId}.{$ruleId}.{$reportId}">
+               <!-- <etf:AssertionResult id="Result.{$patternId}.{$ruleId}.{$reportId}" testAssertionRef="{$patternId}.{$ruleId}.{$reportId}">
                   {local:create-messages($successfulReports,$svrlii,$printExactLocationEvaluated)}
                  <etf:Duration/>
                  <etf:ResultStatus>OK</etf:ResultStatus>
-               </etf:AssertionResult>
+               </etf:AssertionResult> -->
           }
           </etf:AssertionResults>
           </etf:TestStepResult>
@@ -343,7 +343,7 @@ declare function local:evaluate($svrlii as element(), $sch as document-node(), $
             for $report in $rule/iso:report
               let $reportId := $report/@id
               return
-              <etf:Assertion id="{$patternId}.{$ruleId}.{$reportId}">
+              <!-- <etf:Assertion id="{$patternId}.{$ruleId}.{$reportId}">
               <etf:Label>{data($reportId)}</etf:Label>
               <etf:Properties>
                 <ii:Items>
@@ -357,7 +357,7 @@ declare function local:evaluate($svrlii as element(), $sch as document-node(), $
               <etf:Type>Schematron report</etf:Type>
               <etf:Expression/>
               <etf:Status>IMPLEMENTED</etf:Status>
-              </etf:Assertion>
+              </etf:Assertion> -->
           }
           </etf:Assertions>
           </etf:TestStep>
