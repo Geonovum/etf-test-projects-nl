@@ -333,7 +333,7 @@ declare function local:test($db as document-node()*, $features as element()*, $d
 <etf:TestSuiteResults>
 <etf:TestSuiteResult id="Tests">
 <etf:Duration>0</etf:Duration>
-<etf:Label>IMGeo sample test</etf:Label>
+<etf:Label>GML test</etf:Label>
 <etf:TestCaseResults>
 {
   for $group in $def[local-name()='Group']
@@ -397,9 +397,9 @@ declare function local:test($db as document-node()*, $features as element()*, $d
 }
 </etf:TestCases>
 <etf:Requirements>
-<etf:Requirement id="IMGeo">
-<etf:Label>...</etf:Label>
-<etf:Description>...</etf:Description>
+<etf:Requirement id="GML">
+<etf:Label>GML 2D Geometry tests</etf:Label>
+<etf:Description>GML 2D Geometry tests</etf:Description>
 <etf:Properties>
     <ii:Items>
         <ii:Item name="SpecificationReference">

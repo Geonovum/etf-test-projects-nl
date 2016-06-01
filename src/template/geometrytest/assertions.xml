@@ -1,16 +1,16 @@
 <Assertions>
-<Group id="Other">
-  <name>Other tests</name>
-  <version>0.1</version>
-  <author>interactive instruments GmbH</author>
+<Group id="GML">
+  <name>Geometry tests</name>
+  <version>1.0</version>
+  <author>interactive instruments GmbH, Geonovum</author>
   <creationDate>2015-08-18T12:00:00.000+02:00</creationDate>
-  <lastEditor>Clemens Portele</lastEditor>
-  <lastUpdateDate>2015-08-18T12:00:00.000+02:00</lastUpdateDate>
+  <lastEditor>Thijs Brentjens</lastEditor>
+  <lastUpdateDate>2016-06-01T12:00:00.000+02:00</lastUpdateDate>
 </Group>
-<Subgroup id="Other.Geometry">
+<Subgroup id="GML.Geometry">
   <name>Geometry tests</name>
 </Subgroup>
-<Assertion id="Other.Geometry.01" enabled="true" severity="error" mode="global">
+<Assertion id="GML.Geometry.01" enabled="true" severity="error" mode="global">
 <name>CRS</name>
 <shortDescription>...</shortDescription>
 <description>...</description>
@@ -25,7 +25,7 @@ return
    return local:object-message($feature, $text))
 </expression>
 </Assertion>
-<Assertion id="Other.Geometry.02" enabled="true" severity="error" mode="global">
+<Assertion id="GML.Geometry.02" enabled="true" severity="error" mode="global">
 <name>Valid GML geometry (2D) all at once</name>
 <shortDescription>Test geometry on being valid GML geometry for 2D</shortDescription>
 <description>Test geometry on being valid GML geometry for 2D, all tests at once</description>
@@ -39,7 +39,7 @@ return
    return local:object-message($feature, $text))
 </expression>
 </Assertion>
-<Assertion id="Other.Geometry.03" enabled="true" severity="error" mode="global">
+<Assertion id="GML.Geometry.03" enabled="true" severity="error" mode="global">
 <name>Valid GML geometry (2D) General Validation</name>
 <shortDescription>Test geometry on being valid GML geometry for 2D - General Validation</shortDescription>
 <description>Test geometry on being valid GML geometry for 2D - General Validation</description>
@@ -53,7 +53,7 @@ return
    return local:object-message($feature, $text))
 </expression>
 </Assertion>
-<Assertion id="Other.Geometry.04" enabled="true" severity="error" mode="global">
+<Assertion id="GML.Geometry.04" enabled="true" severity="error" mode="global">
 <name>Valid GML geometry (2D) Polygon Patch Connectivity</name>
 <shortDescription>Test geometry on being valid GML geometry for 2D - Polygon Patch Connectivity</shortDescription>
 <description>Test geometry on being valid GML geometry for 2D - Polygon Patch Connectivity</description>
@@ -67,7 +67,7 @@ return
    return local:object-message($feature, $text))
 </expression>
 </Assertion>
-<Assertion id="Other.Geometry.05" enabled="true" severity="error" mode="global">
+<Assertion id="GML.Geometry.05" enabled="true" severity="error" mode="global">
 <name>Valid GML geometry (2D) Repetition of Position in CurveSegments</name>
 <shortDescription>Test geometry on being valid GML geometry for 2D - Repetition of Position in CurveSegments</shortDescription>
 <description>Test geometry on being valid GML geometry for 2D - Repetition of Position in CurveSegments</description>
@@ -82,10 +82,10 @@ return
 </expression>
 </Assertion>
 <!-- Codelist
-<Subgroup id="Other.Codelist">
+<Subgroup id="GML.Codelist">
   <name>Codelist tests</name>
 </Subgroup>
-<Assertion id="Other.Codelist.01" enabled="true" severity="error" mode="global">
+<Assertion id="GML.Codelist.01" enabled="true" severity="error" mode="global">
 <name>bgt-type valid</name>
 <shortDescription>...</shortDescription>
 <description>...</description>

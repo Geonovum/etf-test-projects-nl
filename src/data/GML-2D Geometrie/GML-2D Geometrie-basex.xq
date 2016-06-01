@@ -397,9 +397,9 @@ declare function local:test($db as document-node()*, $features as element()*, $d
 }
 </etf:TestCases>
 <etf:Requirements>
-<etf:Requirement id="IMGeo">
-<etf:Label>...</etf:Label>
-<etf:Description>...</etf:Description>
+<etf:Requirement id="GML">
+<etf:Label>GML 2D Geometry tests</etf:Label>
+<etf:Description>GML 2D Geometry tests</etf:Description>
 <etf:Properties>
     <ii:Items>
         <ii:Item name="SpecificationReference">
