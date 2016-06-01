@@ -148,7 +148,7 @@ let $result :=
 	if ($mode eq 'global') then
 		xquery:eval(concat($declarationsGlobal,$query), map {'features' := $features, 'validationErrors' := $validationErrors, 'db' := $db, 'projDir' := $projDir })
 	else
-		(for $file in $db return xquery:eval(concat($declarationsLocal,$query), map {'file' := $file, 'features' := $file//cit:cityObjectMember/*, 'filename' := local:strippath(db:path($file)), 'projDir' := $projDir}))[position() le 2*$limitErrors]
+		(for $file in $db return xquery:eval(concat($declarationsLocal,$query), map {'file' := $file, 'features' := $file//wfs:FeatureCollection/wfs:member/*, 'filename' := local:strippath(db:path($file)), 'projDir' := $projDir}))[position() le 2*$limitErrors]
 
 let $objectErrors := count($result[@type=('obj','file')])
 let $fileErrors := count($result[@type='file2'])
@@ -301,7 +301,7 @@ declare function local:statistics($db as document-node()*, $features as element(
     { for $file in $db
     order by local:file($file)
     return
-    	for $feature in $file//cit:cityObjectMember/*
+    	for $feature in $file//wfs:FeatureCollection/wfs:member/*
       let $ft := $feature/local-name()
     		group by $ft
     		order by $ft

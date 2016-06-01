@@ -40,7 +40,13 @@ declare function local:finalMessage($errorCount as xs:integer) as xs:string?
 
 declare function local:execquery($db as document-node()*, $features as element()*, $query as xs:string, $severity as xs:string?, $mode as xs:string?, $start as xs:integer) as element()*
 {
-let $declarationsLocal := concat("declare namespace cit='http://www.opengis.net/citygml/2.0'; declare namespace imgeo='http://www.geostandaarden.nl/imgeo/2.1'; declare namespace skos='http://www.w3.org/2004/02/skos/core#'; declare namespace rdf='http://www.w3.org/1999/02/22-rdf-syntax-ns#'; declare namespace gml='http://www.opengis.net/gml'; declare namespace xsi='http://www.w3.org/2001/XMLSchema-instance'; declare namespace xlink='http://www.w3.org/1999/xlink'; import module namespace functx = 'http://www.functx.com'; declare variable $file external; declare variable $features external; declare variable $filename external; declare variable $projDir external; declare variable $limitErrors external := ", data($limitErrors), ";
+let $declarationsLocal := concat("declare namespace cit='http://www.opengis.net/citygml/2.0'; declare namespace imgeo='http://www.geostandaarden.nl/imgeo/2.1'; declare namespace skos='http://www.w3.org/2004/02/skos/core#'; declare namespace rdf='http://www.w3.org/1999/02/22-rdf-syntax-ns#'; declare namespace gml='http://www.opengis.net/gml'; declare namespace xsi='http://www.w3.org/2001/XMLSchema-instance'; declare namespace xlink='http://www.w3.org/1999/xlink'; import module namespace functx = 'http://www.functx.com';
+import module namespace ggeo='de.interactive_instruments.etf.bsxm.GmlGeoX'; declare variable $file external; declare variable $features external; declare variable $filename external; declare variable $projDir external; declare variable $limitErrors external := ", data($limitErrors), ";
+declare function local:checkgeometry($feature as element()*, $mask as xs:string?) as xs:string?
+{
+  let $check := ggeo:validate($feature,$mask)
+  return $check
+};
 declare function local:strippath($path as xs:string) as xs:string
 {
   let $sep := file:dir-separator()
@@ -76,7 +82,13 @@ declare function local:file-message($text as xs:string) as element()
 <Message type='file' file='{data($filename)}' text='{data($text)}'/>
 };")
 
-let $declarationsGlobal := concat("declare namespace cit='http://www.opengis.net/citygml/2.0'; declare namespace imgeo='http://www.geostandaarden.nl/imgeo/2.1'; declare namespace skos='http://www.w3.org/2004/02/skos/core#'; declare namespace rdf='http://www.w3.org/1999/02/22-rdf-syntax-ns#'; declare namespace gml='http://www.opengis.net/gml'; declare namespace xsi='http://www.w3.org/2001/XMLSchema-instance'; declare namespace xlink='http://www.w3.org/1999/xlink'; import module namespace functx = 'http://www.functx.com'; declare variable $validationErrors external; declare variable $file external; declare variable $features external; declare variable $projDir external; declare variable $db external; declare variable $limitErrors external := ", data($limitErrors), ";
+let $declarationsGlobal := concat("declare namespace cit='http://www.opengis.net/citygml/2.0'; declare namespace imgeo='http://www.geostandaarden.nl/imgeo/2.1'; declare namespace skos='http://www.w3.org/2004/02/skos/core#'; declare namespace rdf='http://www.w3.org/1999/02/22-rdf-syntax-ns#'; declare namespace gml='http://www.opengis.net/gml'; declare namespace xsi='http://www.w3.org/2001/XMLSchema-instance'; declare namespace xlink='http://www.w3.org/1999/xlink'; import module namespace functx = 'http://www.functx.com';
+import module namespace ggeo='de.interactive_instruments.etf.bsxm.GmlGeoX'; declare variable $validationErrors external; declare variable $file external; declare variable $features external; declare variable $projDir external; declare variable $db external; declare variable $limitErrors external := ", data($limitErrors), ";
+declare function local:checkgeometry($feature as element()*, $mask as xs:string?) as xs:string?
+{
+  let $check := ggeo:validate($feature,$mask)
+  return $check
+};
 declare function local:strippath($path as xs:string) as xs:string
 {
   let $sep := file:dir-separator()
@@ -321,7 +333,7 @@ declare function local:test($db as document-node()*, $features as element()*, $d
 <etf:TestSuiteResults>
 <etf:TestSuiteResult id="Tests">
 <etf:Duration>0</etf:Duration>
-<etf:Label>IMGeo sample test</etf:Label>
+<etf:Label>GML test</etf:Label>
 <etf:TestCaseResults>
 {
   for $group in $def[local-name()='Group']
@@ -385,9 +397,9 @@ declare function local:test($db as document-node()*, $features as element()*, $d
 }
 </etf:TestCases>
 <etf:Requirements>
-<etf:Requirement id="IMGeo">
-<etf:Label>...</etf:Label>
-<etf:Description>...</etf:Description>
+<etf:Requirement id="GML">
+<etf:Label>GML 2D Geometry tests</etf:Label>
+<etf:Description>GML 2D Geometry tests</etf:Description>
 <etf:Properties>
     <ii:Items>
         <ii:Item name="SpecificationReference">
@@ -417,7 +429,6 @@ declare function local:test($db as document-node()*, $features as element()*, $d
 
 (: Parameters as strings :)
 declare variable $files_to_test external := ".*";
-declare variable $Schema_file external := "imgeo-2.1.1.xsd";
 
 (: Default ETF parameters :)
 declare variable $projDir external;
