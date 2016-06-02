@@ -14,7 +14,9 @@ See the License for the specific language governing permissions and
 limitations under the License.
 :)
 
-declare namespace gml='http://www.opengis.net/gml/3.2';
+declare namespace cit='http://www.opengis.net/citygml/2.0';
+declare namespace gml='http://www.opengis.net/gml';
+declare namespace wfs='http://www.opengis.net/wfs/2.0';
 declare namespace xsi='http://www.w3.org/2001/XMLSchema-instance';
 declare namespace xlink='http://www.w3.org/1999/xlink';
 declare namespace etf='http://www.interactive-instruments.de/etf/1.0';
