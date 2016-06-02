@@ -14,6 +14,26 @@ Zie [de help pagina](./www/help/help-nl.md) voor instructies over het gebruik va
 ## Issues melden
 Komt u een probleem tegen? Raadpleeg dan de [issue-lijst](https://github.com/Geonovum/etf-test-projects-nl/issues) voor de bekende problemen en voeg desgewenst informatie toe. Staat het issue er niet tussen, maak dan via de [issue-lijst](https://github.com/Geonovum/etf-test-projects-nl/issues) een nieuw issue aan. Issues en opmerkingen graag in het Nederlands of Engels.
 
+
+## Validatieregels hergebruiken: Schematron regels beschikbaar
+De Schematron testregels van de test projecten zijn te gebruiken in andere implementaties.
+In de testprojecten heten de schematron regels (indien in gebruik) altijd:
+
+```
+schematron.sch
+```
+
+Directe links naar schematron metadata:
+
+* metadata dataset ISO 19115 v13 2014: [src/metadata/Nederlands%20profiel%20op%20ISO%2019115%20v13%202014/schematron.sch](src/metadata/Nederlands%20profiel%20op%20ISO%2019115%20v13%202014/schematron.sch)
+* metadata dataset ISO 19115 v13 2014 plus INSPIRE: [src/metadata/Nederlands%20profiel%20op%20ISO%2019115%20v13%20INSPIRE%202014/schematron.sch](src/metadata/Nederlands%20profiel%20op%20ISO%2019115%20v13%20INSPIRE%202014/schematron.sch)
+* metadata dataset ISO 19115 v13 2014 plus INSPIRE geharmoniseerd: [src/metadata/Nederlands%20profiel%20op%20ISO%2019115%20v13%20INSPIRE%20geharmoniseerd%202014/schematron.sch](src/metadata/Nederlands%20profiel%20op%20ISO%2019115%20v13%20INSPIRE%20geharmoniseerd%202014/schematron.sch)
+* metadata services ISO 19119 v12 2014: [src/metadata/Nederlands%20profiel%20op%20ISO%2019119%20v12%202014/schematron.sch](src/metadata/Nederlands%20profiel%20op%20ISO%2019119%20v12%202014/schematron.sch)
+* metadata services ISO 19119 v12 2014 INSPIRE: [src/metadata/Nederlands%20profiel%20op%20ISO%2019119%20v12%20INSPIRE%202014/schematron.sch](src/metadata/Nederlands%20profiel%20op%20ISO%2019119%20v12%20INSPIRE%202014/schematron.sch)
+
+Directe links naar schematron data validatie:
+* GML 3.2 Simple Features: [src/data/GML3.2%20SF2/schematron.sch](src/data/GML3.2%20SF2/schematron.sch)
+
 ## Eerste versie tests voor Nederlandse profielen via online ETF
 Ook de validator voor de Nederlandse profielen voor WMS en WFS gaat op den duur via het online ETF draaien. De broncode van deze test projecten is in deze repository beschikbaar.
 
