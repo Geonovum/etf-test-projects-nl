@@ -471,7 +471,7 @@ if (file:exists($outputFile)) then if (file:is-file($outputFile)) then () else e
 for $i in 0 to $count return if (db:exists($dbBaseName || '-' || $i)) then () else error($paramerror,concat("System error: Data base '",concat($dbBaseName,"-",$i),"' was not found.&#xa;")),
 
 let $db := for $i in 0 to $count return db:open($dbBaseName || '-' || $i)[matches(db:path(.),$files_to_test)]
-let $features := prof:time($db//wfs:FeatureCollection/wfs:member/*,false(),'Features: ')
+let $features := prof:time($db//cit:cityObjectMember/*|//wfs:member/*|//gml:member/*,false(),'Features: ')
 let $assertionsFile := concat($projDir, file:dir-separator(), "assertions.xml")
 let $def :=
 try{
