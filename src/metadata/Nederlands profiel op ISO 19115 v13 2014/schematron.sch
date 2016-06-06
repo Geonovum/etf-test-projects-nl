@@ -93,7 +93,7 @@
 			<sch:report id="Rol organisatie metadata (ISO nr. 379) info" test="$mdResponsibleParty_Role">Rol organisatie metadata (ISO nr. 379): <sch:value-of select="$mdResponsibleParty_Role"/>
 			</sch:report>
 		<!-- INSPIRE in combi met specificatie INSPIRE -->
-			<sch:assert id="Rol organisatie metadata (ISO nr. 379)" test="not($conformity_Spec_Title_Exsists) or ($conformity_Spec_Title_Exsists and $mdResponsibleParty_Role_INSPIRE)">Rol organisatie metadata (ISO nr. 379) ontbreekt of heeft een verkeerde waarde, deze dient voor INSPIRE contactpunt te zijn</sch:assert>
+			<sch:assert id="INSPIRE Rol organisatie metadata (ISO nr. 379)" test="not($conformity_Spec_Title_Exsists) or ($conformity_Spec_Title_Exsists and $mdResponsibleParty_Role_INSPIRE)">Rol organisatie metadata (ISO nr. 379) ontbreekt of heeft een verkeerde waarde, deze dient voor INSPIRE contactpunt te zijn</sch:assert>
 		<!-- eind INSPIRE in combi met specificatie INSPIRE -->
 			<sch:assert id="E-mail organisatie metadata (ISO nr. 386)"  test="$mdResponsibleParty_Mail">E-mail organisatie metadata (ISO nr. 386) ontbreekt</sch:assert>
 			<sch:report id="E-mail organisatie metadata (ISO nr. 386) info" test="$mdResponsibleParty_Mail">E-mail organisatie metadata (ISO nr. 386): <sch:value-of select="$mdResponsibleParty_Mail"/>
