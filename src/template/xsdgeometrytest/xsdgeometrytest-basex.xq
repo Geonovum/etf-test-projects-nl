@@ -7,6 +7,7 @@ declare namespace skos='http://www.w3.org/2004/02/skos/core#';
 declare namespace rdf='http://www.w3.org/1999/02/22-rdf-syntax-ns#';
 declare namespace etf='http://www.interactive-instruments.de/etf/1.0';
 declare namespace ii='http://www.interactive-instruments.de/ii/1.0';
+declare namespace wfs='http://www.opengis.net/wfs/2.0';
 
 declare function local:disabled($id as xs:string, $enabled as xs:string) as xs:string?
 {
@@ -40,7 +41,13 @@ declare function local:finalMessage($errorCount as xs:integer) as xs:string?
 
 declare function local:execquery($db as document-node()*, $features as element()*, $query as xs:string, $severity as xs:string?, $mode as xs:string?, $start as xs:integer) as element()*
 {
-let $declarationsLocal := concat("declare namespace cit='http://www.opengis.net/citygml/2.0'; declare namespace imgeo='http://www.geostandaarden.nl/imgeo/2.1'; declare namespace skos='http://www.w3.org/2004/02/skos/core#'; declare namespace rdf='http://www.w3.org/1999/02/22-rdf-syntax-ns#'; declare namespace gml='http://www.opengis.net/gml'; declare namespace xsi='http://www.w3.org/2001/XMLSchema-instance'; declare namespace xlink='http://www.w3.org/1999/xlink'; import module namespace functx = 'http://www.functx.com'; declare variable $file external; declare variable $features external; declare variable $filename external; declare variable $projDir external; declare variable $limitErrors external := ", data($limitErrors), ";
+let $declarationsLocal := concat("declare namespace cit='http://www.opengis.net/citygml/2.0'; declare namespace imgeo='http://www.geostandaarden.nl/imgeo/2.1'; declare namespace skos='http://www.w3.org/2004/02/skos/core#'; declare namespace rdf='http://www.w3.org/1999/02/22-rdf-syntax-ns#'; declare namespace gml='http://www.opengis.net/gml'; declare namespace xsi='http://www.w3.org/2001/XMLSchema-instance'; declare namespace xlink='http://www.w3.org/1999/xlink'; declare namespace wfs='http://www.opengis.net/wfs/2.0'; import module namespace functx = 'http://www.functx.com';
+import module namespace ggeo='de.interactive_instruments.etf.bsxm.GmlGeoX'; declare variable $file external; declare variable $features external; declare variable $filename external; declare variable $projDir external; declare variable $limitErrors external := ", data($limitErrors), ";
+declare function local:checkgeometry($feature as element()*, $mask as xs:string?) as xs:string?
+{
+  let $check := ggeo:validate($feature,$mask)
+  return $check
+};
 declare function local:strippath($path as xs:string) as xs:string
 {
   let $sep := file:dir-separator()
@@ -76,7 +83,13 @@ declare function local:file-message($text as xs:string) as element()
 <Message type='file' file='{data($filename)}' text='{data($text)}'/>
 };")
 
-let $declarationsGlobal := concat("declare namespace cit='http://www.opengis.net/citygml/2.0'; declare namespace imgeo='http://www.geostandaarden.nl/imgeo/2.1'; declare namespace skos='http://www.w3.org/2004/02/skos/core#'; declare namespace rdf='http://www.w3.org/1999/02/22-rdf-syntax-ns#'; declare namespace gml='http://www.opengis.net/gml'; declare namespace xsi='http://www.w3.org/2001/XMLSchema-instance'; declare namespace xlink='http://www.w3.org/1999/xlink'; import module namespace functx = 'http://www.functx.com'; declare variable $validationErrors external; declare variable $file external; declare variable $features external; declare variable $projDir external; declare variable $db external; declare variable $limitErrors external := ", data($limitErrors), ";
+let $declarationsGlobal := concat("declare namespace cit='http://www.opengis.net/citygml/2.0'; declare namespace imgeo='http://www.geostandaarden.nl/imgeo/2.1'; declare namespace skos='http://www.w3.org/2004/02/skos/core#'; declare namespace rdf='http://www.w3.org/1999/02/22-rdf-syntax-ns#'; declare namespace gml='http://www.opengis.net/gml'; declare namespace xsi='http://www.w3.org/2001/XMLSchema-instance'; declare namespace xlink='http://www.w3.org/1999/xlink'; declare namespace wfs='http://www.opengis.net/wfs/2.0'; import module namespace functx = 'http://www.functx.com';
+import module namespace ggeo='de.interactive_instruments.etf.bsxm.GmlGeoX'; declare variable $validationErrors external; declare variable $file external; declare variable $features external; declare variable $projDir external; declare variable $db external; declare variable $limitErrors external := ", data($limitErrors), ";
+declare function local:checkgeometry($feature as element()*, $mask as xs:string?) as xs:string?
+{
+  let $check := ggeo:validate($feature,$mask)
+  return $check
+};
 declare function local:strippath($path as xs:string) as xs:string
 {
   let $sep := file:dir-separator()
@@ -289,7 +302,7 @@ declare function local:statistics($db as document-node()*, $features as element(
     return
     	for $feature in $file//cit:cityObjectMember/*
       let $ft := $feature/local-name()
-    		group by $ft 
+    		group by $ft
     		order by $ft
     	return local:statistics_row($ft,count($feature),local:file($file))}
   </table>,
@@ -321,7 +334,7 @@ declare function local:test($db as document-node()*, $features as element()*, $d
 <etf:TestSuiteResults>
 <etf:TestSuiteResult id="Tests">
 <etf:Duration>0</etf:Duration>
-<etf:Label>IMGeo sample test</etf:Label>
+<etf:Label>GML test</etf:Label>
 <etf:TestCaseResults>
 {
   for $group in $def[local-name()='Group']
@@ -385,9 +398,9 @@ declare function local:test($db as document-node()*, $features as element()*, $d
 }
 </etf:TestCases>
 <etf:Requirements>
-<etf:Requirement id="IMGeo">
-<etf:Label>...</etf:Label>
-<etf:Description>...</etf:Description>
+<etf:Requirement id="GML">
+<etf:Label>GML 2D Geometry tests</etf:Label>
+<etf:Description>GML 2D Geometry tests</etf:Description>
 <etf:Properties>
     <ii:Items>
         <ii:Item name="SpecificationReference">
@@ -399,14 +412,14 @@ declare function local:test($db as document-node()*, $features as element()*, $d
 <etf:SubRequirements>
 {
   for $assertion in $def[local-name()='Assertion']
-  return 
+  return
   <etf:Requirement>{$assertion/name/text()}</etf:Requirement>
 }
 </etf:SubRequirements>
 </etf:Requirement>
 {
   for $assertion in $def[local-name()='Assertion']
-  return 
+  return
   local:requirement($assertion)
 }
 </etf:Requirements>
@@ -417,7 +430,6 @@ declare function local:test($db as document-node()*, $features as element()*, $d
 
 (: Parameters as strings :)
 declare variable $files_to_test external := ".*";
-declare variable $Schema_file external := "dummyschema.xsd";
 
 (: Default ETF parameters :)
 declare variable $projDir external;
@@ -445,7 +457,7 @@ error($paramerror,concat("System error: Parameter $dbCount must be an integer. F
 
 if ($count ge 0) then () else error($paramerror,concat("System error: Parameter $dbCount must be a positive integer. Found: '",data($dbCount),"'&#xa;")),
 
-try { let $x := matches('nas.gml',$files_to_test) 
+try { let $x := matches('nas.gml',$files_to_test)
 return ()
 } catch * {
 error($paramerror,concat("Parameter $files_to_test must be a valid regular expression. Found: '",data($files_to_test),"', error reported was:&#xa; '",data($err:description),"'&#xa;"))
@@ -458,7 +470,7 @@ if (file:exists($outputFile)) then if (file:is-file($outputFile)) then () else e
 for $i in 0 to $count return if (db:exists($dbBaseName || '-' || $i)) then () else error($paramerror,concat("System error: Data base '",concat($dbBaseName,"-",$i),"' was not found.&#xa;")),
 
 let $db := for $i in 0 to $count return db:open($dbBaseName || '-' || $i)[matches(db:path(.),$files_to_test)]
-let $features := prof:time($db//cit:cityObjectMember/*,false(),'Features: ')
+let $features := prof:time($db//cit:cityObjectMember/*|//wfs:member/*|//gml:member/*,false(),'Features: ')
 let $assertionsFile := concat($projDir, file:dir-separator(), "assertions.xml")
 let $def :=
 try{

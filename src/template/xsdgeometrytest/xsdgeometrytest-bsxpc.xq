@@ -7,6 +7,7 @@ declare namespace skos='http://www.w3.org/2004/02/skos/core#';
 declare namespace rdf='http://www.w3.org/1999/02/22-rdf-syntax-ns#';
 declare namespace etf='http://www.interactive-instruments.de/etf/1.0';
 declare namespace ii='http://www.interactive-instruments.de/ii/1.0';
+declare namespace wfs='http://www.opengis.net/wfs/2.0';
 
 (: Parameters as strings :)
 declare variable $files_to_test external := ".*";
