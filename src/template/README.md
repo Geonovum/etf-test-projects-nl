@@ -34,6 +34,11 @@ Onderdeel van: "NL Data"
  * etf.Version = 1.0.1
 1. In principe is hiermee de validator gereed voor plaatsing in het ETF (in de directory ```{etf-data}/projects/bsx```)
 
+
+## Nota bene:
+1. bij wijzigingen in een bestaande validator / test project: voer eerst lokaal alle wijzigingen door. Daarna in 1 keer alles uploaden (dus bijv niet bestandsnaam op de server aanpassen, de ETF software pikt dit niet op). 
+1.
+
 ## Details aanpassen schema locatie
 
 "...-basex.xq" en "...-bsxpc.xq" bij de parameters:
