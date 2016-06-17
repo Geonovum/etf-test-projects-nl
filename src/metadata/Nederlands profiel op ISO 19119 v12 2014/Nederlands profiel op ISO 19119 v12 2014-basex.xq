@@ -37,7 +37,7 @@ declare function local:create-messages($failedAssertsOrReports as element()*, $s
   let $fileErrors := count($resultsWithFailedAssertsOrReports)
   let $countElements := count($failedAssertsOrReports)
   let $messages := (
-    if ($fileErrors>0) then concat('Files with errors: ',data($fileErrors),'.&#xa;&#xa;') else (),
+    if ($fileErrors>0) then concat('Files: ',data($fileErrors),'.&#xa;&#xa;') else (),
     for $result in $resultsWithFailedAssertsOrReports
     let $resultFileName := $result/svrlii:fileName/text()
     order by $resultFileName
@@ -250,53 +250,53 @@ declare function local:evaluate($svrlii as element(), $sch as document-node(), $
 
 <etf:TestCases>
 
-<etf:TestCase id="Etf.Internal">
-  <etf:Label>XML validation</etf:Label>
-  <etf:Description>Standard XML validation performed by ETF</etf:Description>
-  <etf:VersionData>
-    <etf:Version>0.1</etf:Version>
-    <etf:CreationDate>2016-01-22T17:00:00+0100</etf:CreationDate>
-    <etf:LastUpdateDate>2016-01-22T17:00:00+0100</etf:LastUpdateDate>
-    <etf:Hash/>
-    <etf:Author>interactive instruments GmbH</etf:Author>
-    <etf:LastEditor>Johannes Echterhoff</etf:LastEditor>
-  </etf:VersionData>
-  <etf:AssociatedRequirements>
-    <etf:Requirement>ETF</etf:Requirement>
-  </etf:AssociatedRequirements>
-  <etf:Properties>
-    <ii:Items xmlns:ii="http://www.interactive-instruments.de/ii/1.0">
-      <ii:Item name="ShortDescription">
-        <ii:value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:string">Standard XML validation</ii:value>
-      </ii:Item>
-      <ii:Item name="Reference">
-        <ii:value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:string">Standard XML validation</ii:value>
-      </ii:Item>
-    </ii:Items>
-  </etf:Properties>
-  <etf:TestSteps>
-    <etf:TestStep id="Etf.Internal.Validation">
-      <etf:Label>Validation result</etf:Label>
-      <etf:Description/>
-      <etf:Assertions>
-        <etf:Assertion id="Etf.Internal.Validation.Xml">
-          <etf:Label>XML schema validation</etf:Label>
-          <etf:Properties>
-            <ii:Items xmlns:ii="http://www.interactive-instruments.de/ii/1.0">
-              <ii:Item name="RequirementReference">
-                <ii:value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:string">ETF#Etf.Internal.Validation.Xml</ii:value>
-              </ii:Item>
-            </ii:Items>
-          </etf:Properties>
-          <etf:Type>ETF internal XML processing</etf:Type>
-          <etf:Expression/>
-          <etf:Status>IMPLEMENTED</etf:Status>
-        </etf:Assertion>
-      </etf:Assertions>
-    </etf:TestStep>
-  </etf:TestSteps>
-  <etf:status>IMPLEMENTED</etf:status>
-</etf:TestCase>
+  <etf:TestCase id="Etf.Internal">
+    <etf:Label>XML validation</etf:Label>
+    <etf:Description>Standard XML validation performed by ETF</etf:Description>
+    <etf:VersionData>
+      <etf:Version>0.1</etf:Version>
+      <etf:CreationDate>2016-01-22T17:00:00+0100</etf:CreationDate>
+      <etf:LastUpdateDate>2016-01-22T17:00:00+0100</etf:LastUpdateDate>
+      <etf:Hash/>
+      <etf:Author>interactive instruments GmbH</etf:Author>
+      <etf:LastEditor>Johannes Echterhoff</etf:LastEditor>
+    </etf:VersionData>
+    <etf:AssociatedRequirements>
+      <etf:Requirement>ETF</etf:Requirement>
+    </etf:AssociatedRequirements>
+    <etf:Properties>
+      <ii:Items xmlns:ii="http://www.interactive-instruments.de/ii/1.0">
+        <ii:Item name="ShortDescription">
+          <ii:value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:string">Standard XML validation</ii:value>
+        </ii:Item>
+        <ii:Item name="Reference">
+          <ii:value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:string">Standard XML validation</ii:value>
+        </ii:Item>
+      </ii:Items>
+    </etf:Properties>
+    <etf:TestSteps>
+      <etf:TestStep id="Etf.Internal.Validation">
+        <etf:Label>Validation result</etf:Label>
+        <etf:Description/>
+        <etf:Assertions>
+          <etf:Assertion id="Etf.Internal.Validation.Xml">
+            <etf:Label>XML schema validation</etf:Label>
+            <etf:Properties>
+              <ii:Items xmlns:ii="http://www.interactive-instruments.de/ii/1.0">
+                <ii:Item name="RequirementReference">
+                  <ii:value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:string">ETF#Etf.Internal.Validation.Xml</ii:value>
+                </ii:Item>
+              </ii:Items>
+            </etf:Properties>
+            <etf:Type>ETF internal XML processing</etf:Type>
+            <etf:Expression/>
+            <etf:Status>IMPLEMENTED</etf:Status>
+          </etf:Assertion>
+        </etf:Assertions>
+      </etf:TestStep>
+    </etf:TestSteps>
+    <etf:status>IMPLEMENTED</etf:status>
+  </etf:TestCase>
 
 {
    for $pattern in $sch/*/iso:pattern
@@ -611,6 +611,7 @@ let $sch2 := prof:time(xslt:transform($sch1,$xslIsoAbstractExpand),false(),'ISO 
 
 let $sch2.1 := prof:time(xslt:transform($sch2,$xslIIAbstractRuleExpand),false(),'ISO Schematron XSL transformation(ii) - expand abstract rules: ')
 let $sch2.2 := prof:time(xslt:transform($sch2.1,$xslIdsForPatternsRulesAsserts),false(),'ISO Schematron XSL transformation(ii) - create ids for patterns, rules, asserts and reports: ')
+
 
 let $schAsXslt := prof:time(xslt:transform($sch2.2,$xslSvrlForXslt),false(),'ISO Schematron XSL transformation - derive validation stylesheet: ')
 
