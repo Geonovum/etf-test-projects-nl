@@ -56,7 +56,7 @@
 
 		<!--  voor INSPIRE toegestane waarde in combi met INSPIRE specificatie -->
 
-			<sch:let name="mdResponsibleParty_Role_INSPIRE" value="gmd:contact[1]/gmd:CI_ResponsibleParty/gmd:role/*/@codeListValue = 'pointOfContact' "/>
+			<sch:let name="mdResponsibleParty_Role_INSPIRE" value="gmd:contact[1]/gmd:CI_ResponsibleParty/gmd:role/*/@codeListValue = 'pointOfContact'"/>
 
 		<!-- Metadata verantwoordelijke organisatie (url) -->
 			<sch:let name="mdResponsibleParty_Mail" value="normalize-space(gmd:contact[1]/gmd:CI_ResponsibleParty/gmd:contactInfo/gmd:CI_Contact/gmd:address/gmd:CI_Address/gmd:electronicMailAddress[1]/gco:CharacterString)"/>
@@ -248,7 +248,7 @@
 			<sch:assert id="Gebruiksbeperkingen (ISO nr. 68)" test="$useLimitation">Gebruiksbeperkingen (ISO nr. 68) ontbreken</sch:assert>
 			<sch:report id="Gebruiksbeperkingen (ISO nr. 68) info" test="$useLimitation">Gebruiksbeperkingen (ISO nr. 68): <sch:value-of select="$useLimitation"/>
 			</sch:report>
-			<sch:assert id="(Juridische) toegangsrestricties (ISO nr. 70) en Overige beperkingen (ISO nr 72)" test="$accessConstraints_value and $otherConstraints ">(Juridische) toegangsrestricties (ISO nr. 70) en Overige beperkingen (ISO nr 72) dient ingevuld te zijn</sch:assert>
+			<sch:assert id="(Juridische) toegangsrestricties (ISO nr. 70) en Overige beperkingen (ISO nr 72)" test="$accessConstraints_value and $otherConstraints">(Juridische) toegangsrestricties (ISO nr. 70) en Overige beperkingen (ISO nr 72) dient ingevuld te zijn</sch:assert>
 			<sch:assert id="(Juridische) toegangsrestricties (ISO nr. 70)" test="$accessConstraints_value">(Juridische) toegangsrestricties (ISO nr. 70) dient de waarde 'anders' te hebben in combinatie met een publiek domein, CC0 of geogedeelt licentie bij overige beperkingen (ISO nr. 72)</sch:assert>
 			<sch:assert id="Overige beperkingen (ISO nr 72)" test="not($accessConstraints_value = 'otherRestrictions') or ($accessConstraints_value = 'otherRestrictions' and $otherConstraint1 and $otherConstraint2)">Het element overige beperkingen (ISO nr. 72) dient twee maal binnen dezelfde toegangsrestricties voor te komen; één met de beschrijving en één met de URL naar de publiek domein, CC0 of geogedeelt licentie,als (juridische) toegangsrestricties (ISO nr. 70) de waarde 'anders' heeft</sch:assert>
 			<sch:report id="Overige beperkingen (ISO nr 72) 1 info" test="$otherConstraint1">Overige beperkingen (ISO nr 72) 1: <sch:value-of select="$otherConstraint1"/>
@@ -413,8 +413,8 @@
        			<sch:let name="distance" value="gmd:spatialResolution/gmd:MD_Resolution/gmd:distance/*/text()"/>
        			<sch:let name="denominator" value="gmd:spatialResolution/gmd:MD_Resolution/gmd:equivalentScale/gmd:MD_RepresentativeFraction/gmd:denominator/*/text()"/>
 
-			<sch:assert id="Toepassingsschaal (ISO nr. 57) of Resolutie (ISO nr. 61)" test="$denominator or $distance ">Toepassingsschaal (ISO nr. 57) of Resolutie (ISO nr. 61) ontbreekt, vul een van deze in</sch:assert>
-			<sch:assert id="Toepassingsschaal (ISO nr. 57) en Resolutie (ISO nr. 61)" test="not($denominator and  $distance) ">Toepassingsschaal (ISO nr. 57) of Resolutie (ISO nr. 61) invullen, niet beide</sch:assert>
+			<sch:assert id="Toepassingsschaal (ISO nr. 57) of Resolutie (ISO nr. 61)" test="$denominator or $distance">Toepassingsschaal (ISO nr. 57) of Resolutie (ISO nr. 61) ontbreekt, vul een van deze in</sch:assert>
+			<sch:assert id="Toepassingsschaal (ISO nr. 57) en Resolutie (ISO nr. 61)" test="not($denominator and  $distance)">Toepassingsschaal (ISO nr. 57) of Resolutie (ISO nr. 61) invullen, niet beide</sch:assert>
        		</sch:rule>
 
 		<!-- Spatial resolution equivalentScale -->
@@ -430,7 +430,7 @@
 		<sch:rule id="Resolutie" context="//gmd:spatialResolution/gmd:MD_Resolution/gmd:distance/gco:Distance">
 
 			<sch:let name="distance" value="text()"/>
-			<sch:let name="distance_UOM" value="@uom= 'meters' "/>
+			<sch:let name="distance_UOM" value="@uom= 'meters'"/>
 
 			<sch:assert id="Resolutie (ISO nr. 61)" test="not(string(number($distance))='NaN')">Resolutie (ISO nr. 61) heeft een verkeerde waarde, resolutie is niet numeriek of is leeg</sch:assert>
 			<sch:report id="Resolutie (ISO nr. 61) info" test="$distance">Resolutie (ISO nr. 61) is: <sch:value-of select="$distance"/>
@@ -542,7 +542,7 @@ Deze keywords  moeten uit GEMET- INSPIRE themes thesaurus komen. gevonden keywor
 		 <!--  voor externe thesaurus
  		-->
 		 <!--
-     		<sch:assert id="INSPIRE thesaurus Trefwoorden (ISO nr. 53)" test="$gemet-nl//skos:prefLabel[normalize-space(text()) = normalize-space(current())]">Keywords [<sch:value-of select="$gemet-nl//skos:prefLabel "/>]   moeten uit GEMET- INSPIRE themes thesaurus komen. gevonden keywords: <sch:value-of select="."/></sch:assert>
+     		<sch:assert id="INSPIRE thesaurus Trefwoorden (ISO nr. 53)" test="$gemet-nl//skos:prefLabel[normalize-space(text()) = normalize-space(current())]">Keywords [<sch:value-of select="$gemet-nl//skos:prefLabel"/>]   moeten uit GEMET- INSPIRE themes thesaurus komen. gevonden keywords: <sch:value-of select="."/></sch:assert>
 		 -->
 
 		</sch:rule>
