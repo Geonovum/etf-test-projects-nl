@@ -11,7 +11,7 @@ declare namespace wfs='http://www.opengis.net/wfs/2.0';
 
 (: Parameters as strings :)
 declare variable $files_to_test external := ".*";
-declare variable $Schema_file external := "inspire-annex-I-II-IIIv30-1.0.1.xsd";
+declare variable $Schema_file external := "inspire-annex-I-II-IIIv30-1.0.2_onlineschemas.xsd";
 
 (: Default ETF parameters :)
 declare variable $projDir external;

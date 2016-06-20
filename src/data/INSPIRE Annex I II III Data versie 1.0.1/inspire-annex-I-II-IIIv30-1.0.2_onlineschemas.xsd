@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+    <xs:annotation>
+        <xs:documentation>Generic application schema all INSPIRE dataspecifications GML schemas.</xs:documentation>
+    </xs:annotation>
+    <!-- added by LvdB Geonovum to enable validation of WFS results -->
+    <xs:import namespace="http://www.opengis.net/wfs/2.0" schemaLocation="http://schemas.opengis.net/wfs/2.0/wfs.xsd"/>
+    <!-- end addition -->
+    <!-- Thijs Brentjens Geonovum for all schemas (2016-06-20): use online schemas of INSPIRE -->
+    <xs:import namespace="http://inspire.ec.europa.eu/schemas/ac-mf/3.0"
+        schemaLocation="http://inspire.ec.europa.eu/schemas/ac-mf/3.0/AtmosphericConditionsandMeteorologicalGeographicalFeatures.xsd"/>
+    <!-- Thijs Brentjens Geonovum (2016-06-20): add act-core -->    
+    <xs:import namespace="http://inspire.ec.europa.eu/schemas/act-core/3.0"
+        schemaLocation="http://inspire.ec.europa.eu/schemas/act-core/3.0/ActivityComplex_Core.xsd"/>
+    <xs:import namespace="urn:x-inspire:specification:gmlas:Addresses:3.0"
+        schemaLocation="http://inspire.ec.europa.eu/schemas/ad/3.0/Addresses.xsd"/>
+    <xs:import namespace="http://inspire.ec.europa.eu/schemas/af/3.0"
+        schemaLocation="http://inspire.ec.europa.eu/schemas/af/3.0/AgriculturalAndAquacultureFacilities.xsd"/>
+    <xs:import namespace="http://inspire.ec.europa.eu/schemas/am/3.0"
+        schemaLocation="http://inspire.ec.europa.eu/schemas/am/3.0/AreaManagementRestrictionRegulationZone.xsd"/>
+    <xs:import namespace="urn:x-inspire:specification:gmlas:AdministrativeUnits:3.0"
+        schemaLocation="http://inspire.ec.europa.eu/schemas/au/3.0/AdministrativeUnits.xsd"/>
+    <xs:import namespace="http://inspire.ec.europa.eu/schemas/br/3.0"
+        schemaLocation="http://inspire.ec.europa.eu/schemas/br/3.0/Bio-geographicalRegions.xsd"/>
+    <xs:import namespace="http://inspire.ec.europa.eu/schemas/bu-core2d/3.0"
+        schemaLocation="http://inspire.ec.europa.eu/schemas/bu-core2d/3.0/BuildingsCore2D.xsd"/>
+    <xs:import namespace="http://inspire.jrc.ec.europa.eu/draft-schemas/bu-core3d/3.0"
+        schemaLocation="http://inspire.ec.europa.eu/schemas/bu-core3d/3.0/BuildingsCore3D.xsd"/>
+    <xs:import namespace="urn:x-inspire:specification:gmlas:CadastralParcels:3.0"
+        schemaLocation="http://inspire.ec.europa.eu/schemas/cp/3.0/CadastralParcels.xsd"/>
+    <xs:import namespace="http://inspire.ec.europa.eu/schemas/ef/3.0"
+        schemaLocation="http://inspire.ec.europa.eu/schemas/ef/3.0/EnvironmentalMonitoringFacilities.xsd"/>
+    <xs:import namespace="http://inspire.ec.europa.eu/schemas/el-cov/3.0"
+        schemaLocation="http://inspire.ec.europa.eu/schemas/el-cov/3.0/ElevationGridCoverage.xsd"/>
+    <xs:import namespace="http://inspire.ec.europa.eu/schemas/el-tin/3.0"
+        schemaLocation="http://inspire.ec.europa.eu/schemas/el-tin/3.0/ElevationTin.xsd"/>
+    <xs:import namespace="http://inspire.ec.europa.eu/schemas/elu/3.0"
+        schemaLocation="http://inspire.ec.europa.eu/schemas/elu/3.0/ExistingLandUse.xsd"/>
+    <xs:import namespace="http://inspire.ec.europa.eu/schemas/el-vec/3.0"
+        schemaLocation="http://inspire.ec.europa.eu/schemas/el-vec/3.0/ElevationVectorElements.xsd"/>
+    <xs:import namespace="http://inspire.ec.europa.eu/schemas/er-c/3.0"
+        schemaLocation="http://inspire.ec.europa.eu/schemas/er-c/3.0/EnergyResourcesCoverage.xsd"/>
+    <xs:import namespace="http://inspire.ec.europa.eu/schemas/er-v/3.0"
+        schemaLocation="http://inspire.ec.europa.eu/schemas/er-v/3.0/EnergyResourcesVector.xsd"/>
+    <!-- Thijs Brentjens Geonovum (2016-06-20): add ge_gp -->    
+    <xs:import namespace="http://inspire.ec.europa.eu/schemas/ge_gp/3.0"
+        schemaLocation="http://inspire.ec.europa.eu/schemas/ge_gp/3.0/GeophysicsCore.xsd"/>
+    <xs:import namespace="http://inspire.ec.europa.eu/schemas/ge_hg/3.0"
+        schemaLocation="http://inspire.ec.europa.eu/schemas/ge_hg/3.0/HydrogeologyCore.xsd"/>
+    <xs:import namespace="http://inspire.ec.europa.eu/schemas/ge-core/3.0"
+        schemaLocation="http://inspire.ec.europa.eu/schemas/ge-core/3.0/GeologyCore.xsd"/>
+    <xs:import namespace="http://inspire.ec.europa.eu/schemas/gelu/3.0"
+        schemaLocation="http://inspire.ec.europa.eu/schemas/gelu/3.0/GriddedExistingLandUse.xsd"/>
+    <xs:import namespace="urn:x-inspire:specification:gmlas:GeographicalNames:3.0"
+        schemaLocation="http://inspire.ec.europa.eu/schemas/gn/3.0/GeographicalNames.xsd"/>
+    <xs:import namespace="http://inspire.ec.europa.eu/schemas/hb/3.0"
+        schemaLocation="http://inspire.ec.europa.eu/schemas/hb/3.0/HabitatsAndBiotopes.xsd"/>
+    <xs:import namespace="http://inspire.ec.europa.eu/schemas/hh/3.0"
+        schemaLocation="http://inspire.ec.europa.eu/schemas/hh/3.0/HumanHealth.xsd"/>
+    <xs:import namespace="urn:x-inspire:specification:gmlas:HydroNetwork:3.0"
+        schemaLocation="http://inspire.ec.europa.eu/schemas/hy-n/3.0/HydroNetwork.xsd"/>
+    <xs:import namespace="urn:x-inspire:specification:gmlas:HydroPhysicalWaters:3.0"
+        schemaLocation="http://inspire.ec.europa.eu/schemas/hy-p/3.0/HydroPhysicalWaters.xsd"/>
+    <xs:import namespace="urn:x-inspire:specification:gmlas:HydroReporting:3.0"
+        schemaLocation="http://inspire.ec.europa.eu/schemas/hy-r/3.0/HydroReporting.xsd"/>
+    <xs:import namespace="http://inspire.ec.europa.eu/schemas/lcr/3.0"
+        schemaLocation="http://inspire.ec.europa.eu/schemas/lcr/3.0/LandCoverRaster.xsd"/>
+    <xs:import namespace="http://inspire.ec.europa.eu/schemas/lcv/3.0"
+        schemaLocation="http://inspire.ec.europa.eu/schemas/lcv/3.0/LandCoverVector.xsd"/>
+    <xs:import namespace="http://inspire.ec.europa.eu/schemas/mr-core/3.0"
+        schemaLocation="http://inspire.ec.europa.eu/schemas/mr-core/3.0/MineralResourcesCore.xsd"/>
+    <xs:import namespace="http://inspire.ec.europa.eu/schemas/nz-core/3.0"
+        schemaLocation="http://inspire.ec.europa.eu/schemas/nz-core/3.0/NaturalRiskZonesCore.xsd"/>
+    <xs:import namespace="http://inspire.ec.europa.eu/schemas/of/3.0"
+        schemaLocation="http://inspire.ec.europa.eu/schemas/of/3.0/OceanFeatures.xsd"/>
+    <xs:import namespace="http://inspire.ec.europa.eu/schemas/oi/3.0"
+        schemaLocation="http://inspire.ec.europa.eu/schemas/oi/3.0/Orthoimagery.xsd"/>
+    <xs:import namespace="http://inspire.ec.europa.eu/schemas/pd/3.0"
+        schemaLocation="http://inspire.ec.europa.eu/schemas/pd/3.0/PopulationDistributionDemography.xsd"/>
+    <xs:import namespace="http://inspire.ec.europa.eu/schemas/pf/3.0"
+        schemaLocation="http://inspire.ec.europa.eu/schemas/pf/3.0/ProductionAndIndustrialFacilities.xsd"/>
+    <xs:import namespace="http://inspire.ec.europa.eu/schemas/plu/3.0"
+        schemaLocation="http://inspire.ec.europa.eu/schemas/plu/3.0/PlannedLandUse.xsd"/>
+    <xs:import namespace="urn:x-inspire:specification:gmlas:ProtectedSites:3.0"
+        schemaLocation="http://inspire.ec.europa.eu/schemas/ps/3.0/ProtectedSites.xsd"/>
+    <xs:import namespace="http://inspire.ec.europa.eu/schemas/sd/3.0"
+        schemaLocation="http://inspire.ec.europa.eu/schemas/sd/3.0/SpeciesDistribution.xsd"/>
+    <xs:import namespace="http://inspire.ec.europa.eu/schemas/selu/3.0"
+        schemaLocation="http://inspire.ec.europa.eu/schemas/selu/3.0/SampledExistingLandUse.xsd"/>
+    <xs:import namespace="http://inspire.ec.europa.eu/schemas/so/3.0"
+        schemaLocation="http://inspire.ec.europa.eu/schemas/so/3.0/Soil.xsd"/>
+    <xs:import namespace="urn:x-inspire:specification:gmlas:SeaRegions:0.0"
+        schemaLocation="http://inspire.ec.europa.eu/schemas/sr/0.0/SeaRegions.xsd"/>
+    <xs:import namespace="http://inspire.ec.europa.eu/schemas/su-grid/3.0"
+        schemaLocation="http://inspire.ec.europa.eu/schemas/su-grid/3.0/StatisticalUnitGrid.xsd"/>
+    <xs:import namespace="http://inspire.ec.europa.eu/schemas/su-vector/3.0"
+        schemaLocation="http://inspire.ec.europa.eu/schemas/su-vector/3.0/StatisticalUnitVector.xsd"/>
+    <xs:import namespace="urn:x-inspire:specification:gmlas:AirTransportNetwork:3.0"
+        schemaLocation="http://inspire.ec.europa.eu/schemas/tn-a/3.0/AirTransportNetwork.xsd"/>
+    <xs:import namespace="urn:x-inspire:specification:gmlas:CableTransportNetwork:3.0"
+        schemaLocation="http://inspire.ec.europa.eu/schemas/tn-c/3.0/CableTransportNetwork.xsd"/>
+    <xs:import namespace="urn:x-inspire:specification:gmlas:RailwayTransportNetwork:3.0"
+        schemaLocation="http://inspire.ec.europa.eu/schemas/tn-ra/3.0/RailwayTransportNetwork.xsd"/>
+    <xs:import namespace="urn:x-inspire:specification:gmlas:RoadTransportNetwork:3.0"
+        schemaLocation="http://inspire.ec.europa.eu/schemas/tn-ro/3.0/RoadTransportNetwork.xsd"/>
+    <xs:import namespace="urn:x-inspire:specification:gmlas:WaterTransportNetwork:3.0"
+        schemaLocation="http://inspire.ec.europa.eu/schemas/tn-w/3.0/WaterTransportNetwork.xsd"/>
+    <xs:import namespace="http://inspire.ec.europa.eu/schemas/us-emf/3.0"
+        schemaLocation="http://inspire.ec.europa.eu/schemas/us-emf/3.0/EnvironmentalManagementFacilities.xsd"/>
+    <xs:import namespace="http://inspire.ec.europa.eu/schemas/us-govserv/3.0"
+        schemaLocation="http://inspire.ec.europa.eu/schemas/us-govserv/3.0/GovernmentalServices.xsd"/>
+    <xs:import namespace="http://inspire.ec.europa.eu/schemas/us-net-el/3.0"
+        schemaLocation="http://inspire.ec.europa.eu/schemas/us-net-el/3.0/ElectricityNetwork.xsd"/>
+    <xs:import namespace="http://inspire.ec.europa.eu/schemas/us-net-ogc/3.0"
+        schemaLocation="http://inspire.ec.europa.eu/schemas/us-net-ogc/3.0/OilGasChemicalsNetwork.xsd"/>
+    <xs:import namespace="http://inspire.ec.europa.eu/schemas/us-net-sw/3.0"
+        schemaLocation="http://inspire.ec.europa.eu/schemas/us-net-sw/3.0/SewerNetwork.xsd"/>
+    <xs:import namespace="http://inspire.ec.europa.eu/schemas/us-net-tc/3.0"
+        schemaLocation="http://inspire.ec.europa.eu/schemas/us-net-tc/3.0/TelecommunicationsNetwork.xsd"/>
+    <xs:import namespace="http://inspire.ec.europa.eu/schemas/us-net-th/3.0"
+        schemaLocation="http://inspire.ec.europa.eu/schemas/us-net-th/3.0/ThermalNetwork.xsd"/>
+    <xs:import namespace="http://inspire.ec.europa.eu/schemas/us-net-wa/3.0"
+        schemaLocation="http://inspire.ec.europa.eu/schemas/us-net-wa/3.0/WaterNetwork.xsd"/>
+</xs:schema>
