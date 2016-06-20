@@ -1,12 +1,16 @@
 declare namespace cit='http://www.opengis.net/citygml/2.0';
 declare namespace gml='http://www.opengis.net/gml';
+declare namespace gml32='http://www.opengis.net/gml/3.2';
+declare namespace wfs='http://www.opengis.net/wfs/2.0';
 declare namespace imgeo='http://www.geostandaarden.nl/imgeo/2.1';
+declare namespace stufimgeo='http://www.geostandaarden.nl/imgeo/2.1/stuf-imgeo/1.3';
 declare namespace xsi='http://www.w3.org/2001/XMLSchema-instance';
 declare namespace xlink='http://www.w3.org/1999/xlink';
 declare namespace skos='http://www.w3.org/2004/02/skos/core#';
 declare namespace rdf='http://www.w3.org/1999/02/22-rdf-syntax-ns#';
 declare namespace etf='http://www.interactive-instruments.de/etf/1.0';
 declare namespace ii='http://www.interactive-instruments.de/ii/1.0';
+
 
 declare function local:disabled($id as xs:string, $enabled as xs:string) as xs:string?
 {
@@ -40,7 +44,7 @@ declare function local:finalMessage($errorCount as xs:integer) as xs:string?
 
 declare function local:execquery($db as document-node()*, $features as element()*, $query as xs:string, $severity as xs:string?, $mode as xs:string?, $start as xs:integer) as element()*
 {
-let $declarationsLocal := concat("declare namespace cit='http://www.opengis.net/citygml/2.0'; declare namespace imgeo='http://www.geostandaarden.nl/imgeo/2.1'; declare namespace skos='http://www.w3.org/2004/02/skos/core#'; declare namespace rdf='http://www.w3.org/1999/02/22-rdf-syntax-ns#'; declare namespace gml='http://www.opengis.net/gml'; declare namespace xsi='http://www.w3.org/2001/XMLSchema-instance'; declare namespace xlink='http://www.w3.org/1999/xlink'; import module namespace functx = 'http://www.functx.com';
+let $declarationsLocal := concat("declare namespace cit='http://www.opengis.net/citygml/2.0'; declare namespace imgeo='http://www.geostandaarden.nl/imgeo/2.1'; declare namespace skos='http://www.w3.org/2004/02/skos/core#'; declare namespace rdf='http://www.w3.org/1999/02/22-rdf-syntax-ns#'; declare namespace gml='http://www.opengis.net/gml'; declare namespace xsi='http://www.w3.org/2001/XMLSchema-instance'; declare namespace xlink='http://www.w3.org/1999/xlink'; declare namespace wfs='http://www.opengis.net/wfs/2.0'; declare namespace gml32='http://www.opengis.net/gml/3.2'; declare namespace stufimgeo='http://www.geostandaarden.nl/imgeo/2.1/stuf-imgeo/1.3'; import module namespace functx = 'http://www.functx.com';
 import module namespace ggeo='de.interactive_instruments.etf.bsxm.GmlGeoX'; declare variable $file external; declare variable $features external; declare variable $filename external; declare variable $projDir external; declare variable $limitErrors external := ", data($limitErrors), ";
 declare function local:checkgeometry($feature as element()*, $mask as xs:string?) as xs:string?
 {
@@ -69,7 +73,7 @@ $feature/local-name()
 declare function local:object-message($feature as element(), $text as xs:string) as element()
 {
 let $ohneid := '(no ID)'
-return <Message type='obj' file='{data($filename)}' obj='{local:type($feature)}' oid='{if ($feature/@gml:id) then data($feature/@gml:id) else data($ohneid)}' text='{data($text)}'/>
+return <Message type='obj' file='{data($filename)}' obj='{local:type($feature)}' oid='{if ($feature/@gml:id) then data($feature/@gml:id) else if ($feature/@gml32:id) then data($feature/@gml32:id) else data($ohneid)}' text='{data($text)}'/>
 };
 declare function local:object-messages($features as element()*, $text as xs:string) as element()*
 {
@@ -82,8 +86,7 @@ declare function local:file-message($text as xs:string) as element()
 <Message type='file' file='{data($filename)}' text='{data($text)}'/>
 };")
 
-let $declarationsGlobal := concat("declare namespace cit='http://www.opengis.net/citygml/2.0'; declare namespace imgeo='http://www.geostandaarden.nl/imgeo/2.1'; declare namespace skos='http://www.w3.org/2004/02/skos/core#'; declare namespace rdf='http://www.w3.org/1999/02/22-rdf-syntax-ns#'; declare namespace gml='http://www.opengis.net/gml'; declare namespace xsi='http://www.w3.org/2001/XMLSchema-instance'; declare namespace xlink='http://www.w3.org/1999/xlink'; import module namespace functx = 'http://www.functx.com';
-import module namespace ggeo='de.interactive_instruments.etf.bsxm.GmlGeoX'; declare variable $validationErrors external; declare variable $file external; declare variable $features external; declare variable $projDir external; declare variable $db external; declare variable $limitErrors external := ", data($limitErrors), ";
+let $declarationsGlobal := concat("declare namespace cit='http://www.opengis.net/citygml/2.0'; declare namespace imgeo='http://www.geostandaarden.nl/imgeo/2.1'; declare namespace skos='http://www.w3.org/2004/02/skos/core#'; declare namespace rdf='http://www.w3.org/1999/02/22-rdf-syntax-ns#'; declare namespace gml='http://www.opengis.net/gml'; declare namespace gml32='http://www.opengis.net/gml/3.2'; declare namespace wfs='http://www.opengis.net/wfs/2.0'; declare namespace stufimgeo='http://www.geostandaarden.nl/imgeo/2.1/stuf-imgeo/1.3'; declare namespace xsi='http://www.w3.org/2001/XMLSchema-instance'; declare namespace xlink='http://www.w3.org/1999/xlink'; import module namespace functx = 'http://www.functx.com'; import module namespace ggeo='de.interactive_instruments.etf.bsxm.GmlGeoX'; declare variable $validationErrors external; declare variable $file external; declare variable $features external; declare variable $projDir external; declare variable $db external; declare variable $limitErrors external := ", data($limitErrors), ";
 declare function local:checkgeometry($feature as element()*, $mask as xs:string?) as xs:string?
 {
   let $check := ggeo:validate($feature,$mask)
@@ -119,7 +122,7 @@ $feature/local-name()
 declare function local:object-message($feature as element(), $text as xs:string) as element()
 {
 let $ohneid := '(no ID)'
-return <Message type='obj' file='{local:file($feature)}' obj='{local:type($feature)}' oid='{if ($feature/@gml:id) then data($feature/@gml:id) else data($ohneid)}' text='{data($text)}'/>
+return <Message type='obj' file='{local:file($feature)}' obj='{local:type($feature)}' oid='{if ($feature/@gml:id) then data($feature/@gml:id) else if ($feature/@gml32:id) then data($feature/@gml32:id) else data($ohneid)}' text='{data($text)}'/>
 };
 declare function local:object-messages($features as element()*, $text as xs:string) as element()*
 {
@@ -469,7 +472,7 @@ if (file:exists($outputFile)) then if (file:is-file($outputFile)) then () else e
 for $i in 0 to $count return if (db:exists($dbBaseName || '-' || $i)) then () else error($paramerror,concat("System error: Data base '",concat($dbBaseName,"-",$i),"' was not found.&#xa;")),
 
 let $db := for $i in 0 to $count return db:open($dbBaseName || '-' || $i)[matches(db:path(.),$files_to_test)]
-let $features := prof:time($db//cit:cityObjectMember/*,false(),'Features: ')
+let $features := prof:time($db//cit:cityObjectMember/*|//wfs:member/*|//gml:member/*|//gml32:featureMember/*|//stufimgeo:object,false(),'Features: ')
 let $assertionsFile := concat($projDir, file:dir-separator(), "assertions.xml")
 let $def :=
 try{
