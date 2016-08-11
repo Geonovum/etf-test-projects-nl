@@ -435,7 +435,7 @@ declare function local:evaluate($svrlii as element(), $sch as document-node(), $
             <ii:Items>
               <ii:Item name="Name">
               <ii:value xsi:type="xs:string" xmlns:xs="http://www.w3.org/2001/XMLSchema"
-               xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">Not available</ii:value>
+               xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">{$assertOrReportId}</ii:value>
              </ii:Item>
              <ii:Item name="ShortDescription">
                 <ii:value xsi:type="xs:string" xmlns:xs="http://www.w3.org/2001/XMLSchema"
