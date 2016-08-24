@@ -349,126 +349,6 @@ declare function local:statistics($db as document-node()*, $features as element(
 };
 
 
-declare function local:test($db as document-node()*, $features as element()*, $def as element()*) as element()
-{
-<etf:TestReport id="{$reportId}" testObjectId="{$testObjectId}" version="0.4.0" generator="ETF-BaseX-xxx" finalized="true">
-<etf:TestingTool>BaseX 7.9</etf:TestingTool>
-<etf:StartTimestamp>{fn:current-dateTime()}</etf:StartTimestamp>
-<etf:MachineName>unknown</etf:MachineName>
-<etf:Account>unknown</etf:Account>
-<etf:Label>{$reportLabel}</etf:Label>
-	<etf:TestRunProperties>
-		<ii:Items>
-			<ii:Item name="Files to test">
-				<ii:value xsi:type="xs:string" xmlns:xs="http://www.w3.org/2001/XMLSchema"
-					xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">{$Files_to_test}</ii:value>
-			</ii:Item>
-		</ii:Items>
-	</etf:TestRunProperties>
-
-<etf:Statistics>
-{
-  prof:time(local:statistics($db, $features),false(),"Statistics: ")
-}
-</etf:Statistics>
-<etf:TestSuiteResults>
-<etf:TestSuiteResult id="Tests">
-<etf:Duration>0</etf:Duration>
-<etf:Label>GML test</etf:Label>
-<etf:TestCaseResults>
-{
-  for $group in $def[local-name()='Group']
-  let $test-step-results :=
-    for $subgroup in $def[local-name()='Subgroup' and starts-with(@id,concat($group/@id,'.'))]
-      let $start := prof:current-ms()
-      let $assertion-results :=
-        for $assertion in $def[local-name()='Assertion' and starts-with(@id,concat($subgroup/@id,'.'))]
-        return
-         prof:time(local:execute($db, $assertion/@id, $features, $assertion/expression, local:disabled($assertion/@id, $assertion/@enabled), $assertion/@severity, $assertion/@mode),false(),'Test ' || $assertion/@id || ": ")
-      return
-        local:test-step-results($subgroup/@id, $assertion-results, prof:current-ms()-$start)
-  return
-    <etf:TestCaseResult id="{generate-id($group)}" testCaseRef="{data($group/@id)}">
-      <etf:ResultStatus>{if ($test-step-results[etf:ResultStatus='FAILED']) then 'FAILED' else if ($test-step-results[etf:ResultStatus='WARNING']) then 'WARNING' else if ($test-step-results[etf:ResultStatus='OK']) then 'OK' else 'SKIPPED'}</etf:ResultStatus>
-      <etf:TestStepResults>{$test-step-results}</etf:TestStepResults>
-    </etf:TestCaseResult>
-}
-</etf:TestCaseResults>
-</etf:TestSuiteResult>
-</etf:TestSuiteResults>
-<etf:TestCases>
-{
-  for $group in $def[local-name()='Group']
-  return
-  <etf:TestCase id="{$group/@id}">
-      <etf:Label>{$group/name/text()}</etf:Label>
-      <etf:Description>{$group/description/text()}</etf:Description>
-      <etf:VersionData>
-        <etf:Version>{$group/version/text()}</etf:Version>
-        <etf:CreationDate>{$group/creationDate/text()}</etf:CreationDate>
-        <etf:LastUpdateDate>{$group/lastUpdateDate/text()}</etf:LastUpdateDate>
-        <etf:Hash/>
-        <etf:Author>{$group/author/text()}</etf:Author>
-        <etf:LastEditor>{$group/lastEditor/text()}</etf:LastEditor>
-      </etf:VersionData>
-  <etf:AssociatedRequirements>
-    <!--etf:Requirement>n/a</etf:Requirement-->
-  </etf:AssociatedRequirements>
-    <etf:Properties>
-    <ii:Items>
-     <ii:Item name="ShortDescription">
-      <ii:value xsi:type="xs:string" xmlns:xs="http://www.w3.org/2001/XMLSchema"
-       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">{$group/shortDescription/text()}</ii:value>
-     </ii:Item>
-     <ii:Item name="Reference">
-      <ii:value xsi:type="xs:string" xmlns:xs="http://www.w3.org/2001/XMLSchema"
-       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">3D</ii:value>
-     </ii:Item>
-    </ii:Items>
-  </etf:Properties>
-  <etf:TestSteps>
-  {
-    for $subgroup in $def[local-name()='Subgroup' and starts-with(@id,$group/@id)]
-    return
-    local:test-step($subgroup/@id, $subgroup/name, $def[local-name()='Assertion'])
-  }
-  </etf:TestSteps>
-  <etf:status>IMPLEMENTED</etf:status>
-  </etf:TestCase>
-}
-</etf:TestCases>
-<etf:Requirements>
-<etf:Requirement id="GML">
-<etf:Label>GML 2D Geometry tests</etf:Label>
-<etf:Description>GML 2D Geometry tests</etf:Description>
-<etf:Properties>
-    <ii:Items>
-        <ii:Item name="SpecificationReference">
-            <ii:value xsi:type="xs:string" xmlns:xs="http://www.w3.org/2001/XMLSchema"
-                xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">http://www.geonovum.nl/onderwerpen/bgt-imgeo-standaarden/</ii:value>
-        </ii:Item>
-    </ii:Items>
-</etf:Properties>
-<etf:SubRequirements>
-{
-  for $assertion in $def[local-name()='Assertion']
-  return
-  <etf:Requirement>{$assertion/name/text()}</etf:Requirement>
-}
-</etf:SubRequirements>
-</etf:Requirement>
-{
-  for $assertion in $def[local-name()='Assertion']
-  return
-  local:requirement($assertion)
-}
-</etf:Requirements>
-
-<etf:Duration>{prof:current-ms()-$reportStartTimestamp}</etf:Duration>,
-</etf:TestReport>
-};
-
-
 
 (:===========:)
 (: OTHER FUNCTIONS  :)
@@ -1048,7 +928,6 @@ let $sch2 := prof:time(xslt:transform($sch1,$xslIsoAbstractExpand),false(),'ISO 
 let $sch2.1 := prof:time(xslt:transform($sch2,$xslIIAbstractRuleExpand),false(),'ISO Schematron XSL transformation(ii) - expand abstract rules: ')
 let $sch2.2 := prof:time(xslt:transform($sch2.1,$xslIdsForPatternsRulesAsserts),false(),'ISO Schematron XSL transformation(ii) - create ids for patterns, rules, asserts and reports: ')
 
-
 let $schAsXslt := prof:time(xslt:transform($sch2.2,$xslSvrlForXslt),false(),'ISO Schematron XSL transformation - derive validation stylesheet: ')
 
 (:===========================:)
@@ -1067,17 +946,7 @@ try{
 	error($paramerror,concat("System error: Assertions file '",data($assertionsFile),"' was not found.&#xa;"))
 }
 
-(: let $res := local:test($db, $features, $defAssertions) :)
-
 let $res := prof:time(local:evaluate($svrlii,$sch2.2,$startTimeStamp, $printExactLocationEvaluated, $db, $features, $defAssertions), false(), 'Time to evaluate: ')
-let $dummy := file:write($outputFile,$res)
 
-(:============================:)
-(: test all, write to the same file: TODO: 1 report :)
-(:============================:)
-(:
-let $db := for $i in 0 to $count return db:open($dbBaseName || '-' || $i)[matches(db:path(.),$Files_to_test)]
 let $dummy := file:write($outputFile,$res)
-:)
-
 return ($res)
