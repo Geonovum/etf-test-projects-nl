@@ -53,22 +53,22 @@ import com.eviware.soapui.impl.wsdl.teststeps.*;
 c = testRunner.getRunContext();
 
 URL endpoint = new URL(c.expand('${#Project#serviceEndpoint}'));
-if (endpoint.getQuery()) {      
+if (endpoint.getQuery()) {
     def queryParams = endpoint.getQuery().split("&amp;");
-    
+
     // default params for GetCapabilities:
     // filter out version
-    def defaultParamsGetCaps = ["version","service","request","language"];
-    
+    def defaultParamsGetCaps = ["acceptversions","service","request","language"];
+
     for (p in queryParams) {
         for (d in defaultParamsGetCaps) {
-            if (p.split("=")[0].toLowerCase() == d) {         
+            if (p.split("=")[0].toLowerCase() == d) {
                 queryParams = queryParams - p;
             }
         }
         log.debug("Queryparams from serviceEndpoint cleaned. Aditional queryparams left: " + queryParams);
     }
-    
+
     // For REST requests, add additional query parameters
     // Here for GetCapabilities only
     if (queryParams.length > 0) {
@@ -76,14 +76,20 @@ if (endpoint.getQuery()) {
         for( testSuite in testRunner.testCase.testSuite.project.getTestSuiteList() ) {
             for( testCase in testSuite.getTestCaseList() ) {
                 for( testStep in testCase.getTestStepList() ) {
-                    if( testStep instanceof HttpTestRequestStep ) {                    
+                    if( testStep instanceof HttpTestRequestStep ) {
                         // First: cleanup old extra params, if the tests have been saved with aditional params a previous time
-                        if (testStep.getName()=="GetCapabilities") {
+                       def getCapsReq = false;
+                        for (prop in testStep.getHttpRequest().getProperties()) {
+                        	       if (prop.getValue().getValue()=="GetCapabilities") {
+                                	getCapsReq = true;
+                                }
+                            }
+                        if (getCapsReq) {
                             // first remove any other params
                             for (prop in testStep.getHttpRequest().getProperties()) {
                                     defaultParam = 0;
                                     log.debug("HTTP param: " + prop.getKey())
-                                    for (d in defaultParamsGetCaps) {                           
+                                    for (d in defaultParamsGetCaps) {
                                     if (prop.getKey().toLowerCase() == d) {
                                         defaultParam = 1;
                                     }
@@ -93,22 +99,24 @@ if (endpoint.getQuery()) {
                                         testStep.getHttpRequest().removeProperty(prop.getKey());
                                         log.debug("Removed non-standard query parameter from the request: " + prop.getKey())
                                 }
-                            }                                              
+                            }
                             // now add the extra params from the query string
                             for (q in queryParams) {
                                     def pair = q.split("=");
-                                    testStep.getHttpRequest().addProperty(pair[0]); 
-                                    testStep.getHttpRequest().setPropertyValue(pair[0], pair[1]); 
+                                    testStep.getHttpRequest().addProperty(pair[0]);
+                                    testStep.getHttpRequest().setPropertyValue(pair[0], pair[1]);
                                     log.debug("Added non-standard query parameter for the Getcapabilities requests: " + pair[0] + "=" + pair[1])
                             }
-                        }                    
+                        }
                     }
                 }
             }
-        };        
+        };
     }
 
-}</script></con:config></con:testStep><con:properties><con:property><con:name>etf.ShortDescription</con:name><con:value/></con:property><con:property><con:name>etf.Author</con:name><con:value>thijsb</con:value></con:property><con:property><con:name>etf.LastEditor</con:name><con:value>thijsb</con:value></con:property><con:property><con:name>etf.ExpectedResults</con:name><con:value/></con:property><con:property><con:name>etf.CreationDate</con:name><con:value>2015-07-13T16:45:04.085+02:00</con:value></con:property><con:property><con:name>etf.LastUpdateDate</con:name><con:value>2015-07-13T16:45:04.086+02:00</con:value></con:property><con:property><con:name>etf.Version</con:name><con:value>1.0.0</con:value></con:property><con:property><con:name>etf.AssociatedRequirements</con:name><con:value/></con:property><con:property><con:name>etf.Status</con:name><con:value>IMPLEMENTED</con:value></con:property></con:properties></con:testCase><con:properties/></con:testSuite><con:testSuite name="Verplicht-WMS"><con:description>For various combinations of valid mandatory request parameters validate
+}
+
+</script></con:config></con:testStep><con:properties><con:property><con:name>etf.ShortDescription</con:name><con:value/></con:property><con:property><con:name>etf.Author</con:name><con:value>thijsb</con:value></con:property><con:property><con:name>etf.LastEditor</con:name><con:value>thijsb</con:value></con:property><con:property><con:name>etf.ExpectedResults</con:name><con:value/></con:property><con:property><con:name>etf.CreationDate</con:name><con:value>2015-07-13T16:45:04.085+02:00</con:value></con:property><con:property><con:name>etf.LastUpdateDate</con:name><con:value>2015-07-13T16:45:04.086+02:00</con:value></con:property><con:property><con:name>etf.Version</con:name><con:value>1.0.0</con:value></con:property><con:property><con:name>etf.AssociatedRequirements</con:name><con:value/></con:property><con:property><con:name>etf.Status</con:name><con:value>IMPLEMENTED</con:value></con:property></con:properties></con:testCase><con:properties/></con:testSuite><con:testSuite name="Verplicht-WMS"><con:description>For various combinations of valid mandatory request parameters validate
  that the view service returns a valid XML file, checked against the WMS 
 1.3.0 GetCapabilties Response schema.</con:description><con:settings/><con:runType>SEQUENTIAL</con:runType><con:testCase failOnError="false" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="Verplichtingen WMS Capabilities" searchProperties="true" id="ca38c417-76c9-48f3-a69e-945beb859d0c" timeout="0" wsrmEnabled="false" wsrmVersion="1.0" wsrmAckTo="" amfAuthorisation="false" amfEndpoint="" amfLogin="" amfPassword=""><con:settings/><con:testStep type="properties" name="Properties" id="9beb705d-4c3b-4056-a3c2-32e3dfe3b7a4"><con:settings/><con:config xsi:type="con:PropertiesStep" saveFirst="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:properties><con:property><con:name>firstlayer</con:name><con:value>0</con:value></con:property></con:properties></con:config></con:testStep><con:testStep type="httprequest" name="GetCapabilities" id="518359ca-9081-4619-af8c-a34b2892cbad"><con:settings/><con:config method="GET" xsi:type="con:HttpRequest" name="GetCapabilities" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:endpoint>${#Project#serviceEndpoint}</con:endpoint><con:request/><con:assertion type="Response SLA Assertion" name="Response SLA" id="c760b394-2316-4d2c-9827-93b01a13d454"><con:configuration><SLA>5000</SLA></con:configuration></con:assertion><con:assertion type="GroovyScriptAssertion" name="Timeout" id="8163c21f-2133-4923-8827-a67997abddee"><con:configuration><scriptText>// check response time
 log.info( "time taken was :" + messageExchange.timeTaken );
@@ -164,23 +172,23 @@ import com.eviware.soapui.impl.wsdl.teststeps.*;
 c = testRunner.getRunContext();
 
 URL endpoint = new URL(c.expand('${#Project#getMapUrl}'));
-if (endpoint.getQuery()) {  
+if (endpoint.getQuery()) {
     def queryParams = endpoint.getQuery().split("&amp;");
-    
-    
+
+
     // default params for GetMap:
     // filter out version
     def defaultParamsGetMap = ["version","service","request","language","bgcolor","crs","bbox","height","styles","width","height","transparent","exceptions","format","layers","srs"];
-    
+
     for (p in queryParams) {
         for (d in defaultParamsGetMap) {
-            if (p.split("=")[0].toLowerCase() == d) {         
+            if (p.split("=")[0].toLowerCase() == d) {
                 queryParams = queryParams - p;
             }
         }
         log.debug("Queryparams from getMapUrl cleaned. Aditional queryparams left: " + queryParams);
     }
-    
+
     // For REST requests, add additional query parameters
     // Here for GetCapabilities only
     if (queryParams.length > 0) {
@@ -188,14 +196,20 @@ if (endpoint.getQuery()) {
         for( testSuite in testRunner.testCase.testSuite.project.getTestSuiteList() ) {
             for( testCase in testSuite.getTestCaseList() ) {
                 for( testStep in testCase.getTestStepList() ) {
-                    if( testStep instanceof HttpTestRequestStep ) {                    
+                    if( testStep instanceof HttpTestRequestStep ) {
                         // First: cleanup old extra params, if the tests have been saved with aditional params a previous time
-                        if (testStep.getRestMethod().getName()=="GetMap") {
+                       def getMapReq = false;
+                        for (prop in testStep.getHttpRequest().getProperties()) {
+                        	       if (prop.getValue().getValue()=="GetMap" || prop.getValue().getValue()=="BREAKME") {
+                                	getMapReq = true;
+                                }
+                            }
+                        if (getMapReq) {
                             // first remove any other params
                             for (prop in testStep.getHttpRequest().getProperties()) {
                                     defaultParam = 0;
                                     log.debug("HTTP param: " + prop.getKey())
-                                    for (d in defaultParamsGetMap) {                           
+                                    for (d in defaultParamsGetMap) {
                                     if (prop.getKey().toLowerCase() == d) {
                                         defaultParam = 1;
                                     }
@@ -205,19 +219,19 @@ if (endpoint.getQuery()) {
                                         testStep.getHttpRequest().removeProperty(prop.getKey());
                                         log.debug("Removed non-standard query parameter from the request: " + prop.getKey())
                                 }
-                            }                                              
+                            }
                             // now add the extra params from the query string
                             for (q in queryParams) {
                                     def pair = q.split("=");
-                                    testStep.getHttpRequest().addProperty(pair[0]); 
-                                    testStep.getHttpRequest().setPropertyValue(pair[0], pair[1]); 
+                                    testStep.getHttpRequest().addProperty(pair[0]);
+                                    testStep.getHttpRequest().setPropertyValue(pair[0], pair[1]);
                                     log.debug("Added non-standard query parameter for the GetMap requests: " + pair[0] + "=" + pair[1])
                             }
-                        }                    
+                        }
                     }
                 }
             }
-        };        
+        };
     }
 }</script></con:config></con:testStep><con:properties><con:property><con:name>MAIN_TESTSTEP</con:name><con:value>GetCapabilities</con:value></con:property><con:property><con:name>save_responses</con:name><con:value>TRUE</con:value></con:property><con:property><con:name>etf.AssociatedRequirements</con:name><con:value>Verplicht-WMS##1###Verplicht-WMS##2###Verplicht-WMS##3</con:value></con:property><con:property><con:name>etf.ShortDescription</con:name><con:value/></con:property><con:property><con:name>etf.Author</con:name><con:value>thijsb</con:value></con:property><con:property><con:name>etf.LastEditor</con:name><con:value>thijsb</con:value></con:property><con:property><con:name>etf.ExpectedResults</con:name><con:value/></con:property><con:property><con:name>etf.CreationDate</con:name><con:value>2015-07-13T16:45:04.091+02:00</con:value></con:property><con:property><con:name>etf.LastUpdateDate</con:name><con:value>2015-07-13T16:45:04.093+02:00</con:value></con:property><con:property><con:name>etf.Version</con:name><con:value>1.0.0</con:value></con:property><con:property><con:name>etf.Status</con:name><con:value>IMPLEMENTED</con:value></con:property></con:properties></con:testCase><con:testCase failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="Verplichtingen Metadata" searchProperties="true" id="ebf73e61-7c2a-4c5b-9ecf-f4b24a02e8ba"><con:settings/><con:testStep type="properties" name="Properties" id="cc9aa746-617c-45b6-ae84-12a8d7d6b6e6"><con:settings/><con:config xsi:type="con:PropertiesStep" saveFirst="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:properties><con:property><con:name>urlToTest</con:name><con:value/></con:property><con:property><con:name>Capabilities</con:name><con:value/></con:property><con:property><con:name>urlToTestEncoded</con:name><con:value/></con:property></con:properties></con:config></con:testStep><con:testStep type="httprequest" name="GetMetadataURLs" id="e81d8cee-334d-4ec0-bbbb-4ea71dfe272b"><con:settings/><con:config method="GET" xsi:type="con:HttpRequest" name="GetMetadataURLs" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:endpoint>${#Project#serviceEndpoint}</con:endpoint><con:request/><con:assertion type="XQuery Match" name="Verplicht-WMS##4a-1: Er is op zijn minst 1 MetadataURL aanwezig" id="f2231c83-4150-4c96-b7f0-7f21b49f11e4"><con:configuration><path>declare namespace wms='http://www.opengis.net/wms';
 declare namespace xlink='http://www.w3.org/1999/xlink';
