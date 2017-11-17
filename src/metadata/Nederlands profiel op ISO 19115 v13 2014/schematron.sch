@@ -20,10 +20,10 @@
 		<sch:let name="thesaurus4" value="normalize-space(/gmd:MD_Metadata/gmd:identificationInfo/gmd:MD_DataIdentification/gmd:descriptiveKeywords[4]/gmd:MD_Keywords/gmd:thesaurusName/gmd:CI_Citation/gmd:title/gco:CharacterString)"/>
 		<sch:let name="thesaurus" value="concat(string($thesaurus1),string($thesaurus2),string($thesaurus3),string($thesaurus4))"/>
 		<sch:let name="thesaurus_INSPIRE_Exsists" value="contains($thesaurus,'GEMET - INSPIRE themes, version 1.0')"/>
-		<sch:let name="conformity_Spec_Title1" value="normalize-space(//gmd:MD_Metadata/gmd:dataQualityInfo/gmd:DQ_DataQuality/gmd:report[1]/gmd:DQ_DomainConsistency/gmd:result/gmd:DQ_ConformanceResult/gmd:specification/gmd:CI_Citation/gmd:title/gco:CharacterString)"/>
-		<sch:let name="conformity_Spec_Title2" value="normalize-space(//gmd:MD_Metadata/gmd:dataQualityInfo/gmd:DQ_DataQuality/gmd:report[2]/gmd:DQ_DomainConsistency/gmd:result/gmd:DQ_ConformanceResult/gmd:specification/gmd:CI_Citation/gmd:title/gco:CharacterString)"/>
-		<sch:let name="conformity_Spec_Title3" value="normalize-space(//gmd:MD_Metadata/gmd:dataQualityInfo/gmd:DQ_DataQuality/gmd:report[3]/gmd:DQ_DomainConsistency/gmd:result/gmd:DQ_ConformanceResult/gmd:specification/gmd:CI_Citation/gmd:title/gco:CharacterString)"/>
-		<sch:let name="conformity_Spec_Title4" value="normalize-space(//gmd:MD_Metadata/gmd:dataQualityInfo/gmd:DQ_DataQuality/gmd:report[4]/gmd:DQ_DomainConsistency/gmd:result/gmd:DQ_ConformanceResult/gmd:specification/gmd:CI_Citation/gmd:title/gco:CharacterString)"/>
+		<sch:let name="conformity_Spec_Title1" value="normalize-space(//gmd:MD_Metadata/gmd:dataQualityInfo[1]/gmd:DQ_DataQuality/gmd:report[1]/gmd:DQ_DomainConsistency/gmd:result/gmd:DQ_ConformanceResult/gmd:specification/gmd:CI_Citation/gmd:title/gco:CharacterString)"/>
+		<sch:let name="conformity_Spec_Title2" value="normalize-space(//gmd:MD_Metadata/gmd:dataQualityInfo[1]/gmd:DQ_DataQuality/gmd:report[2]/gmd:DQ_DomainConsistency/gmd:result/gmd:DQ_ConformanceResult/gmd:specification/gmd:CI_Citation/gmd:title/gco:CharacterString)"/>
+		<sch:let name="conformity_Spec_Title3" value="normalize-space(//gmd:MD_Metadata/gmd:dataQualityInfo[1]/gmd:DQ_DataQuality/gmd:report[3]/gmd:DQ_DomainConsistency/gmd:result/gmd:DQ_ConformanceResult/gmd:specification/gmd:CI_Citation/gmd:title/gco:CharacterString)"/>
+		<sch:let name="conformity_Spec_Title4" value="normalize-space(//gmd:MD_Metadata/gmd:dataQualityInfo[1]/gmd:DQ_DataQuality/gmd:report[4]/gmd:DQ_DomainConsistency/gmd:result/gmd:DQ_ConformanceResult/gmd:specification/gmd:CI_Citation/gmd:title/gco:CharacterString)"/>
 		<sch:let name="conformity_Spec_Title_All" value="concat(string($conformity_Spec_Title1),string($conformity_Spec_Title2),string($conformity_Spec_Title3),string($conformity_Spec_Title4))"/>
 		<sch:let name="conformity_Spec_Title_Exsists" value="contains($conformity_Spec_Title_All,'VERORDENING (EU) Nr. 1089/2010 VAN DE COMMISSIE van 23 november 2010 ter uitvoering van Richtlijn 2007/2/EG van het Europees Parlement en de Raad betreffende de interoperabiliteit van verzamelingen ruimtelijke gegevens en van diensten met betrekking tot ruimtelijke gegevens')"/>
 
@@ -56,7 +56,7 @@
 
 		<!--  voor INSPIRE toegestane waarde in combi met INSPIRE specificatie -->
 
-			<sch:let name="mdResponsibleParty_Role_INSPIRE" value="gmd:contact[1]/gmd:CI_ResponsibleParty/gmd:role/*/@codeListValue = 'pointOfContact'"/>
+			<sch:let name="mdResponsibleParty_Role_INSPIRE" value="gmd:contact[1]/gmd:CI_ResponsibleParty/gmd:role/*/@codeListValue = 'pointOfContact' "/>
 
 		<!-- Metadata verantwoordelijke organisatie (url) -->
 			<sch:let name="mdResponsibleParty_Mail" value="normalize-space(gmd:contact[1]/gmd:CI_ResponsibleParty/gmd:contactInfo/gmd:CI_Contact/gmd:address/gmd:CI_Address/gmd:electronicMailAddress[1]/gco:CharacterString)"/>
@@ -93,7 +93,7 @@
 			<sch:report id="Rol organisatie metadata (ISO nr. 379) info" test="$mdResponsibleParty_Role">Rol organisatie metadata (ISO nr. 379): <sch:value-of select="$mdResponsibleParty_Role"/>
 			</sch:report>
 		<!-- INSPIRE in combi met specificatie INSPIRE -->
-			<sch:assert id="INSPIRE Rol organisatie metadata (ISO nr. 379)" test="not($conformity_Spec_Title_Exsists) or ($conformity_Spec_Title_Exsists and $mdResponsibleParty_Role_INSPIRE)">Rol organisatie metadata (ISO nr. 379) ontbreekt of heeft een verkeerde waarde, deze dient voor INSPIRE contactpunt te zijn</sch:assert>
+			<sch:assert id="Rol organisatie metadata (ISO nr. 379)" test="not($conformity_Spec_Title_Exsists) or ($conformity_Spec_Title_Exsists and $mdResponsibleParty_Role_INSPIRE)">Rol organisatie metadata (ISO nr. 379) ontbreekt of heeft een verkeerde waarde, deze dient voor INSPIRE contactpunt te zijn</sch:assert>
 		<!-- eind INSPIRE in combi met specificatie INSPIRE -->
 			<sch:assert id="E-mail organisatie metadata (ISO nr. 386)"  test="$mdResponsibleParty_Mail">E-mail organisatie metadata (ISO nr. 386) ontbreekt</sch:assert>
 			<sch:report id="E-mail organisatie metadata (ISO nr. 386) info" test="$mdResponsibleParty_Mail">E-mail organisatie metadata (ISO nr. 386): <sch:value-of select="$mdResponsibleParty_Mail"/>
@@ -248,7 +248,7 @@
 			<sch:assert id="Gebruiksbeperkingen (ISO nr. 68)" test="$useLimitation">Gebruiksbeperkingen (ISO nr. 68) ontbreken</sch:assert>
 			<sch:report id="Gebruiksbeperkingen (ISO nr. 68) info" test="$useLimitation">Gebruiksbeperkingen (ISO nr. 68): <sch:value-of select="$useLimitation"/>
 			</sch:report>
-			<sch:assert id="(Juridische) toegangsrestricties (ISO nr. 70) en Overige beperkingen (ISO nr 72)" test="$accessConstraints_value and $otherConstraints">(Juridische) toegangsrestricties (ISO nr. 70) en Overige beperkingen (ISO nr 72) dient ingevuld te zijn</sch:assert>
+			<sch:assert id="(Juridische) toegangsrestricties (ISO nr. 70) en Overige beperkingen (ISO nr 72)" test="$accessConstraints_value and $otherConstraints ">(Juridische) toegangsrestricties (ISO nr. 70) en Overige beperkingen (ISO nr 72) dient ingevuld te zijn</sch:assert>
 			<sch:assert id="(Juridische) toegangsrestricties (ISO nr. 70)" test="$accessConstraints_value">(Juridische) toegangsrestricties (ISO nr. 70) dient de waarde 'anders' te hebben in combinatie met een publiek domein, CC0 of geogedeelt licentie bij overige beperkingen (ISO nr. 72)</sch:assert>
 			<sch:assert id="Overige beperkingen (ISO nr 72)" test="not($accessConstraints_value = 'otherRestrictions') or ($accessConstraints_value = 'otherRestrictions' and $otherConstraint1 and $otherConstraint2)">Het element overige beperkingen (ISO nr. 72) dient twee maal binnen dezelfde toegangsrestricties voor te komen; één met de beschrijving en één met de URL naar de publiek domein, CC0 of geogedeelt licentie,als (juridische) toegangsrestricties (ISO nr. 70) de waarde 'anders' heeft</sch:assert>
 			<sch:report id="Overige beperkingen (ISO nr 72) 1 info" test="$otherConstraint1">Overige beperkingen (ISO nr 72) 1: <sch:value-of select="$otherConstraint1"/>
@@ -284,11 +284,13 @@
 		<!-- eind distributie format voor INSPIRE geharmoniseerd -->
 
 
+	  <!-- Thijs: om fouten in de validator te voorkomen als er metadata is aangeleverd met meerdere blokken dataQualityInfo (de NGR editor kan dit sooort fouten veroorzaken), gebruik altijd alleen het eerste blok. Doe dit bij alle elementen gmd:dataQualityInfo -->
 		<!-- alle regels over elementen binnen gmd:dataQualityInfo -->
-			<sch:let name="dataQualityInfo" value="gmd:dataQualityInfo/gmd:DQ_DataQuality"/>
+			<sch:let name="dataQualityInfo" value="gmd:dataQualityInfo[1]/gmd:DQ_DataQuality"/>
 		<!-- Algemene beschrijving herkomst  -->
 			<sch:let name="statement" value="normalize-space($dataQualityInfo/gmd:lineage/gmd:LI_Lineage/gmd:statement/gco:CharacterString)"/>
 		<!--  Niveau kwaliteitsbeschrijving  -->
+
 			<sch:let name="level" value="string($dataQualityInfo/gmd:scope/gmd:DQ_Scope/gmd:level/*/@codeListValue[. = 'dataset' or . = 'series' or . = 'featureType'])"/>
 		<!-- rules and assertions -->
 			<sch:assert id="Algemene beschrijving herkomst (ISO nr. 83)" test="$statement">Algemene beschrijving herkomst (ISO nr. 83) ontbreekt</sch:assert>
@@ -339,7 +341,7 @@
 		</sch:rule>
 
 		<!--  Conformiteitindicatie meerdere specificaties -->
-		<sch:rule id="Conformiteit specificaties" context="//gmd:MD_Metadata/gmd:dataQualityInfo/gmd:DQ_DataQuality/gmd:report/gmd:DQ_DomainConsistency/gmd:result/gmd:DQ_ConformanceResult">
+		<sch:rule id="Conformiteit specificaties" context="//gmd:MD_Metadata/gmd:dataQualityInfo[1]/gmd:DQ_DataQuality/gmd:report/gmd:DQ_DomainConsistency/gmd:result/gmd:DQ_ConformanceResult">
 
 		<!-- Specificatie title -->
 			<sch:let name="conformity_SpecTitle" value="normalize-space(gmd:specification/gmd:CI_Citation/gmd:title/gco:CharacterString)"/>
@@ -413,8 +415,8 @@
        			<sch:let name="distance" value="gmd:spatialResolution/gmd:MD_Resolution/gmd:distance/*/text()"/>
        			<sch:let name="denominator" value="gmd:spatialResolution/gmd:MD_Resolution/gmd:equivalentScale/gmd:MD_RepresentativeFraction/gmd:denominator/*/text()"/>
 
-			<sch:assert id="Toepassingsschaal (ISO nr. 57) of Resolutie (ISO nr. 61)" test="$denominator or $distance">Toepassingsschaal (ISO nr. 57) of Resolutie (ISO nr. 61) ontbreekt, vul een van deze in</sch:assert>
-			<sch:assert id="Toepassingsschaal (ISO nr. 57) en Resolutie (ISO nr. 61)" test="not($denominator and  $distance)">Toepassingsschaal (ISO nr. 57) of Resolutie (ISO nr. 61) invullen, niet beide</sch:assert>
+			<sch:assert id="Toepassingsschaal (ISO nr. 57) of Resolutie (ISO nr. 61)" test="$denominator or $distance ">Toepassingsschaal (ISO nr. 57) of Resolutie (ISO nr. 61) ontbreekt, vul een van deze in</sch:assert>
+			<sch:assert id="Toepassingsschaal (ISO nr. 57) en Resolutie (ISO nr. 61)" test="not($denominator and  $distance) ">Toepassingsschaal (ISO nr. 57) of Resolutie (ISO nr. 61) invullen, niet beide</sch:assert>
        		</sch:rule>
 
 		<!-- Spatial resolution equivalentScale -->
@@ -430,7 +432,7 @@
 		<sch:rule id="Resolutie" context="//gmd:spatialResolution/gmd:MD_Resolution/gmd:distance/gco:Distance">
 
 			<sch:let name="distance" value="text()"/>
-			<sch:let name="distance_UOM" value="@uom= 'meters'"/>
+			<sch:let name="distance_UOM" value="@uom= 'meters' "/>
 
 			<sch:assert id="Resolutie (ISO nr. 61)" test="not(string(number($distance))='NaN')">Resolutie (ISO nr. 61) heeft een verkeerde waarde, resolutie is niet numeriek of is leeg</sch:assert>
 			<sch:report id="Resolutie (ISO nr. 61) info" test="$distance">Resolutie (ISO nr. 61) is: <sch:value-of select="$distance"/>
@@ -542,7 +544,7 @@ Deze keywords  moeten uit GEMET- INSPIRE themes thesaurus komen. gevonden keywor
 		 <!--  voor externe thesaurus
  		-->
 		 <!--
-     		<sch:assert id="INSPIRE thesaurus Trefwoorden (ISO nr. 53)" test="$gemet-nl//skos:prefLabel[normalize-space(text()) = normalize-space(current())]">Keywords [<sch:value-of select="$gemet-nl//skos:prefLabel"/>]   moeten uit GEMET- INSPIRE themes thesaurus komen. gevonden keywords: <sch:value-of select="."/></sch:assert>
+     		<sch:assert id="INSPIRE thesaurus Trefwoorden (ISO nr. 53)" test="$gemet-nl//skos:prefLabel[normalize-space(text()) = normalize-space(current())]">Keywords [<sch:value-of select="$gemet-nl//skos:prefLabel "/>]   moeten uit GEMET- INSPIRE themes thesaurus komen. gevonden keywords: <sch:value-of select="."/></sch:assert>
 		 -->
 
 		</sch:rule>
