@@ -62,12 +62,12 @@ return
 <description>...</description>
 <specReference>n/a</specReference>
 <expression>
-let $featuresWithErrors := $features[//@srsName[.!='http://www.opengis.net/def/crs/EPSG/0/28992']][position() le $limitErrors]
+let $featuresWithErrors := $features[//@srsName[.!='http://www.opengis.net/def/crs/EPSG/0/28992' and .!='EPSG:28992' and .!='urn:ogc:def:crs:EPSG::28992']][position() le $limitErrors]
 return
  (local:statistics-info($featuresWithErrors),
   for $feature in $featuresWithErrors
    order by $feature/@gml:id
-   let $text := concat('CRS ',data(($feature//@srsName[.!='http://www.opengis.net/def/crs/EPSG/0/28992'])[1]),' is not http://www.opengis.net/def/crs/EPSG/0/28992.')
+   let $text := concat('CRS ',data(($feature//@srsName[.!='http://www.opengis.net/def/crs/EPSG/0/28992' and .!='EPSG:28992' and .!='urn:ogc:def:crs:EPSG::28992'])[1]),' is not correct or not correctly formatted. Should be: http://www.opengis.net/def/crs/EPSG/0/28992, EPSG:28992 or urn:ogc:def:crs:EPSG::28992.')
    return local:object-message($feature, $text))
 </expression>
 </Assertion>
