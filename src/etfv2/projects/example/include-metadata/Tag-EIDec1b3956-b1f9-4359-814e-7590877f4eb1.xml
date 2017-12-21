@@ -1,0 +1,5 @@
+<Tag xmlns="http://www.interactive-instruments.de/etf/2.0" id="EIDec1b3956-b1f9-4359-814e-7590877f4eb1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.interactive-instruments.de/etf/2.0 http://resources.etf-validator.net/schema/v2/service/service.xsd">
+	<label>Examples</label>
+	<description>Example Executable Test Suites</description>
+	<priority>999</priority>
+</Tag>

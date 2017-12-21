@@ -1,0 +1,540 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<etf:ExecutableTestSuite xmlns="http://www.interactive-instruments.de/etf/2.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:etf="http://www.interactive-instruments.de/etf/2.0"
+    xmlns:ii="http://www.interactive-instruments.de" id="EID736afd62-bfca-11e7-d238-09173f13e4c5"
+    xsi:schemaLocation="http://www.interactive-instruments.de/etf/2.0 http://resources.etf-validator.net/schema/v2/service/service.xsd">
+    <itemHash>bQ==</itemHash>
+    <remoteResource>https://github.com/interactive-instruments/etf-ets-repository</remoteResource>
+    <localPath>/auto</localPath>
+    <label>Schematron example</label>
+    <description>...</description>
+    <reference>../example-bsxets.xq</reference>
+    <version>1.0.0</version>
+    <author>See original schematron file:/Users/herrmann/Projects/etf-projects/etf-ets-repository/example/3_schematrontest/schematron.sch</author>
+    <creationDate>2017-12-04T13:55:48.266+01:00</creationDate>
+    <lastEditor>ETF Schematron to ETF Executable Test Suite Transformer</lastEditor>
+    <lastUpdateDate>2017-12-04T13:55:48.266+01:00</lastUpdateDate>
+    <tags>
+        <tag ref="EIDec1b3956-b1f9-4359-814e-7590877f4eb1"/>
+    </tags>
+    <testDriver ref="EID4dddc9e2-1b21-40b7-af70-6a2d156ad130"/>
+    <translationTemplateBundle ref="EIDf1b7cb72-bfcb-11e7-d212-09173f13e4c5"/>
+    <ParameterList name="ETF Standard Parameters for XML test objects">
+        <parameter name="files_to_test" required="true">
+            <defaultValue>.*</defaultValue>
+            <description ref="TR.filesToTest"/>
+            <allowedValues>.*</allowedValues>
+            <type>string</type>
+        </parameter>
+        <parameter name="tests_to_execute" required="false">
+            <defaultValue>.*</defaultValue>
+            <description ref="TR.testsToExecute"/>
+            <allowedValues>.*</allowedValues>
+            <type>string</type>
+        </parameter>
+    </ParameterList>
+    <supportedTestObjectTypes>
+        <testObjectType ref="EID5a60dded-0cb0-4977-9b06-16c6c2321d2e"/>
+    </supportedTestObjectTypes>
+    <testModules>
+        <TestModule id="EID7316f972-d8f2-11e7-d2e1-09173f13e4c5">
+            <label>Schematron pattern 1</label>
+            <description>...</description>
+            <parent ref="EIDEID736afd62-bfca-11e7-d238-09173f13e4c5"/>
+            <testCases>
+                <TestCase id="EID7316f974-d8f2-11e7-d2e1-09173f13e4c5">
+                    <label>Test Case 1</label>
+                    <description>...</description>
+                    <parent ref="EID7316f972-d8f2-11e7-d2e1-09173f13e4c5"/>
+                    <testSteps>
+                        <TestStep id="EID7316f8a4-d8f2-11e7-d457-09173f13e4c5">
+                            <label>IGNORE</label>
+                            <description>IGNORE</description>
+                            <parent ref="EID7316f974-d8f2-11e7-d2e1-09173f13e4c5"/>
+                            <statementForExecution>not applicable</statementForExecution>
+                            <testItemType ref="EIDf483e8e8-06b9-4900-ab36-adad0d7f22f0"/>
+                            <testAssertions>
+                                <TestAssertion id="EID7316f978-d8f2-11e7-d2e1-09173f13e4c5">
+                                    <label>Assertion 1</label>
+                                    <description>This profile prohibits use of gml:metaDataProperty elements for referencing metadata in instance documents.</description>
+                                    <parent ref="EID7316f8a4-d8f2-11e7-d457-09173f13e4c5"/>
+                                    <expectedResult>NOT_APPLICABLE</expectedResult>
+                                    <expression>                                                            
+                                                            
+                                                            let $filesWithErrors := for $i in $db/*/*/*
+
+                                                            where local:not-seq($i/local:not-seq(gml:metaDataProperty))
+                                                            return $i
+
+                                                            return
+                                                            (if ($filesWithErrors) then 'FAILED' else 'PASSED',
+                                                            local:error-statistics('TR.filesWithErrors', count($filesWithErrors)),
+                                                            for $file in $filesWithErrors
+                                                            order by local:filename($file)
+                                                            let $root := $file
+                                                            return
+                                                            local:addMessage('TR.schtron.Schematron.example.err.1.1.1', map { 'filename': local:filename($root)  }))
+                                                        </expression>
+                                    <testItemType ref="EIDf0edc596-49d2-48d6-a1a1-1ac581dcde0a"/>
+                                    <etf:translationTemplates>
+                                        <etf:translationTemplate
+                                            ref="TR.schtron.Schematron.example.err.1.1.1"/>
+                                    </etf:translationTemplates>
+                                </TestAssertion>
+                            </testAssertions>
+                        </TestStep>
+                    </testSteps>
+                </TestCase>
+                <TestCase id="EID7316f97c-d8f2-11e7-d2e2-09173f13e4c5">
+                    <label>Test Case 2</label>
+                    <description>...</description>
+                    <parent ref="EID7316f972-d8f2-11e7-d2e1-09173f13e4c5"/>
+                    <testSteps>
+                        <TestStep id="EID7316f8a5-d8f2-11e7-d515-09173f13e4c5">
+                            <label>IGNORE</label>
+                            <description>IGNORE</description>
+                            <parent ref="EID7316f97c-d8f2-11e7-d2e2-09173f13e4c5"/>
+                            <statementForExecution>not applicable</statementForExecution>
+                            <testItemType ref="EIDf483e8e8-06b9-4900-ab36-adad0d7f22f0"/>
+                            <testAssertions>
+                                <TestAssertion id="EID7316f980-d8f2-11e7-d2e2-09173f13e4c5">
+                                    <label>Assertion 1</label>
+                                    <description>Spatial properties are limited to the set of geometric types consisting of point, curve with linear and/or circular arc interpolation, planar surface, or aggregates thereof. Spatial topology is excluded.</description>
+                                    <parent ref="EID7316f8a5-d8f2-11e7-d515-09173f13e4c5"/>
+                                    <expectedResult>NOT_APPLICABLE</expectedResult>
+                                    <expression>                                                            
+                                                            
+                                                            let $filesWithErrors := for $i in $db/*//*
+
+                                                            where local:not-seq($i/local:not-seq(self::gml:Node|self::gml:Edge|self::gml:Face|self::gml:TopoSolid|self::gml:TopoPoint|self::gml:TopoCurve|self::gml:TopoSurface|self::gml:TopoVolume|self::gml:TopoComplex))
+                                                            return $i
+
+                                                            return
+                                                            (if ($filesWithErrors) then 'FAILED' else 'PASSED',
+                                                            local:error-statistics('TR.filesWithErrors', count($filesWithErrors)),
+                                                            for $file in $filesWithErrors
+                                                            order by local:filename($file)
+                                                            let $root := $file
+                                                            return
+                                                            local:addMessage('TR.schtron.Schematron.example.err.1.2.1', map { 'filename': local:filename($root)  }))
+                                                        </expression>
+                                    <testItemType ref="EIDf0edc596-49d2-48d6-a1a1-1ac581dcde0a"/>
+                                    <etf:translationTemplates>
+                                        <etf:translationTemplate
+                                            ref="TR.schtron.Schematron.example.err.1.2.1"/>
+                                    </etf:translationTemplates>
+                                </TestAssertion>
+                                <TestAssertion id="EID7316f985-d8f2-11e7-d2e2-09173f13e4c5">
+                                    <label>Assertion 2</label>
+                                    <description>Curves (standalone or within surfaces) must have linear and/or circular arc interpolation (LineString, Curve with Arc, Circle or CircleByCenterpoint segments)</description>
+                                    <parent ref="EID7316f8a5-d8f2-11e7-d515-09173f13e4c5"/>
+                                    <expectedResult>NOT_APPLICABLE</expectedResult>
+                                    <expression>                                                            
+                                                            
+                                                            let $filesWithErrors := for $i in $db/*//*
+
+                                                            where local:not-seq($i/local:not-seq(self::gml:Curve) or self::gml:Curve/gml:segments[gml:LineStringSegment|gml:Arc|gml:Circle|gml:CircleByCenterPoint])
+                                                            return $i
+
+                                                            return
+                                                            (if ($filesWithErrors) then 'FAILED' else 'PASSED',
+                                                            local:error-statistics('TR.filesWithErrors', count($filesWithErrors)),
+                                                            for $file in $filesWithErrors
+                                                            order by local:filename($file)
+                                                            let $root := $file
+                                                            return
+                                                            local:addMessage('TR.schtron.Schematron.example.err.1.2.2', map { 'filename': local:filename($root)  }))
+                                                        </expression>
+                                    <testItemType ref="EIDf0edc596-49d2-48d6-a1a1-1ac581dcde0a"/>
+                                    <etf:translationTemplates>
+                                        <etf:translationTemplate
+                                            ref="TR.schtron.Schematron.example.err.1.2.2"/>
+                                    </etf:translationTemplates>
+                                </TestAssertion>
+                                <TestAssertion id="EID7316f98b-d8f2-11e7-d2e3-09173f13e4c5">
+                                    <label>Assertion 3</label>
+                                    <description>Planar surface types are restricted to Polygon or Surface elements.</description>
+                                    <parent ref="EID7316f8a5-d8f2-11e7-d515-09173f13e4c5"/>
+                                    <expectedResult>NOT_APPLICABLE</expectedResult>
+                                    <expression>                                                            
+                                                            
+                                                            let $filesWithErrors := for $i in $db/*//*
+
+                                                            where local:not-seq($i/local:not-seq(self::gml:OrientableSurface|self::gml:CompositeSurface|self::gml:PolyhedralSurface|self::gml:Tin|self::gml:TriangulatedSurface))
+                                                            return $i
+
+                                                            return
+                                                            (if ($filesWithErrors) then 'FAILED' else 'PASSED',
+                                                            local:error-statistics('TR.filesWithErrors', count($filesWithErrors)),
+                                                            for $file in $filesWithErrors
+                                                            order by local:filename($file)
+                                                            let $root := $file
+                                                            return
+                                                            local:addMessage('TR.schtron.Schematron.example.err.1.2.3', map { 'filename': local:filename($root)  }))
+                                                        </expression>
+                                    <testItemType ref="EIDf0edc596-49d2-48d6-a1a1-1ac581dcde0a"/>
+                                    <etf:translationTemplates>
+                                        <etf:translationTemplate
+                                            ref="TR.schtron.Schematron.example.err.1.2.3"/>
+                                    </etf:translationTemplates>
+                                </TestAssertion>
+                                <TestAssertion id="EID7316f990-d8f2-11e7-d2e4-09173f13e4c5">
+                                    <label>Assertion 4</label>
+                                    <description>Supported geometry types are restricted to point, curve with linear and/or circular arc interpolation, planar surface, or aggregates thereof.</description>
+                                    <parent ref="EID7316f8a5-d8f2-11e7-d515-09173f13e4c5"/>
+                                    <expectedResult>NOT_APPLICABLE</expectedResult>
+                                    <expression>                                                            
+                                                            
+                                                            let $filesWithErrors := for $i in $db/*//*
+
+                                                            where local:not-seq($i/local:not-seq(self::gml:Solid|self::gml:MultiSolid|self::gml:CompositeSolid|self::gml:CompositeCurve|self::gml:Grid))
+                                                            return $i
+
+                                                            return
+                                                            (if ($filesWithErrors) then 'FAILED' else 'PASSED',
+                                                            local:error-statistics('TR.filesWithErrors', count($filesWithErrors)),
+                                                            for $file in $filesWithErrors
+                                                            order by local:filename($file)
+                                                            let $root := $file
+                                                            return
+                                                            local:addMessage('TR.schtron.Schematron.example.err.1.2.4', map { 'filename': local:filename($root)  }))
+                                                        </expression>
+                                    <testItemType ref="EIDf0edc596-49d2-48d6-a1a1-1ac581dcde0a"/>
+                                    <etf:translationTemplates>
+                                        <etf:translationTemplate
+                                            ref="TR.schtron.Schematron.example.err.1.2.4"/>
+                                    </etf:translationTemplates>
+                                </TestAssertion>
+                                <TestAssertion id="EID7316f995-d8f2-11e7-d2e4-09173f13e4c5">
+                                    <label>Assertion 5</label>
+                                    <description>Geometry coordinates shall only be specified using the gml:pos element for gml:Point.</description>
+                                    <parent ref="EID7316f8a5-d8f2-11e7-d515-09173f13e4c5"/>
+                                    <expectedResult>NOT_APPLICABLE</expectedResult>
+                                    <expression>                                                            
+                                                            
+                                                            let $filesWithErrors := for $i in $db/*//*
+
+                                                            where local:not-seq($i/count(self::gml:Point/gml:pos) = count(self::gml:Point/*))
+                                                            return $i
+
+                                                            return
+                                                            (if ($filesWithErrors) then 'FAILED' else 'PASSED',
+                                                            local:error-statistics('TR.filesWithErrors', count($filesWithErrors)),
+                                                            for $file in $filesWithErrors
+                                                            order by local:filename($file)
+                                                            let $root := $file
+                                                            return
+                                                            local:addMessage('TR.schtron.Schematron.example.err.1.2.5', map { 'filename': local:filename($root)  }))
+                                                        </expression>
+                                    <testItemType ref="EIDf0edc596-49d2-48d6-a1a1-1ac581dcde0a"/>
+                                    <etf:translationTemplates>
+                                        <etf:translationTemplate
+                                            ref="TR.schtron.Schematron.example.err.1.2.5"/>
+                                    </etf:translationTemplates>
+                                </TestAssertion>
+                                <TestAssertion id="EID7316f998-d8f2-11e7-d2e4-09173f13e4c5">
+                                    <label>Assertion 6</label>
+                                    <description>Geometry coordinates shall only be specified using the gml:pos element for gml:CircleByCenterPoint.</description>
+                                    <parent ref="EID7316f8a5-d8f2-11e7-d515-09173f13e4c5"/>
+                                    <expectedResult>NOT_APPLICABLE</expectedResult>
+                                    <expression>                                                            
+                                                            
+                                                            let $filesWithErrors := for $i in $db/*//*
+
+                                                            where local:not-seq($i/count(self::gml:CircleByCenterPoint/gml:pos|self::gml:CircleByCenterPoint/gml:radius) = count(self::gml:CircleByCenterPoint/*))
+                                                            return $i
+
+                                                            return
+                                                            (if ($filesWithErrors) then 'FAILED' else 'PASSED',
+                                                            local:error-statistics('TR.filesWithErrors', count($filesWithErrors)),
+                                                            for $file in $filesWithErrors
+                                                            order by local:filename($file)
+                                                            let $root := $file
+                                                            return
+                                                            local:addMessage('TR.schtron.Schematron.example.err.1.2.6', map { 'filename': local:filename($root)  }))
+                                                        </expression>
+                                    <testItemType ref="EIDf0edc596-49d2-48d6-a1a1-1ac581dcde0a"/>
+                                    <etf:translationTemplates>
+                                        <etf:translationTemplate
+                                            ref="TR.schtron.Schematron.example.err.1.2.6"/>
+                                    </etf:translationTemplates>
+                                </TestAssertion>
+                                <TestAssertion id="EID7316f99e-d8f2-11e7-d2e5-09173f13e4c5">
+                                    <label>Assertion 7</label>
+                                    <description>Geometry coordinates shall only be specified using the gml:posList element for gml:LineStringSegment.</description>
+                                    <parent ref="EID7316f8a5-d8f2-11e7-d515-09173f13e4c5"/>
+                                    <expectedResult>NOT_APPLICABLE</expectedResult>
+                                    <expression>                                                            
+                                                            
+                                                            let $filesWithErrors := for $i in $db/*//*
+
+                                                            where local:not-seq($i/count(self::gml:LineStringSegment/gml:posList) =                 count(self::gml:LineStringSegment/*))
+                                                            return $i
+
+                                                            return
+                                                            (if ($filesWithErrors) then 'FAILED' else 'PASSED',
+                                                            local:error-statistics('TR.filesWithErrors', count($filesWithErrors)),
+                                                            for $file in $filesWithErrors
+                                                            order by local:filename($file)
+                                                            let $root := $file
+                                                            return
+                                                            local:addMessage('TR.schtron.Schematron.example.err.1.2.7', map { 'filename': local:filename($root)  }))
+                                                        </expression>
+                                    <testItemType ref="EIDf0edc596-49d2-48d6-a1a1-1ac581dcde0a"/>
+                                    <etf:translationTemplates>
+                                        <etf:translationTemplate
+                                            ref="TR.schtron.Schematron.example.err.1.2.7"/>
+                                    </etf:translationTemplates>
+                                </TestAssertion>
+                                <TestAssertion id="EID7316f9a1-d8f2-11e7-d2e5-09173f13e4c5">
+                                    <label>Assertion 8</label>
+                                    <description>Geometry coordinates shall only be specified using the gml:posList element for gml:LinearRing.</description>
+                                    <parent ref="EID7316f8a5-d8f2-11e7-d515-09173f13e4c5"/>
+                                    <expectedResult>NOT_APPLICABLE</expectedResult>
+                                    <expression>                                                            
+                                                            
+                                                            let $filesWithErrors := for $i in $db/*//*
+
+                                                            where local:not-seq($i/count(self::gml:LinearRing/gml:posList) =                 count(self::gml:LinearRing/*))
+                                                            return $i
+
+                                                            return
+                                                            (if ($filesWithErrors) then 'FAILED' else 'PASSED',
+                                                            local:error-statistics('TR.filesWithErrors', count($filesWithErrors)),
+                                                            for $file in $filesWithErrors
+                                                            order by local:filename($file)
+                                                            let $root := $file
+                                                            return
+                                                            local:addMessage('TR.schtron.Schematron.example.err.1.2.8', map { 'filename': local:filename($root)  }))
+                                                        </expression>
+                                    <testItemType ref="EIDf0edc596-49d2-48d6-a1a1-1ac581dcde0a"/>
+                                    <etf:translationTemplates>
+                                        <etf:translationTemplate
+                                            ref="TR.schtron.Schematron.example.err.1.2.8"/>
+                                    </etf:translationTemplates>
+                                </TestAssertion>
+                                <TestAssertion id="EID7316f9a4-d8f2-11e7-d2e6-09173f13e4c5">
+                                    <label>Assertion 9</label>
+                                    <description>Geometry coordinates shall only be specified using the gml:posList element for gml:Arc.</description>
+                                    <parent ref="EID7316f8a5-d8f2-11e7-d515-09173f13e4c5"/>
+                                    <expectedResult>NOT_APPLICABLE</expectedResult>
+                                    <expression>                                                            
+                                                            
+                                                            let $filesWithErrors := for $i in $db/*//*
+
+                                                            where local:not-seq($i/count(self::gml:Arc/gml:posList) = count(self::gml:Arc/*))
+                                                            return $i
+
+                                                            return
+                                                            (if ($filesWithErrors) then 'FAILED' else 'PASSED',
+                                                            local:error-statistics('TR.filesWithErrors', count($filesWithErrors)),
+                                                            for $file in $filesWithErrors
+                                                            order by local:filename($file)
+                                                            let $root := $file
+                                                            return
+                                                            local:addMessage('TR.schtron.Schematron.example.err.1.2.9', map { 'filename': local:filename($root)  }))
+                                                        </expression>
+                                    <testItemType ref="EIDf0edc596-49d2-48d6-a1a1-1ac581dcde0a"/>
+                                    <etf:translationTemplates>
+                                        <etf:translationTemplate
+                                            ref="TR.schtron.Schematron.example.err.1.2.9"/>
+                                    </etf:translationTemplates>
+                                </TestAssertion>
+                                <TestAssertion id="EID7316f9a7-d8f2-11e7-d2e6-09173f13e4c5">
+                                    <label>Assertion 10</label>
+                                    <description>Geometry coordinates shall only be specified using the gml:posList element for gml:Circle.</description>
+                                    <parent ref="EID7316f8a5-d8f2-11e7-d515-09173f13e4c5"/>
+                                    <expectedResult>NOT_APPLICABLE</expectedResult>
+                                    <expression>                                                            
+                                                            
+                                                            let $filesWithErrors := for $i in $db/*//*
+
+                                                            where local:not-seq($i/count(self::gml:Circle/gml:posList) =                 count(self::gml:Circle/*))
+                                                            return $i
+
+                                                            return
+                                                            (if ($filesWithErrors) then 'FAILED' else 'PASSED',
+                                                            local:error-statistics('TR.filesWithErrors', count($filesWithErrors)),
+                                                            for $file in $filesWithErrors
+                                                            order by local:filename($file)
+                                                            let $root := $file
+                                                            return
+                                                            local:addMessage('TR.schtron.Schematron.example.err.1.2.10', map { 'filename': local:filename($root)  }))
+                                                        </expression>
+                                    <testItemType ref="EIDf0edc596-49d2-48d6-a1a1-1ac581dcde0a"/>
+                                    <etf:translationTemplates>
+                                        <etf:translationTemplate
+                                            ref="TR.schtron.Schematron.example.err.1.2.10"/>
+                                    </etf:translationTemplates>
+                                </TestAssertion>
+                                <TestAssertion id="EID7316f9ac-d8f2-11e7-d2e6-09173f13e4c5">
+                                    <label>Assertion 11</label>
+                                    <description>This profile restricts instance documents to using the property container gml:pointMember for the MultiPoint geometry type.</description>
+                                    <parent ref="EID7316f8a5-d8f2-11e7-d515-09173f13e4c5"/>
+                                    <expectedResult>NOT_APPLICABLE</expectedResult>
+                                    <expression>                                                            
+                                                            
+                                                            let $filesWithErrors := for $i in $db/*//*
+
+                                                            where local:not-seq($i/local:not-seq(self::gml:MultiPoint/gml:pointMembers))
+                                                            return $i
+
+                                                            return
+                                                            (if ($filesWithErrors) then 'FAILED' else 'PASSED',
+                                                            local:error-statistics('TR.filesWithErrors', count($filesWithErrors)),
+                                                            for $file in $filesWithErrors
+                                                            order by local:filename($file)
+                                                            let $root := $file
+                                                            return
+                                                            local:addMessage('TR.schtron.Schematron.example.err.1.2.11', map { 'filename': local:filename($root)  }))
+                                                        </expression>
+                                    <testItemType ref="EIDf0edc596-49d2-48d6-a1a1-1ac581dcde0a"/>
+                                    <etf:translationTemplates>
+                                        <etf:translationTemplate
+                                            ref="TR.schtron.Schematron.example.err.1.2.11"/>
+                                    </etf:translationTemplates>
+                                </TestAssertion>
+                                <TestAssertion id="EID7316f9b0-d8f2-11e7-d2e7-09173f13e4c5">
+                                    <label>Assertion 12</label>
+                                    <description>This profile restricts instance documents to using the property container gml:curveMember for the MultiCurve geometry type.</description>
+                                    <parent ref="EID7316f8a5-d8f2-11e7-d515-09173f13e4c5"/>
+                                    <expectedResult>NOT_APPLICABLE</expectedResult>
+                                    <expression>                                                            
+                                                            
+                                                            let $filesWithErrors := for $i in $db/*//*
+
+                                                            where local:not-seq($i/local:not-seq(self::gml:MultiCurve/gml:curveMembers))
+                                                            return $i
+
+                                                            return
+                                                            (if ($filesWithErrors) then 'FAILED' else 'PASSED',
+                                                            local:error-statistics('TR.filesWithErrors', count($filesWithErrors)),
+                                                            for $file in $filesWithErrors
+                                                            order by local:filename($file)
+                                                            let $root := $file
+                                                            return
+                                                            local:addMessage('TR.schtron.Schematron.example.err.1.2.12', map { 'filename': local:filename($root)  }))
+                                                        </expression>
+                                    <testItemType ref="EIDf0edc596-49d2-48d6-a1a1-1ac581dcde0a"/>
+                                    <etf:translationTemplates>
+                                        <etf:translationTemplate
+                                            ref="TR.schtron.Schematron.example.err.1.2.12"/>
+                                    </etf:translationTemplates>
+                                </TestAssertion>
+                                <TestAssertion id="EID7316f9b3-d8f2-11e7-d2e7-09173f13e4c5">
+                                    <label>Assertion 13</label>
+                                    <description>This profile restricts instance documents to using the property container gml:surfaceMember for the MultiSurface geometry type.</description>
+                                    <parent ref="EID7316f8a5-d8f2-11e7-d515-09173f13e4c5"/>
+                                    <expectedResult>NOT_APPLICABLE</expectedResult>
+                                    <expression>                                                            
+                                                            
+                                                            let $filesWithErrors := for $i in $db/*//*
+
+                                                            where local:not-seq($i/local:not-seq(self::gml:MultiSurface/gml:surfaceMembers))
+                                                            return $i
+
+                                                            return
+                                                            (if ($filesWithErrors) then 'FAILED' else 'PASSED',
+                                                            local:error-statistics('TR.filesWithErrors', count($filesWithErrors)),
+                                                            for $file in $filesWithErrors
+                                                            order by local:filename($file)
+                                                            let $root := $file
+                                                            return
+                                                            local:addMessage('TR.schtron.Schematron.example.err.1.2.13', map { 'filename': local:filename($root)  }))
+                                                        </expression>
+                                    <testItemType ref="EIDf0edc596-49d2-48d6-a1a1-1ac581dcde0a"/>
+                                    <etf:translationTemplates>
+                                        <etf:translationTemplate
+                                            ref="TR.schtron.Schematron.example.err.1.2.13"/>
+                                    </etf:translationTemplates>
+                                </TestAssertion>
+                                <TestAssertion id="EID7316f9b6-d8f2-11e7-d2e7-09173f13e4c5">
+                                    <label>Assertion 14</label>
+                                    <description>This profile restricts instance documents to using the property container gml:geometryMember for the MultiGeometry geometry type.</description>
+                                    <parent ref="EID7316f8a5-d8f2-11e7-d515-09173f13e4c5"/>
+                                    <expectedResult>NOT_APPLICABLE</expectedResult>
+                                    <expression>                                                            
+                                                            
+                                                            let $filesWithErrors := for $i in $db/*//*
+
+                                                            where local:not-seq($i/local:not-seq(self::gml:MultiGeometry/gml:geometryMembers))
+                                                            return $i
+
+                                                            return
+                                                            (if ($filesWithErrors) then 'FAILED' else 'PASSED',
+                                                            local:error-statistics('TR.filesWithErrors', count($filesWithErrors)),
+                                                            for $file in $filesWithErrors
+                                                            order by local:filename($file)
+                                                            let $root := $file
+                                                            return
+                                                            local:addMessage('TR.schtron.Schematron.example.err.1.2.14', map { 'filename': local:filename($root)  }))
+                                                        </expression>
+                                    <testItemType ref="EIDf0edc596-49d2-48d6-a1a1-1ac581dcde0a"/>
+                                    <etf:translationTemplates>
+                                        <etf:translationTemplate
+                                            ref="TR.schtron.Schematron.example.err.1.2.14"/>
+                                    </etf:translationTemplates>
+                                </TestAssertion>
+                                <TestAssertion id="EID7316f9bb-d8f2-11e7-d2e8-09173f13e4c5">
+                                    <label>Assertion 15</label>
+                                    <description>The content of gml:Surface elements is restricted to gml:PolygonPatch patches.</description>
+                                    <parent ref="EID7316f8a5-d8f2-11e7-d515-09173f13e4c5"/>
+                                    <expectedResult>NOT_APPLICABLE</expectedResult>
+                                    <expression>                                                            
+                                                            
+                                                            let $filesWithErrors := for $i in $db/*//*
+
+                                                            where local:not-seq($i/count(self::gml:Surface/gml:patches/gml:PolygonPatch) =                 count(self::gml:Surface/gml:patches/*))
+                                                            return $i
+
+                                                            return
+                                                            (if ($filesWithErrors) then 'FAILED' else 'PASSED',
+                                                            local:error-statistics('TR.filesWithErrors', count($filesWithErrors)),
+                                                            for $file in $filesWithErrors
+                                                            order by local:filename($file)
+                                                            let $root := $file
+                                                            return
+                                                            local:addMessage('TR.schtron.Schematron.example.err.1.2.15', map { 'filename': local:filename($root)  }))
+                                                        </expression>
+                                    <testItemType ref="EIDf0edc596-49d2-48d6-a1a1-1ac581dcde0a"/>
+                                    <etf:translationTemplates>
+                                        <etf:translationTemplate
+                                            ref="TR.schtron.Schematron.example.err.1.2.15"/>
+                                    </etf:translationTemplates>
+                                </TestAssertion>
+                                <TestAssertion id="EID7316f9be-d8f2-11e7-d2e8-09173f13e4c5">
+                                    <label>Assertion 16</label>
+                                    <description>Coordinate reference systems may have 1, 2 or 3 dimensions.</description>
+                                    <parent ref="EID7316f8a5-d8f2-11e7-d515-09173f13e4c5"/>
+                                    <expectedResult>NOT_APPLICABLE</expectedResult>
+                                    <expression>                                                            
+                                                            
+                                                            let $filesWithErrors := for $i in $db/*//*
+
+                                                            where local:not-seq($i/local:not-seq(self::*/@srsDimension &gt; 3))
+                                                            return $i
+
+                                                            return
+                                                            (if ($filesWithErrors) then 'FAILED' else 'PASSED',
+                                                            local:error-statistics('TR.filesWithErrors', count($filesWithErrors)),
+                                                            for $file in $filesWithErrors
+                                                            order by local:filename($file)
+                                                            let $root := $file
+                                                            return
+                                                            local:addMessage('TR.schtron.Schematron.example.err.1.2.16', map { 'filename': local:filename($root)  }))
+                                                        </expression>
+                                    <testItemType ref="EIDf0edc596-49d2-48d6-a1a1-1ac581dcde0a"/>
+                                    <etf:translationTemplates>
+                                        <etf:translationTemplate
+                                            ref="TR.schtron.Schematron.example.err.1.2.16"/>
+                                    </etf:translationTemplates>
+                                </TestAssertion>
+                            </testAssertions>
+                        </TestStep>
+                    </testSteps>
+                </TestCase>
+            </testCases>
+        </TestModule>
+    </testModules>
+</etf:ExecutableTestSuite>

@@ -1,0 +1,5 @@
+<Tag xmlns="http://www.interactive-instruments.de/etf/2.0" id="EID3ddb5b8a-c5ea-47d2-bdd3-00e4c254a749" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.interactive-instruments.de/etf/2.0 http://resources.etf-validator.net/schema/v2/service/service.xsd">
+	<label>GML geometry validator</label>
+	<description>GML geometry validator</description>
+	<priority>999</priority>
+</Tag>

@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TranslationTemplateBundle xmlns="http://www.interactive-instruments.de/etf/2.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:etf="http://www.interactive-instruments.de/etf/2.0"
+    xmlns:ii="http://www.interactive-instruments.de" id="EIDf1b7cb72-bfcb-11e7-d212-09173f13e4c5"
+    xsi:schemaLocation="http://www.interactive-instruments.de/etf/2.0 http://resources.etf-validator.net/schema/v2/service/service.xsd">
+    <!--Generated from 'Schematron example' on 2017-12-04T13:59:51.789+01:00-->
+    <!--This Translation Template Bundle extends the standard error messages from Translation Template Bundle EID27117afb-11aa-4e45-aa3d-0e1e65bdccb8-->
+    <!--Translation Template Bundle EID27117afb-11aa-4e45-aa3d-0e1e65bdccb8 can be downloaded from:-->
+    <!--https://raw.githubusercontent.com/interactive-instruments/etf-ets-repository/master/generic/include-metadata/TranslationTemplateBundle-EID27117afb-11aa-4e45-aa3d-0e1e65bdccb8.xml-->
+    <etf:parent ref="EID27117afb-11aa-4e45-aa3d-0e1e65bdccb8" />
+    <translationTemplateCollections>
+        <LangTranslationTemplateCollection name="TR.schtron.Schematron.example.err.1.1.1">
+            <translationTemplates>
+                <TranslationTemplate language="en" name="TR.schtron.Schematron.example.err.1.1.1"
+                    >XML document '{filename}': This profile prohibits use of gml:metaDataProperty
+                    elements for referencing metadata in instance documents.</TranslationTemplate>
+            </translationTemplates>
+        </LangTranslationTemplateCollection>
+        <LangTranslationTemplateCollection name="TR.schtron.Schematron.example.err.1.2.1">
+            <translationTemplates>
+                <TranslationTemplate language="en" name="TR.schtron.Schematron.example.err.1.2.1"
+                    >XML document '{filename}': Spatial properties are limited to the set of
+                    geometric types consisting of point, curve with linear and/or circular arc
+                    interpolation, planar surface, or aggregates thereof. Spatial topology is
+                    excluded.</TranslationTemplate>
+            </translationTemplates>
+        </LangTranslationTemplateCollection>
+        <LangTranslationTemplateCollection name="TR.schtron.Schematron.example.err.1.2.2">
+            <translationTemplates>
+                <TranslationTemplate language="en" name="TR.schtron.Schematron.example.err.1.2.2"
+                    >XML document '{filename}': Curves (standalone or within surfaces) must have
+                    linear and/or circular arc interpolation (LineString, Curve with Arc, Circle or
+                    CircleByCenterpoint segments)</TranslationTemplate>
+            </translationTemplates>
+        </LangTranslationTemplateCollection>
+        <LangTranslationTemplateCollection name="TR.schtron.Schematron.example.err.1.2.3">
+            <translationTemplates>
+                <TranslationTemplate language="en" name="TR.schtron.Schematron.example.err.1.2.3"
+                    >XML document '{filename}': Planar surface types are restricted to Polygon or
+                    Surface elements.</TranslationTemplate>
+            </translationTemplates>
+        </LangTranslationTemplateCollection>
+        <LangTranslationTemplateCollection name="TR.schtron.Schematron.example.err.1.2.4">
+            <translationTemplates>
+                <TranslationTemplate language="en" name="TR.schtron.Schematron.example.err.1.2.4"
+                    >XML document '{filename}': Supported geometry types are restricted to point,
+                    curve with linear and/or circular arc interpolation, planar surface, or
+                    aggregates thereof.</TranslationTemplate>
+            </translationTemplates>
+        </LangTranslationTemplateCollection>
+        <LangTranslationTemplateCollection name="TR.schtron.Schematron.example.err.1.2.5">
+            <translationTemplates>
+                <TranslationTemplate language="en" name="TR.schtron.Schematron.example.err.1.2.5"
+                    >XML document '{filename}': Geometry coordinates shall only be specified using
+                    the gml:pos element for gml:Point.</TranslationTemplate>
+            </translationTemplates>
+        </LangTranslationTemplateCollection>
+        <LangTranslationTemplateCollection name="TR.schtron.Schematron.example.err.1.2.6">
+            <translationTemplates>
+                <TranslationTemplate language="en" name="TR.schtron.Schematron.example.err.1.2.6"
+                    >XML document '{filename}': Geometry coordinates shall only be specified using
+                    the gml:pos element for gml:CircleByCenterPoint.</TranslationTemplate>
+            </translationTemplates>
+        </LangTranslationTemplateCollection>
+        <LangTranslationTemplateCollection name="TR.schtron.Schematron.example.err.1.2.7">
+            <translationTemplates>
+                <TranslationTemplate language="en" name="TR.schtron.Schematron.example.err.1.2.7"
+                    >XML document '{filename}': Geometry coordinates shall only be specified using
+                    the gml:posList element for gml:LineStringSegment.</TranslationTemplate>
+            </translationTemplates>
+        </LangTranslationTemplateCollection>
+        <LangTranslationTemplateCollection name="TR.schtron.Schematron.example.err.1.2.8">
+            <translationTemplates>
+                <TranslationTemplate language="en" name="TR.schtron.Schematron.example.err.1.2.8"
+                    >XML document '{filename}': Geometry coordinates shall only be specified using
+                    the gml:posList element for gml:LinearRing.</TranslationTemplate>
+            </translationTemplates>
+        </LangTranslationTemplateCollection>
+        <LangTranslationTemplateCollection name="TR.schtron.Schematron.example.err.1.2.9">
+            <translationTemplates>
+                <TranslationTemplate language="en" name="TR.schtron.Schematron.example.err.1.2.9"
+                    >XML document '{filename}': Geometry coordinates shall only be specified using
+                    the gml:posList element for gml:Arc.</TranslationTemplate>
+            </translationTemplates>
+        </LangTranslationTemplateCollection>
+        <LangTranslationTemplateCollection name="TR.schtron.Schematron.example.err.1.2.10">
+            <translationTemplates>
+                <TranslationTemplate language="en" name="TR.schtron.Schematron.example.err.1.2.10"
+                    >XML document '{filename}': Geometry coordinates shall only be specified using
+                    the gml:posList element for gml:Circle.</TranslationTemplate>
+            </translationTemplates>
+        </LangTranslationTemplateCollection>
+        <LangTranslationTemplateCollection name="TR.schtron.Schematron.example.err.1.2.11">
+            <translationTemplates>
+                <TranslationTemplate language="en" name="TR.schtron.Schematron.example.err.1.2.11"
+                    >XML document '{filename}': This profile restricts instance documents to using
+                    the property container gml:pointMember for the MultiPoint geometry
+                    type.</TranslationTemplate>
+            </translationTemplates>
+        </LangTranslationTemplateCollection>
+        <LangTranslationTemplateCollection name="TR.schtron.Schematron.example.err.1.2.12">
+            <translationTemplates>
+                <TranslationTemplate language="en" name="TR.schtron.Schematron.example.err.1.2.12"
+                    >XML document '{filename}': This profile restricts instance documents to using
+                    the property container gml:curveMember for the MultiCurve geometry
+                    type.</TranslationTemplate>
+            </translationTemplates>
+        </LangTranslationTemplateCollection>
+        <LangTranslationTemplateCollection name="TR.schtron.Schematron.example.err.1.2.13">
+            <translationTemplates>
+                <TranslationTemplate language="en" name="TR.schtron.Schematron.example.err.1.2.13"
+                    >XML document '{filename}': This profile restricts instance documents to using
+                    the property container gml:surfaceMember for the MultiSurface geometry
+                    type.</TranslationTemplate>
+            </translationTemplates>
+        </LangTranslationTemplateCollection>
+        <LangTranslationTemplateCollection name="TR.schtron.Schematron.example.err.1.2.14">
+            <translationTemplates>
+                <TranslationTemplate language="en" name="TR.schtron.Schematron.example.err.1.2.14"
+                    >XML document '{filename}': This profile restricts instance documents to using
+                    the property container gml:geometryMember for the MultiGeometry geometry
+                    type.</TranslationTemplate>
+            </translationTemplates>
+        </LangTranslationTemplateCollection>
+        <LangTranslationTemplateCollection name="TR.schtron.Schematron.example.err.1.2.15">
+            <translationTemplates>
+                <TranslationTemplate language="en" name="TR.schtron.Schematron.example.err.1.2.15"
+                    >XML document '{filename}': The content of gml:Surface elements is restricted to
+                    gml:PolygonPatch patches.</TranslationTemplate>
+            </translationTemplates>
+        </LangTranslationTemplateCollection>
+        <LangTranslationTemplateCollection name="TR.schtron.Schematron.example.err.1.2.16">
+            <translationTemplates>
+                <TranslationTemplate language="en" name="TR.schtron.Schematron.example.err.1.2.16"
+                    >XML document '{filename}': Coordinate reference systems may have 1, 2 or 3
+                    dimensions.</TranslationTemplate>
+            </translationTemplates>
+        </LangTranslationTemplateCollection>
+    </translationTemplateCollections>
+</TranslationTemplateBundle>

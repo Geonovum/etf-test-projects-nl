@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TranslationTemplateBundle xmlns="http://www.interactive-instruments.de/etf/2.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:etf="http://www.interactive-instruments.de/etf/2.0"
+	xmlns:ii="http://www.interactive-instruments.de" id="EID245c67e5-6d28-493e-9dc6-a23de3d81cc0"
+	xsi:schemaLocation="http://www.interactive-instruments.de/etf/2.0 http://resources.etf-validator.net/schema/v2/service/service.xsd">
+	<parent ref="EID27117afb-11aa-4e45-aa3d-0e1e65bdccb8"/>
+	<translationTemplateCollections>		
+		<!-- Added manually --> 
+		<LangTranslationTemplateCollection name="TR.example.crsNot28992">
+			<translationTemplates>
+				<TranslationTemplate language="en" name="TR.example.crsNot28992">XML document '{filename}', {featureType} '{gmlid}': CRS '{crs}' is not http://www.opengis.net/def/crs/EPSG/0/28992.</TranslationTemplate>
+			</translationTemplates>
+		</LangTranslationTemplateCollection>		
+		<LangTranslationTemplateCollection name="TR.example.gmlNameOrDescriptionExists">
+			<translationTemplates>
+				<TranslationTemplate language="en" name="TR.example.gmlNameOrDescriptionExists">XML document '{filename}', {featureType} '{gmlid}': The object has a gml:name or gml:description, which is not allowed.</TranslationTemplate>
+			</translationTemplates>
+		</LangTranslationTemplateCollection>
+	</translationTemplateCollections>
+</TranslationTemplateBundle>

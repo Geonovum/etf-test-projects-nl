@@ -1,0 +1,9 @@
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"   
+           xmlns:dummy="http:/dummy.org/dummy"   
+           targetNamespace="http:/dummy.org/dummy"   
+           elementFormDefault="qualified">  
+ <xsd:element name="Dummy" type="dummy:DummyType"/>  
+ <xsd:complexType name="DummyType">  
+  <xsd:attribute name="Date" type="xsd:date"/>  
+ </xsd:complexType>  
+</xsd:schema>  

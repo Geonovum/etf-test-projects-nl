@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<etf:ExecutableTestSuite xmlns="http://www.interactive-instruments.de/etf/2.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:etf="http://www.interactive-instruments.de/etf/2.0"
+    id="EID4a065dbd-dfbd-4428-8228-5e835523cc04"
+    xsi:schemaLocation="http://www.interactive-instruments.de/etf/2.0 http://resources.etf-validator.net/schema/v2/service/service.xsd">
+    <itemHash>bQ==</itemHash>
+    <remoteResource>https://github.com/interactive-instruments/etf-ets-repository</remoteResource>
+    <localPath>/auto</localPath>
+    <label>Schema and Gml Encoding tests</label>
+    <description>...</description>
+    <reference>../example-bsxets.xq</reference>
+    <version>2.0.0</version>
+    <author>interactive instruments GmbH</author>
+    <creationDate>2015-08-18T12:00:00.000+02:00</creationDate>
+    <lastEditor>ETF v1 project to ETF v2 Executable Test Suite Transformer</lastEditor>
+    <lastUpdateDate>2017-09-12T19:44:55.084+02:00</lastUpdateDate>
+    <tags>
+        <tag ref="EIDec1b3956-b1f9-4359-814e-7590877f4eb1"/>
+    </tags>
+    <testDriver ref="EID4dddc9e2-1b21-40b7-af70-6a2d156ad130"/>
+    <translationTemplateBundle ref="EID245c67e5-6d28-493e-9dc6-a23de3d81cc0"/>
+    <ParameterList name="ETF Standard Parameters for XML test objects">
+        <parameter name="files_to_test" required="true">
+            <defaultValue>.*</defaultValue>
+            <description ref="TR.filesToTest"/>
+            <allowedValues>.*</allowedValues>
+            <type>string</type>
+        </parameter>
+        <parameter name="tests_to_execute" required="false">
+            <defaultValue>.*</defaultValue>
+            <description ref="TR.testsToExecute"/>
+            <allowedValues>.*</allowedValues>
+            <type>string</type>
+        </parameter>
+    </ParameterList>
+    <supportedTestObjectTypes>
+        <testObjectType ref="EIDe1d4a306-7a78-4a3b-ae2d-cf5f0810853e"/>
+    </supportedTestObjectTypes>
+    <testModules>
+        <TestModule id="EID9dd36c8c-b5fe-4667-8dee-a8289133f7ac">
+            <label>IGNORE</label>
+            <description>IGNORE</description>
+            <parent ref="EID4a065dbd-dfbd-4428-8228-5e835523cc04"/>
+            <testCases>
+                <TestCase id="EID86a5621b-79be-4f6f-829d-87a0b6e19246">
+                    <label>Schema validation</label>
+                    <description>...</description>
+                    <parent ref="EID9dd36c8c-b5fe-4667-8dee-a8289133f7ac"/>
+                    <testSteps>
+                        <TestStep id="EIDeb77f204-24fb-4d0a-a209-4a003ef8c35a">
+                            <label>IGNORE</label>
+                            <description>IGNORE</description>
+                            <parent ref="EID9dd36c8c-b5fe-4667-8dee-a8289133f7ac"/>
+                            <statementForExecution>not applicable</statementForExecution>
+                            <testItemType ref="EIDf483e8e8-06b9-4900-ab36-adad0d7f22f0"/>
+                            <testAssertions>
+                                <TestAssertion id="EID52eadd27-bd59-487f-8f2a-35c4c8eee62b">
+                                    <!--Schema.valid.XSD-->
+                                    <label>XML Schema validation</label>
+                                    <description/>
+                                    <parent ref="EIDeb77f204-24fb-4d0a-a209-4a003ef8c35a"/>
+                                    <expectedResult>NOT_APPLICABLE</expectedResult>
+                                    <!-- Test Driver validates against xsi:schemaLocation and passes the errors as $validationErrors -->
+                                    <!--expression>if (not($validationErrors)) then 'PASSED' else ('FAILED', for $error in $validationErrors return (local:addMessage('TR.validationError', map { 'text': $error })))</expression-->
+                                    <!-- Use a static schema file, dummyschema.xsd (see  http://docs.basex.org/wiki/Validation_Module#validate:xsd-info ) -->
+                                    <expression>
+                                        let $allErrors := (
+                                            for $file in $db
+                                            return 
+                                                let $start := prof:current-ms()
+                                                let $infos := validate:xsd-info($file, 'https://raw.githubusercontent.com/interactive-instruments/etf-ets-repository/master/example/2_xsdandgmlencoding/dummyschema.xsd' )
+                                                let $duration := prof:current-ms()-$start
+                                                let $logentry := local:log('Validating file ' || local:filename($file) || ': ' || $duration || ' ms')
+                                                let $errors := count($infos)
+                                                return
+                                                if ($errors &gt; 0) then
+                                                    (local:addMessage('TR.invalidSchema', map { 'filename': local:filename($file), 'count': string($errors) }),
+                                                    for $info in $infos return local:addMessage('TR.xmlSchemaError', map { 'filename': local:filename($file), 'error': $info }))
+                                                else ()
+                                        )
+                                        return
+                                        (if ($allErrors) then 'FAILED' else 'PASSED',
+                                        local:error-statistics('TR.filesWithErrors', count($allErrors[@ref eq 'TR.invalidSchema'])),
+                                        $allErrors[position() le $limitErrors])
+                                    </expression>
+                                    <testItemType ref="EIDf0edc596-49d2-48d6-a1a1-1ac581dcde0a"/>
+                                    <translationTemplates>
+                                        <translationTemplate ref="TR.xmlSchemaError"/>
+                                        <translationTemplate ref="TR.invalidSchema"/>
+                                        <translationTemplate ref="TR.filesWithErrors"/>
+                                        <translationTemplate ref="TR.xmlSchemaErrorRecord"/>
+                                        <translationTemplate ref="TR.invalidSchemaRecord"/>
+                                    </translationTemplates>
+                                </TestAssertion>
+                            </testAssertions>
+                        </TestStep>
+                    </testSteps>
+                </TestCase>
+                <TestCase id="EID9ea8e7af-2ee8-4cd6-b44a-4fa23480d40c">
+                    <label>GML profile</label>
+                    <description>...</description>
+                    <parent ref="EID9dd36c8c-b5fe-4667-8dee-a8289133f7ac"/>
+                    <testSteps>
+                        <TestStep id="EID7e1dba64-92a5-4235-acfc-a7be1c46f547">
+                            <label>IGNORE</label>
+                            <description>IGNORE</description>
+                            <parent ref="EID9dd36c8c-b5fe-4667-8dee-a8289133f7ac"/>
+                            <statementForExecution>not applicable</statementForExecution>
+                            <testItemType ref="EIDf483e8e8-06b9-4900-ab36-adad0d7f22f0"/>
+                            <testAssertions>
+                                <TestAssertion id="EID61cd805b-24df-4bb1-bf34-9642d2789288">
+                                    <!--Encoding.GML.01-->
+                                    <label>gml:name and gml:description</label>
+                                    <description>count(//gml:name)+count(//gml:description) = 0.</description>
+                                    <parent ref="EID7e1dba64-92a5-4235-acfc-a7be1c46f547"/>
+                                    <expectedResult>NOT_APPLICABLE</expectedResult>
+                                    <expression>
+    let $featuresWithErrors := $features[gml:name or gml:description][position() le $limitErrors]
+    return
+    (if ($featuresWithErrors) then 'FAILED' else 'PASSED',
+    local:error-statistics('TR.featuresWithErrors', count($featuresWithErrors)),
+    for $feature in $featuresWithErrors
+    order by $feature/@gml:id
+    return local:addMessage('TR.example.gmlNameOrDescriptionExists', map { 'filename': local:filename($feature), 'featureType': local-name($feature), 'gmlid': string($feature/@gml:id)  }))
+</expression>
+                                    <testItemType ref="EIDf0edc596-49d2-48d6-a1a1-1ac581dcde0a"/>
+                                    <translationTemplates>
+                                        <translationTemplate ref="TR.example.gmlNameOrDescriptionExists"/>
+                                    </translationTemplates>
+                                </TestAssertion>
+                            </testAssertions>
+                        </TestStep>
+                    </testSteps>
+                </TestCase>
+            </testCases>
+        </TestModule>
+    </testModules>
+</etf:ExecutableTestSuite>
