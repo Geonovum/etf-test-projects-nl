@@ -1,9 +1,9 @@
 # Voorbeelden gebruik van de API
 ETF v2 is te gebruiken via een REST API. Hieronder volgen enkele voorbeelden van gebruik van deze API, momenteel op de Beta omgeving:
 
-```
+
 http://beta.validatie.geostandaarden.nl:8080/etf-webapp-2.0.0
-```
+
 
 ## Documentatie
 Zie http://docs.etf-validator.net/v2.0/Developer_manuals/WEB-API.html voor de API.
@@ -12,9 +12,9 @@ Nota bene: het verdient sterk aanbeveling om meer te weten over de concepten en 
 
 ## Swagger: documentatie van de API met live voorbeelden
 De API is gespecifieerd via een Swagger document:
-```
+
 http://beta.validatie.geostandaarden.nl:8080/etf-webapp-2.0.0/swagger-ui.html
-```
+
 Het ETF biedt via Swagger de mogelijkheid direct operaties van de API te testen en de documentatie in te zien.
 
 ## Voorbeeld: valideer metadata document
