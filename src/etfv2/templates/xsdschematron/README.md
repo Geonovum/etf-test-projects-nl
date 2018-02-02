@@ -1,7 +1,7 @@
 # Template XSD + schematron
 Een nieuwe validator maken met XSD en schematron validatie:
 1. kopieer de directorystructuur van dit template en geef de directory ```xsdschematron``` een logische naam van de validator. Gebruik bij voorkeur geen spaties.
-1. Tip: maak een tekstdocument waarin je de UUIDs opslaat. Bijvoorbeeld het bestand UUID.md uit het template. Er komen er namelijk verschillende terug
+1. Tip: maak een tekstdocument waarin je de UUIDs opslaat. Bijvoorbeeld het bestand UUID.md uit het template. Er komen er namelijk verschillende terug.
 1. maak een Tag aan met de volgende stappen:
   1. ga naar de directory: ```include-metadata```
   1. genereer een UUID voor de bestandsnaam: https://www.uuidgenerator.net/version4. Bijvoorbeeld: ```XXX-XXX```
@@ -10,7 +10,7 @@ Een nieuwe validator maken met XSD en schematron validatie:
   1. pas de elementen voor label en description aan. Desgewenst ook de priority (voor volgorde van tests als een test object van hetzelfde resource type gebruikt wordt)
 1. Maak een Translation Template Bundle o.b.v. de Schematron file:
   1. ga naar de directory: ```include-metadata```
-  1. Translation Template Bundle (TTB) (met zelf gegenereerde TTB id: een nieuwe UUID via https://www.uuidgenerator.net/version4, bijv abe7742e-9ef5-4700-ad3b-dd532a4cf0a9 in het voorbeeld hieronder). Let op! gebruik een testObjectTypeId uit de lijst met IDs van http://docs.etf-validator.net/v2.0/Developer_manuals/Developing_Executable_Test_Suites.html#basex-test-object-types. Bijvoorbeeld voor metadata: 5a60dded-0cb0-4977-9b06-16c6c2321d2e (ZONDER EID in het script voor de TTB!) en voor GML: e1d4a306-7a78-4a3b-ae2d-cf5f0810853e
+  1. Translation Template Bundle (TTB) aanmaken (met zelf gegenereerde TTB id: een nieuwe UUID via https://www.uuidgenerator.net/version4, bijv abe7742e-9ef5-4700-ad3b-dd532a4cf0a9 in het voorbeeld hieronder). Let op! gebruik een testObjectTypeId uit de lijst met IDs van http://docs.etf-validator.net/v2.0/Developer_manuals/Developing_Executable_Test_Suites.html#basex-test-object-types. Bijvoorbeeld voor metadata: 5a60dded-0cb0-4977-9b06-16c6c2321d2e (ZONDER EID in het script voor de TTB!) en voor GML: e1d4a306-7a78-4a3b-ae2d-cf5f0810853e
     1. Let op de bestandsnaam: die moet dezelfde id bevatten als translationTemplateId bij het aanroepen van de XSL
     1. Code voor genereren TTB xml bestand:
     ```
@@ -22,17 +22,17 @@ Een nieuwe validator maken met XSD en schematron validatie:
   ```
   saxonb-xslt ../include-metadata/Tag-EIDf969a29a-0c58-4738-af67-2e17e894ef4d.xml /home/thijs/code/Geonovum/ETF/github/Geonovum_forks/etf-ets-repository/utils/etf-xsd-bsxets.xsl schemaURL=http://schemas.opengis.net/iso/19139/20060504/gmd/gmd.xsd translationTemplateId=abe7742e-9ef5-4700-ad3b-dd532a4cf0a9 testObjectTypeId=5a60dded-0cb0-4977-9b06-16c6c2321d2e > xsd-bsxets.xml
   ```
+  1. noteer de UUID van de xsd validator, open het bestand xsd-bsxets en noteer de id in het attribuut: /etf:ExecutableTestSuite@id (zonder EID)
 1. Schematron,
   1. ga naar de directory ```2_schematrontest```
-  1. verwijder dummy-bsxets.xml (TODO: uitzoeken of dit nodig is of anders kan)
-  1. genereer obv schematron, TagID, TTB en type een BSX ETS (let op de bestandsnaam):
+  1. genereer obv schematron, TagID, TTB en testObjectType een BSX ETS (let op de bestandsnaam):
   ```  
   saxonb-xslt /home/thijs/code/Geonovum/ETF/github/etf-test-projects-nl/src/metadata/Nederlands\ profiel\ op\ ISO\ 19115\ v13\ INSPIRE\ 2014/schematron.sch /home/thijs/code/Geonovum/ETF/github/Geonovum_forks/etf-ets-repository/utils/schematron_2_etf_ets.xsl tagId=f969a29a-0c58-4738-af67-2e17e894ef4d translationTemplateId=abe7742e-9ef5-4700-ad3b-dd532a4cf0a9 testObjectTypeId=5a60dded-0cb0-4977-9b06-16c6c2321d2e >  NederlandsprofielopISO19115v13INSPIRE2014-bsxets.xml
   ```
-1. maak een bestand voor de validators samen. Genereer een all-bsxets.xml. Ga naar de directory ```3_all```
-  1. tagid invoeren
-  1. translationtemplateid invoeren
-  1. executableTestSuite 2 IDs invoeren van xsd en schematron
+1. maak een bestand voor de validators samen. Genereer een all-bsxets.xml. Ga naar de directory ```3_all``` en gebruik de volgende UUIDs in de parameters:
+  1. tagid
+  1. translationtemplateid
+  1. executableTestSuite 2 UUIDs van xsd en schematron
   1. (optioneel: testobjecttype)
   1. Voorbeeld script:
   ```

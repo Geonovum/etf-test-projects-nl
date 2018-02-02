@@ -19,12 +19,12 @@ declare namespace wms='http://www.opengis.net/wms';
 
 declare namespace au3='urn:x-inspire:specification:gmlas:AdministrativeUnits:3.0';
 declare namespace ad3='urn:x-inspire:specification:gmlas:Addresses:3.0';
-declare namespace cp3='urn:x-inspire:specification:gmlas:CadastralParcels:3.0'; 
-declare namespace gn3='urn:x-inspire:specification:gmlas:GeographicalNames:3.0'; 
-declare namespace hy3='urn:x-inspire:specification:gmlas:HydroBase:3.0'; 
-declare namespace hy-n3='urn:x-inspire:specification:gmlas:HydroNetwork:3.0'; 
-declare namespace hy-p3='urn:x-inspire:specification:gmlas:HydroPhysicalWaters:3.0'; 
-declare namespace ps3='urn:x-inspire:specification:gmlas:ProtectedSites:3.0'; 
+declare namespace cp3='urn:x-inspire:specification:gmlas:CadastralParcels:3.0';
+declare namespace gn3='urn:x-inspire:specification:gmlas:GeographicalNames:3.0';
+declare namespace hy3='urn:x-inspire:specification:gmlas:HydroBase:3.0';
+declare namespace hy-n3='urn:x-inspire:specification:gmlas:HydroNetwork:3.0';
+declare namespace hy-p3='urn:x-inspire:specification:gmlas:HydroPhysicalWaters:3.0';
+declare namespace ps3='urn:x-inspire:specification:gmlas:ProtectedSites:3.0';
 declare namespace tn3='urn:x-inspire:specification:gmlas:CommonTransportElements:3.0';
 declare namespace tn-a3='urn:x-inspire:specification:gmlas:AirTransportNetwork:3.0';
 declare namespace tn-c3='urn:x-inspire:specification:gmlas:CableTransportNetwork:3.0';
@@ -32,17 +32,17 @@ declare namespace tn-ra3='urn:x-inspire:specification:gmlas:RailwayTransportNetw
 declare namespace tn-ro3='urn:x-inspire:specification:gmlas:RoadTransportNetwork:3.0';
 declare namespace tn-w3='urn:x-inspire:specification:gmlas:WaterTransportNetwork:3.0';
 declare namespace bu-core3d3='http://inspire.jrc.ec.europa.eu/draft-schemas/bu-core3d/3.0';
-declare namespace net3='urn:x-inspire:specification:gmlas:Network:3.2'; 
-declare namespace base32='urn:x-inspire:specification:gmlas:BaseTypes:3.2'; 
-declare namespace hy='http://inspire.ec.europa.eu/schemas/hy/4.0'; 
-declare namespace hy-n='http://inspire.ec.europa.eu/schemas/hy-n/4.0'; 
-declare namespace hy-p='http://inspire.ec.europa.eu/schemas/hy-p/4.0'; 
-declare namespace au='http://inspire.ec.europa.eu/schemas/au/4.0'; 
+declare namespace net3='urn:x-inspire:specification:gmlas:Network:3.2';
+declare namespace base32='urn:x-inspire:specification:gmlas:BaseTypes:3.2';
+declare namespace hy='http://inspire.ec.europa.eu/schemas/hy/4.0';
+declare namespace hy-n='http://inspire.ec.europa.eu/schemas/hy-n/4.0';
+declare namespace hy-p='http://inspire.ec.europa.eu/schemas/hy-p/4.0';
+declare namespace au='http://inspire.ec.europa.eu/schemas/au/4.0';
 declare namespace ad='http://inspire.ec.europa.eu/schemas/ad/4.0';
-declare namespace cp='http://inspire.ec.europa.eu/schemas/cp/4.0'; 
-declare namespace gn='http://inspire.ec.europa.eu/schemas/gn/4.0'; 
+declare namespace cp='http://inspire.ec.europa.eu/schemas/cp/4.0';
+declare namespace gn='http://inspire.ec.europa.eu/schemas/gn/4.0';
 declare namespace mu='http://inspire.ec.europa.eu/schemas/mu/3.0';
-declare namespace ps='http://inspire.ec.europa.eu/schemas/ps/4.0'; 
+declare namespace ps='http://inspire.ec.europa.eu/schemas/ps/4.0';
 declare namespace tn='http://inspire.ec.europa.eu/schemas/tn/4.0';
 declare namespace tn-a='http://inspire.ec.europa.eu/schemas/tn-a/4.0';
 declare namespace tn-c='http://inspire.ec.europa.eu/schemas/tn-c/4.0';
@@ -51,7 +51,7 @@ declare namespace tn-ro='http://inspire.ec.europa.eu/schemas/tn-ro/4.0';
 declare namespace tn-w='http://inspire.ec.europa.eu/schemas/tn-w/4.0';
 declare namespace bu-core3d='http://inspire.ec.europa.eu/schemas/bu-core3d/4.0';
 declare namespace net='http://inspire.ec.europa.eu/schemas/net/4.0';
-declare namespace base='http://inspire.ec.europa.eu/schemas/base/3.3'; 
+declare namespace base='http://inspire.ec.europa.eu/schemas/base/3.3';
 declare namespace uuid='java.util.UUID';
 
 import module namespace functx='http://www.functx.com';
@@ -59,9 +59,9 @@ import module namespace http='http://expath.org/ns/http-client';
 import module namespace ggeo='de.interactive_instruments.etf.bsxm.GmlGeoX';
 
 declare variable $limitErrors external := 1000;
-declare variable $validationErrors external := ''; 
-declare variable $db external; 
-declare variable $features external; 
+declare variable $validationErrors external := '';
+declare variable $db external;
+declare variable $features external;
 declare variable $idMap external;
 declare variable $testObjectId external;
 declare variable $logFile external;
@@ -73,7 +73,7 @@ declare variable $statFile external;
 
 declare function local:not-seq($n) as xs:boolean
 {
-    if(empty($n)) 
+    if(empty($n))
     then true()
     else if(count($n) > 1)
     then some $i in $n satisfies not($i)
@@ -119,6 +119,27 @@ declare function local:concat-seq($sseq1, $sseq2, $sseq3, $sseq4, $sseq5, $sseq6
 {
     string-join(($sseq1, $sseq2, $sseq3, $sseq4, $sseq5, $sseq6), '')
 };
+
+declare function local:concat-seq($sseq1, $sseq2, $sseq3, $sseq4, $sseq5, $sseq6, $sseq7) as xs:string
+{
+    string-join(($sseq1, $sseq2, $sseq3, $sseq4, $sseq5, $sseq6, $sseq7), '')
+};
+
+declare function local:concat-seq($sseq1, $sseq2, $sseq3, $sseq4, $sseq5, $sseq6, $sseq7, $sseq8) as xs:string
+{
+    string-join(($sseq1, $sseq2, $sseq3, $sseq4, $sseq5, $sseq6, $sseq7, $sseq8), '')
+};
+
+declare function local:concat-seq($sseq1, $sseq2, $sseq3, $sseq4, $sseq5, $sseq6, $sseq7, $sseq8, $sseq9) as xs:string
+{
+    string-join(($sseq1, $sseq2, $sseq3, $sseq4, $sseq5, $sseq6, $sseq7, $sseq8, $sseq9), '')
+};
+
+declare function local:concat-seq($sseq1, $sseq2, $sseq3, $sseq4, $sseq5, $sseq6, $sseq7, $sseq8, $sseq9, $sseq10) as xs:string
+{
+    string-join(($sseq1, $sseq2, $sseq3, $sseq4, $sseq5, $sseq6, $sseq7, $sseq8, $sseq9, $sseq10), '')
+};
+
 
 declare function local:substring-seq($sseq, $startingLog as xs:double, $length as xs:double) as xs:string*
 {
@@ -208,7 +229,7 @@ declare function local:error-statistics($template as xs:string, $count as xs:int
    if ($count>0) then local:addMessage($template, map { 'count': string($count) }) else ())
 };
 
-declare function local:status($stati as xs:string*) as xs:string 
+declare function local:status($stati as xs:string*) as xs:string
 {
   if ($stati='FAILED') then 'FAILED' else if ($stati='SKIPPED') then 'SKIPPED' else if ($stati='WARNING') then 'WARNING' else if ($stati='INFO') then 'INFO' else if ($stati='PASSED_MANUAL') then 'PASSED_MANUAL' else if ($stati='PASSED') then 'PASSED' else if ($stati='NOT_APPLICABLE') then 'NOT_APPLICABLE' else 'UNDEFINED'
 };
@@ -223,7 +244,7 @@ declare function local:check-resource-uri($uri as xs:string, $timeoutInS as xs:i
    if ($uri=('http://','https://')) then
 		'notHTTP'
 	else if (starts-with($uri,'http://') or starts-with($uri,'https://')) then
-		try { 
+		try {
 		   let $loginfo := local:log('Checking URL: ''' || $uri || '''')
 		   let $query := "import module namespace http = 'http://expath.org/ns/http-client'; declare variable $timeoutInS external; declare variable $redirect external; declare variable $uri external; http:send-request(<http:request method='get' timeout='{$timeoutInS}' status-only='true' follow-redirect='{$redirect}'/>, $uri)"
 			let $response := xquery:eval($query, map{ 'timeoutInS' : $timeoutInS, 'uri': $uri, 'redirect': $redirect }, map{ 'timeout': $timeoutInS })
@@ -233,13 +254,13 @@ declare function local:check-resource-uri($uri as xs:string, $timeoutInS as xs:i
 		  		return
 		  		if ($contenttype) then $contenttype else 'application/octet-stream'
 			else if ($redirect and $response/@status=('301','302','303','307')) then
-				local:check-resource-uri($response/http:header[@name='Location']/@value, $timeoutInS, $redirect)				
+				local:check-resource-uri($response/http:header[@name='Location']/@value, $timeoutInS, $redirect)
 			else
 				$response/@status
-		} catch * 
-		{ 
+		} catch *
+		{
 			let $logerror := local:log('Exception: ' || $err:description || ' URL: ' || $uri)
-			return 'EXCEPTION ' || $err:description 
+			return 'EXCEPTION ' || $err:description
 		}
   else if (starts-with($uri,'#')) then
     if (map:contains($idMap,substring($uri,2))) then
@@ -255,7 +276,7 @@ declare function local:check-http-uris($uris as xs:string*, $timeoutInS as xs:in
   if (count($uris)=0) then $map
   else if ($errors ge $limitErrors) then map:merge(( $map, for $uri in $uris return map{ $uri: 'SKIPPED' } )) (: too many errors already identified, skipping the remaining URIs :)
   else
-   let $result := local:check-resource-uri($uris[1], $timeoutInS, $redirect) 
+   let $result := local:check-resource-uri($uris[1], $timeoutInS, $redirect)
    let $newmap := map:merge( ($map, map{ $uris[1] : $result }) )
    let $newerrors := if (matches($result,'(EXCEPTION|\d{3})')) then $errors+1 else $errors
    return local:check-http-uris($uris[position() gt 1], $timeoutInS, $max, $newerrors, $newmap, $redirect)
@@ -268,8 +289,8 @@ declare function local:check-resource-uris($uris as xs:string*, $timeoutInS as x
   return
   map:merge((
    local:check-http-uris($remote, $timeoutInS, count($remote), 0, map{}, $redirect),
-   for $uri in $local[map:contains($idMap,substring(.,2))] return map { $uri : 'application/gml+xml' },  
-   for $uri in $local[not(map:contains($idMap,substring(.,2)))] return map { $uri : 'idNotFound' },  
+   for $uri in $local[map:contains($idMap,substring(.,2))] return map { $uri : 'application/gml+xml' },
+   for $uri in $local[not(map:contains($idMap,substring(.,2)))] return map { $uri : 'idNotFound' },
    for $uri in $uris[not(starts-with(.,'#') or starts-with(.,'http://') or starts-with(.,'https://'))] return map { $uri : 'notHTTP' }
   ))
 };
@@ -284,7 +305,7 @@ declare function local:check-feature-references($hrefs as node()*, $targets as x
 let $urls := fn:distinct-values($hrefs)
 let $dummy := if (count($urls)>100) then local:log("Analyzing up to " || count($urls) || " feature references - this may take awhile...") else ()
 let $map := local:check-resource-uris($urls, 30, false())
-let $messages := 
+let $messages :=
   (for $url at $pos in $urls
    let $validuri := map:get($map, $url)
    let $dummy := if ($pos mod 100 = 0) then local:log("Analyzing feature reference " || $pos || "/" || count($urls)) else ()
@@ -310,17 +331,17 @@ let $messages :=
     let $fid := string($feature/@gml:id)
     return local:addMessage('TR.resourceNotAccessible2', map { 'filename': local:filename($feature), 'featureType': local-name($feature), 'gmlid': $fid, 'property': $property, 'url': $url, 'status' : $validuri })
   else if (starts-with($validuri,'text/xml') or starts-with($validuri,'application/gml+xml') or starts-with($validuri,'application/xml')) then
-    try { 
-      let $root := 
+    try {
+      let $root :=
         if (starts-with($url,'#')) then map:get($idMap,substring($url,2))
         else fn:doc($url)/element()
       return
       if (local-name($root)=$targets) then ()
-      else 
+      else
        for $feature in $sourcefeatures
        let $fid := string($feature/@gml:id)
-       return local:addMessage('TR.unknownXMLResource2', map { 'filename': local:filename($feature), 'featureType': local-name($feature), 'gmlid': $fid, 'property': $property, 'url': $url, 'elementNameExpected': $expected, 'elementName': local-name($root), 'namespace': namespace-uri($root) }) 
-    } catch * { 
+       return local:addMessage('TR.unknownXMLResource2', map { 'filename': local:filename($feature), 'featureType': local-name($feature), 'gmlid': $fid, 'property': $property, 'url': $url, 'elementNameExpected': $expected, 'elementName': local-name($root), 'namespace': namespace-uri($root) })
+    } catch * {
       for $feature in $sourcefeatures
       let $fid := string($feature/@gml:id)
       return local:addMessage('TR.resourceNotAccessibleException2', map { 'filename': local:filename($feature), 'featureType': local-name($feature), 'gmlid': $fid, 'property': $property, 'url': $url, 'message': $err:description })
@@ -337,13 +358,13 @@ return
 
 declare function local:return-reference($href as node()) as element()?
 {
-   try { 
+   try {
      let $url := string($href)
-     let $root := 
+     let $root :=
        if (starts-with($url,'#')) then map:get($idMap,substring($url,2))
        else fn:doc($url)/element()
      return $root
-   } catch * { 
+   } catch * {
      (: this is not for information accessibility checks, so we ignore 404s etc. :)
    }
 };
@@ -354,13 +375,13 @@ declare function local:return-references($urls as xs:string*) as map(*)
    return
 	map:merge( for $url at $pos in $urls
     let $dummy := if ($pos mod 100 = 0) then local:log("Accessing reference " || $pos || "/" || count($urls)) else ()
-    return map { $url : 
-     try { 
-      let $root := 
+    return map { $url :
+     try {
+      let $root :=
        if (starts-with($url,'#')) then map:get($idMap,substring($url,2))
        else fn:doc($url)/element()
       return $root
-     } catch * { 
+     } catch * {
       (: this is not for information accessibility checks, so we ignore 404s etc. :)
      }
     }
@@ -383,7 +404,7 @@ else
 let $normalizedUri := functx:substring-after-last-match($uri, 'http(s)?:')
 let $normalizedValuesUri := for $valueUri in $clfeed//atom:entry/atom:id/text()
   return functx:substring-after-last-match($valueUri, 'http(s)?:')
-let $valuesCode := for $value in $normalizedValuesUri 
+let $valuesCode := for $value in $normalizedValuesUri
   return fn:substring-after($value, $normalizedUri || '/')
 let $objectsWithErrors := ($objects3[*[local-name()=$property and not(@xsi:nil='true') and not(text()=$valuesCode)]] | $objects4[*[local-name()=$property and not(@xsi:nil='true') and not(functx:substring-after-last-match(@xlink:href, 'http(s)?:')=$normalizedValuesUri)]])[position() le $limitErrors]
 let $featuresWithErrors :=
@@ -403,7 +424,7 @@ return
     let $v4 := fn:starts-with(namespace-uri($prop),'http://inspire.ec.europa.eu/schemas/')
     let $value := if ($v4) then $prop/@xlink:href else $prop/text()
     return
-     local:addMessage('TR.disallowedCodeListValue', map { 'filename': local:filename($feature), 'featureType': local-name($feature), 'gmlid': string($feature/@gml:id), 'property': $property, 'value': string($value), 'codelist' : $uri }))  
+     local:addMessage('TR.disallowedCodeListValue', map { 'filename': local:filename($feature), 'featureType': local-name($feature), 'gmlid': string($feature/@gml:id), 'property': $property, 'value': string($value), 'codelist' : $uri }))
 };
 
 (:
@@ -422,7 +443,7 @@ return
   else if (not(starts-with($valid_clurl,'text/xml') or starts-with($valid_clurl,'application/xml') or starts-with($valid_clurl,'application/atom+xml'))) then
     error((),'Unknown resource type encountered when accessing the atom representation of code list ' || $url || ' at URL ' || $clurl || '.')
   else
-      try { 
+      try {
         let $normalizedUrl := functx:substring-after-last-match($url, 'http(s)?:')
         let $clfeed := fn:doc($clurl)
         let $codeUris := $clfeed//atom:entry/atom:id/text()
@@ -431,7 +452,7 @@ return
           return fn:substring-after($normalizedCodeUri, $normalizedUrl || '/')
         return
           $codes
-        } catch * { 
+        } catch * {
           error((),'Code list ' || $url || ' cannot be accessed.')
       }
 };
@@ -452,11 +473,11 @@ return
   else if (not(starts-with($valid_clurl,'text/xml') or starts-with($valid_clurl,'application/xml') or starts-with($valid_clurl,'application/atom+xml'))) then
     error((),'Unknown resource type encountered when accessing the atom representation of code list ' || $url || ' at URL ' || $clurl || '.')
   else
-      try { 
+      try {
         let $root := fn:doc($clurl)/element()
         return
           $root//atom:entry
-    } catch * { 
+    } catch * {
       error((),'Code list ' || $url || ' cannot be accessed.')
     }
 };
@@ -479,7 +500,7 @@ declare function local:is-valid-date-or-dateTime($dateString as xs:string?) as x
    if (not($dateString)) then
    	false()
    else
-	let $date := 
+	let $date :=
     try {
       let $tmp := xs:date($dateString)
       return
@@ -491,7 +512,7 @@ declare function local:is-valid-date-or-dateTime($dateString as xs:string?) as x
   let $dateTime :=
     try {
       let $tmp := xs:dateTime($dateString)
-      return 
+      return
        (: NOTE: apparently, the value of the xs:date must be evaluated to be parsed by BaseX :)
        'DATETIME ' || $tmp
     } catch * {
@@ -534,7 +555,7 @@ declare function local:getAllowedValuesURI( $uri as xs:string ) as xs:string*
   let $cluri := $uri || '/' || $clname || '.en.atom'
   let $clfeed := if (fn:doc-available($cluri)) then fn:doc($cluri) else ()
   return
-    if (not($clfeed)) then 
+    if (not($clfeed)) then
       let $dummy := local:addMessage('TR.systemError', map { 'text': 'Code list ' || $uri || 'cannot be accessed.' })
       return ()
     else
@@ -556,11 +577,11 @@ let $start := prof:current-ms()
 let $geometryParsingErrors :=
   map:merge(for $feature in $features
     let $geom := ($feature//*[self::gml:Point or self::gml:LineString or self::gml:Curve or self::gml:Polygon or self::gml:PolyhedralSurface or self::gml:Surface or self::gml:MultiPoint or self::gml:MultiCurve or self::gml:MultiLineString or self::gml:MultiSurface or self::gml:MultiPolygon or self::gml:MultiGeometry])[1]
-    return 
-    if ($geom) then 
-      try { 
-        prof:void(ggeo:index($feature,$feature/@gml:id,$geom)) } 
-      catch * { 
+    return
+    if ($geom) then
+      try {
+        prof:void(ggeo:index($feature,$feature/@gml:id,$geom)) }
+      catch * {
         map:entry($feature/@gml:id,$err:description)
       }
     else ())
