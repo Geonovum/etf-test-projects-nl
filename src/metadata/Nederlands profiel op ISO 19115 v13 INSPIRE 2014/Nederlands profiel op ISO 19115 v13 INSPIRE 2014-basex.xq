@@ -199,7 +199,7 @@ declare function local:evaluate($svrlii as element(), $sch as document-node(), $
       let $successfulReportExists := if($patternWasActive) then exists($occurrencesOfActivePattern/*/svrl:successful-report) else false()
     return
     <etf:TestCaseResult id="{generate-id($pattern)}" testCaseRef="{data($patternId)}">
-      <etf:ResultStatus>{if ($failedAssertExists) then 'FAILED' else if ($successfulReportExists) then 'OK' else if ($patternWasActive) then 'OK' else 'SKIPPED'}</etf:ResultStatus>
+      <etf:ResultStatus>{if ($failedAssertExists) then 'FAILED' else if ($successfulReportExists) then 'WARNING' else if ($patternWasActive) then 'OK' else 'SKIPPED'}</etf:ResultStatus>
       <etf:TestStepResults>
       {
         for $rule in $pattern/iso:rule
@@ -210,7 +210,7 @@ declare function local:evaluate($svrlii as element(), $sch as document-node(), $
         let $successfulReportExistsInRule := if($ruleFired) then exists($occurrencesOfFiredRule/svrl:successful-report) else false()
         return
         <etf:TestStepResult id="Result.{$patternId}.{$ruleId}" testStepRef="{$patternId}.{$ruleId}">
-          <etf:ResultStatus>{if ($failedAssertExistsInRule) then 'FAILED' else if ($successfulReportExistsInRule) then 'OK' else if ($ruleFired) then 'OK' else 'SKIPPED'}</etf:ResultStatus>
+          <etf:ResultStatus>{if ($failedAssertExistsInRule) then 'FAILED' else if ($successfulReportExistsInRule) then 'WARNING' else if ($ruleFired) then 'OK' else 'SKIPPED'}</etf:ResultStatus>
           <etf:Duration/>
           <etf:StartTimestamp/>
           <etf:Resource>Database: '{$dbBaseName}'; Files: '{$Files_to_test}';</etf:Resource>
@@ -469,7 +469,7 @@ declare variable $Files_to_test external := ".*";
 declare variable $Maximum_number_of_error_messages_per_test external := "100";
 declare variable $Testsystem external := "unknown";
 declare variable $Tester external := "unknown";
-declare variable $Schema_file external := "gmd.xsd";
+declare variable $Schema_file external := "gmd_gmx.xsd";
 
 declare variable $printExactLocation external := "false"; (: if set to true - ignoring case and leading or trailing whitespace - the XPath of the element that caused an assertion to fail or a report to be generated will be included in messages:)
 

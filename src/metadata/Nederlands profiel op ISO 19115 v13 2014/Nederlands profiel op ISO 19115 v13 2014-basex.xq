@@ -435,7 +435,7 @@ declare function local:evaluate($svrlii as element(), $sch as document-node(), $
             <ii:Items>
               <ii:Item name="Name">
               <ii:value xsi:type="xs:string" xmlns:xs="http://www.w3.org/2001/XMLSchema"
-               xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">{$assertOrReportId}</ii:value>
+               xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">Not available</ii:value>
              </ii:Item>
              <ii:Item name="ShortDescription">
                 <ii:value xsi:type="xs:string" xmlns:xs="http://www.w3.org/2001/XMLSchema"
@@ -470,7 +470,7 @@ declare variable $Maximum_number_of_error_messages_per_test external := "100";
 declare variable $Testsystem external := "unknown";
 declare variable $Tester external := "unknown";
 
-declare variable $Schema_file external := "gmd.xsd";
+declare variable $Schema_file external := "gmd_gmx.xsd";
 
 declare variable $printExactLocation external := "false"; (: if set to true - ignoring case and leading or trailing whitespace - the XPath of the element that caused an assertion to fail or a report to be generated will be included in messages:)
 
