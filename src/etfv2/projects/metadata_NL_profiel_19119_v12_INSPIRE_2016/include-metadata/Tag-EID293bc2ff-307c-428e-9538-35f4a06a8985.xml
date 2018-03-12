@@ -1,0 +1,5 @@
+<Tag xmlns="http://www.interactive-instruments.de/etf/2.0" id="EID293bc2ff-307c-428e-9538-35f4a06a8985" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.interactive-instruments.de/etf/2.0 http://resources.etf-validator.net/schema/v2/service/service.xsd">
+	<label>Nederlands profiel op ISO 19119 v12 INSPIRE 2016</label>
+	<description>Metadata validator voor Nederlands profiel op ISO 19119 v12 2016</description>
+	<priority>200</priority>
+</Tag>

@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<etf:ExecutableTestSuite xmlns="http://www.interactive-instruments.de/etf/2.0"
+                         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                         xmlns:etf="http://www.interactive-instruments.de/etf/2.0"
+                         xmlns:ii="http://www.interactive-instruments.de"
+                         id="EID6465ba9c-0a5c-11e8-1038-09173f13e4c5"
+                         xsi:schemaLocation="http://www.interactive-instruments.de/etf/2.0 http://resources.etf-validator.net/schema/v2/service/service.xsd">
+   <itemHash>bQ==</itemHash>
+   <remoteResource>https://github.com/interactive-instruments/etf-ets-repository</remoteResource>
+   <localPath>/auto</localPath>
+   <label>Run all dependencies</label>
+   <description>Run XSD and Schematron tests for Nederlands profiel op ISO 19119 v12 INSPIRE 2016</description>
+   <reference>../example-bsxets.xq</reference>
+   <version>2.0.0</version>
+   <author>Geonovum</author>
+   <creationDate>2018-01-19T16:06:53.937+02:00</creationDate>
+   <lastEditor>Geonovum</lastEditor>
+   <lastUpdateDate>2018-01-19T16:06:53.937+02:00</lastUpdateDate>
+   <tags>
+      <tag ref="EID293bc2ff-307c-428e-9538-35f4a06a8985"/>
+   </tags>
+   <testDriver ref="EID4dddc9e2-1b21-40b7-af70-6a2d156ad130"/>
+   <translationTemplateBundle ref="EID880b027c-181d-4a96-a801-07091528f9bf"/>
+   <ParameterList name="ETF Standard Parameters for XML test objects">
+      <parameter name="files_to_test" required="true">
+         <defaultValue>.*</defaultValue>
+         <description ref="TR.filesToTest"/>
+         <allowedValues>.*</allowedValues>
+         <type>string</type>
+      </parameter>
+      <parameter name="tests_to_execute" required="false">
+         <defaultValue>.*</defaultValue>
+         <description ref="TR.testsToExecute"/>
+         <allowedValues>.*</allowedValues>
+         <type>string</type>
+      </parameter>
+   </ParameterList>
+   <supportedTestObjectTypes>
+      <testObjectType ref="EID5a60dded-0cb0-4977-9b06-16c6c2321d2e"/>
+   </supportedTestObjectTypes>
+   <dependencies>
+      <executableTestSuite ref="EIDeca698b3-0a5b-11e8-1863-09173f13e4c5"/>
+      <executableTestSuite ref="EIDf21f2832-0a5b-11e8-d212-09173f13e4c5"/>
+   </dependencies>
+   <testModules>
+      <TestModule id="EID6465bf00-0a5c-11e8-3151-09173f13e4c5">
+         <label>IGNORE</label>
+         <description>IGNORE</description>
+         <parent ref="EID6465ba9c-0a5c-11e8-1038-09173f13e4c5"/>
+         <testCases>
+            <TestCase id="EID6465a5dd-0a5c-11e8-9113-09173f13e4c5">
+               <label>Tests</label>
+               <description>...</description>
+               <parent ref="EID6465bf00-0a5c-11e8-3151-09173f13e4c5"/>
+               <testSteps>
+                  <TestStep id="EID6465aed1-0a5c-11e8-1337-09173f13e4c5">
+                     <label>IGNORE</label>
+                     <description>IGNORE</description>
+                     <parent ref="EID6465a5dd-0a5c-11e8-9113-09173f13e4c5"/>
+                     <statementForExecution>not applicable</statementForExecution>
+                     <testItemType ref="EIDf483e8e8-06b9-4900-ab36-adad0d7f22f0"/>
+                     <testAssertions>
+                        <TestAssertion id="EID6465a403-0a5c-11e8-2015-09173f13e4c5">
+                           <label>Skipped</label>
+                           <description>...</description>
+                           <parent ref="EID6465aed1-0a5c-11e8-1337-09173f13e4c5"/>
+                           <expectedResult>NOT_APPLICABLE</expectedResult>
+                           <expression>'PASSED'</expression>
+                           <testItemType ref="EIDf0edc596-49d2-48d6-a1a1-1ac581dcde0a"/>
+                        </TestAssertion>
+                     </testAssertions>
+                  </TestStep>
+               </testSteps>
+            </TestCase>
+         </testCases>
+      </TestModule>
+   </testModules>
+</etf:ExecutableTestSuite>
