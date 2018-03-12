@@ -1,0 +1,375 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TranslationTemplateBundle xmlns="http://www.interactive-instruments.de/etf/2.0"
+                           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                           xmlns:etf="http://www.interactive-instruments.de/etf/2.0"
+                           xmlns:ii="http://www.interactive-instruments.de"
+                           id="EID5f9f1c84-03cd-475b-9a1c-a1a04abca04e"
+                           xsi:schemaLocation="http://www.interactive-instruments.de/etf/2.0 http://resources.etf-validator.net/schema/v2/service/service.xsd"><!--Generated from 'Schematron schematron' on 2018-02-02T11:06:17.432+01:00--><!--This Translation Template Bundle extends the standard error messages from Translation Template Bundle EID27117afb-11aa-4e45-aa3d-0e1e65bdccb8--><!--Translation Template Bundle EID27117afb-11aa-4e45-aa3d-0e1e65bdccb8 can be downloaded from:--><!--https://raw.githubusercontent.com/interactive-instruments/etf-ets-repository/master/generic/include-metadata/TranslationTemplateBundle-EID27117afb-11aa-4e45-aa3d-0e1e65bdccb8.xml--><etf:parent ref="EID27117afb-11aa-4e45-aa3d-0e1e65bdccb8"/>
+   <translationTemplateCollections>
+      <LangTranslationTemplateCollection name="TR.schtron.Schematron.schematron.err.1.1.1">
+         <translationTemplates>
+            <TranslationTemplate language="en" name="TR.schtron.Schematron.schematron.err.1.1.1">XML document '{filename}': Het ISO 19139 XML document mist een verplichte schema locatie. De schema locatie met namespace http://www.isotc211.org/2005/gmd http://schemas.opengis.net/csw/2.0.2/profiles/apiso/1.0.0/apiso.xsd moet aanwezig zijn. Zie https://www.pdok.nl/nl/ngr/faq#schemalocatie</TranslationTemplate>
+         </translationTemplates>
+      </LangTranslationTemplateCollection>
+      <LangTranslationTemplateCollection name="TR.schtron.Schematron.schematron.err.1.1.2">
+         <translationTemplates>
+            <TranslationTemplate language="en" name="TR.schtron.Schematron.schematron.err.1.1.2">XML document '{filename}': Metadata ID (ISO nr. 2) ontbreekt of heeft een verkeerde waarde.</TranslationTemplate>
+         </translationTemplates>
+      </LangTranslationTemplateCollection>
+      <LangTranslationTemplateCollection name="TR.schtron.Schematron.schematron.err.1.1.3">
+         <translationTemplates>
+            <TranslationTemplate language="en" name="TR.schtron.Schematron.schematron.err.1.1.3">XML document '{filename}': De metadata taal (ISO nr. 3) ontbreekt of heeft een verkeerde waarde. Dit hoort een waarde en verwijzing naar de codelijst te zijn.</TranslationTemplate>
+         </translationTemplates>
+      </LangTranslationTemplateCollection>
+      <LangTranslationTemplateCollection name="TR.schtron.Schematron.schematron.err.1.1.4">
+         <translationTemplates>
+            <TranslationTemplate language="en" name="TR.schtron.Schematron.schematron.err.1.1.4">XML document '{filename}': Resource type (ISO nr. 6) ontbreekt of heeft een verkeerde waarde</TranslationTemplate>
+         </translationTemplates>
+      </LangTranslationTemplateCollection>
+      <LangTranslationTemplateCollection name="TR.schtron.Schematron.schematron.err.1.1.5">
+         <translationTemplates>
+            <TranslationTemplate language="en" name="TR.schtron.Schematron.schematron.err.1.1.5">XML document '{filename}': Naam organisatie metadata (ISO nr. 376) ontbreekt</TranslationTemplate>
+         </translationTemplates>
+      </LangTranslationTemplateCollection>
+      <LangTranslationTemplateCollection name="TR.schtron.Schematron.schematron.err.1.1.6">
+         <translationTemplates>
+            <TranslationTemplate language="en" name="TR.schtron.Schematron.schematron.err.1.1.6">XML document '{filename}': Rol organisatie metadata (ISO nr. 379) ontbreekt of heeft een verkeerde waarde</TranslationTemplate>
+         </translationTemplates>
+      </LangTranslationTemplateCollection>
+      <LangTranslationTemplateCollection name="TR.schtron.Schematron.schematron.err.1.1.7">
+         <translationTemplates>
+            <TranslationTemplate language="en" name="TR.schtron.Schematron.schematron.err.1.1.7">XML document '{filename}': Rol organisatie metadata (ISO nr. 379) ontbreekt of heeft een verkeerde waarde, deze dient voor INSPIRE contactpunt te zijn</TranslationTemplate>
+         </translationTemplates>
+      </LangTranslationTemplateCollection>
+      <LangTranslationTemplateCollection name="TR.schtron.Schematron.schematron.err.1.1.8">
+         <translationTemplates>
+            <TranslationTemplate language="en" name="TR.schtron.Schematron.schematron.err.1.1.8">XML document '{filename}': E-mail organisatie metadata (ISO nr. 386) ontbreekt</TranslationTemplate>
+         </translationTemplates>
+      </LangTranslationTemplateCollection>
+      <LangTranslationTemplateCollection name="TR.schtron.Schematron.schematron.err.1.1.9">
+         <translationTemplates>
+            <TranslationTemplate language="en" name="TR.schtron.Schematron.schematron.err.1.1.9">XML document '{filename}': Metadata datum (ISO nr. 9) ontbreekt of heeft het verkeerde formaat (YYYY-MM-DD)</TranslationTemplate>
+         </translationTemplates>
+      </LangTranslationTemplateCollection>
+      <LangTranslationTemplateCollection name="TR.schtron.Schematron.schematron.err.1.1.10">
+         <translationTemplates>
+            <TranslationTemplate language="en" name="TR.schtron.Schematron.schematron.err.1.1.10">XML document '{filename}': Metadatastandaard naam (ISO nr. 10) is niet correct ingevuld, Metadatastandaard naam dient de waarde "ISO 19119" te hebben</TranslationTemplate>
+         </translationTemplates>
+      </LangTranslationTemplateCollection>
+      <LangTranslationTemplateCollection name="TR.schtron.Schematron.schematron.err.1.1.11">
+         <translationTemplates>
+            <TranslationTemplate language="en" name="TR.schtron.Schematron.schematron.err.1.1.11">XML document '{filename}': Versie metadatastandaard (ISO nr. 11) is niet correct ingevuld, Metadatastandaard versie dient de waarde "Nederlands metadata profiel op ISO 19119 voor services 1.2" te bevatten</TranslationTemplate>
+         </translationTemplates>
+      </LangTranslationTemplateCollection>
+      <LangTranslationTemplateCollection name="TR.schtron.Schematron.schematron.err.1.1.12">
+         <translationTemplates>
+            <TranslationTemplate language="en" name="TR.schtron.Schematron.schematron.err.1.1.12">XML document '{filename}': Metadata karakterset (ISO nr. 4) ontbreekt of heeft een verkeerde waarde</TranslationTemplate>
+         </translationTemplates>
+      </LangTranslationTemplateCollection>
+      <LangTranslationTemplateCollection name="TR.schtron.Schematron.schematron.err.1.1.13">
+         <translationTemplates>
+            <TranslationTemplate language="en" name="TR.schtron.Schematron.schematron.err.1.1.13">XML document '{filename}': Specificatie (ISO nr. 360) mist de verplichte waarden voor INSPIRE services, Als dit geen INSPIRE service is verwijder dan de thesaurus GEMET -INSPIRE themes, voor INSPIRE service in specificatie opnemen; VERORDENING (EU) Nr. 1089/2010 VAN DE COMMISSIE van 23 november 2010 ter uitvoering van Richtlijn 2007/2/EG van het Europees Parlement en de Raad betreffende de interoperabiliteit van verzamelingen ruimtelijke gegevens en van diensten met betrekking tot ruimtelijke gegevens</TranslationTemplate>
+         </translationTemplates>
+      </LangTranslationTemplateCollection>
+      <LangTranslationTemplateCollection name="TR.schtron.Schematron.schematron.err.1.1.14">
+         <translationTemplates>
+            <TranslationTemplate language="en" name="TR.schtron.Schematron.schematron.err.1.1.14">XML document '{filename}': Service titel (ISO nr. 360) ontbreekt</TranslationTemplate>
+         </translationTemplates>
+      </LangTranslationTemplateCollection>
+      <LangTranslationTemplateCollection name="TR.schtron.Schematron.schematron.err.1.1.15">
+         <translationTemplates>
+            <TranslationTemplate language="en" name="TR.schtron.Schematron.schematron.err.1.1.15">XML document '{filename}': Datum van de bron (ISO nr. 394) ontbreekt of heeft het verkeerde formaat (YYYY-MM-DD)</TranslationTemplate>
+         </translationTemplates>
+      </LangTranslationTemplateCollection>
+      <LangTranslationTemplateCollection name="TR.schtron.Schematron.schematron.err.1.1.16">
+         <translationTemplates>
+            <TranslationTemplate language="en" name="TR.schtron.Schematron.schematron.err.1.1.16">XML document '{filename}': Samenvatting (ISO nr. 25) ontbreekt</TranslationTemplate>
+         </translationTemplates>
+      </LangTranslationTemplateCollection>
+      <LangTranslationTemplateCollection name="TR.schtron.Schematron.schematron.err.1.1.17">
+         <translationTemplates>
+            <TranslationTemplate language="en" name="TR.schtron.Schematron.schematron.err.1.1.17">XML document '{filename}': Verantwoordelijke organisatie bron (ISO nr. 376)) ontbreekt</TranslationTemplate>
+         </translationTemplates>
+      </LangTranslationTemplateCollection>
+      <LangTranslationTemplateCollection name="TR.schtron.Schematron.schematron.err.1.1.18">
+         <translationTemplates>
+            <TranslationTemplate language="en" name="TR.schtron.Schematron.schematron.err.1.1.18">XML document '{filename}': Rol verantwoordelijke organisatie bron (ISO nr. 379) ontbreekt of heeft een verkeerde waarde</TranslationTemplate>
+         </translationTemplates>
+      </LangTranslationTemplateCollection>
+      <LangTranslationTemplateCollection name="TR.schtron.Schematron.schematron.err.1.1.19">
+         <translationTemplates>
+            <TranslationTemplate language="en" name="TR.schtron.Schematron.schematron.err.1.1.19">XML document '{filename}': E-mail verantwoordelijke organisatie bron (ISO nr. 386) ontbreekt of heeft een verkeerde waarde</TranslationTemplate>
+         </translationTemplates>
+      </LangTranslationTemplateCollection>
+      <LangTranslationTemplateCollection name="TR.schtron.Schematron.schematron.err.1.1.20">
+         <translationTemplates>
+            <TranslationTemplate language="en" name="TR.schtron.Schematron.schematron.err.1.1.20">XML document '{filename}': Trefwoorden (ISO nr. 53) ontbreekt of heeft de verkeerde waarde</TranslationTemplate>
+         </translationTemplates>
+      </LangTranslationTemplateCollection>
+      <LangTranslationTemplateCollection name="TR.schtron.Schematron.schematron.err.1.1.21">
+         <translationTemplates>
+            <TranslationTemplate language="en" name="TR.schtron.Schematron.schematron.err.1.1.21">XML document '{filename}': Rol organisatie (ISO nr. 379) ontbreekt of heeft een verkeerde waarde, voor INSPIRE interoperable SDS in ieder geval de rol beheerder opnemen</TranslationTemplate>
+         </translationTemplates>
+      </LangTranslationTemplateCollection>
+      <LangTranslationTemplateCollection name="TR.schtron.Schematron.schematron.err.1.1.22">
+         <translationTemplates>
+            <TranslationTemplate language="en" name="TR.schtron.Schematron.schematron.err.1.1.22">XML document '{filename}': Rol organisatie (ISO nr. 379) ontbreekt of heeft een verkeerde waarde, voor INSPIRE harmonised SDS in ieder geval de rol beheerder opnemen</TranslationTemplate>
+         </translationTemplates>
+      </LangTranslationTemplateCollection>
+      <LangTranslationTemplateCollection name="TR.schtron.Schematron.schematron.err.1.1.23">
+         <translationTemplates>
+            <TranslationTemplate language="en" name="TR.schtron.Schematron.schematron.err.1.1.23">XML document '{filename}': Gebruiksbeperkingen (ISO nr. 68) ontbreken</TranslationTemplate>
+         </translationTemplates>
+      </LangTranslationTemplateCollection>
+      <LangTranslationTemplateCollection name="TR.schtron.Schematron.schematron.err.1.1.24">
+         <translationTemplates>
+            <TranslationTemplate language="en" name="TR.schtron.Schematron.schematron.err.1.1.24">XML document '{filename}': (Juridische) toegangsrestricties (ISO nr. 70) en Overige beperkingen (ISO nr 72) dient ingevuld te zijn</TranslationTemplate>
+         </translationTemplates>
+      </LangTranslationTemplateCollection>
+      <LangTranslationTemplateCollection name="TR.schtron.Schematron.schematron.err.1.1.25">
+         <translationTemplates>
+            <TranslationTemplate language="en" name="TR.schtron.Schematron.schematron.err.1.1.25">XML document '{filename}': (Juridische) toegangsrestricties (ISO nr. 70) dient de waarde "anders" te hebben in combinatie met een publiek domein, CC0 of geogedeelt licentie bij overige beperkingen (ISO nr. 72)</TranslationTemplate>
+         </translationTemplates>
+      </LangTranslationTemplateCollection>
+      <LangTranslationTemplateCollection name="TR.schtron.Schematron.schematron.err.1.1.26">
+         <translationTemplates>
+            <TranslationTemplate language="en" name="TR.schtron.Schematron.schematron.err.1.1.26">XML document '{filename}': Het element overige beperkingen (ISO nr. 72) dient een URL naar de publiek domein, CC0 of geogedeelt licentie te hebben als (juridische) toegangsrestricties (ISO nr. 70) de waarde "anders" heeft</TranslationTemplate>
+         </translationTemplates>
+      </LangTranslationTemplateCollection>
+      <LangTranslationTemplateCollection name="TR.schtron.Schematron.schematron.err.1.1.27">
+         <translationTemplates>
+            <TranslationTemplate language="en" name="TR.schtron.Schematron.schematron.err.1.1.27">XML document '{filename}': Het element overige beperkingen (ISO nr. 72) dient twee maal binnen dezelfde toegangsrestricties voor te komen; één met de beschrijving en één met de URL naar de publiek domein, CC0 of geogedeelt licentie,als (juridische) toegangsrestricties (ISO nr. 70) de waarde "anders" heeft</TranslationTemplate>
+         </translationTemplates>
+      </LangTranslationTemplateCollection>
+      <LangTranslationTemplateCollection name="TR.schtron.Schematron.schematron.err.1.1.28">
+         <translationTemplates>
+            <TranslationTemplate language="en" name="TR.schtron.Schematron.schematron.err.1.1.28">XML document '{filename}': DCP ontbreekt of heeft de verkeerde waarde</TranslationTemplate>
+         </translationTemplates>
+      </LangTranslationTemplateCollection>
+      <LangTranslationTemplateCollection name="TR.schtron.Schematron.schematron.err.1.1.29">
+         <translationTemplates>
+            <TranslationTemplate language="en" name="TR.schtron.Schematron.schematron.err.1.1.29">XML document '{filename}': Operatie naam ontbreekt of heeft de verkeerde waarde.</TranslationTemplate>
+         </translationTemplates>
+      </LangTranslationTemplateCollection>
+      <LangTranslationTemplateCollection name="TR.schtron.Schematron.schematron.err.1.1.30">
+         <translationTemplates>
+            <TranslationTemplate language="en" name="TR.schtron.Schematron.schematron.err.1.1.30">XML document '{filename}': Connect point linkage ontbreekt of heeft de verkeerde waarde</TranslationTemplate>
+         </translationTemplates>
+      </LangTranslationTemplateCollection>
+      <LangTranslationTemplateCollection name="TR.schtron.Schematron.schematron.err.1.1.31">
+         <translationTemplates>
+            <TranslationTemplate language="en" name="TR.schtron.Schematron.schematron.err.1.1.31">XML document '{filename}': Resource locator heeft niet dezelfde waarde als connectpoint Linkage</TranslationTemplate>
+         </translationTemplates>
+      </LangTranslationTemplateCollection>
+      <LangTranslationTemplateCollection name="TR.schtron.Schematron.schematron.err.1.1.32">
+         <translationTemplates>
+            <TranslationTemplate language="en" name="TR.schtron.Schematron.schematron.err.1.1.32">XML document '{filename}': Resource locator heeft niet dezelfde waarde als connectpoint Linkage</TranslationTemplate>
+         </translationTemplates>
+      </LangTranslationTemplateCollection>
+      <LangTranslationTemplateCollection name="TR.schtron.Schematron.schematron.err.1.1.33">
+         <translationTemplates>
+            <TranslationTemplate language="en" name="TR.schtron.Schematron.schematron.err.1.1.33">XML document '{filename}': Resource locator heeft niet dezelfde waarde als connectpoint Linkage</TranslationTemplate>
+         </translationTemplates>
+      </LangTranslationTemplateCollection>
+      <LangTranslationTemplateCollection name="TR.schtron.Schematron.schematron.err.1.1.34">
+         <translationTemplates>
+            <TranslationTemplate language="en" name="TR.schtron.Schematron.schematron.err.1.1.34">XML document '{filename}': Resource locator heeft niet dezelfde waarde als connectpoint Linkage</TranslationTemplate>
+         </translationTemplates>
+      </LangTranslationTemplateCollection>
+      <LangTranslationTemplateCollection name="TR.schtron.Schematron.schematron.err.1.1.35">
+         <translationTemplates>
+            <TranslationTemplate language="en" name="TR.schtron.Schematron.schematron.err.1.1.35">XML document '{filename}': Resource locator is verplicht als er een link is naar de service</TranslationTemplate>
+         </translationTemplates>
+      </LangTranslationTemplateCollection>
+      <LangTranslationTemplateCollection name="TR.schtron.Schematron.schematron.err.1.1.36">
+         <translationTemplates>
+            <TranslationTemplate language="en" name="TR.schtron.Schematron.schematron.err.1.1.36">XML document '{filename}': Protocol (ISO nr. 398) is verplicht als Resource locator is ingevuld.</TranslationTemplate>
+         </translationTemplates>
+      </LangTranslationTemplateCollection>
+      <LangTranslationTemplateCollection name="TR.schtron.Schematron.schematron.err.1.1.37">
+         <translationTemplates>
+            <TranslationTemplate language="en" name="TR.schtron.Schematron.schematron.err.1.1.37">XML document '{filename}': Service type ontbreekt of heeft de verkeerde waarde, gebruik view of download voor services die aan betreffende specificaties van INSPIRE voldoen, in andere gevallen de waarde other.</TranslationTemplate>
+         </translationTemplates>
+      </LangTranslationTemplateCollection>
+      <LangTranslationTemplateCollection name="TR.schtron.Schematron.schematron.err.1.1.38">
+         <translationTemplates>
+            <TranslationTemplate language="en" name="TR.schtron.Schematron.schematron.err.1.1.38">XML document '{filename}': Service type ontbreekt of heeft de verkeerde waarde, gebruik view of download voor services die aan betreffende specificaties van INSPIRE voldoen.</TranslationTemplate>
+         </translationTemplates>
+      </LangTranslationTemplateCollection>
+      <LangTranslationTemplateCollection name="TR.schtron.Schematron.schematron.err.1.1.39">
+         <translationTemplates>
+            <TranslationTemplate language="en" name="TR.schtron.Schematron.schematron.err.1.1.39">XML document '{filename}': Service type ontbreekt of heeft de verkeerde waarde, gebruik de waarde other voor SDS services die aan betreffende specificaties van INSPIRE voldoen.</TranslationTemplate>
+         </translationTemplates>
+      </LangTranslationTemplateCollection>
+      <LangTranslationTemplateCollection name="TR.schtron.Schematron.schematron.err.1.1.40">
+         <translationTemplates>
+            <TranslationTemplate language="en" name="TR.schtron.Schematron.schematron.err.1.1.40">XML document '{filename}': beschrijving ontbreekt of heeft de verkeerde waarde, gebruik voor INSPIRE SDS de waarde accessPoint</TranslationTemplate>
+         </translationTemplates>
+      </LangTranslationTemplateCollection>
+      <LangTranslationTemplateCollection name="TR.schtron.Schematron.schematron.err.1.1.41">
+         <translationTemplates>
+            <TranslationTemplate language="en" name="TR.schtron.Schematron.schematron.err.1.1.41">XML document '{filename}': Resource locator naar de service moet een getCapabilities request bevatten</TranslationTemplate>
+         </translationTemplates>
+      </LangTranslationTemplateCollection>
+      <LangTranslationTemplateCollection name="TR.schtron.Schematron.schematron.err.1.1.42">
+         <translationTemplates>
+            <TranslationTemplate language="en" name="TR.schtron.Schematron.schematron.err.1.1.42">XML document '{filename}': Coupling type ontbreekt of heeft de verkeerde waarde</TranslationTemplate>
+         </translationTemplates>
+      </LangTranslationTemplateCollection>
+      <LangTranslationTemplateCollection name="TR.schtron.Schematron.schematron.err.1.1.43">
+         <translationTemplates>
+            <TranslationTemplate language="en" name="TR.schtron.Schematron.schematron.err.1.1.43">XML document '{filename}': CoupledResouce met xlink en uuidref is verplicht indien data aan de service is gekoppeld (coupled resource "tight" of "mixed").</TranslationTemplate>
+         </translationTemplates>
+      </LangTranslationTemplateCollection>
+      <LangTranslationTemplateCollection name="TR.schtron.Schematron.schematron.err.1.1.44">
+         <translationTemplates>
+            <TranslationTemplate language="en" name="TR.schtron.Schematron.schematron.err.1.1.44">XML document '{filename}': Geografisch gebied is verplicht indien data aan de service is gekoppeld (coupled resource "tight" of "mixed").</TranslationTemplate>
+         </translationTemplates>
+      </LangTranslationTemplateCollection>
+      <LangTranslationTemplateCollection name="TR.schtron.Schematron.schematron.err.1.1.45">
+         <translationTemplates>
+            <TranslationTemplate language="en" name="TR.schtron.Schematron.schematron.err.1.1.45">XML document '{filename}': Minimum x-coördinaat (ISO nr. 344) ontbreekt of heeft een verkeerde waarde</TranslationTemplate>
+         </translationTemplates>
+      </LangTranslationTemplateCollection>
+      <LangTranslationTemplateCollection name="TR.schtron.Schematron.schematron.err.1.1.46">
+         <translationTemplates>
+            <TranslationTemplate language="en" name="TR.schtron.Schematron.schematron.err.1.1.46">XML document '{filename}': Maximum x-coördinaat (ISO nr. 345) ontbreekt of heeft een verkeerde waarde</TranslationTemplate>
+         </translationTemplates>
+      </LangTranslationTemplateCollection>
+      <LangTranslationTemplateCollection name="TR.schtron.Schematron.schematron.err.1.1.47">
+         <translationTemplates>
+            <TranslationTemplate language="en" name="TR.schtron.Schematron.schematron.err.1.1.47">XML document '{filename}': Minimum y-coördinaat (ISO nr. 346) ontbreekt of heeft een verkeerde waarde</TranslationTemplate>
+         </translationTemplates>
+      </LangTranslationTemplateCollection>
+      <LangTranslationTemplateCollection name="TR.schtron.Schematron.schematron.err.1.1.48">
+         <translationTemplates>
+            <TranslationTemplate language="en" name="TR.schtron.Schematron.schematron.err.1.1.48">XML document '{filename}': Maximum y-coördinaat (ISO nr. 347) ontbreekt of heeft een verkeerde waarde</TranslationTemplate>
+         </translationTemplates>
+      </LangTranslationTemplateCollection>
+      <LangTranslationTemplateCollection name="TR.schtron.Schematron.schematron.err.1.1.49">
+         <translationTemplates>
+            <TranslationTemplate language="en" name="TR.schtron.Schematron.schematron.err.1.1.49">XML document '{filename}': Niveau kwaliteitsbeschrijving (ISO nr.139) ontbreekt of heeft een verkeerde waarde. Alleen "service" is toegestaan</TranslationTemplate>
+         </translationTemplates>
+      </LangTranslationTemplateCollection>
+      <LangTranslationTemplateCollection name="TR.schtron.Schematron.schematron.err.1.2.1">
+         <translationTemplates>
+            <TranslationTemplate language="en" name="TR.schtron.Schematron.schematron.err.1.2.1">XML document '{filename}': Verklaring (ISO nr. 131) is verplicht als een specificatie is opgegeven.</TranslationTemplate>
+         </translationTemplates>
+      </LangTranslationTemplateCollection>
+      <LangTranslationTemplateCollection name="TR.schtron.Schematron.schematron.err.1.2.2">
+         <translationTemplates>
+            <TranslationTemplate language="en" name="TR.schtron.Schematron.schematron.err.1.2.2">XML document '{filename}': Datum (ISO nr. 394) is verplicht als een specificatie is opgegeven.</TranslationTemplate>
+         </translationTemplates>
+      </LangTranslationTemplateCollection>
+      <LangTranslationTemplateCollection name="TR.schtron.Schematron.schematron.err.1.2.3">
+         <translationTemplates>
+            <TranslationTemplate language="en" name="TR.schtron.Schematron.schematron.err.1.2.3">XML document '{filename}': Datumtype (ISO nr. 395) is verplicht als een specificatie is opgegeven.</TranslationTemplate>
+         </translationTemplates>
+      </LangTranslationTemplateCollection>
+      <LangTranslationTemplateCollection name="TR.schtron.Schematron.schematron.err.1.2.4">
+         <translationTemplates>
+            <TranslationTemplate language="en" name="TR.schtron.Schematron.schematron.err.1.2.4">XML document '{filename}': Conformiteit (ISO nr. 132) is verplicht als een specificatie is opgegeven.</TranslationTemplate>
+         </translationTemplates>
+      </LangTranslationTemplateCollection>
+      <LangTranslationTemplateCollection name="TR.schtron.Schematron.schematron.err.1.2.5">
+         <translationTemplates>
+            <TranslationTemplate language="en" name="TR.schtron.Schematron.schematron.err.1.2.5">XML document '{filename}': Verklaring (ISO nr. 131) hoort leeg als geen specificatie is opgegeven</TranslationTemplate>
+         </translationTemplates>
+      </LangTranslationTemplateCollection>
+      <LangTranslationTemplateCollection name="TR.schtron.Schematron.schematron.err.1.2.6">
+         <translationTemplates>
+            <TranslationTemplate language="en" name="TR.schtron.Schematron.schematron.err.1.2.6">XML document '{filename}': Datum (ISO nr. 394) hoort leeg als geen specificatie is opgegeven..</TranslationTemplate>
+         </translationTemplates>
+      </LangTranslationTemplateCollection>
+      <LangTranslationTemplateCollection name="TR.schtron.Schematron.schematron.err.1.2.7">
+         <translationTemplates>
+            <TranslationTemplate language="en" name="TR.schtron.Schematron.schematron.err.1.2.7">XML document '{filename}': Datumtype (ISO nr. 395) hoort leeg als geen specificatie is opgegeven..</TranslationTemplate>
+         </translationTemplates>
+      </LangTranslationTemplateCollection>
+      <LangTranslationTemplateCollection name="TR.schtron.Schematron.schematron.err.1.2.8">
+         <translationTemplates>
+            <TranslationTemplate language="en" name="TR.schtron.Schematron.schematron.err.1.2.8">XML document '{filename}': Conformiteit (ISO nr. 132) hoort leeg als geen specificatie is opgegeven..</TranslationTemplate>
+         </translationTemplates>
+      </LangTranslationTemplateCollection>
+      <LangTranslationTemplateCollection name="TR.schtron.Schematron.schematron.err.1.4.1">
+         <translationTemplates>
+            <TranslationTemplate language="en" name="TR.schtron.Schematron.schematron.err.1.4.1">XML document '{filename}': Coupled resource heeft geen uuidref attribuut bij het element operatesOn</TranslationTemplate>
+         </translationTemplates>
+      </LangTranslationTemplateCollection>
+      <LangTranslationTemplateCollection name="TR.schtron.Schematron.schematron.err.1.4.2">
+         <translationTemplates>
+            <TranslationTemplate language="en" name="TR.schtron.Schematron.schematron.err.1.4.2">XML document '{filename}': Coupled resource heeft geen xlink:href attribuut bij het element operatesOn</TranslationTemplate>
+         </translationTemplates>
+      </LangTranslationTemplateCollection>
+      <LangTranslationTemplateCollection name="TR.schtron.Schematron.schematron.err.1.5.1">
+         <translationTemplates>
+            <TranslationTemplate language="en" name="TR.schtron.Schematron.schematron.err.1.5.1">XML document '{filename}': De beschikbaarheid van de service is niet beschreven</TranslationTemplate>
+         </translationTemplates>
+      </LangTranslationTemplateCollection>
+      <LangTranslationTemplateCollection name="TR.schtron.Schematron.schematron.err.1.5.2">
+         <translationTemplates>
+            <TranslationTemplate language="en" name="TR.schtron.Schematron.schematron.err.1.5.2">XML document '{filename}': De performance van de service is niet beschreven</TranslationTemplate>
+         </translationTemplates>
+      </LangTranslationTemplateCollection>
+      <LangTranslationTemplateCollection name="TR.schtron.Schematron.schematron.err.1.5.3">
+         <translationTemplates>
+            <TranslationTemplate language="en" name="TR.schtron.Schematron.schematron.err.1.5.3">XML document '{filename}': De capaciteit van de service is niet beschreven</TranslationTemplate>
+         </translationTemplates>
+      </LangTranslationTemplateCollection>
+      <LangTranslationTemplateCollection name="TR.schtron.Schematron.schematron.err.1.5.4">
+         <translationTemplates>
+            <TranslationTemplate language="en" name="TR.schtron.Schematron.schematron.err.1.5.4">XML document '{filename}': De beschikbaarheid van de service is niet beschreven</TranslationTemplate>
+         </translationTemplates>
+      </LangTranslationTemplateCollection>
+      <LangTranslationTemplateCollection name="TR.schtron.Schematron.schematron.err.1.5.5">
+         <translationTemplates>
+            <TranslationTemplate language="en" name="TR.schtron.Schematron.schematron.err.1.5.5">XML document '{filename}': De performance van de service is niet beschreven</TranslationTemplate>
+         </translationTemplates>
+      </LangTranslationTemplateCollection>
+      <LangTranslationTemplateCollection name="TR.schtron.Schematron.schematron.err.1.5.6">
+         <translationTemplates>
+            <TranslationTemplate language="en" name="TR.schtron.Schematron.schematron.err.1.5.6">XML document '{filename}': De capaciteit van de service is niet beschreven</TranslationTemplate>
+         </translationTemplates>
+      </LangTranslationTemplateCollection>
+      <LangTranslationTemplateCollection name="TR.schtron.Schematron.schematron.err.1.5.7">
+         <translationTemplates>
+            <TranslationTemplate language="en" name="TR.schtron.Schematron.schematron.err.1.5.7">XML document '{filename}': Identificatie van service kwaliteitsmeeting (ISO nr. 101) is verplicht als een meeting is opgegeven.</TranslationTemplate>
+         </translationTemplates>
+      </LangTranslationTemplateCollection>
+      <LangTranslationTemplateCollection name="TR.schtron.Schematron.schematron.err.1.5.8">
+         <translationTemplates>
+            <TranslationTemplate language="en" name="TR.schtron.Schematron.schematron.err.1.5.8">XML document '{filename}': Beschrijving van service kwaliteit (ISO nr. 102) is verplicht als een meeting is opgegeven.</TranslationTemplate>
+         </translationTemplates>
+      </LangTranslationTemplateCollection>
+      <LangTranslationTemplateCollection name="TR.schtron.Schematron.schematron.err.1.5.9">
+         <translationTemplates>
+            <TranslationTemplate language="en" name="TR.schtron.Schematron.schematron.err.1.5.9">XML document '{filename}': Resultaat van service kwaliteit (ISO nr. 107) is verplicht als een meeting is opgegeven.</TranslationTemplate>
+         </translationTemplates>
+      </LangTranslationTemplateCollection>
+      <LangTranslationTemplateCollection name="TR.schtron.Schematron.schematron.err.1.5.10">
+         <translationTemplates>
+            <TranslationTemplate language="en" name="TR.schtron.Schematron.schematron.err.1.5.10">XML document '{filename}': Voor resultaat van service kwaliteit (ISO nr. 107) is ook een eenheid verplicht als een meeting is opgegeven.</TranslationTemplate>
+         </translationTemplates>
+      </LangTranslationTemplateCollection>
+      <LangTranslationTemplateCollection name="TR.schtron.Schematron.schematron.err.1.6.1">
+         <translationTemplates>
+            <TranslationTemplate language="en" name="TR.schtron.Schematron.schematron.err.1.6.1">XML document '{filename}': Code referentiesysteem (ISO nr. 207) ontbreekt, dit moet voor INSPIRE interoperable SDS een URI, bv http://www.opengis.net/def/crs/EPSG/0/28992 zijn</TranslationTemplate>
+         </translationTemplates>
+      </LangTranslationTemplateCollection>
+      <LangTranslationTemplateCollection name="TR.schtron.Schematron.schematron.err.1.6.2">
+         <translationTemplates>
+            <TranslationTemplate language="en" name="TR.schtron.Schematron.schematron.err.1.6.2">XML document '{filename}': Code referentiesysteem (ISO nr. 207) ontbreekt, dit moet voor INSPIRE harmonised SDS een URI, bv http://www.opengis.net/def/crs/EPSG/0/28992 zijn</TranslationTemplate>
+         </translationTemplates>
+      </LangTranslationTemplateCollection>
+      <LangTranslationTemplateCollection name="TR.schtron.Schematron.schematron.err.1.7.1">
+         <translationTemplates>
+            <TranslationTemplate language="en" name="TR.schtron.Schematron.schematron.err.1.7.1">XML document '{filename}': Als er gebruik wordt gemaakt van een thesaurus dient de datum (ISO nr.394) en datumtype (ISO nr. 395) opgegeven te worden. Datum formaat moet YYYY-MM-DD zijn.</TranslationTemplate>
+         </translationTemplates>
+      </LangTranslationTemplateCollection>
+      <LangTranslationTemplateCollection name="TR.schtron.Schematron.schematron.err.1.8.1">
+         <translationTemplates>
+            <TranslationTemplate language="en" name="TR.schtron.Schematron.schematron.err.1.8.1">XML document '{filename}': Deze keywords komen niet overeen met GEMET- INSPIRE themes thesaurus. gevonden keywords:{.}</TranslationTemplate>
+         </translationTemplates>
+      </LangTranslationTemplateCollection>
+   </translationTemplateCollections>
+</TranslationTemplateBundle>
