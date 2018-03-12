@@ -1,5 +1,12 @@
-# Template XSD + schematron
-Een nieuwe validator maken met XSD en schematron validatie:
+# Aanmaken validator XSD + schematron tests
+## Goed te weten vooraf
+1. de validator maakt gebruik van generieke XQuery-code (2 bestanden) voor de verwerking. De verwijzing hiernaar wordt autmatisch opgenomen, het is dus niet nodig hier nog iets voor te doen. Wel is het belangrijk dat deze code staat in de directory ../../projects/generic/. Het gaat om de bestanden:
+  1. schematron-bsxets.xq
+  1. schematron-query-prolog.xq
+1. het aanmaken gebeurt met XSLTs. In onderstaande stappen worden de transformaties via een command-line tool uitgevoerd, een schil om de Java tool Saxon. Via een XML editor zijn deze transformaties ook uit te voeren.
+
+## Stappen
+Een nieuwe validator maken met XSD en schematron validatie gaat volgens de volgende stappen:
 1. kopieer de directorystructuur van dit template en geef de directory ```xsdschematron``` een logische naam van de validator. Gebruik bij voorkeur geen spaties.
 1. Tip: maak een tekstdocument waarin je de UUIDs opslaat. Bijvoorbeeld het bestand UUID.md uit het template. Er komen er namelijk verschillende terug.
 1. maak een Tag aan met de volgende stappen:
@@ -34,7 +41,7 @@ Een nieuwe validator maken met XSD en schematron validatie:
   1. translationtemplateid
   1. executableTestSuite 2 UUIDs van xsd en schematron
   1. (optioneel: testobjecttype)
-  1. Voorbeeld script:
+  1. Voorbeeld commando:
   ```
   saxonb-xslt ../include-metadata/Tag-EIDafe2f9f2-e603-42b4-bd6f-dfa52243752e.xml /home/thijs/code/Geonovum/ETF/github/Geonovum_forks/etf-ets-repository/utils/etf-all-xsd-schematron.xsl dependencyIdXsd=3f674143-fd27-11e7-1863-09173f13e4c5 dependencyIdSchematron=050e4572-fd28-11e7-d212-09173f13e4c5 translationTemplateId=13837fe8-eb23-4421-b2cb-1e2704bf618b testObjectTypeId=5a60dded-0cb0-4977-9b06-16c6c2321d2e > all-bsxets.xml
   ```
