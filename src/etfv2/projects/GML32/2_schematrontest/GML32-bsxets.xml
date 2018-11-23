@@ -1,0 +1,513 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<etf:ExecutableTestSuite xmlns="http://www.interactive-instruments.de/etf/2.0"
+                         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                         xmlns:etf="http://www.interactive-instruments.de/etf/2.0"
+                         xmlns:ii="http://www.interactive-instruments.de"
+                         id="EIDb0e04e22-ef12-11e8-d219-09173f13e4c6"
+                         xsi:schemaLocation="http://www.interactive-instruments.de/etf/2.0 http://resources.etf-validator.net/schema/v2/service/service.xsd">
+   <itemHash>bQ==</itemHash>
+   <remoteResource>https://github.com/interactive-instruments/etf-ets-repository</remoteResource>
+   <localPath>/auto</localPath>
+   <label>Schematron schematron</label>
+   <description>...</description>
+   <reference>../../generic/schematron-bsxets.xq</reference>
+   <version>1.0.0</version>
+   <author>See original schematron file:/home/thijs/code/Geonovum/ETF/github/etf-test-projects-nl/src/data/GML3.2%20SF2/schematron.sch</author>
+   <creationDate>2018-11-23T15:19:09.59+01:00</creationDate>
+   <lastEditor>ETF Schematron to ETF Executable Test Suite Transformer</lastEditor>
+   <lastUpdateDate>2018-11-23T15:19:09.59+01:00</lastUpdateDate>
+   <tags>
+      <tag ref="EID4ac4d44a-563f-43ec-80c2-f8a3d4e13776"/>
+   </tags>
+   <testDriver ref="EID4dddc9e2-1b21-40b7-af70-6a2d156ad130"/>
+   <translationTemplateBundle ref="EID2c4eb556-265c-4bb6-982f-a5574ae3252b"/>
+   <ParameterList name="ETF Standard Parameters for XML test objects">
+      <parameter name="files_to_test" required="true">
+         <defaultValue>.*</defaultValue>
+         <description ref="TR.filesToTest"/>
+         <allowedValues>.*</allowedValues>
+         <type>string</type>
+      </parameter>
+      <parameter name="tests_to_execute" required="false">
+         <defaultValue>.*</defaultValue>
+         <description ref="TR.testsToExecute"/>
+         <allowedValues>.*</allowedValues>
+         <type>string</type>
+      </parameter>
+      <parameter name="xml_namespaces" required="false">
+         <defaultValue>declare namespace gml='http://www.opengis.net/gml/3.2'; </defaultValue>
+         <description ref="TR.xmlNamespaces"/>
+         <allowedValues>.*</allowedValues>
+         <type>string</type>
+      </parameter>
+   </ParameterList>
+   <supportedTestObjectTypes>
+      <testObjectType ref="EIDe1d4a306-7a78-4a3b-ae2d-cf5f0810853e"/>
+   </supportedTestObjectTypes>
+   <testModules>
+      <TestModule id="EIDbe57f37b-ef2a-11e8-d2e7-09173f13e4c5">
+         <label>Schematron pattern 1</label>
+         <description>...</description>
+         <parent ref="EIDb0e04e22-ef12-11e8-d219-09173f13e4c6"/>
+         <testCases>
+            <TestCase id="EIDbe57f37d-ef2a-11e8-d2e9-09173f13e4c5">
+               <label>Metadata</label>
+               <description>...</description>
+               <parent ref="EIDbe57f37b-ef2a-11e8-d2e7-09173f13e4c5"/>
+               <testSteps>
+                  <TestStep id="EIDbe57f364-ef2a-11e8-d415-09173f13e4c5">
+                     <label>IGNORE</label>
+                     <description>IGNORE</description>
+                     <parent ref="EIDbe57f37d-ef2a-11e8-d2e9-09173f13e4c5"/>
+                     <statementForExecution>not applicable</statementForExecution>
+                     <testItemType ref="EIDf483e8e8-06b9-4900-ab36-adad0d7f22f0"/>
+                     <testAssertions>
+                        <TestAssertion id="EIDbe57f435-ef2a-11e8-d2e1-09173f13e4c5">
+                           <label>metaDataProperty</label>
+                           <description>This profile prohibits use of gml:metaDataProperty elements for referencing metadata in instance documents.</description>
+                           <parent ref="EIDbe57f364-ef2a-11e8-d415-09173f13e4c5"/>
+                           <expectedResult>NOT_APPLICABLE</expectedResult>
+                           <expression>
+
+let $errors := for $file in $db
+return
+for $nodeInFile in $file/*/*/*
+
+where not(xquery:eval("declare namespace gml='http://www.opengis.net/gml/3.2'; not(gml:metaDataProperty)", map { '': $nodeInFile}))
+order by local:filename($nodeInFile)
+return local:addMessage('TR.schtron.Schematron.schematron.err.1.1.1', map { 'filename': local:filename($nodeInFile)  })
+
+
+                                                            return
+                                                            (if ($errors) then 'FAILED' else 'PASSED',
+                                                            local:error-statistics('TR.filesWithErrors', count($errors)), $errors)
+                                                        </expression>
+                           <testItemType ref="EIDf0edc596-49d2-48d6-a1a1-1ac581dcde0a"/>
+                           <etf:translationTemplates>
+                              <etf:translationTemplate ref="TR.schtron.Schematron.schematron.err.1.1.1"/>
+                           </etf:translationTemplates>
+                        </TestAssertion>
+                     </testAssertions>
+                  </TestStep>
+               </testSteps>
+            </TestCase>
+            <TestCase id="EIDbe57f439-ef2a-11e8-d2e1-09173f13e4c5">
+               <label>Data</label>
+               <description>...</description>
+               <parent ref="EIDbe57f37b-ef2a-11e8-d2e7-09173f13e4c5"/>
+               <testSteps>
+                  <TestStep id="EIDbe57f365-ef2a-11e8-d580-09173f13e4c5">
+                     <label>IGNORE</label>
+                     <description>IGNORE</description>
+                     <parent ref="EIDbe57f439-ef2a-11e8-d2e1-09173f13e4c5"/>
+                     <statementForExecution>not applicable</statementForExecution>
+                     <testItemType ref="EIDf483e8e8-06b9-4900-ab36-adad0d7f22f0"/>
+                     <testAssertions>
+                        <TestAssertion id="EIDbe57f43d-ef2a-11e8-d2e2-09173f13e4c5">
+                           <label>Spatial_topology_types</label>
+                           <description>Spatial properties are limited to the set of geometric types consisting of point, curve with linear and/or circular arc interpolation, planar surface, or aggregates thereof. Spatial topology is excluded.</description>
+                           <parent ref="EIDbe57f365-ef2a-11e8-d580-09173f13e4c5"/>
+                           <expectedResult>NOT_APPLICABLE</expectedResult>
+                           <expression>
+
+let $errors := for $file in $db
+return
+for $nodeInFile in $file/*//*
+
+where not(xquery:eval("declare namespace gml='http://www.opengis.net/gml/3.2'; not(self::gml:Node|self::gml:Edge|self::gml:Face|self::gml:TopoSolid|self::gml:TopoPoint|self::gml:TopoCurve|self::gml:TopoSurface|self::gml:TopoVolume|self::gml:TopoComplex)", map { '': $nodeInFile}))
+order by local:filename($nodeInFile)
+return local:addMessage('TR.schtron.Schematron.schematron.err.1.2.1', map { 'filename': local:filename($nodeInFile)  })
+
+
+                                                            return
+                                                            (if ($errors) then 'FAILED' else 'PASSED',
+                                                            local:error-statistics('TR.filesWithErrors', count($errors)), $errors)
+                                                        </expression>
+                           <testItemType ref="EIDf0edc596-49d2-48d6-a1a1-1ac581dcde0a"/>
+                           <etf:translationTemplates>
+                              <etf:translationTemplate ref="TR.schtron.Schematron.schematron.err.1.2.1"/>
+                           </etf:translationTemplates>
+                        </TestAssertion>
+                        <TestAssertion id="EIDbe57f442-ef2a-11e8-d2e2-09173f13e4c5">
+                           <label>Curves</label>
+                           <description>Curves (standalone or within surfaces) must have linear and/or circular arc interpolation (LineString, Curve with Arc, Circle or CircleByCenterpoint segments)</description>
+                           <parent ref="EIDbe57f365-ef2a-11e8-d580-09173f13e4c5"/>
+                           <expectedResult>NOT_APPLICABLE</expectedResult>
+                           <expression>
+
+let $errors := for $file in $db
+return
+for $nodeInFile in $file/*//*
+
+where not(xquery:eval("declare namespace gml='http://www.opengis.net/gml/3.2'; not(self::gml:Curve) or self::gml:Curve/gml:segments[gml:LineStringSegment|gml:Arc|gml:Circle|gml:CircleByCenterPoint]", map { '': $nodeInFile}))
+order by local:filename($nodeInFile)
+return local:addMessage('TR.schtron.Schematron.schematron.err.1.2.2', map { 'filename': local:filename($nodeInFile)  })
+
+
+                                                            return
+                                                            (if ($errors) then 'FAILED' else 'PASSED',
+                                                            local:error-statistics('TR.filesWithErrors', count($errors)), $errors)
+                                                        </expression>
+                           <testItemType ref="EIDf0edc596-49d2-48d6-a1a1-1ac581dcde0a"/>
+                           <etf:translationTemplates>
+                              <etf:translationTemplate ref="TR.schtron.Schematron.schematron.err.1.2.2"/>
+                           </etf:translationTemplates>
+                        </TestAssertion>
+                        <TestAssertion id="EIDbe57f448-ef2a-11e8-d2e3-09173f13e4c5">
+                           <label>Planar_surfaces</label>
+                           <description>Planar surface types are restricted to Polygon or Surface elements.</description>
+                           <parent ref="EIDbe57f365-ef2a-11e8-d580-09173f13e4c5"/>
+                           <expectedResult>NOT_APPLICABLE</expectedResult>
+                           <expression>
+
+let $errors := for $file in $db
+return
+for $nodeInFile in $file/*//*
+
+where not(xquery:eval("declare namespace gml='http://www.opengis.net/gml/3.2'; not(self::gml:OrientableSurface|self::gml:CompositeSurface|self::gml:PolyhedralSurface|self::gml:Tin|self::gml:TriangulatedSurface)", map { '': $nodeInFile}))
+order by local:filename($nodeInFile)
+return local:addMessage('TR.schtron.Schematron.schematron.err.1.2.3', map { 'filename': local:filename($nodeInFile)  })
+
+
+                                                            return
+                                                            (if ($errors) then 'FAILED' else 'PASSED',
+                                                            local:error-statistics('TR.filesWithErrors', count($errors)), $errors)
+                                                        </expression>
+                           <testItemType ref="EIDf0edc596-49d2-48d6-a1a1-1ac581dcde0a"/>
+                           <etf:translationTemplates>
+                              <etf:translationTemplate ref="TR.schtron.Schematron.schematron.err.1.2.3"/>
+                           </etf:translationTemplates>
+                        </TestAssertion>
+                        <TestAssertion id="EIDbe57f44d-ef2a-11e8-d2e3-09173f13e4c5">
+                           <label>Geometry_types</label>
+                           <description>Supported geometry types are restricted to point, curve with linear and/or circular arc interpolation, planar surface, or aggregates thereof.</description>
+                           <parent ref="EIDbe57f365-ef2a-11e8-d580-09173f13e4c5"/>
+                           <expectedResult>NOT_APPLICABLE</expectedResult>
+                           <expression>
+
+let $errors := for $file in $db
+return
+for $nodeInFile in $file/*//*
+
+where not(xquery:eval("declare namespace gml='http://www.opengis.net/gml/3.2'; not(self::gml:Solid|self::gml:MultiSolid|self::gml:CompositeSolid|self::gml:CompositeCurve|self::gml:Grid)", map { '': $nodeInFile}))
+order by local:filename($nodeInFile)
+return local:addMessage('TR.schtron.Schematron.schematron.err.1.2.4', map { 'filename': local:filename($nodeInFile)  })
+
+
+                                                            return
+                                                            (if ($errors) then 'FAILED' else 'PASSED',
+                                                            local:error-statistics('TR.filesWithErrors', count($errors)), $errors)
+                                                        </expression>
+                           <testItemType ref="EIDf0edc596-49d2-48d6-a1a1-1ac581dcde0a"/>
+                           <etf:translationTemplates>
+                              <etf:translationTemplate ref="TR.schtron.Schematron.schematron.err.1.2.4"/>
+                           </etf:translationTemplates>
+                        </TestAssertion>
+                        <TestAssertion id="EIDbe57f452-ef2a-11e8-d2e4-09173f13e4c5">
+                           <label>Points</label>
+                           <description>Geometry coordinates shall only be specified using the gml:pos element for gml:Point.</description>
+                           <parent ref="EIDbe57f365-ef2a-11e8-d580-09173f13e4c5"/>
+                           <expectedResult>NOT_APPLICABLE</expectedResult>
+                           <expression>
+
+let $errors := for $file in $db
+return
+for $nodeInFile in $file/*//*
+
+where not(xquery:eval("declare namespace gml='http://www.opengis.net/gml/3.2'; count(self::gml:Point/gml:pos) = count(self::gml:Point/*)", map { '': $nodeInFile}))
+order by local:filename($nodeInFile)
+return local:addMessage('TR.schtron.Schematron.schematron.err.1.2.5', map { 'filename': local:filename($nodeInFile)  })
+
+
+                                                            return
+                                                            (if ($errors) then 'FAILED' else 'PASSED',
+                                                            local:error-statistics('TR.filesWithErrors', count($errors)), $errors)
+                                                        </expression>
+                           <testItemType ref="EIDf0edc596-49d2-48d6-a1a1-1ac581dcde0a"/>
+                           <etf:translationTemplates>
+                              <etf:translationTemplate ref="TR.schtron.Schematron.schematron.err.1.2.5"/>
+                           </etf:translationTemplates>
+                        </TestAssertion>
+                        <TestAssertion id="EIDbe57f455-ef2a-11e8-d2e4-09173f13e4c5">
+                           <label>CircleByCenterPoint</label>
+                           <description>Geometry coordinates shall only be specified using the gml:pos element for gml:CircleByCenterPoint.</description>
+                           <parent ref="EIDbe57f365-ef2a-11e8-d580-09173f13e4c5"/>
+                           <expectedResult>NOT_APPLICABLE</expectedResult>
+                           <expression>
+
+let $errors := for $file in $db
+return
+for $nodeInFile in $file/*//*
+
+where not(xquery:eval("declare namespace gml='http://www.opengis.net/gml/3.2'; count(self::gml:CircleByCenterPoint/gml:pos|self::gml:CircleByCenterPoint/gml:radius) = count(self::gml:CircleByCenterPoint/*)", map { '': $nodeInFile}))
+order by local:filename($nodeInFile)
+return local:addMessage('TR.schtron.Schematron.schematron.err.1.2.6', map { 'filename': local:filename($nodeInFile)  })
+
+
+                                                            return
+                                                            (if ($errors) then 'FAILED' else 'PASSED',
+                                                            local:error-statistics('TR.filesWithErrors', count($errors)), $errors)
+                                                        </expression>
+                           <testItemType ref="EIDf0edc596-49d2-48d6-a1a1-1ac581dcde0a"/>
+                           <etf:translationTemplates>
+                              <etf:translationTemplate ref="TR.schtron.Schematron.schematron.err.1.2.6"/>
+                           </etf:translationTemplates>
+                        </TestAssertion>
+                        <TestAssertion id="EIDbe57f45b-ef2a-11e8-d2e5-09173f13e4c5">
+                           <label>LineStrings</label>
+                           <description>Geometry coordinates shall only be specified using the gml:posList element for gml:LineStringSegment.</description>
+                           <parent ref="EIDbe57f365-ef2a-11e8-d580-09173f13e4c5"/>
+                           <expectedResult>NOT_APPLICABLE</expectedResult>
+                           <expression>
+
+let $errors := for $file in $db
+return
+for $nodeInFile in $file/*//*
+
+where not(xquery:eval("declare namespace gml='http://www.opengis.net/gml/3.2'; count(self::gml:LineStringSegment/gml:posList) =                 count(self::gml:LineStringSegment/*)", map { '': $nodeInFile}))
+order by local:filename($nodeInFile)
+return local:addMessage('TR.schtron.Schematron.schematron.err.1.2.7', map { 'filename': local:filename($nodeInFile)  })
+
+
+                                                            return
+                                                            (if ($errors) then 'FAILED' else 'PASSED',
+                                                            local:error-statistics('TR.filesWithErrors', count($errors)), $errors)
+                                                        </expression>
+                           <testItemType ref="EIDf0edc596-49d2-48d6-a1a1-1ac581dcde0a"/>
+                           <etf:translationTemplates>
+                              <etf:translationTemplate ref="TR.schtron.Schematron.schematron.err.1.2.7"/>
+                           </etf:translationTemplates>
+                        </TestAssertion>
+                        <TestAssertion id="EIDbe57f45e-ef2a-11e8-d2e5-09173f13e4c5">
+                           <label>LinearRing</label>
+                           <description>Geometry coordinates shall only be specified using the gml:posList element for gml:LinearRing.</description>
+                           <parent ref="EIDbe57f365-ef2a-11e8-d580-09173f13e4c5"/>
+                           <expectedResult>NOT_APPLICABLE</expectedResult>
+                           <expression>
+
+let $errors := for $file in $db
+return
+for $nodeInFile in $file/*//*
+
+where not(xquery:eval("declare namespace gml='http://www.opengis.net/gml/3.2'; count(self::gml:LinearRing/gml:posList) =                 count(self::gml:LinearRing/*)", map { '': $nodeInFile}))
+order by local:filename($nodeInFile)
+return local:addMessage('TR.schtron.Schematron.schematron.err.1.2.8', map { 'filename': local:filename($nodeInFile)  })
+
+
+                                                            return
+                                                            (if ($errors) then 'FAILED' else 'PASSED',
+                                                            local:error-statistics('TR.filesWithErrors', count($errors)), $errors)
+                                                        </expression>
+                           <testItemType ref="EIDf0edc596-49d2-48d6-a1a1-1ac581dcde0a"/>
+                           <etf:translationTemplates>
+                              <etf:translationTemplate ref="TR.schtron.Schematron.schematron.err.1.2.8"/>
+                           </etf:translationTemplates>
+                        </TestAssertion>
+                        <TestAssertion id="EIDbe57f461-ef2a-11e8-d2e5-09173f13e4c5">
+                           <label>ArcTest</label>
+                           <description>Geometry coordinates shall only be specified using the gml:posList element for gml:Arc.</description>
+                           <parent ref="EIDbe57f365-ef2a-11e8-d580-09173f13e4c5"/>
+                           <expectedResult>NOT_APPLICABLE</expectedResult>
+                           <expression>
+
+let $errors := for $file in $db
+return
+for $nodeInFile in $file/*//*
+
+where not(xquery:eval("declare namespace gml='http://www.opengis.net/gml/3.2'; count(self::gml:Arc/gml:posList) = count(self::gml:Arc/*)", map { '': $nodeInFile}))
+order by local:filename($nodeInFile)
+return local:addMessage('TR.schtron.Schematron.schematron.err.1.2.9', map { 'filename': local:filename($nodeInFile)  })
+
+
+                                                            return
+                                                            (if ($errors) then 'FAILED' else 'PASSED',
+                                                            local:error-statistics('TR.filesWithErrors', count($errors)), $errors)
+                                                        </expression>
+                           <testItemType ref="EIDf0edc596-49d2-48d6-a1a1-1ac581dcde0a"/>
+                           <etf:translationTemplates>
+                              <etf:translationTemplate ref="TR.schtron.Schematron.schematron.err.1.2.9"/>
+                           </etf:translationTemplates>
+                        </TestAssertion>
+                        <TestAssertion id="EIDbe57f464-ef2a-11e8-d2e6-09173f13e4c5">
+                           <label>Circle</label>
+                           <description>Geometry coordinates shall only be specified using the gml:posList element for gml:Circle.</description>
+                           <parent ref="EIDbe57f365-ef2a-11e8-d580-09173f13e4c5"/>
+                           <expectedResult>NOT_APPLICABLE</expectedResult>
+                           <expression>
+
+let $errors := for $file in $db
+return
+for $nodeInFile in $file/*//*
+
+where not(xquery:eval("declare namespace gml='http://www.opengis.net/gml/3.2'; count(self::gml:Circle/gml:posList) =                 count(self::gml:Circle/*)", map { '': $nodeInFile}))
+order by local:filename($nodeInFile)
+return local:addMessage('TR.schtron.Schematron.schematron.err.1.2.10', map { 'filename': local:filename($nodeInFile)  })
+
+
+                                                            return
+                                                            (if ($errors) then 'FAILED' else 'PASSED',
+                                                            local:error-statistics('TR.filesWithErrors', count($errors)), $errors)
+                                                        </expression>
+                           <testItemType ref="EIDf0edc596-49d2-48d6-a1a1-1ac581dcde0a"/>
+                           <etf:translationTemplates>
+                              <etf:translationTemplate ref="TR.schtron.Schematron.schematron.err.1.2.10"/>
+                           </etf:translationTemplates>
+                        </TestAssertion>
+                        <TestAssertion id="EIDbe57f469-ef2a-11e8-d2e6-09173f13e4c5">
+                           <label>MultiPoint</label>
+                           <description>This profile restricts instance documents to using the property container gml:pointMember for the MultiPoint geometry type.</description>
+                           <parent ref="EIDbe57f365-ef2a-11e8-d580-09173f13e4c5"/>
+                           <expectedResult>NOT_APPLICABLE</expectedResult>
+                           <expression>
+
+let $errors := for $file in $db
+return
+for $nodeInFile in $file/*//*
+
+where not(xquery:eval("declare namespace gml='http://www.opengis.net/gml/3.2'; not(self::gml:MultiPoint/gml:pointMembers)", map { '': $nodeInFile}))
+order by local:filename($nodeInFile)
+return local:addMessage('TR.schtron.Schematron.schematron.err.1.2.11', map { 'filename': local:filename($nodeInFile)  })
+
+
+                                                            return
+                                                            (if ($errors) then 'FAILED' else 'PASSED',
+                                                            local:error-statistics('TR.filesWithErrors', count($errors)), $errors)
+                                                        </expression>
+                           <testItemType ref="EIDf0edc596-49d2-48d6-a1a1-1ac581dcde0a"/>
+                           <etf:translationTemplates>
+                              <etf:translationTemplate ref="TR.schtron.Schematron.schematron.err.1.2.11"/>
+                           </etf:translationTemplates>
+                        </TestAssertion>
+                        <TestAssertion id="EIDbe57f46d-ef2a-11e8-d2e6-09173f13e4c5">
+                           <label>MulitCurve</label>
+                           <description>This profile restricts instance documents to using the property container gml:curveMember for the MultiCurve geometry type.</description>
+                           <parent ref="EIDbe57f365-ef2a-11e8-d580-09173f13e4c5"/>
+                           <expectedResult>NOT_APPLICABLE</expectedResult>
+                           <expression>
+
+let $errors := for $file in $db
+return
+for $nodeInFile in $file/*//*
+
+where not(xquery:eval("declare namespace gml='http://www.opengis.net/gml/3.2'; not(self::gml:MultiCurve/gml:curveMembers)", map { '': $nodeInFile}))
+order by local:filename($nodeInFile)
+return local:addMessage('TR.schtron.Schematron.schematron.err.1.2.12', map { 'filename': local:filename($nodeInFile)  })
+
+
+                                                            return
+                                                            (if ($errors) then 'FAILED' else 'PASSED',
+                                                            local:error-statistics('TR.filesWithErrors', count($errors)), $errors)
+                                                        </expression>
+                           <testItemType ref="EIDf0edc596-49d2-48d6-a1a1-1ac581dcde0a"/>
+                           <etf:translationTemplates>
+                              <etf:translationTemplate ref="TR.schtron.Schematron.schematron.err.1.2.12"/>
+                           </etf:translationTemplates>
+                        </TestAssertion>
+                        <TestAssertion id="EIDbe57f470-ef2a-11e8-d2e7-09173f13e4c5">
+                           <label>MultiSurface</label>
+                           <description>This profile restricts instance documents to using the property container gml:surfaceMember for the MultiSurface geometry type.</description>
+                           <parent ref="EIDbe57f365-ef2a-11e8-d580-09173f13e4c5"/>
+                           <expectedResult>NOT_APPLICABLE</expectedResult>
+                           <expression>
+
+let $errors := for $file in $db
+return
+for $nodeInFile in $file/*//*
+
+where not(xquery:eval("declare namespace gml='http://www.opengis.net/gml/3.2'; not(self::gml:MultiSurface/gml:surfaceMembers)", map { '': $nodeInFile}))
+order by local:filename($nodeInFile)
+return local:addMessage('TR.schtron.Schematron.schematron.err.1.2.13', map { 'filename': local:filename($nodeInFile)  })
+
+
+                                                            return
+                                                            (if ($errors) then 'FAILED' else 'PASSED',
+                                                            local:error-statistics('TR.filesWithErrors', count($errors)), $errors)
+                                                        </expression>
+                           <testItemType ref="EIDf0edc596-49d2-48d6-a1a1-1ac581dcde0a"/>
+                           <etf:translationTemplates>
+                              <etf:translationTemplate ref="TR.schtron.Schematron.schematron.err.1.2.13"/>
+                           </etf:translationTemplates>
+                        </TestAssertion>
+                        <TestAssertion id="EIDbe57f473-ef2a-11e8-d2e7-09173f13e4c5">
+                           <label>MultiGeometry</label>
+                           <description>This profile restricts instance documents to using the property container gml:geometryMember for the MultiGeometry geometry type.</description>
+                           <parent ref="EIDbe57f365-ef2a-11e8-d580-09173f13e4c5"/>
+                           <expectedResult>NOT_APPLICABLE</expectedResult>
+                           <expression>
+
+let $errors := for $file in $db
+return
+for $nodeInFile in $file/*//*
+
+where not(xquery:eval("declare namespace gml='http://www.opengis.net/gml/3.2'; not(self::gml:MultiGeometry/gml:geometryMembers)", map { '': $nodeInFile}))
+order by local:filename($nodeInFile)
+return local:addMessage('TR.schtron.Schematron.schematron.err.1.2.14', map { 'filename': local:filename($nodeInFile)  })
+
+
+                                                            return
+                                                            (if ($errors) then 'FAILED' else 'PASSED',
+                                                            local:error-statistics('TR.filesWithErrors', count($errors)), $errors)
+                                                        </expression>
+                           <testItemType ref="EIDf0edc596-49d2-48d6-a1a1-1ac581dcde0a"/>
+                           <etf:translationTemplates>
+                              <etf:translationTemplate ref="TR.schtron.Schematron.schematron.err.1.2.14"/>
+                           </etf:translationTemplates>
+                        </TestAssertion>
+                        <TestAssertion id="EIDbe57f478-ef2a-11e8-d2e8-09173f13e4c5">
+                           <label>Surface</label>
+                           <description>The content of gml:Surface elements is restricted to gml:PolygonPatch patches.</description>
+                           <parent ref="EIDbe57f365-ef2a-11e8-d580-09173f13e4c5"/>
+                           <expectedResult>NOT_APPLICABLE</expectedResult>
+                           <expression>
+
+let $errors := for $file in $db
+return
+for $nodeInFile in $file/*//*
+
+where not(xquery:eval("declare namespace gml='http://www.opengis.net/gml/3.2'; count(self::gml:Surface/gml:patches/gml:PolygonPatch) =                 count(self::gml:Surface/gml:patches/*)", map { '': $nodeInFile}))
+order by local:filename($nodeInFile)
+return local:addMessage('TR.schtron.Schematron.schematron.err.1.2.15', map { 'filename': local:filename($nodeInFile)  })
+
+
+                                                            return
+                                                            (if ($errors) then 'FAILED' else 'PASSED',
+                                                            local:error-statistics('TR.filesWithErrors', count($errors)), $errors)
+                                                        </expression>
+                           <testItemType ref="EIDf0edc596-49d2-48d6-a1a1-1ac581dcde0a"/>
+                           <etf:translationTemplates>
+                              <etf:translationTemplate ref="TR.schtron.Schematron.schematron.err.1.2.15"/>
+                           </etf:translationTemplates>
+                        </TestAssertion>
+                        <TestAssertion id="EIDbe57f47b-ef2a-11e8-d2e8-09173f13e4c5">
+                           <label>Dimension</label>
+                           <description>Coordinate reference systems may have 1, 2 or 3 dimensions.</description>
+                           <parent ref="EIDbe57f365-ef2a-11e8-d580-09173f13e4c5"/>
+                           <expectedResult>NOT_APPLICABLE</expectedResult>
+                           <expression>
+
+let $errors := for $file in $db
+return
+for $nodeInFile in $file/*//*
+
+where not(xquery:eval("declare namespace gml='http://www.opengis.net/gml/3.2'; not(self::*/@srsDimension &gt; 3)", map { '': $nodeInFile}))
+order by local:filename($nodeInFile)
+return local:addMessage('TR.schtron.Schematron.schematron.err.1.2.16', map { 'filename': local:filename($nodeInFile)  })
+
+
+                                                            return
+                                                            (if ($errors) then 'FAILED' else 'PASSED',
+                                                            local:error-statistics('TR.filesWithErrors', count($errors)), $errors)
+                                                        </expression>
+                           <testItemType ref="EIDf0edc596-49d2-48d6-a1a1-1ac581dcde0a"/>
+                           <etf:translationTemplates>
+                              <etf:translationTemplate ref="TR.schtron.Schematron.schematron.err.1.2.16"/>
+                           </etf:translationTemplates>
+                        </TestAssertion>
+                     </testAssertions>
+                  </TestStep>
+               </testSteps>
+            </TestCase>
+         </testCases>
+      </TestModule>
+   </testModules>
+</etf:ExecutableTestSuite>

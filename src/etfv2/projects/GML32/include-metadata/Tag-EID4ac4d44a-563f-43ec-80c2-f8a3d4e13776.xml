@@ -1,0 +1,5 @@
+<Tag xmlns="http://www.interactive-instruments.de/etf/2.0" id="EID4ac4d44a-563f-43ec-80c2-f8a3d4e13776" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.interactive-instruments.de/etf/2.0 http://resources.etf-validator.net/schema/v2/service/service.xsd">
+	<label>GML 3.2 validators voor geometrie en Simple Features profile 2</label>
+	<description>GML 3.2 validators voor geometrie en Simple Features profile 2</description>
+	<priority>200</priority>
+</Tag>
