@@ -1,0 +1,5 @@
+<Tag xmlns="http://www.interactive-instruments.de/etf/2.0" id="EID031b44a8-1404-476e-8210-4b509a16c391" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.interactive-instruments.de/etf/2.0 http://resources.etf-validator.net/schema/v2/service/service.xsd">
+	<label>Naam van de validator</label>
+	<description>nadere omschrijving van de validator</description>
+	<priority>200</priority>
+</Tag>

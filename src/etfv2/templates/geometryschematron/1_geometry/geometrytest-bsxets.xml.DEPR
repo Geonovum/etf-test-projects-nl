@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<etf:ExecutableTestSuite xmlns="http://www.interactive-instruments.de/etf/2.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:etf="http://www.interactive-instruments.de/etf/2.0"
+	id="EID99b8aecd-4082-4773-b316-a138e6ed8b35"
+	xsi:schemaLocation="http://www.interactive-instruments.de/etf/2.0 http://resources.etf-validator.net/schema/v2/service/service.xsd">
+	<itemHash>bQ==</itemHash>
+	<remoteResource>https://github.com/interactive-instruments/etf-ets-repository/example/geometrytest</remoteResource>
+	<localPath>/auto</localPath>
+	<label>Geometry tests</label>
+	<description>...</description>
+	<reference>../example-bsxets.xq</reference>
+	<version>2.0.0</version>
+	<author>interactive instruments GmbH, Geonovum</author>
+	<creationDate>2015-08-18T12:00:00.000+02:00</creationDate>
+	<lastEditor>interactive instruments GmbH</lastEditor>
+	<lastUpdateDate>2017-09-12T13:13:02.334+02:00</lastUpdateDate>
+	<tags>
+		<tag ref="EIDec1b3956-b1f9-4359-814e-7590877f4eb1"/>
+	</tags>
+	<testDriver ref="EID4dddc9e2-1b21-40b7-af70-6a2d156ad130"/>
+	<translationTemplateBundle ref="EID245c67e5-6d28-493e-9dc6-a23de3d81cc0"/>
+	<ParameterList name="ETF Standard Parameters for XML test objects">
+		<parameter name="files_to_test" required="true">
+			<defaultValue>.*</defaultValue>
+			<description ref="TR.filesToTest"/>
+			<allowedValues>.*</allowedValues>
+			<type>string</type>
+		</parameter>
+		<parameter name="tests_to_execute" required="false">
+			<defaultValue>.*</defaultValue>
+			<description ref="TR.testsToExecute"/>
+			<allowedValues>.*</allowedValues>
+			<type>string</type>
+		</parameter>
+	</ParameterList>
+	<supportedTestObjectTypes>
+		<testObjectType ref="EIDe1d4a306-7a78-4a3b-ae2d-cf5f0810853e"/>
+	</supportedTestObjectTypes>
+	<testModules>
+		<TestModule id="EIDd985f083-3011-45d5-99ce-5c1dd1a9b266">
+			<label>IGNORE</label>
+			<description>IGNORE</description>
+			<parent ref="EID99b8aecd-4082-4773-b316-a138e6ed8b35"/>
+			<testCases>
+				<TestCase id="EIDc2ab90d7-e918-4f24-94e5-718dffbc45c2">
+					<label>Geometry tests</label>
+					<description>...</description>
+					<parent ref="EIDd985f083-3011-45d5-99ce-5c1dd1a9b266"/>
+					<testSteps>
+						<TestStep id="EID22a30a4e-9277-4b56-8461-74999c3f6234">
+							<label>IGNORE</label>
+							<description>IGNORE</description>
+							<parent ref="EIDd985f083-3011-45d5-99ce-5c1dd1a9b266"/>
+							<statementForExecution>not applicable</statementForExecution>
+							<testItemType ref="EIDf483e8e8-06b9-4900-ab36-adad0d7f22f0"/>
+							<testAssertions>
+								<TestAssertion id="EIDe0e8797d-c254-4b20-a773-1872d0e19ef5">
+									<!--GML.Geometry.01-->
+									<label>Check CRS</label>
+									<description>...</description>
+									<parent ref="EID22a30a4e-9277-4b56-8461-74999c3f6234"/>
+									<expectedResult>NOT_APPLICABLE</expectedResult>
+									<expression>	
+										let $featuresWithErrors := $features[//@srsName[.!='http://www.opengis.net/def/crs/EPSG/0/28992']][position() le $limitErrors]
+										return
+										(if ($featuresWithErrors) then 'FAILED' else 'PASSED',
+										local:error-statistics('TR.featuresWithErrors', count($featuresWithErrors)),
+										for $feature in $featuresWithErrors
+										order by $feature/@gml:id
+										return local:addMessage('TR.example.crsNot28992', map { 'filename': local:filename($feature), 'featureType': local-name($feature), 'gmlid': string($feature/@gml:id), 'crs': data(($feature//@srsName[.!='http://www.opengis.net/def/crs/EPSG/0/28992'])[1])  }))
+</expression>
+									<testItemType ref="EIDf0edc596-49d2-48d6-a1a1-1ac581dcde0a"/>
+								</TestAssertion>
+								<TestAssertion id="EID637d5049-059b-4def-a95a-d9f089a99e7e">
+									<!--GML.Geometry.02-->
+									<label>Valid GML geometry (2D) all at once</label>
+									<description>Test geometry on being valid GML geometry for 2D, all tests at once</description>
+									<parent ref="EID22a30a4e-9277-4b56-8461-74999c3f6234"/>
+									<expectedResult>NOT_APPLICABLE</expectedResult>
+									<expression>
+										let $messages := for $feature in $features
+										return
+										try {
+										let $vr := ggeo:validateAndReport($feature,'111')
+										return
+										if (xs:boolean($vr/ggeo:isValid)) then ()
+										else
+										for $message in $vr/ggeo:message[@type='ERROR']
+										return
+										local:addMessage('TR.invalidGeometry', map { 'filename': local:filename($feature), 'featureType': local-name($feature), 'gmlid': string($feature/@gml:id), 'text': $message/text() })
+										} catch * {
+										}
+										return 
+										(if ($messages) then 'FAILED' else 'PASSED',
+										local:error-statistics('TR.featuresWithErrors', count(fn:distinct-values($messages//etf:argument[@token='gmlid']/text()))),
+										$messages)
+</expression>
+									<testItemType ref="EIDf0edc596-49d2-48d6-a1a1-1ac581dcde0a"/>
+								</TestAssertion>
+								<TestAssertion id="EID36db7c98-d4f2-4c2e-b8e7-9610ffb9d20a">
+									<!--GML.Geometry.03-->
+									<label>Valid GML geometry (2D) General Validation</label>
+									<description>Test geometry on being valid GML geometry for 2D - General Validation</description>
+									<parent ref="EID22a30a4e-9277-4b56-8461-74999c3f6234"/>
+									<expectedResult>NOT_APPLICABLE</expectedResult>
+									<expression>
+										let $messages := for $feature in $features
+										return
+										try {
+										let $vr := ggeo:validateAndReport($feature,'1')
+										return
+										if (xs:boolean($vr/ggeo:isValid)) then ()
+										else
+										for $message in $vr/ggeo:message[@type='ERROR']
+										return
+										local:addMessage('TR.invalidGeometry', map { 'filename': local:filename($feature), 'featureType': local-name($feature), 'gmlid': string($feature/@gml:id), 'text': $message/text() })
+										} catch * {
+										}
+										return
+										(if ($messages) then 'FAILED' else 'PASSED',
+										local:error-statistics('TR.featuresWithErrors', count(fn:distinct-values($messages//etf:argument[@token='gmlid']/text()))),
+										$messages)
+</expression>
+									<testItemType ref="EIDf0edc596-49d2-48d6-a1a1-1ac581dcde0a"/>
+								</TestAssertion>
+								<TestAssertion id="EID8c243e5e-1e5f-4c6a-8aa4-6aa2e2c70dc1">
+									<!--GML.Geometry.04-->
+									<label>Valid GML geometry (2D) Polygon Patch Connectivity</label>
+									<description>Test geometry on being valid GML geometry for 2D - Polygon Patch Connectivity</description>
+									<parent ref="EID22a30a4e-9277-4b56-8461-74999c3f6234"/>
+									<expectedResult>NOT_APPLICABLE</expectedResult>
+									<expression>
+										let $messages := for $feature in $features
+										return
+										try {
+										let $vr := ggeo:validateAndReport($feature,'01')
+										return
+										if (xs:boolean($vr/ggeo:isValid)) then ()
+										else
+										for $message in $vr/ggeo:message[@type='ERROR']
+										return
+										local:addMessage('TR.invalidGeometry', map { 'filename': local:filename($feature), 'featureType': local-name($feature), 'gmlid': string($feature/@gml:id), 'text': $message/text() })
+										} catch * {
+										}
+										return
+										(if ($messages) then 'FAILED' else 'PASSED',
+										local:error-statistics('TR.featuresWithErrors', count(fn:distinct-values($messages//etf:argument[@token='gmlid']/text()))),
+										$messages)
+</expression>
+									<testItemType ref="EIDf0edc596-49d2-48d6-a1a1-1ac581dcde0a"/>
+								</TestAssertion>
+								<TestAssertion id="EID9d543170-d5b3-4be3-809c-c6999a591b17">
+									<!--GML.Geometry.05-->
+									<label>Valid GML geometry (2D) Repetition of Position in CurveSegments</label>
+									<description>Test geometry on being valid GML geometry for 2D - Repetition of Position in CurveSegments</description>
+									<parent ref="EID22a30a4e-9277-4b56-8461-74999c3f6234"/>
+									<expectedResult>NOT_APPLICABLE</expectedResult>
+									<expression>	
+										let $messages := for $feature in $features
+										return
+										try {
+										let $vr := ggeo:validateAndReport($feature,'001')
+										return
+										if (xs:boolean($vr/ggeo:isValid)) then ()
+										else
+										for $message in $vr/ggeo:message[@type='ERROR']
+										return
+										local:addMessage('TR.invalidGeometry', map { 'filename': local:filename($feature), 'featureType': local-name($feature), 'gmlid': string($feature/@gml:id), 'text': $message/text() })
+										} catch * {
+										}
+										return
+										(if ($messages) then 'FAILED' else 'PASSED',
+										local:error-statistics('TR.featuresWithErrors', count(fn:distinct-values($messages//etf:argument[@token='gmlid']/text()))),
+										$messages)
+</expression>
+									<testItemType ref="EIDf0edc596-49d2-48d6-a1a1-1ac581dcde0a"/>
+								</TestAssertion>
+							</testAssertions>
+						</TestStep>
+					</testSteps>
+				</TestCase>
+			</testCases>
+		</TestModule>
+	</testModules>
+</etf:ExecutableTestSuite>
