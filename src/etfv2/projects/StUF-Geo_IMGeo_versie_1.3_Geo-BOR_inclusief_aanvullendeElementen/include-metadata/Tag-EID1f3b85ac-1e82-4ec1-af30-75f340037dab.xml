@@ -1,0 +1,5 @@
+<Tag xmlns="http://www.interactive-instruments.de/etf/2.0" id="EID1f3b85ac-1e82-4ec1-af30-75f340037dab" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.interactive-instruments.de/etf/2.0 http://resources.etf-validator.net/schema/v2/service/service.xsd">
+	<label>StUF-Geo IMGeo versie 1.3 Geo-BOR (inclusief aanvullendeElementen)</label>
+	<description>Deze validator controleert StUF-Geo IMGeo berichten voor het Geo-BOR berichtenverkeer naast valide XML tegen het StUF-Geo IMGeo berichtschema (XSD) versie 1.3 en op geldige geometrie tegen GML3.2 SF2, ook op valide XML tegen het voorbeeldschema voor Geo-BOR StUF:aanvullendeElementen (zie https://register.geostandaarden.nl/xmlschema/imgeo/1.3/imgeo0302/geo-bor/geo-bor0100.xsd).</description>
+	<priority>200</priority>
+</Tag>
