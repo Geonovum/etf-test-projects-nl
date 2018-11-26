@@ -53,6 +53,8 @@ declare namespace bu-core3d='http://inspire.ec.europa.eu/schemas/bu-core3d/4.0';
 declare namespace net='http://inspire.ec.europa.eu/schemas/net/4.0';
 declare namespace base='http://inspire.ec.europa.eu/schemas/base/3.3';
 declare namespace uuid='java.util.UUID';
+declare namespace imgeo21="http://www.geostandaarden.nl/imgeo/2.1";
+declare namespace cit="http://www.opengis.net/citygml/2.0";
 
 import module namespace functx='http://www.functx.com';
 import module namespace http='http://expath.org/ns/http-client';
@@ -66,9 +68,6 @@ declare variable $idMap external;
 declare variable $testObjectId external;
 declare variable $logFile external;
 declare variable $statFile external;
-
-
-
 
 
 declare function local:not-seq($n) as xs:boolean
