@@ -10,7 +10,8 @@
    <localPath>/auto</localPath>
    <label>Schema and GML Encoding tests</label>
    <description>...</description>
-   <reference>../example-bsxets-imgeo.xq</reference>
+   <!-- <reference>../example-bsxets-imgeo.xq</reference> -->
+   <reference>../example-bsxets.xq</reference>
    <version>2.0.0</version>
    <author>interactive instruments GmbH</author>
    <creationDate>2018-02-07T12:00:00.000+02:00</creationDate>
@@ -36,6 +37,9 @@
       </parameter>
    </ParameterList>
    <supportedTestObjectTypes>
+       <!-- GML featurecollections  -->
+      <testObjectType ref="EIDe1d4a306-7a78-4a3b-ae2d-cf5f0810853e"/>
+      <!-- CityGML: -->
       <testObjectType ref="EID3e3639b1-f6b7-4d62-9160-963cfb2ea300"/>
    </supportedTestObjectTypes>
    <testModules>
