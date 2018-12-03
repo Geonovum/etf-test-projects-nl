@@ -68,7 +68,7 @@
                                             for $file in $db
                                             return
                                                 let $start := prof:current-ms()
-                                                let $infos := validate:xsd-info($file, 'http://register.geostandaarden.nl/xmlschema/imgeo/1.3/imgeo0302/horizontaal/imgeo0302_ent_horizontaal.xsd' )
+                                                let $infos := validate:xsd-info($file, 'http://register.geostandaarden.nl/xmlschema/imgeo/1.3/imgeo0302/horizontaal/imgeo0302_msg_horizontaal.xsd' )
                                                 let $duration := prof:current-ms()-$start
                                                 let $logentry := local:log('Validating file ' || local:filename($file) || ': ' || $duration || ' ms')
                                                 let $errors := count($infos)
