@@ -6,42 +6,44 @@ declare namespace xsi='http://www.w3.org/2001/XMLSchema-instance';
 declare namespace xlink='http://www.w3.org/1999/xlink';
 declare namespace etf='http://www.interactive-instruments.de/etf/2.0';
 declare namespace uuid='java.util.UUID';
+declare namespace stufimgeo='http://www.geostandaarden.nl/imgeo/2.1/stuf-imgeo/1.3';
+declare namespace cit="http://www.opengis.net/citygml/2.0";
 
 declare function local:test($db as document-node()*, $features as element()*, $ets as element()*, $testQuery as xs:string) as element()
 {
-let $query := $testQuery || 
+let $query := $testQuery ||
 (let $test-module-results :=
 for $module in $ets//*[local-name()='TestModule']
 let $moduleresultid := 'EID' || uuid:randomUUID()
 let $test-case-results :=
 for $case in $module//*[local-name()='TestCase']
-  let $dep := if ($case/etf:dependencies) 
-    then "let $dependencyResult := local:passed('" || $case/etf:dependencies/etf:testCase/@ref || "')" 
+  let $dep := if ($case/etf:dependencies)
+    then "let $dependencyResult := local:passed('" || $case/etf:dependencies/etf:testCase/@ref || "')"
     else "let $dependencyResult := true()"
   let $caseresultid := 'EID' || uuid:randomUUID()
   let $test-step-results :=
     for $step in $case//*[local-name()='TestStep']
       let $stepresultid := 'EID' || uuid:randomUUID()
-      let $assertion-results := 
+      let $assertion-results :=
         for $assertion in $step//*[local-name()='TestAssertion']
           let $type := $assertion/etf:testItemType
           let $disabled := if (not(matches($assertion/etf:label,$tests_to_execute)) or $type/@ref='EID92f22a19-2ec2-43f0-8971-c2da3eaafcd2' (:disabled :)) then 'NOT_APPLICABLE' else if ($type/@ref='EIDb48eeaa3-6a74-414a-879c-1dc708017e11' (: manual :)) then 'PASSED_MANUAL' else ()
           return
 if ($disabled) then "
-  let $startmessage := prof:void(local:start('" || $assertion/@id || "')) 
+  let $startmessage := prof:void(local:start('" || $assertion/@id || "'))
   let $endmessage := prof:void(local:end('" || $assertion/@id || "','" || $disabled || "'))
   let $logentry := local:log('Test Assertion ''" || $assertion/etf:label || "'': " || $disabled || "')
-  return 
+  return
   <TestAssertionResult xmlns='http://www.interactive-instruments.de/etf/2.0' id='EID{uuid:randomUUID()}'>
     <parent ref='" || $stepresultid || "'/>
     <resultedFrom ref='" || $assertion/@id || "'/>
     <startTimestamp>" || fn:current-dateTime() || "</startTimestamp>
     <duration>0</duration>
     <status>" || $disabled || "</status>
-  </TestAssertionResult>" 
+  </TestAssertionResult>"
 else "
 if ($dependencyResult) then
-let $startmessage := prof:void(local:start('" || $assertion/@id || "')) 
+let $startmessage := prof:void(local:start('" || $assertion/@id || "'))
 let $start := prof:current-ms()
 let $timestampAssertion := fn:current-dateTime()
 let $result :=
@@ -55,7 +57,7 @@ let $status := if ($status_returned = ('PASSED','FAILED','WARNING','PASSED_MANUA
 let $duration := xs:integer(prof:current-ms()-$start)
 let $endmessage := prof:void(local:end('" || $assertion/@id || "',$status))
 let $logentry := local:log('Test Assertion ''" || $assertion/etf:label || "'': ' || $status || ' - ' ||$duration || ' ms')
-return 
+return
   <TestAssertionResult xmlns='http://www.interactive-instruments.de/etf/2.0' id='EID{uuid:randomUUID()}'>
     { if (empty($messages)) then () else <messages>{$messages}</messages> }
     <parent ref='" || $stepresultid || "'/>
@@ -65,7 +67,7 @@ return
     <status>{$status}</status>
   </TestAssertionResult>
 else
-let $startmessage := prof:void(local:start('" || $assertion/@id || "')) 
+let $startmessage := prof:void(local:start('" || $assertion/@id || "'))
 let $timestampAssertion := fn:current-dateTime()
 let $status := 'SKIPPED'
 let $endmessage := prof:void(local:end('" || $assertion/@id || "',$status))
@@ -81,11 +83,11 @@ return
 
       return "
 let $timestampStep := fn:current-dateTime()
-let $startmessage := prof:void(local:start('" || $step/@id || "')) 
+let $startmessage := prof:void(local:start('" || $step/@id || "'))
 let $assertionresults := (" || string-join( $assertion-results, ',' ) || ")
 let $status := if ($dependencyResult) then local:status($assertionresults/etf:status) else 'SKIPPED'
 let $endmessage := prof:void(local:end('" || $step/@id || "',$status))
-return 
+return
 <TestStepResult xmlns='http://www.interactive-instruments.de/etf/2.0' id='" || $stepresultid || "'>
 <testAssertionResults>{$assertionresults}</testAssertionResults>
 <parent ref='" || $caseresultid || "'/>
@@ -104,7 +106,7 @@ let $teststepresults := (" || string-join( $test-step-results, ',' ) || ")
 let $status := if ($dependencyResult) then local:status($teststepresults/etf:status) else 'SKIPPED'
 let $endmessage := prof:void(local:end('" || $case/@id || "',$status))
 let $logentry := local:log('Test Case ''" || $case/etf:label || "'' finished: ' || $status)
-return 
+return
 <TestCaseResult xmlns='http://www.interactive-instruments.de/etf/2.0' id='" || $caseresultid || "'>
 <testStepResults>{$teststepresults}</testStepResults>
 <parent ref='" || $moduleresultid || "'/>
@@ -143,7 +145,7 @@ return
 <testObject ref='{$testObjectId}'/>
 <testModuleResults>{$testmoduleresults}</testModuleResults>
 <attachments>
-{ if (file:exists('" || $logFile || "')) then 
+{ if (file:exists('" || $logFile || "')) then
 <Attachment xmlns='http://www.interactive-instruments.de/etf/2.0' type='LogFile' id='EID{uuid:randomUUID()}'>
 <label>Log file</label>
 <encoding>UTF-8</encoding>
@@ -151,7 +153,7 @@ return
 <referencedData href='" || file:path-to-uri($logFile) || "'/>
 </Attachment>
 else ()}
-{ if (file:exists('" || $statFile || "')) then 
+{ if (file:exists('" || $statFile || "')) then
 <Attachment xmlns='http://www.interactive-instruments.de/etf/2.0' type='StatisticalReport' id='EID{uuid:randomUUID()}'>
 <label>Feature statistics</label>
 <encoding>UTF-8</encoding>
@@ -159,7 +161,7 @@ else ()}
 <referencedData href='" || file:path-to-uri($statFile) || "'/>
 </Attachment>
 else ()}
-{ if (file:exists('" || $queryFile || "')) then 
+{ if (file:exists('" || $queryFile || "')) then
 <Attachment xmlns='http://www.interactive-instruments.de/etf/2.0' type='Query' id='EID{uuid:randomUUID()}'>
 <label>XQuery executed against the dataset</label>
 <encoding>UTF-8</encoding>
@@ -179,9 +181,9 @@ let $writeQuery := file:write($queryFile, $query, map { "method": "text", "media
 return try {
   xquery:eval($query, map {'features': $features, 'idMap': map:merge($features ! map:entry(fn:string(@gml:id), .)), 'validationErrors': $validationErrors, 'db': $db, 'files_to_test': $files_to_test, 'tests_to_execute': $tests_to_execute, 'limitErrors': $limitErrors, 'testObjectId': $testObjectId, 'logFile': $logFile, 'statFile': $statFile })
 } catch * {
-let $text := '[' || $err:code || '] ' || $err:description || ' 
+let $text := '[' || $err:code || '] ' || $err:description || '
 ' || $err:module || ' (' || $err:line-number || '/' || $err:column-number || ')'
-let $message := 
+let $message :=
   <message xmlns='http://www.interactive-instruments.de/etf/2.0' ref='TR.systemError'>
    <translationArguments>
     <argument token='text'>{$text}</argument>
@@ -196,9 +198,9 @@ let $caseresultid := 'EID' || uuid:randomUUID()
   let $test-step-results :=
     for $step in $case//*[local-name()='TestStep']
       let $stepresultid := 'EID' || uuid:randomUUID()
-      let $assertion-results := 
+      let $assertion-results :=
         for $assertion in $step//*[local-name()='TestAssertion']
-          return            
+          return
   <TestAssertionResult xmlns='http://www.interactive-instruments.de/etf/2.0' id='EID{uuid:randomUUID()}'>
     <messages>{$message}</messages>
     <parent ref='{$stepresultid}'/>
@@ -208,7 +210,7 @@ let $caseresultid := 'EID' || uuid:randomUUID()
     <status>FAILED</status>
   </TestAssertionResult>
 
-      return 
+      return
 <TestStepResult xmlns='http://www.interactive-instruments.de/etf/2.0' id='{$stepresultid}'>
 <testAssertionResults>{$assertion-results}</testAssertionResults>
 <parent ref='{$caseresultid}'/>
@@ -228,7 +230,7 @@ let $caseresultid := 'EID' || uuid:randomUUID()
 <status>FAILED</status>
 </TestCaseResult>
 
-return 
+return
 <TestModuleResult xmlns='http://www.interactive-instruments.de/etf/2.0' id='{$moduleresultid}'>
 <testCaseResults>{$test-case-results}</testCaseResults>
 <parent ref='{$testTaskResultId}'/>
@@ -251,7 +253,7 @@ return
 <mimeType>text/plain</mimeType>
 <referencedData href='{file:path-to-uri($logFile)}'/>
 </Attachment>
-{ if (file:exists($statFile)) then 
+{ if (file:exists($statFile)) then
 <Attachment xmlns="http://www.interactive-instruments.de/etf/2.0" type="StatisticalReport" id="EID{uuid:randomUUID()}">
 <label>Feature statistics</label>
 <encoding>UTF-8</encoding>
@@ -259,7 +261,7 @@ return
 <referencedData href='{file:path-to-uri($statFile)}'/>
 </Attachment>
 else ()}
-{ if (file:exists($queryFile)) then 
+{ if (file:exists($queryFile)) then
 <Attachment xmlns="http://www.interactive-instruments.de/etf/2.0" type="Query" id="EID{uuid:randomUUID()}">
 <label>XQuery executed against the dataset</label>
 <encoding>UTF-8</encoding>
@@ -301,7 +303,7 @@ declare variable $translationTemplateBundle external := $projDir || file:dir-sep
 declare variable $dbDir external;
 declare variable $dbBaseName external := "etf-test";
 declare variable $dbCount external := 1;
-declare variable $etsFile external := $projDir || file:dir-separator() || "1_geometry" || file:dir-separator() || "geometrytest-bsxets.xml"; 
+declare variable $etsFile external := $projDir || file:dir-separator() || "1_geometry" || file:dir-separator() || "geometrytest-bsxets.xml";
 (: declare variable $etsFile external := $projDir || file:dir-separator() || "3_schematrontest" || file:dir-separator() || "protected-bsxets.xml"; :)
 (: Project internals :)
 declare variable $testQueryFile := "testquery.xq";
@@ -319,13 +321,13 @@ error($paramerror,concat("System error: Internal parameter $dbCount must be an i
 
 if ($count ge 0) then () else error($paramerror,concat("System error: Internal parameter $dbCount must be a positive integer value. The value is '",data($dbCount),"'. Please contact an administrator.&#xa;")),
 
-try { let $x := matches('filename.gml',$files_to_test) 
+try { let $x := matches('filename.gml',$files_to_test)
 return ()
 } catch * {
 error($paramerror,concat("Parameter $files_to_test must be a valid regular expression. You have set the value to '",data($files_to_test),"', which results in the following error during execution:&#xa; '",data($err:description),"'&#xa;"))
 },
 
-try { let $x := matches('module.case.assertion',$tests_to_execute) 
+try { let $x := matches('module.case.assertion',$tests_to_execute)
 return ()
 } catch * {
 error($paramerror,concat("Parameter $tests_to_execute must be a valid regular expression. You have set the value to '",data($tests_to_execute),"', which results in the following error during execution:&#xa; '",data($err:description),"'&#xa;"))
@@ -357,7 +359,7 @@ try{
 
 let $db := for $i in 0 to $count return db:open($dbBaseName || '-' || $i)[matches(db:path(.),$files_to_test)]
 
-let $features := $db/wfs:FeatureCollection/wfs:member/* | $db/gml:FeatureCollection/gml:featureMember/* | $db/gml:FeatureCollection/gml:featureMembers/* | $db/base:SpatialDataSet/base:member/* | $db/base32:SpatialDataSet/base32:member/*
+let $features := $db/wfs:FeatureCollection/wfs:member/* | $db/gml:FeatureCollection/gml:featureMember/* | $db/gml:FeatureCollection/gml:featureMembers/* | $db/base:SpatialDataSet/base:member/* | $db/base32:SpatialDataSet/base32:member/* | $db/cit:CityModel/cit:cityObjectMember/* | $db//stufimgeo:object
 
 let $stattmpl := if (not($statisticalReportTableType) or not(fn:doc-available($statisticalReportTableType))) then () else doc($statisticalReportTableType)
 let $stat := if (not($stattmpl)) then "let $logentry := local:log('Statistics table: " || string($statisticalReportTableType) || "')" else "
