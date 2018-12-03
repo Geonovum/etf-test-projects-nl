@@ -36,8 +36,9 @@
       </parameter>
    </ParameterList>
    <supportedTestObjectTypes>
-      <!-- <testObjectType ref="EIDe1d4a306-7a78-4a3b-ae2d-cf5f0810853e"/> -->
-      <testObjectType ref="EID810fce18-4bf5-4c6c-a972-6962bbe3b76b"/>
+      <!-- <testObjectType ref="EIDe1d4a306-7a78-4a3b-ae2d-cf5f0810853e"/>
+      <testObjectType ref="EID810fce18-4bf5-4c6c-a972-6962bbe3b76b"/> -->
+      <testObjectType ref="EIDbec4dd69-72b9-498e-a693-88e3d59d2552"/>
    </supportedTestObjectTypes>
    <testModules>
       <TestModule id="EIDd00361df-25ef-11e8-3995-09173f13e4c5">
