@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<etf:ExecutableTestSuite xmlns="http://www.interactive-instruments.de/etf/2.0"
+                         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                         xmlns:etf="http://www.interactive-instruments.de/etf/2.0"
+                         xmlns:ii="http://www.interactive-instruments.de"
+                         id="EID09dcab2c-f6ea-11e8-8136-09173f13e4c5"
+                         xsi:schemaLocation="http://www.interactive-instruments.de/etf/2.0 http://resources.etf-validator.net/schema/v2/service/service.xsd">
+   <itemHash>bQ==</itemHash>
+   <remoteResource>https://github.com/interactive-instruments/etf-ets-repository</remoteResource>
+   <localPath>/auto</localPath>
+   <label>Run all dependencies</label>
+   <description>Run XSD and Schematron tests for StUF-Geo IMGeo versie 1.1.1 BGT</description>
+   <reference>../example-bsxets.xq</reference>
+   <version>2.0.0</version>
+   <author>Geonovum</author>
+   <creationDate>2018-01-19T16:06:53.937+02:00</creationDate>
+   <lastEditor>Geonovum</lastEditor>
+   <lastUpdateDate>2018-12-03T16:19:33.26+01:00</lastUpdateDate>
+   <tags>
+      <tag ref="EIDee9c3a6e-c7e7-4171-98b2-6d42c887c3ea"/>
+   </tags>
+   <testDriver ref="EID4dddc9e2-1b21-40b7-af70-6a2d156ad130"/>
+   <translationTemplateBundle ref="EID2c4eb556-265c-4bb6-982f-a5574ae3252b"/>
+   <ParameterList name="ETF Standard Parameters for XML test objects">
+      <parameter name="files_to_test" required="true">
+         <defaultValue>.*</defaultValue>
+         <description ref="TR.filesToTest"/>
+         <allowedValues>.*</allowedValues>
+         <type>string</type>
+      </parameter>
+      <parameter name="tests_to_execute" required="false">
+         <defaultValue>.*</defaultValue>
+         <description ref="TR.testsToExecute"/>
+         <allowedValues>.*</allowedValues>
+         <type>string</type>
+      </parameter>
+   </ParameterList>
+   <supportedTestObjectTypes>
+      <testObjectType ref="EID810fce18-4bf5-4c6c-a972-6962bbe3b76b"/>
+   </supportedTestObjectTypes>
+   <dependencies>
+      <executableTestSuite ref="EIDa6ae2f3b-f70d-11e8-2116-09173f13e4c5"/>
+      <!-- GML 3.2 SF: EIDb0e04e22-ef12-11e8-d219-09173f13e4c6 -->
+      <executableTestSuite ref="EIDb0e04e22-ef12-11e8-d219-09173f13e4c6"/>
+      <executableTestSuite ref="EID6c675042-ef12-11e8-d217-09173f13e4c5"/>
+   </dependencies>
+   <testModules>
+      <TestModule id="EIDd659a4f7-f70e-11e8-1391-09173f13e4c5">
+         <label>IGNORE</label>
+         <description>IGNORE</description>
+         <parent ref="EID09dcab2c-f6ea-11e8-8136-09173f13e4c5"/>
+         <testCases>
+            <TestCase id="EIDd659b022-f70e-11e8-6813-09173f13e4c5">
+               <label>Tests</label>
+               <description>...</description>
+               <parent ref="EIDd659a4f7-f70e-11e8-1391-09173f13e4c5"/>
+               <testSteps>
+                  <TestStep id="EIDd659ad0f-f70e-11e8-3995-09173f13e4c5">
+                     <label>IGNORE</label>
+                     <description>IGNORE</description>
+                     <parent ref="EIDd659b022-f70e-11e8-6813-09173f13e4c5"/>
+                     <statementForExecution>not applicable</statementForExecution>
+                     <testItemType ref="EIDf483e8e8-06b9-4900-ab36-adad0d7f22f0"/>
+                     <testAssertions>
+                        <TestAssertion id="EIDd659a662-f70e-11e8-2024-09173f13e4c5">
+                           <label>Skipped</label>
+                           <description>...</description>
+                           <parent ref="EIDd659ad0f-f70e-11e8-3995-09173f13e4c5"/>
+                           <expectedResult>NOT_APPLICABLE</expectedResult>
+                           <expression>'PASSED'</expression>
+                           <testItemType ref="EIDf0edc596-49d2-48d6-a1a1-1ac581dcde0a"/>
+                        </TestAssertion>
+                     </testAssertions>
+                  </TestStep>
+               </testSteps>
+            </TestCase>
+         </testCases>
+      </TestModule>
+   </testModules>
+</etf:ExecutableTestSuite>

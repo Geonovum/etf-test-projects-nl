@@ -1,0 +1,5 @@
+<Tag xmlns="http://www.interactive-instruments.de/etf/2.0" id="EIDee9c3a6e-c7e7-4171-98b2-6d42c887c3ea" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.interactive-instruments.de/etf/2.0 http://resources.etf-validator.net/schema/v2/service/service.xsd">
+	<label>StUF-Geo IMGeo versie 1.1.1 BGT</label>
+	<description>StUF-Geo IMGeo versie 1.1.1 BGT</description>
+	<priority>200</priority>
+</Tag>
