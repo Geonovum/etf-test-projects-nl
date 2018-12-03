@@ -291,7 +291,7 @@ declare variable $executableTestSuiteId external;
 declare variable $testTaskId external := 'EID' || uuid:randomUUID();
 declare variable $testTaskResultId external := 'EID' || uuid:randomUUID();
 declare variable $translationTemplateBundleId external := "EID245c67e5-6d28-493e-9dc6-a23de3d81cc0" ;
-declare variable $projDir external := "/Users/herrmann/Projects/etf-projects/etf-ets-repository/example";
+declare variable $projDir external := "/home/thijs/code/Geonovum/ETF/github/etf-test-projects-nl/src/etfv2/projects/IMGeo211_GML_Application_Schema";
 declare variable $tmpDir external := $projDir || file:dir-separator() || "tmp";
 declare variable $outputFile external := $tmpDir || file:dir-separator() || $testTaskResultId || "-result.xml";
 declare variable $logFile external :=  $tmpDir || file:dir-separator() || $testTaskResultId || "-log.txt";
@@ -302,7 +302,7 @@ declare variable $translationTemplateBundle external := $projDir || file:dir-sep
 declare variable $dbDir external;
 declare variable $dbBaseName external := "etf-test";
 declare variable $dbCount external := 1;
-declare variable $etsFile external := $projDir || file:dir-separator() || "1_geometrytest" || file:dir-separator() || "geometrytest-bsxets.xml";
+declare variable $etsFile external := $projDir || file:dir-separator() || "2_geometrytest" || file:dir-separator() || "geometrytest-bsxets.xml";
 (: declare variable $etsFile external := $projDir || file:dir-separator() || "3_schematrontest" || file:dir-separator() || "protected-bsxets.xml"; :)
 (: Project internals :)
 declare variable $testQueryFile := "testquery.xq";
