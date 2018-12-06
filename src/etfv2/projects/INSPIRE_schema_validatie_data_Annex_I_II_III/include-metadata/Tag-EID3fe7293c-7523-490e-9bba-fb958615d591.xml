@@ -1,0 +1,5 @@
+<Tag xmlns="http://www.interactive-instruments.de/etf/2.0" id="EID3fe7293c-7523-490e-9bba-fb958615d591" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.interactive-instruments.de/etf/2.0 http://resources.etf-validator.net/schema/v2/service/service.xsd">
+	<label>INSPIRE schema validatie data Annex I II III</label>
+	<description>INSPIRE schema validatie data Annex I II III</description>
+	<priority>200</priority>
+</Tag>
