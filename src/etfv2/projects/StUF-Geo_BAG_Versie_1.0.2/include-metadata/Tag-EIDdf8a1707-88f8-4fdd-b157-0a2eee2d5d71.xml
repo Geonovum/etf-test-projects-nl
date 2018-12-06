@@ -1,0 +1,5 @@
+<Tag xmlns="http://www.interactive-instruments.de/etf/2.0" id="EIDdf8a1707-88f8-4fdd-b157-0a2eee2d5d71" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.interactive-instruments.de/etf/2.0 http://resources.etf-validator.net/schema/v2/service/service.xsd">
+	<label>StUF-Geo BAG versie 1.0.2</label>
+	<description>StUF-Geo BAG versie 1.0.2 schema en geometrie validatie</description>
+	<priority>200</priority>
+</Tag>

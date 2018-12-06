@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<etf:ExecutableTestSuite xmlns="http://www.interactive-instruments.de/etf/2.0"
+                         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                         xmlns:etf="http://www.interactive-instruments.de/etf/2.0"
+                         xmlns:ii="http://www.interactive-instruments.de"
+                         id="EID0a3a829c-f95b-11e8-8136-09173f13e4c5"
+                         xsi:schemaLocation="http://www.interactive-instruments.de/etf/2.0 http://resources.etf-validator.net/schema/v2/service/service.xsd">
+   <itemHash>bQ==</itemHash>
+   <remoteResource>https://github.com/interactive-instruments/etf-ets-repository</remoteResource>
+   <localPath>/auto</localPath>
+   <label>Run all dependencies</label>
+   <description>Run XSD and Schematron tests for StUF-Geo BAG versie 1.0.2</description>
+   <reference>../../generic/ets-generic-bsxets.xq</reference>
+   <version>2.0.0</version>
+   <author>Geonovum</author>
+   <creationDate>2018-01-19T16:06:53.937+02:00</creationDate>
+   <lastEditor>Geonovum</lastEditor>
+   <lastUpdateDate>2018-12-06T14:30:04.374+01:00</lastUpdateDate>
+   <tags>
+      <tag ref="EIDdf8a1707-88f8-4fdd-b157-0a2eee2d5d71"/>
+   </tags>
+   <testDriver ref="EID4dddc9e2-1b21-40b7-af70-6a2d156ad130"/>
+   <translationTemplateBundle ref="EID245c67e5-6d28-493e-9dc6-a23de3d81cc0"/>
+   <ParameterList name="ETF Standard Parameters for XML test objects">
+      <parameter name="files_to_test" required="true">
+         <defaultValue>.*</defaultValue>
+         <description ref="TR.filesToTest"/>
+         <allowedValues>.*</allowedValues>
+         <type>string</type>
+      </parameter>
+      <parameter name="tests_to_execute" required="false">
+         <defaultValue>.*</defaultValue>
+         <description ref="TR.testsToExecute"/>
+         <allowedValues>.*</allowedValues>
+         <type>string</type>
+      </parameter>
+   </ParameterList>
+   <supportedTestObjectTypes>
+      <testObjectType ref="EID500d136e-4fda-4a76-8998-bb1bfd07fa4b"/>
+   </supportedTestObjectTypes>
+   <dependencies>
+      <executableTestSuite ref="EID846fbedb-f95a-11e8-2116-09173f13e4c5"/>
+      <executableTestSuite ref="EID6c675042-ef12-11e8-d217-09173f13e4c5"/>
+   </dependencies>
+   <testModules>
+      <TestModule id="EID0a3a77af-f95b-11e8-3995-09173f13e4c5">
+         <label>IGNORE</label>
+         <description>IGNORE</description>
+         <parent ref="EID0a3a829c-f95b-11e8-8136-09173f13e4c5"/>
+         <testCases>
+            <TestCase id="EID0a3a7102-f95b-11e8-2024-09173f13e4c5">
+               <label>Tests</label>
+               <description>...</description>
+               <parent ref="EID0a3a77af-f95b-11e8-3995-09173f13e4c5"/>
+               <testSteps>
+                  <TestStep id="EID0a3a7099-f95b-11e8-9635-09173f13e4c5">
+                     <label>IGNORE</label>
+                     <description>IGNORE</description>
+                     <parent ref="EID0a3a7102-f95b-11e8-2024-09173f13e4c5"/>
+                     <statementForExecution>not applicable</statementForExecution>
+                     <testItemType ref="EIDf483e8e8-06b9-4900-ab36-adad0d7f22f0"/>
+                     <testAssertions>
+                        <TestAssertion id="EID0a3a8990-f95b-11e8-3151-09173f13e4c5">
+                           <label>Skipped</label>
+                           <description>...</description>
+                           <parent ref="EID0a3a7099-f95b-11e8-9635-09173f13e4c5"/>
+                           <expectedResult>NOT_APPLICABLE</expectedResult>
+                           <expression>'PASSED'</expression>
+                           <testItemType ref="EIDf0edc596-49d2-48d6-a1a1-1ac581dcde0a"/>
+                        </TestAssertion>
+                     </testAssertions>
+                  </TestStep>
+               </testSteps>
+            </TestCase>
+         </testCases>
+      </TestModule>
+   </testModules>
+</etf:ExecutableTestSuite>
