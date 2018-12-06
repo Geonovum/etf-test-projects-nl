@@ -10,7 +10,8 @@
    <localPath>/auto</localPath>
    <label>Schematron schematron</label>
    <description>...</description>
-   <reference>../../generic/schematron-bsxets.xq</reference>
+   <!-- <reference>../../generic/schematron-bsxets.xq</reference> -->
+   <reference>../../generic/ets-generic-bsxets.xq</reference>
    <version>1.0.0</version>
    <author>See original schematron file:/home/thijs/code/Geonovum/ETF/github/etf-test-projects-nl/src/data/GML3.2%20SF2/schematron.sch</author>
    <creationDate>2018-11-23T15:19:09.59+01:00</creationDate>

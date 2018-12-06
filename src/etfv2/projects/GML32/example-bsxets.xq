@@ -1,13 +1,17 @@
 declare namespace base32='http://inspire.ec.europa.eu/schemas/base/3.2';
 declare namespace base='http://inspire.ec.europa.eu/schemas/base/3.3';
+declare namespace gml31='http://www.opengis.net/gml';
+declare namespace wfs11='http://www.opengis.net/wfs';
 declare namespace gml='http://www.opengis.net/gml/3.2';
 declare namespace wfs='http://www.opengis.net/wfs/2.0';
 declare namespace xsi='http://www.w3.org/2001/XMLSchema-instance';
 declare namespace xlink='http://www.w3.org/1999/xlink';
 declare namespace etf='http://www.interactive-instruments.de/etf/2.0';
 declare namespace uuid='java.util.UUID';
-declare namespace stufimgeo='http://www.geostandaarden.nl/imgeo/2.1/stuf-imgeo/1.3';
 declare namespace cit="http://www.opengis.net/citygml/2.0";
+declare namespace stufimgeo11='http://www.geostandaarden.nl/imgeo/2.1/stuf-imgeo';
+declare namespace stufimgeo12='http://www.geostandaarden.nl/imgeo/2.1/stuf-imgeo/1.2';
+declare namespace stufimgeo13='http://www.geostandaarden.nl/imgeo/2.1/stuf-imgeo/1.3';
 
 declare function local:test($db as document-node()*, $features as element()*, $ets as element()*, $testQuery as xs:string) as element()
 {
@@ -359,7 +363,7 @@ try{
 
 let $db := for $i in 0 to $count return db:open($dbBaseName || '-' || $i)[matches(db:path(.),$files_to_test)]
 
-let $features := $db/wfs:FeatureCollection/wfs:member/* | $db/gml:FeatureCollection/gml:featureMember/* | $db/gml:FeatureCollection/gml:featureMembers/* | $db/base:SpatialDataSet/base:member/* | $db/base32:SpatialDataSet/base32:member/* | $db/cit:CityModel/cit:cityObjectMember/* | $db//stufimgeo:object
+let $features := $db/wfs11:FeatureCollection/wfs11:member/* | $db/wfs:FeatureCollection/wfs:member/* | $db/gml:FeatureCollection/gml:featureMember/* | $db/gml:FeatureCollection/gml:featureMembers/* | $db/gml31:FeatureCollection/gml31:featureMember/* | $db/gml31:FeatureCollection/gml31:featureMembers/* | $db/base:SpatialDataSet/base:member/* | $db/base32:SpatialDataSet/base32:member/* | $db/cit:CityModel/cit:cityObjectMember/* | $db//stufimgeo11:object | $db//stufimgeo12:object | $db//stufimgeo13:object
 
 let $stattmpl := if (not($statisticalReportTableType) or not(fn:doc-available($statisticalReportTableType))) then () else doc($statisticalReportTableType)
 let $stat := if (not($stattmpl)) then "let $logentry := local:log('Statistics table: " || string($statisticalReportTableType) || "')" else "
