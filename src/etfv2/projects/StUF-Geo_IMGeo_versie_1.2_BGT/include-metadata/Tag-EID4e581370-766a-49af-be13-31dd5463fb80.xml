@@ -1,0 +1,5 @@
+<Tag xmlns="http://www.interactive-instruments.de/etf/2.0" id="EID4e581370-766a-49af-be13-31dd5463fb80" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.interactive-instruments.de/etf/2.0 http://resources.etf-validator.net/schema/v2/service/service.xsd">
+	<label>StUF-Geo IMGeo versie 1.2 BGT</label>
+	<description>Deze validator controleert de StUF-Geo IMGeo berichten vooraankondiging (vavDi01) en ophaalverzoek (opvDi01) voor automatisch BGT berichtenverkeer op valide XML tegen het berichtschema (XSD) versie 1.2 en op geldige geometrie tegen GML3.2 SF2.</description>
+	<priority>200</priority>
+</Tag>
