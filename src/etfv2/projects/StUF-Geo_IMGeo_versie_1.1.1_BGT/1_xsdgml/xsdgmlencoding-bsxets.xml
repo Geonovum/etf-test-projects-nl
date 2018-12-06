@@ -10,7 +10,7 @@
    <localPath>/auto</localPath>
    <label>Schema and GML Encoding tests</label>
    <description>...</description>
-   <reference>../example-bsxets.xq</reference>
+   <reference>../../generic/ets-generic-bsxets.xq</reference>
    <version>2.0.0</version>
    <author>interactive instruments GmbH</author>
    <creationDate>2018-02-07T12:00:00.000+02:00</creationDate>
@@ -37,6 +37,7 @@
    </ParameterList>
    <supportedTestObjectTypes>
       <testObjectType ref="EID810fce18-4bf5-4c6c-a972-6962bbe3b76b"/>
+      <testObjectType ref="EIDa7fb8a3d-c82d-48f0-a5c6-8f13efebefb1"/>
    </supportedTestObjectTypes>
    <testModules>
       <TestModule id="EIDa6ae1eb5-f70d-11e8-5328-09173f13e4c5">
