@@ -12,6 +12,8 @@ testObjectTypeId:  e1d4a306-7a78-4a3b-ae2d-cf5f0810853e
 ## UUIDs validators
 xsd: d3d6341f-f966-11e8-1182-09173f13e4c5
 
+ets: ce04a64c-fc69-11e8-8136-09173f13e4c5
+
 ## Veel gebruikte testObjectIds
 Bron: http://docs.etf-validator.net/v2.0/Developer_manuals/Developing_Executable_Test_Suites.html#basex-test-object-types
 

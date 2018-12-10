@@ -25,10 +25,10 @@ Een nieuwe validator maken met XSD en schematron validatie gaat volgens de volge
   1. noteer de UUID van de xsd validator, open het bestand xsd-bsxets en noteer de id in het attribuut: /etf:ExecutableTestSuite@id (zonder EID)
 1. maak een bestand voor de validators samen. Genereer een all-bsxets.xml. Ga naar de directory ```3_all``` en gebruik de volgende UUIDs in de parameters:
   1. tagid
-  1. translationtemplateid
-  1. executableTestSuite 2 UUIDs van xsd en schematron
-  1. (optioneel: testobjecttype)
-  1. Voorbeeld commando:
+  1. translationtemplateid: standaard TTB 245c67e5-6d28-493e-9dc6-a23de3d81cc0
+  1. executableTestSuite 2 UUIDs van xsd en geometrytest
+  1. (optioneel: testobjecttype, als anders dan GML FeatureCollection)
+  1. Voorbeeld script:
   ```
-  saxonb-xslt ../include-metadata/Tag-EID3fe7293c-7523-490e-9bba-fb958615d591.xml /home/thijs/code/Geonovum/ETF/github/Geonovum_forks/etf-ets-repository/utils/etf-all-xsd-schematron.xsl dependencyIdXsd=3f674143-fd27-11e7-1863-09173f13e4c5 dependencyIdSchematron=050e4572-fd28-11e7-d212-09173f13e4c5 translationTemplateId=245c67e5-6d28-493e-9dc6-a23de3d81cc0 testObjectTypeId=e1d4a306-7a78-4a3b-ae2d-cf5f0810853e > all-bsxets.xml
+  saxonb-xslt ../include-metadata/Tag-EID3fe7293c-7523-490e-9bba-fb958615d591.xml /home/thijs/code/Geonovum/ETF/github/Geonovum_forks/etf-ets-repository/utils/etf-all-xsd-geometry.xsl dependencyIdXsd=d3d6341f-f966-11e8-1182-09173f13e4c5 dependencyIdGeometry=6c675042-ef12-11e8-d217-09173f13e4c5 translationTemplateId=245c67e5-6d28-493e-9dc6-a23de3d81cc0 testObjectTypeId=e1d4a306-7a78-4a3b-ae2d-cf5f0810853e etsId=ce04a64c-fc69-11e8-8136-09173f13e4c5 > all-bsxets.xml
   ```
