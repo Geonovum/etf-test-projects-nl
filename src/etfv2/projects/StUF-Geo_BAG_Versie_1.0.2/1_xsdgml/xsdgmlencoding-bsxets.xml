@@ -66,7 +66,7 @@
                                             for $file in $db
                                             return
                                                 let $start := prof:current-ms()
-                                                let $infos := validate:xsd-info($file, 'http://register.geostandaarden.nl/xmlschema/imgeo/geobag/1.0/geoBAG0100/geoBAG0100_msg.xsd' )
+                                                let $infos := validate:xsd-info($file, '/opt/etf-v2-data/projects/StUF-Geo_BAG_Versie_1.0.2/xsd/geoBAG0100/geoBAG0100_msg.xsd' )
                                                 let $duration := prof:current-ms()-$start
                                                 let $logentry := local:log('Validating file ' || local:filename($file) || ': ' || $duration || ' ms')
                                                 let $errors := count($infos)

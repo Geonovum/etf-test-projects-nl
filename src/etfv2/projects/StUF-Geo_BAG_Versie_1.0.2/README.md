@@ -39,5 +39,5 @@ Een nieuwe validator maken met XSD en geometrie validatie:
   1. (optioneel: testobjecttype, als anders dan GML FeatureCollection)
   1. Voorbeeld script:
   ```
-  saxonb-xslt ../include-metadata/Tag-EIDdf8a1707-88f8-4fdd-b157-0a2eee2d5d71.xml /home/thijs/code/Geonovum/ETF/github/Geonovum_forks/etf-ets-repository/utils/etf-all-xsd-geometry.xsl dependencyIdXsd=846fbedb-f95a-11e8-2116-09173f13e4c5 dependencyIdGeometry=6c675042-ef12-11e8-d217-09173f13e4c5 translationTemplateId=245c67e5-6d28-493e-9dc6-a23de3d81cc0 testObjectTypeId=500d136e-4fda-4a76-8998-bb1bfd07fa4b > all-bsxets.xml
+  saxonb-xslt ../include-metadata/Tag-EIDafe2f9f2-e603-42b4-bd6f-dfa52243752e.xml /home/thijs/code/Geonovum/ETF/github/Geonovum_forks/etf-ets-repository/utils/etf-all-xsd-geometry.xsl dependencyIdXsd=846fbedb-f95a-11e8-2116-09173f13e4c5 dependencyIdGeometry=6c675042-ef12-11e8-d217-09173f13e4c5 translationTemplateId=245c67e5-6d28-493e-9dc6-a23de3d81cc0 testObjectTypeId=500d136e-4fda-4a76-8998-bb1bfd07fa4b > all-bsxets.xml
   ```
