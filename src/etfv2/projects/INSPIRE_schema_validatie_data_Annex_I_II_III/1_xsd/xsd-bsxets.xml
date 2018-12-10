@@ -66,7 +66,7 @@
                                             for $file in $db
                                             return
                                                 let $start := prof:current-ms()
-                                                let $infos := validate:xsd-info($file, '../inspire-annex-I-II-IIIv40-1.0.0_onlineschemas.xsd' )
+                                                let $infos := validate:xsd-info($file, '/opt/etf-v2-data/projects/INSPIRE_schema_validatie_data_Annex_I_II_III/inspire-annex-I-II-IIIv40-1.0.0_onlineschemas.xsd' )
                                                 let $duration := prof:current-ms()-$start
                                                 let $logentry := local:log('Validating file ' || local:filename($file) || ': ' || $duration || ' ms')
                                                 let $errors := count($infos)
