@@ -8,8 +8,8 @@
    <itemHash>bQ==</itemHash>
    <remoteResource>https://github.com/interactive-instruments/etf-ets-repository</remoteResource>
    <localPath>/auto</localPath>
-   <label>Run all dependencies</label>
-   <description>Run XSD and Schematron tests for StUF-Geo IMGeo versie 1.1.1 BGT</description>
+   <label>Alle tests StUF-Geo IMGeo versie 1.1.1 BGT</label>
+   <description>Schema, GML SF 2 en geometrie validatie voor StUF-Geo IMGeo versie 1.1.1 BGT</description>
    <reference>../../generic/ets-generic-bsxets.xq</reference>
    <version>2.0.0</version>
    <author>Geonovum</author>

@@ -8,14 +8,14 @@
    <itemHash>bQ==</itemHash>
    <remoteResource>https://github.com/interactive-instruments/etf-ets-repository</remoteResource>
    <localPath>/auto</localPath>
-   <label>Schema and GML Encoding tests</label>
-   <description>...</description>
+   <label>Schema validatie StUF-Geo BAG versie 1.0.2</label>
+   <description>Schema validatie voor StUF-Geo BAG versie 1.0.2</description>
    <reference>../../generic/ets-generic-bsxets.xq</reference>
    <version>2.0.0</version>
-   <author>interactive instruments GmbH</author>
-   <creationDate>2018-02-07T12:00:00.000+02:00</creationDate>
+   <author>Geonovum</author>
+   <creationDate>2018-01-19T16:06:53.937+02:00</creationDate>
    <lastEditor>Geonovum</lastEditor>
-   <lastUpdateDate>2018-12-06T14:26:19.908+01:00</lastUpdateDate>
+   <lastUpdateDate>2018-12-06T14:30:04.374+01:00</lastUpdateDate>
    <tags>
       <tag ref="EIDdf8a1707-88f8-4fdd-b157-0a2eee2d5d71"/>
    </tags>

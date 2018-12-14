@@ -8,8 +8,8 @@
    <itemHash>bQ==</itemHash>
    <remoteResource>https://github.com/interactive-instruments/etf-ets-repository</remoteResource>
    <localPath>/auto</localPath>
-   <label>Run all dependencies</label>
-   <description>Run XSD and Schematron tests for StUF-Geo IMGeo versie 1.2 BGT</description>
+   <label>Alle tests StUF-Geo IMGeo versie 1.2 BGT</label>
+   <description>Schema, GML SF 2 en geometrie validatie voor StUF-Geo IMGeo versie 1.2 BGT</description>
    <reference>../../generic/ets-generic-bsxets.xq</reference>
    <version>2.0.0</version>
    <author>Geonovum</author>
@@ -40,7 +40,8 @@
    </supportedTestObjectTypes>
    <dependencies>
       <executableTestSuite ref="EID320551ab-f95f-11e8-2116-09173f13e4c5"/>
-      <executableTestSuite ref="EID06fb92cc-ef13-11e8-1038-09173f13e4c5"/>
+      <executableTestSuite ref="EIDb0e04e22-ef12-11e8-d219-09173f13e4c6"/>
+      <executableTestSuite ref="EID6c675042-ef12-11e8-d217-09173f13e4c5"/>
    </dependencies>
    <testModules>
       <TestModule id="EID77457cc7-f95f-11e8-1391-09173f13e4c5">

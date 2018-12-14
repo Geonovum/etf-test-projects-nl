@@ -8,8 +8,8 @@
    <itemHash>bQ==</itemHash>
    <remoteResource>https://github.com/interactive-instruments/etf-ets-repository</remoteResource>
    <localPath>/auto</localPath>
-   <label>Run all dependencies</label>
-   <description>Run XSD and Schematron tests for StUF-Geo BAG versie 1.0.2</description>
+   <label>Alle tests StUF-Geo BAG versie 1.0.2</label>
+   <description>Schema en GML validatie voor StUF-Geo BAG versie 1.0.2</description>
    <reference>../../generic/ets-generic-bsxets.xq</reference>
    <version>2.0.0</version>
    <author>Geonovum</author>
