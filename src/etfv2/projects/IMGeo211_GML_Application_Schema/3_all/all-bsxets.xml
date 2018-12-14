@@ -8,15 +8,14 @@
    <itemHash>bQ==</itemHash>
    <remoteResource>https://github.com/interactive-instruments/etf-ets-repository</remoteResource>
    <localPath>/auto</localPath>
-   <label>Run all dependencies</label>
-   <description>Run XSD and Schematron tests for IMGeo GML versie 2.1.1</description>
-   <!-- <reference>../example-bsxets-imgeo.xq</reference> -->
-   <reference>../example-bsxets.xq</reference>
+   <label>Alle IMGeo 2.1.1 tests</label>
+   <description>IMGeo 2.1.1 schema test en GML tests</description>
+   <reference>../../generic/ets-generic-bsxets.xq</reference>
    <version>2.0.0</version>
    <author>Geonovum</author>
    <creationDate>2018-01-19T16:06:53.937+02:00</creationDate>
    <lastEditor>Geonovum</lastEditor>
-   <lastUpdateDate>2018-11-23T15:30:55.235+01:00</lastUpdateDate>
+   <lastUpdateDate>2018-12-14T09:30:55.235+01:00</lastUpdateDate>
    <tags>
       <tag ref="EID4de87e98-7b9a-498a-95d8-1bcf46185f37"/>
    </tags>
@@ -44,7 +43,8 @@
    </supportedTestObjectTypes>
    <dependencies>
       <executableTestSuite ref="EIDef1bf1cc-ef2b-11e8-4452-09173f13e4c5"/>
-      <executableTestSuite ref="EID2fe4bf82-ef2c-11e8-d217-09173f13e4c5"/>
+      <!-- generiek GML geometrie -->
+      <executableTestSuite ref="EID6c675042-ef12-11e8-d217-09173f13e4c5"/>
       <executableTestSuite ref="EIDb0e04e22-ef12-11e8-d219-09173f13e4c6"/>
    </dependencies>
    <testModules>
