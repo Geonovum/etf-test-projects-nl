@@ -43,7 +43,8 @@ Bijvoorbeeld vanwege fouten of een update.
 ```
 cd ../2_schematrontest/
 
-saxonb-xslt /home/thijs/code/Geonovum/ETF/github/etf-test-projects-nl/src/metadata/Nederlands\ profiel\ op\ ISO\ 19119\ v12\ 2016/schematron.sch /home/thijs/code/Geonovum/ETF/github/Geonovum_forks/etf-ets-repository/utils/schematron_2_etf_ets.xsl tagId=11351082-200a-4fc1-8c4f-733cb9137365 translationTemplateId=5f9f1c84-03cd-475b-9a1c-a1a04abca04e testObjectTypeId=5a60dded-0cb0-4977-9b06-16c6c2321d2e etsId=2d679502-0802-11e8-d212-09173f13e4c5 >  NederlandsprofielopISO19119v12-bsxets.xml
+saxonb-xslt /home/thijs/code/Geonovum/ETF/github/metadata-schematron/service/sch_19119.xml /home/thijs/code/Geonovum/ETF/github/Geonovum_forks/etf-ets-repository/utils/schematron_2_etf_ets.xsl tagId=11351082-200a-4fc1-8c4f-733cb9137365 translationTemplateId=5f9f1c84-03cd-475b-9a1c-a1a04abca04e testObjectTypeId=5a60dded-0cb0-4977-9b06-16c6c2321d2e etsId=2d679502-0802-11e8-d212-09173f13e4c5 >  NederlandsprofielopISO19119v12-bsxets.xml
+
 ```
 
 1. xsd validator:
