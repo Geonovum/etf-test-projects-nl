@@ -7,14 +7,14 @@
     <itemHash>bQ==</itemHash>
     <remoteResource>https://github.com/interactive-instruments/etf-ets-repository</remoteResource>
     <localPath>/auto</localPath>
-    <label>Run all dependencies</label>
-    <description>...</description>
-    <reference>../example-bsxets.xq</reference>
+    <label>Alle tests voor metadata Nederlands profiel op ISO 19115 v13 2014</label>
+    <description>Schema validatie en schematron tests voor metadata Nederlands profiel op ISO 19115 v13 2014</description>
+    <reference>../../generic/ets-generic-bsxets.xq</reference>
     <version>2.0.0</version>
     <author>interactive instruments GmbH</author>
     <creationDate>2017-09-12T20:50:53.937+02:00</creationDate>
-    <lastEditor>interactive instruments GmbH</lastEditor>
-    <lastUpdateDate>2017-09-12T20:50:53.937+02:00</lastUpdateDate>
+    <lastEditor>Geonovum</lastEditor>
+    <lastUpdateDate>2018-12-14T10:50:53.937+02:00</lastUpdateDate>
     <tags>
         <tag ref="EIDec1b3956-b1f9-4359-814e-7590877f4eb2"/>
     </tags>

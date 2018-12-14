@@ -8,14 +8,14 @@
    <itemHash>bQ==</itemHash>
    <remoteResource>https://github.com/interactive-instruments/etf-ets-repository</remoteResource>
    <localPath>/auto</localPath>
-   <label>Run all dependencies</label>
-   <description>Run XSD and Schematron tests for Nederlands profiel op ISO 19115 v13 INSPIRE geharmoniseerd 2014</description>
-   <reference>../example-bsxets.xq</reference>
+   <label>Alle tests voor metadata Nederlands profiel op ISO 19115 v13 INSPIRE geharmoniseerd 2014</label>
+   <description>Schema validatie en schematron tests voor metadata Nederlands profiel op ISO 19115 v13 INSPIRE geharmoniseerd 2014</description>
+   <reference>../../generic/ets-generic-bsxets.xq</reference>
    <version>2.0.0</version>
    <author>Geonovum</author>
-   <creationDate>2018-01-19T16:06:53.937+02:00</creationDate>
+   <creationDate>2017-09-12T20:50:53.937+02:00</creationDate>
    <lastEditor>Geonovum</lastEditor>
-   <lastUpdateDate>2018-01-19T16:06:53.937+02:00</lastUpdateDate>
+   <lastUpdateDate>2018-12-14T10:50:53.937+02:00</lastUpdateDate>
    <tags>
       <tag ref="EIDafe2f9f2-e603-42b4-bd6f-dfa52243752e"/>
    </tags>
@@ -39,7 +39,7 @@
       <testObjectType ref="EID5a60dded-0cb0-4977-9b06-16c6c2321d2e"/>
    </supportedTestObjectTypes>
    <dependencies>
-      <executableTestSuite ref="EID3f674143-fd27-11e7-1863-09173f13e4c5"/>
+      <executableTestSuite ref="EID4a065dbd-dfbd-4428-8228-5e835523cc05"/>
       <executableTestSuite ref="EID050e4572-fd28-11e7-d212-09173f13e4c5"/>
    </dependencies>
    <testModules>
