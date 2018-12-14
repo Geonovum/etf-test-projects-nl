@@ -1,11 +1,12 @@
 # Aanmaken validator XSD + schematron tests
 ## Goed te weten vooraf
 1. de validator maakt gebruik van generieke XQuery-code (2 bestanden) voor de verwerking. De verwijzing hiernaar wordt autmatisch opgenomen, het is dus niet nodig hier nog iets voor te doen. Wel is het belangrijk dat deze code staat in de directory ../../projects/generic/. Het gaat om de bestanden:
+  1. ets-generic-bsxets.xq
+  1. testquery.xq
   1. schematron-bsxets.xq
   1. schematron-query-prolog.xq
 1. het aanmaken gebeurt met XSLTs. In onderstaande stappen worden de transformaties via een command-line tool uitgevoerd, een schil om de Java tool Saxon. Via een XML editor zijn deze transformaties ook uit te voeren.
 1. *Tip:* voor bepaalde modellen van Geonovum is geen standaard GML FeatureCollection of CityGML Model in gebruik. Zoals voor StUF modellen. Hiervoor zijn aparte TestObjectTypes gemaakt. Zie https://github.com/Geonovum/etf-stdtot/blob/master/Geonovum.md voor de TestObjectTypes.
-
 
 ## Stappen
 Een nieuwe validator maken met geometrie en schematron validatie gaat volgens de volgende stappen:
