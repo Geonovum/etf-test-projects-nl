@@ -1,0 +1,7 @@
+<label>GML 3.2 Simple Features profile 2</label>
+<description>GML 3.2 Simple Features profile 2</description>
+<reference>../../generic/ets-generic-bsxets.xq</reference>
+<version>2.0.0</version>
+<author>Geonovum</author>
+<creationDate>2018-11-23T15:19:09.59+01:00</creationDate>
+<lastEditor>ETF Schematron to ETF Executable Test Suite Transformer</lastEditor>

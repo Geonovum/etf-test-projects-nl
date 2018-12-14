@@ -1,0 +1,7 @@
+<label>GML geometrie tests</label>
+<description>GML geometrie tests</description>
+<reference>../../generic/ets-generic-bsxets.xq</reference>
+<version>2.0.0</version>
+<author>interactive instruments GmbH, Geonovum</author>
+<creationDate>2015-08-18T12:00:00.000+02:00</creationDate>
+<lastEditor>Transformer for geometry tests BSX</lastEditor>

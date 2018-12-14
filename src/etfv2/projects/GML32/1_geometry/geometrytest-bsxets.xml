@@ -8,8 +8,8 @@
    <itemHash>bQ==</itemHash>
    <remoteResource>https://github.com/interactive-instruments/etf-ets-repository/example/geometrytest</remoteResource>
    <localPath>/auto</localPath>
-   <label>Geometry tests</label>
-   <description>...</description>
+   <label>GML geometrie tests</label>
+   <description>GML geometrie tests</description>
    <reference>../../generic/ets-generic-bsxets.xq</reference>
    <version>2.0.0</version>
    <author>interactive instruments GmbH, Geonovum</author>
@@ -20,7 +20,6 @@
       <tag ref="EID4ac4d44a-563f-43ec-80c2-f8a3d4e13776"/>
    </tags>
    <testDriver ref="EID4dddc9e2-1b21-40b7-af70-6a2d156ad130"/>
-   <!-- <translationTemplateBundle ref="EID2c4eb556-265c-4bb6-982f-a5574ae3252b"/> -->
    <translationTemplateBundle ref="EID245c67e5-6d28-493e-9dc6-a23de3d81cc0"/>
    <ParameterList name="ETF Standard Parameters for XML test objects">
       <parameter name="files_to_test" required="true">
