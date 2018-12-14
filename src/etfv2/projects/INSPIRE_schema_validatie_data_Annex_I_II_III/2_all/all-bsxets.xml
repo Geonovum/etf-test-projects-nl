@@ -8,8 +8,8 @@
    <itemHash>bQ==</itemHash>
    <remoteResource>https://github.com/interactive-instruments/etf-ets-repository</remoteResource>
    <localPath>/auto</localPath>
-   <label>Run all dependencies</label>
-   <description>Run XSD and Schematron tests for INSPIRE schema validatie data Annex I II III</description>
+   <label>Alle INSPIRE data Annex I, II, III tests</label>
+   <description>Valideer GML data tegen de applicatie schemas van INSPIRE (alleen versie 4.x) en tegen algemene GML geometrie regels</description>
    <reference>../../generic/ets-generic-bsxets.xq</reference>
    <version>2.0.0</version>
    <author>Geonovum</author>

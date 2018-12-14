@@ -8,8 +8,8 @@
    <itemHash>bQ==</itemHash>
    <remoteResource>https://github.com/interactive-instruments/etf-ets-repository</remoteResource>
    <localPath>/auto</localPath>
-   <label>Schema tests</label>
-   <description>...</description>
+   <label>INSPIRE data Annex I, II, III schema validatie</label>
+   <description>Valideer GML data tegen de applicatie schemas van INSPIRE (alleen versie 4.x)</description>
    <reference>../../generic/ets-generic-bsxets.xq</reference>
    <version>2.0.0</version>
    <author>interactive instruments GmbH</author>
