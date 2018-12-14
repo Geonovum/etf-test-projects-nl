@@ -8,14 +8,14 @@
    <itemHash>bQ==</itemHash>
    <remoteResource>https://github.com/interactive-instruments/etf-ets-repository</remoteResource>
    <localPath>/auto</localPath>
-   <label>Run all dependencies</label>
-   <description>Run XSD and Schematron tests for StUF-Geo IMGeo versie 1.3 Geo-BOR (inclusief aanvullendeElementen)</description>
-   <reference>../example-bsxets.xq</reference>
-   <version>2.0.0</version>
+   <label>Alle tests StUF-Geo IMGeo versie 1.3 Geo-BOR inclusief aanvullende elementen</label>
+   <description>Deze validator controleert StUF-Geo IMGeo berichten voor het Geo-BOR berichtenverkeer naast valide XML tegen het StUF-Geo IMGeo berichtschema (XSD) versie 1.3 en op geldige geometrie tegen GML3.2 SF2, ook op valide XML tegen het voorbeeldschema voor Geo-BOR StUF:aanvullendeElementen (zie https://register.geostandaarden.nl/xmlschema/imgeo/1.3/imgeo0302/geo-bor/geo-bor0100.xsd).</description>
+   <reference>../../generic/ets-generic-bsxets.xq</reference>
+   <version>1.3.2</version>
    <author>Geonovum</author>
-   <creationDate>2018-01-19T16:06:53.937+02:00</creationDate>
+   <creationDate>2018-02-07T12:00:00.000+02:00</creationDate>
    <lastEditor>Geonovum</lastEditor>
-   <lastUpdateDate>2018-03-12T13:24:42.638+01:00</lastUpdateDate>
+   <lastUpdateDate>2018-12-06T14:59:49.121+01:00</lastUpdateDate>
    <tags>
       <tag ref="EID1f3b85ac-1e82-4ec1-af30-75f340037dab"/>
    </tags>
@@ -43,7 +43,9 @@
    </supportedTestObjectTypes>
    <dependencies>
       <executableTestSuite ref="EID822a3f0c-25ef-11e8-4452-09173f13e4c5"/>
-      <executableTestSuite ref="EIDd0035192-25ef-11e8-d217-09173f13e4c5"/>
+      <executableTestSuite ref="EID6c675042-ef12-11e8-d217-09173f13e4c5"/>
+      <!-- Also GML schematron validation? -->
+      <executableTestSuite ref="EIDb0e04e22-ef12-11e8-d219-09173f13e4c6"/>
    </dependencies>
    <testModules>
       <TestModule id="EID57925d10-25f0-11e8-3151-09173f13e4c5">

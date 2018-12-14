@@ -11,6 +11,9 @@ testObjectTypeId:
 
 ## UUIDs validators
 xsd: 822a3f0c-25ef-11e8-4452-09173f13e4c5
+
+TODO: extra XSD: geobor?
+
 geometrytest: d0035192-25ef-11e8-d217-09173f13e4c5
 
 
