@@ -425,8 +425,8 @@
 		</sch:rule>
 
 		<!-- INSPIRE specification titel -->
-		<!-- Thijs: dit uitsluiten bij deze validator, want er is geen assertion gebruikt -->
-		<!-- <sch:rule id="alle INSPIRE specificaties" context="//gmd:MD_Metadata/gmd:dataQualityInfo/gmd:DQ_DataQuality/gmd:report/gmd:DQ_DomainConsistency/gmd:result/gmd:DQ_ConformanceResult/gmd:specification/gmd:CI_Citation">
+
+		<sch:rule id="alle INSPIRE specificaties" context="//gmd:MD_Metadata/gmd:dataQualityInfo/gmd:DQ_DataQuality/gmd:report/gmd:DQ_DomainConsistency/gmd:result/gmd:DQ_ConformanceResult/gmd:specification/gmd:CI_Citation">
 
 		    <sch:let name="all_conformity_Spec_Titles" value="ancestor::gmd:dataQualityInfo/gmd:DQ_DataQuality/gmd:report/gmd:DQ_DomainConsistency/gmd:result/gmd:DQ_ConformanceResult/gmd:specification/gmd:CI_Citation/gmd:title"/>
 			<sch:let name="all_conformity_Spec_Titles_join" value="normalize-space(string-join(($all_conformity_Spec_Titles), ','))"/>
@@ -439,7 +439,7 @@
 			<sch:let name="INSPIRE_SDS_invoc" value="'invocable'"/>
 			<sch:let name="INSPIRE_SDS_interop" value="'interoperable'"/>
 			<sch:let name="INSPIRE_SDS_harmo" value="'harmonised'"/>
-			 -->
+
 		<!-- alleen INSPIRE interoperable titel moet aanwezig zijn-->
 		<!--
 			<sch:assert id="INSPIRE Specificatie (ISO nr. 360) titel interoperabiliteit" test="$INSPIRE_interop_Spec_Title_exists">Specificatie (ISO nr. 360) ontbreekt of heeft de verkeerde waarde,verwijzen naar de VERORDENING (EU) Nr. 1089/2010 VAN DE COMMISSIE van 23 november 2010 ter uitvoering van Richtlijn 2007/2/EG van het Europees Parlement en de Raad betreffende de interoperabiliteit van verzamelingen ruimtelijke gegevens en van diensten met betrekking tot ruimtelijke gegevens</sch:assert>
@@ -459,7 +459,7 @@
 			<sch:report id="test all spec titels info" test="$all_conformity_Spec_Titles_join">Aanwezige Specificatie titels: <sch:value-of select="$all_conformity_Spec_Titles_join"/>
 			</sch:report>
 		-->
-		<!-- </sch:rule> -->
+		</sch:rule>
 
 		<!-- eind INSPIRE specification titel -->
 
