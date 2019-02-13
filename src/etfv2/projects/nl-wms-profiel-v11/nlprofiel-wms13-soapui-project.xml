@@ -349,7 +349,7 @@ if(cascadedLayers.size() != 0){
 		}
 	}
 	if (nrMetadataURLs == 0) {
-		// TODO: custom error message
+		// TODO: custom error message?
 		String[] assertParams = ['element', 'Layer/MetadataURL/OnlineResource/@xlink:href'];
 		throw new TranslatableAssertionError('TR.valueShallNotBeEmpty', assertParams);
 	}
@@ -402,14 +402,26 @@ if(cascadedLayers.size() != 0){
 		// Check: if layer has a Name
 		def metadataURL = "";
 		def layerParent = layer.parent();
+        def layerHasChildren = false;
 		while(layerParent.name() == 'Layer'){
 			if(layerParent.MetadataURL.OnlineResource.@'xlink:href'.size() != 0){
-				layerParent.MetadataURL.OnlineResource.each{ url ->
+				// layerParent.MetadataURL.OnlineResource.each{ url ->
+				layerParent.MetadataURL.OnlineResource.@'xlink:href'.each{ url ->
 					metadataURL = url;
 				}
 			}
 			layerParent = layerParent.parent();
 		}
+        // also take into account children
+        def layerChildren = layer.depthFirst().findAll{it.name()=='Layer' && it.Name.size() > 0};
+    	layerChildren.each {layerChild ->
+            layerHasChildren = true;
+            if(layerChild.MetadataURL.OnlineResource.@'xlink:href'.size() != 0){
+    			layerChild.MetadataURL.OnlineResource.@'xlink:href'.each{ url ->
+    				metadataURL = url; // this will set the metadataURL of the last child as the metadataURL of the Layer, so there is at least one
+    			}
+    		}
+    	}
 		// check for metadata URL of Layer itself
 		if (layer.MetadataURL.OnlineResource.@'xlink:href'.size() > 0) {
 			metadataURL = layer.MetadataURL.OnlineResource.@'xlink:href'
