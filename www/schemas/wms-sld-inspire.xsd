@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+    <xs:annotation>
+        <xs:documentation>Generic application schema for WMS. inlcuding SLD and INSPIRE extended capablities.</xs:documentation>
+    </xs:annotation>
+    <!-- added by Thijs Brentjens Geonovum to enable validation of WMS capabilities including SLD operations -->
+    <xs:import namespace="http://www.opengis.net/sld" schemaLocation="http://schemas.opengis.net/sld/1.1.0/sld_capabilities.xsd"/>
+    <!-- Thijs Brentjens, INSPIRE extended capablities -->
+    <xs:import namespace="http://inspire.ec.europa.eu/schemas/inspire_vs/1.0" schemaLocation="http://inspire.ec.europa.eu/schemas/inspire_vs/1.0/inspire_vs.xsd"/>
+</xs:schema>
