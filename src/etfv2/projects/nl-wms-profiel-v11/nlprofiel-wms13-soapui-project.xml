@@ -1,0 +1,462 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:soapui-project id="eec9d674-d94b-4d8d-b744-1309c6cae1d2" activeEnvironment="Default" name="Nederlands profiel op WMS 1_3 versie 1_1" resourceRoot="${projectDir}" soapui-version="5.3.0" abortOnError="false" runType="SEQUENTIAL" xmlns:con="http://eviware.com/soapui/config"><con:description><![CDATA[Test een WMS op het Nederlands profiel op ISO 19128 WMS 1.3.0 versie 1.1., voor ETF validatie software 2.x
+<br/> <br/>
+<b>Dit is een test versie</b> Problemen met de validator? Maak een issue aan op <a href="https://github.com/Geonovum/etf-test-projects-nl/issues" target="_blank"> Github (https://github.com/Geonovum/etf-test-projects-nl/issues)</a>.
+<br/> <br/>
+Download het <a href="https://www.geonovum.nl/geo-standaarden/services/nederlands-profiel-wms-op-iso-19128-versie-11" target="_blank">Nederlands profiel op ISO 19128 WMS 1.3.0 versie 1.1</a>]]></con:description><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.actions.iface.tools.soapui.TestRunnerAction@values-local"><![CDATA[<xml-fragment xmlns:con="http://eviware.com/soapui/config">
+  <con:entry key="Report Format(s)" value=""/>
+  <con:entry key="Host:Port" value=""/>
+  <con:entry key="Export JUnit Results" value="false"/>
+  <con:entry key="Export All" value="false"/>
+  <con:entry key="Save After" value="false"/>
+  <con:entry key="Add Settings" value="false"/>
+  <con:entry key="WSS Password Type" value=""/>
+  <con:entry key="TestSuite" value="GetCapabilities_Operation"/>
+  <con:entry key="Endpoint" value=""/>
+  <con:entry key="Select Report Type" value=""/>
+  <con:entry key="System Properties" value=""/>
+  <con:entry key="Password" value=""/>
+  <con:entry key="Print Report" value="false"/>
+  <con:entry key="Open Report" value="false"/>
+  <con:entry key="Export JUnit Results with test properties" value="false"/>
+  <con:entry key="Global Properties" value=""/>
+  <con:entry key="Project Properties" value=""/>
+  <con:entry key="Project Password" value=""/>
+  <con:entry key="TestCase" value="at11-getcapabilities-resource-type-is-service"/>
+  <con:entry key="Username" value=""/>
+  <con:entry key="user-settings.xml Password" value=""/>
+  <con:entry key="TestRunner Path" value=""/>
+  <con:entry key="Environment" value="Default"/>
+  <con:entry key="Coverage Report" value="false"/>
+  <con:entry key="Enable UI" value="false"/>
+  <con:entry key="Root Folder" value=""/>
+  <con:entry key="Ignore Errors" value="false"/>
+  <con:entry key="Domain" value=""/>
+  <con:entry key="Tool Args" value=""/>
+  <con:entry key="Save Project" value="false"/>
+</xml-fragment>]]></con:setting></con:settings><con:testSuite id="a5986848-3e54-4648-b8d4-09ada35a460f" name="GetCapabilities_Operation"><con:settings/><con:runType>SEQUENTIAL</con:runType><con:testCase id="f7184e7c-7a86-4cf5-8b19-1f4431cc81f5" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="initial-testcase" searchProperties="true"><con:settings/><con:testStep type="groovy" name="reset-properties" id="f3e7710e-de55-4d55-9279-801c70e7554b"><con:settings/><con:config><script>testRunner.testCase.testSuite.project.setPropertyValue( 'lastServiceEndpoint', '');</script></con:config></con:testStep><con:testStep type="httprequest" name="http-request" id="57d85050-3859-433d-a242-15b9c47e35d5"><con:settings/><con:config method="GET" xsi:type="con:HttpRequest" id="e3a4c9b4-ff53-4b3a-a62d-908b2de3aa7f" name="http-request" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:endpoint>${#Project#serviceEndpoint}</con:endpoint><con:request/><con:assertion type="Valid HTTP Status Codes" id="a3a3f4d9-6cec-439c-87dd-fc3d74d56270" name="Valid HTTP Status Codes"><con:configuration><codes>200</codes></con:configuration></con:assertion><con:assertion type="OwsExceptionReportAssertion" id="fdda2347-adad-4635-af5f-5b9e49bc0567" name="Fail if service returns OWS Exception Report"/><con:assertion type="Response SLA Assertion" id="0352da2a-abdd-488a-a66d-211b62371836" name="Response SLA"><con:configuration><SLA>30000</SLA></con:configuration></con:assertion><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters><con:parameter><con:name>request</con:name><con:value>GetCapabilities</con:value><con:style>QUERY</con:style><con:default>GetCapabilities</con:default><con:path xsi:nil="true"/><con:description xsi:nil="true"/></con:parameter><con:parameter><con:name>service</con:name><con:value>${#Project#service}</con:value><con:style>QUERY</con:style><con:default>${#Project#service}</con:default><con:path xsi:nil="true"/><con:description xsi:nil="true"/></con:parameter><con:parameter><con:name>version</con:name><con:value>${#Project#version}</con:value><con:style>QUERY</con:style><con:default>${#Project#version}</con:default><con:path xsi:nil="true"/><con:description xsi:nil="true"/></con:parameter></con:parameters></con:config></con:testStep><con:testStep type="groovy" name="set-extended-capabilities-scenario" id="e968301b-09cb-40f5-a278-e0c8a7adf202" disabled="true"><con:settings/><con:config><script>def response = context.expand('${http-request#Response}');
+def capabilities = new XmlSlurper().parseText(response);
+def scenario = '1';
+testRunner.testCase.testSuite.project.setPropertyValue( "extended_capabilities_scenario", scenario );
+if(capabilities.Capability.ExtendedCapabilities.ResourceLocator.size() == 1 ||
+   capabilities.Capability.ExtendedCapabilities.ResourceType.size() == 1 ||
+   capabilities.Capability.ExtendedCapabilities.TemporalReference.size() == 1 ||
+   capabilities.Capability.ExtendedCapabilities.Conformity.size() == 1 ||
+   capabilities.Capability.ExtendedCapabilities.MetadataPointOfContact.size() == 1 ||
+   capabilities.Capability.ExtendedCapabilities.MetadataDate.size() == 1 ||
+   capabilities.Capability.ExtendedCapabilities.SpatialDataServiceType.size() == 1 ||
+   capabilities.Capability.ExtendedCapabilities.MandatoryKeyword.size() == 1 ||
+   capabilities.Capability.ExtendedCapabilities.Keyword.size() == 1){
+	scenario = '2';
+	testRunner.testCase.testSuite.project.setPropertyValue( "extended_capabilities_scenario", scenario );
+}
+log.info('Extended Capabilities Scenario: ' + scenario);</script></con:config></con:testStep><con:testStep type="groovy" name="set-lastserviceendpoint" id="b34c2e7e-3d7d-401e-8a5e-f1a7d7e1ad6f"><con:settings/><con:config><script>def lastServiceEndpoint = context.expand('${http-request#EndPoint}');
+testRunner.testCase.testSuite.project.setPropertyValue( 'lastServiceEndpoint', lastServiceEndpoint);</script></con:config></con:testStep><con:testStep type="groovy" name="set-getmap-operation-properties" id="53593fba-d4c0-4a1d-8792-6dab56be904b"><con:settings/><con:config><script>import de.interactive_instruments.etf.suim.TranslatableAssertionError;
+def tc = testRunner.testCase.testSuite.project.testSuites['GetCapabilities_Operation'].testCases['initial-testcase'];
+def response = tc.getTestStepByName('http-request').getPropertyValue('Response');
+def capabilities = new XmlSlurper(false, true).parseText(response);
+def ts = testRunner.testCase.testSuite.project.testSuites['GetMap_Operation'];
+
+def layer = capabilities.Capability.depthFirst().findAll{it.name()=='Layer'  &amp;&amp; it.Name.size() > 0}[0];
+if(layer.size() == 1){
+	ts.setPropertyValue('getMapEndpoint', capabilities.Capability.Request.GetMap.DCPType.HTTP.Get.OnlineResource.@'xlink:href'.toString());
+	ts.setPropertyValue('layers', layer.Name.toString());
+	ts.setPropertyValue('styles', layer.Style[0].Name.toString());
+	ts.setPropertyValue('crs', layer.CRS[0].toString());
+
+	def boundingBox = layer.depthFirst().findAll{it.@CRS == layer.CRS[0]}[0];
+	def bbox = boundingBox.@minx.toString() + ',' + boundingBox.@miny.toString() + ',' + boundingBox.@maxx.toString() + ',' + boundingBox.@maxy.toString();
+	ts.setPropertyValue('bbox', bbox);
+
+	ts.setPropertyValue('width', '500');
+	ts.setPropertyValue('height', '500');
+
+	if(capabilities.Capability.Request.GetMap.Format.depthFirst().findAll{it =='image/png'}.size() != 0){
+		ts.setPropertyValue('format', 'image/png');
+	}
+	else if(capabilities.Capability.Request.GetMap.Format.depthFirst().findAll{it =='image/gif'}.size() != 0){
+		ts.setPropertyValue('format', 'image/gif');
+	}
+	else if(capabilities.Capability.Request.GetMap.Format.depthFirst().findAll{it =='image/jpeg'}.size() != 0){
+		ts.setPropertyValue('format', 'image/jpeg');
+	}
+	else{
+		ts.setPropertyValue('format', '');
+	}
+}</script></con:config></con:testStep><con:properties/></con:testCase><con:testCase id="452f3b7c-9db1-47c7-9621-6f76b761feea" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="check-initial-testcase" searchProperties="true"><con:settings/><con:testStep type="groovy" name="run-initial-testcase-if-needed" id="bb0e3025-748d-436e-8910-7b4db9452988"><con:settings/><con:config><script>def tc = testRunner.testCase.testSuite.project.testSuites["GetCapabilities_Operation"].testCases["initial-testcase"];
+def serviceEndPoint = testRunner.testCase.testSuite.project.getPropertyValue( 'serviceEndpoint');
+def lastServiceEndPoint = testRunner.testCase.testSuite.project.getPropertyValue( 'lastServiceEndpoint');
+def makeInitialRequest = false;
+if (tc.getTestStepByName("http-request").getPropertyValue("Response") == null){
+	makeInitialRequest = true;
+}
+else if(serviceEndPoint != lastServiceEndPoint){
+	makeInitialRequest = true;
+}
+if(makeInitialRequest){
+	runner = tc.run(new com.eviware.soapui.support.types.StringToObjectMap(), false);
+}</script></con:config></con:testStep><con:properties/></con:testCase><con:testCase id="55bd534f-a980-4a52-9361-200a3721ba6a" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="kenmerk1-WMS-130-getcapabilities-xml-schema-validation" searchProperties="true"><con:description><![CDATA[<p>Kenmerk 1. Valideer de WMS Capabilities tegen het XML schema voor WMS 1.3.0. INSPIRE extensie van de Capabilities en/of eventuele WMS SLD operaties zijn hierbij ook toegestaan.</p>
+<p>Schema locaties:
+    <ul>
+        <li>WMS Capabilities: <a href="http://schemas.opengis.net/wms/1.3.0/capabilities_1_3_0.xsd" target="_blank">http://schemas.opengis.net/wms/1.3.0/capabilities_1_3_0.xsd</a></li>
+        <li>WMS SLD operaties in Capabilities <a href="http://schemas.opengis.net/sld/1.1.0/sld_capabilities.xsd"  target="_blank">http://schemas.opengis.net/sld/1.1.0/sld_capabilities.xsd</a></li>
+        <li>INSPIRE extensie in Capabilities <a href="http://inspire.ec.europa.eu/schemas/inspire_vs/1.0/inspire_vs.xsd" target="_blank">http://inspire.ec.europa.eu/schemas/inspire_vs/1.0/inspire_vs.xsd</a></li>
+    </ul>
+</p>]]></con:description><con:settings/><con:testStep type="testcasedependency" name="check-initial-testcase" id="a10b0271-70c4-402f-9b4b-6d35de514d76"><con:settings/><con:config xsi:type="con:RunTestCaseStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:targetTestCase>452f3b7c-9db1-47c7-9621-6f76b761feea</con:targetTestCase><con:properties/><con:returnProperties/><con:runMode>PARALLELL</con:runMode></con:config></con:testStep><con:testStep type="groovy" name="check-xml-schema-valid" id="0ac9fadb-6c2e-4f52-b23f-303a5956a25e"><con:settings/><con:config><script>import javax.xml.transform.stream.StreamSource;
+import javax.xml.validation.SchemaFactory;
+import javax.xml.XMLConstants;
+import de.interactive_instruments.etf.suim.TranslatableAssertionError;
+
+// xsdUrl = 'http://schemas.opengis.net/wms/1.3.0/capabilities_1_3_0.xsd'
+xsdUrl = 'http://validatie.geostandaarden.nl/schemas/wms-sld-inspire.xsd'
+
+xmlUrl = testRunner.testCase.testSuite.project.getPropertyValue("serviceEndpoint");
+
+try{
+	new URL( xsdUrl ).withInputStream { xsd ->
+	  new URL( xmlUrl ).withInputStream { xml ->
+	    SchemaFactory.newInstance( XMLConstants.W3C_XML_SCHEMA_NS_URI )
+	                 .newSchema( new StreamSource( xsd ) )
+	                 .newValidator()
+	                 .validate( new StreamSource( xml ) )
+
+	  }
+	}
+}
+catch (Exception e){
+	String[] assertParams = ['error', e];
+	throw new TranslatableAssertionError('TR.invalidSchema', assertParams);
+}
+</script></con:config></con:testStep><con:properties/></con:testCase><con:testCase id="6d222a6d-e824-4896-8b4b-8a74285286dd" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="kenmerk2-getcapabilities-get-map-imageformat" searchProperties="true"><con:description><![CDATA[<p>Kenmerk 2. De WMS dient in ieder geval het formaat PNG (MIMEtype "image/png") of GIF (MIME type “image/gif”) te ondersteunen. De aanbieder van de dienst bepaalt of dit formaat 8-bit of 24-bit is (zie 4.3, aanbeveling 9). Indien de WMS beeldmateriaal aanbiedt en niet voor INSPIRE aangewezen is, is het  toegestaan  JPEG  te  ondersteunen  als  transparantie  op  de  betreffende  WMS  lagen  niet  van toepassing is.</p>]]></con:description><con:settings/><con:testStep type="testcasedependency" name="check-initial-testcase" id="17452c0f-83ff-4a76-bbf1-e41e0b740857"><con:settings/><con:config xsi:type="con:RunTestCaseStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:targetTestCase>452f3b7c-9db1-47c7-9621-6f76b761feea</con:targetTestCase><con:properties/><con:returnProperties/><con:runMode>PARALLELL</con:runMode></con:config></con:testStep><con:testStep type="groovy" name="check-getmap-operation-metadata" id="66176275-64b5-4c6d-bdc6-373c268c1689"><con:settings/><con:config><script>import de.interactive_instruments.etf.suim.TranslatableAssertionError;
+def tc = testRunner.testCase.testSuite.project.testSuites["GetCapabilities_Operation"].testCases["initial-testcase"];
+def response = tc.getTestStepByName("http-request").getPropertyValue("Response");
+def capabilities = new XmlSlurper(false, true).parseText(response);
+
+def getMapOperation = capabilities.Capability.Request.GetMap;
+def atLeastOneFormatValid = false;
+if(getMapOperation.size() != 1){
+	String[] assertParams = ['element', 'Capability/Request/GetMap'];
+	throw new TranslatableAssertionError('TR.multiplicityShallBeOne', assertParams);
+}
+getMapOperation.Format.each{format ->
+	if(format == 'image/png' || format == 'image/gif' || format == 'image/jpeg'){
+		atLeastOneFormatValid = true;
+	}
+}
+if(!atLeastOneFormatValid){
+	throw new TranslatableAssertionError("TR.wrongGetMapMetadataImageFormatNL");
+}</script></con:config></con:testStep><con:properties/></con:testCase><con:testCase id="c8f3aa9a-fdbc-4267-9964-602f471efdd0" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="kenmerk3-getcapabilities-layer-crs" searchProperties="true"><con:description><![CDATA[<p>Kenmerk 3. Ondersteuning van de volgende coördinaat referentie systemen:<ul>
+<li>a.Voor nationale toepassingen op land of in het kustgebied dient de WMS de data af te kunnen beeldenin: Amersfoort / RD New (het RD-stelsel) (EPSG:28992)</li>
+<li>b.Voor  Europese  of  offshore  toepassingen  dient  de  WMS  de  data  af  te  kunnen  beelden in:minimaal  één  UTM  projectie met  als  geodetisch  datum  ETRS89.  EPSG  codes  van  dergelijke projecties: EPSG:25830, EPSG:25831, EPSG:25832, EPSG:3034, EPSG:3035.</li>
+<li>c.Voor mondiale toepassingen dient de WMS de data af te kunnen beelden in: WGS84 coördinatenstelsel  (longitude,  latitude  geprojecteerd  als  rechte  hoekcoördinaten  x,  y) (EPSG:4326)</li></ul>
+</p>]]></con:description><con:settings/><con:testStep type="testcasedependency" name="check-initial-testcase" id="f3014167-b4af-4dd2-b87d-e48a5ae7e30b"><con:settings/><con:config xsi:type="con:RunTestCaseStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:targetTestCase>452f3b7c-9db1-47c7-9621-6f76b761feea</con:targetTestCase><con:properties/><con:returnProperties/><con:runMode>PARALLELL</con:runMode></con:config></con:testStep><con:testStep type="groovy" name="check-layer-crs" id="e0c401ac-1f13-4f14-b02b-1def8f2a2703"><con:settings/><con:config><script><![CDATA[import de.interactive_instruments.etf.suim.TranslatableAssertionError;
+def tc = testRunner.testCase.testSuite.project.testSuites["GetCapabilities_Operation"].testCases["initial-testcase"];
+def response = tc.getTestStepByName("http-request").getPropertyValue("Response");
+def capabilities = new XmlSlurper(false, true).parseText(response);
+
+def layers = capabilities.Capability.depthFirst().findAll{it.name()=='Layer' && it.Name.size() == 1};
+// Geonovum: for NL profile, at least one CRS of:
+// EPSG:28992, EPSG:25830, EPSG:25831, EPSG:25832, EPSG:3034, EPSG:3035, EPSG:4326
+
+def requiredCRSes = ['EPSG:28992', 'EPSG:25830', 'EPSG:25831', 'EPSG:25832', 'EPSG:3034', 'EPSG:3035', 'EPSG:4326']
+
+layers.each{layer ->
+	def inheritedProperty = [];
+	def layerParent = layer.parent();
+	while(layerParent.name() == 'Layer'){
+		if(layerParent.CRS.size() != 0){
+			layerParent.CRS.each{ crs ->
+				inheritedProperty << crs;
+			}
+		}
+		layerParent = layerParent.parent();
+	}
+	if(layer.CRS.size() == 0 && inheritedProperty.size() == 0){
+		String[] assertParams = ['element', 'Layer/CRS', 'layer', layer.Name, 'element2', 'Layer/CRS' ];
+		throw new TranslatableAssertionError('TR.multiplicityShallBeOneOrMoreCascadedLayer', assertParams);
+	} else {
+		// loop over all CRSes and check if at least one is in the list
+		def oneRequiredCRS = false;
+		def providedCRSes = inheritedProperty
+		layer.CRS.each{crs ->
+			providedCRSes << crs
+		}
+		providedCRSes.each {crs ->
+			if (requiredCRSes.contains(crs)) {
+				oneRequiredCRS = true;
+			}
+		}
+		// log.info(allCRSes)
+		if (!oneRequiredCRS) {
+			// TODO: custom error message
+			String[] assertParams = ['layer', layer.Name, 'providedCRSes', providedCRSes ];
+			throw new TranslatableAssertionError('TR.requiredLayerCRSMissing', assertParams);
+		}
+	}
+}]]></script></con:config></con:testStep><con:properties/></con:testCase><con:testCase id="0fed2f19-95ed-4c54-bdb2-b0d3de6ed665" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="kenmerk5-layer-style-name" searchProperties="true"><con:description><![CDATA[<p>Kenmerk 5. Biedt  voor  elke  laag  (via  een  parent  of via  een child)  tenminste  één  weergavestijl,  die  in het  Capabilities  document  gepubliceerd  is  in  de  Style  elementen.  Biedt  voor  elke  weergavestijl een legenda aan.</p>]]></con:description><con:settings/><con:testStep type="testcasedependency" name="check-initial-testcase" id="ae704ff4-ab80-42c7-81b1-79fa76747c4b"><con:settings/><con:config xsi:type="con:RunTestCaseStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:targetTestCase>452f3b7c-9db1-47c7-9621-6f76b761feea</con:targetTestCase><con:properties/><con:returnProperties/><con:runMode>PARALLELL</con:runMode></con:config></con:testStep><con:testStep type="groovy" name="check-layer-style-name" id="32901637-e6ba-43f9-bb04-4d3142b0bdba"><con:settings/><con:config><script><![CDATA[import de.interactive_instruments.etf.suim.TranslatableAssertionError;
+def tc = testRunner.testCase.testSuite.project.testSuites["GetCapabilities_Operation"].testCases["initial-testcase"];
+def response = tc.getTestStepByName("http-request").getPropertyValue("Response");
+def capabilities = new XmlSlurper(false, true).parseText(response);
+
+def layers = capabilities.Capability.depthFirst().findAll{it.name()=='Layer' && it.Name.size() > 0};
+
+layers.each{layer ->
+	def styleNames = [];
+    def layerHasChildren = false;
+	// check if parent has style too
+	def layerParent = layer.parent();
+	while(layerParent.name() == 'Layer'){
+		if(layerParent.Style.size() != 0){
+			layerParent.Style.each{ style ->
+				styleNames << style.Name;
+			}
+		}
+		layerParent = layerParent.parent();
+	}
+    // also take into account children
+    def layerChildren = layer.depthFirst().findAll{it.name()=='Layer' && it.Name.size() > 0};
+	layerChildren.each {layerChild ->
+        layerHasChildren = true;
+        if(layerChild.Style.size() != 0){
+			layerChild.Style.each{ style ->
+				styleNames << style.Name;
+			}
+		}
+	}
+	if (layer.Style.size() == 0 && styleNames.size == 0) {
+		String[] assertParams = ['layer', layer.Name, 'element', 'Layer/Style'];
+		throw new TranslatableAssertionError('TR.valueShallNotBeEmptyNamedLayer', assertParams);
+	}
+	layer.Style.each{layerStyle ->
+		if(layerStyle.Name.size() == 1){
+			styleNames << layerStyle.Name;
+		}
+		if(layerStyle.Name.size() != 1){
+			String[] assertParams = ['element', 'Layer/Style/Name', 'layer', layer.Name];
+			throw new TranslatableAssertionError('TR.multiplicityShallBeOneNamedLayer', assertParams);
+		}
+		if(layerStyle.Name.toString().length() == 0){
+            String[] assertParams = ['layer', layer.Name, 'element', 'Layer/Style'];
+    		throw new TranslatableAssertionError('TR.valueShallNotBeEmptyNamedLayer', assertParams);
+		}
+	}
+    // Geonovum: do not check for unique names if the layer has children, because this could break uniqueness of the layernames
+	if(!layerHasChildren && layer.Style.Name.size() != styleNames.unique().size()){
+		String[] assertParams = ['layer', layer.Name];
+		throw new TranslatableAssertionError('TR.notUniqueLayerStyleNameNamedLayer', assertParams);
+	}
+}]]></script></con:config></con:testStep><con:properties/></con:testCase><con:testCase id="d36ff879-5331-4f43-a6fa-143116ce8e8e" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="kenmerk5-legenda-per-layer-style" searchProperties="true"><con:description><![CDATA[<p>Kenmerk 5. Biedt  voor  elke  laag  (via  een  parent  of via  een child)  tenminste  één  weergavestijl,  die  in het  Capabilities  document  gepubliceerd  is  in  de  Style  elementen.  Biedt  voor  elke  weergavestijl  een legenda aan.</p>]]></con:description><con:settings/><con:testStep type="testcasedependency" name="check-initial-testcase" id="3ac0a5cb-8f23-4be6-8a5a-b3cfd6a24dbd"><con:settings/><con:config xsi:type="con:RunTestCaseStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:targetTestCase>452f3b7c-9db1-47c7-9621-6f76b761feea</con:targetTestCase><con:properties/><con:returnProperties/><con:runMode>PARALLELL</con:runMode></con:config></con:testStep><con:testStep type="httprequest" name="http-getcapabilities" id="6d18b580-b855-4036-bfb6-4e63e99b0782"><con:settings/><con:config method="GET" xsi:type="con:HttpRequest" id="9a5477eb-346f-4a6c-a73c-a0c801ede12a" name="http-getcapabilities" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:endpoint>${#Project#serviceEndpoint}</con:endpoint><con:request/><con:assertion type="Valid HTTP Status Codes" id="14d05ff6-1542-474f-b3c3-25fef0c0a161" name="Valid HTTP Status Codes"><con:configuration><codes>200</codes></con:configuration></con:assertion><con:assertion type="Response SLA Assertion" id="0ef49e6a-348c-4512-8e10-4fffdff0a4e8" name="Response SLA"><con:configuration><SLA>30000</SLA></con:configuration></con:assertion><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters><con:parameter><con:name>request</con:name><con:value>GetCapabilities</con:value><con:style>QUERY</con:style><con:default>GetCapabilities</con:default><con:path xsi:nil="true"/><con:description xsi:nil="true"/></con:parameter><con:parameter><con:name>service</con:name><con:value>${#Project#service}</con:value><con:style>QUERY</con:style><con:default>${#Project#service}</con:default><con:path xsi:nil="true"/><con:description xsi:nil="true"/></con:parameter><con:parameter><con:name>version</con:name><con:value>${#Project#version}</con:value><con:style>QUERY</con:style><con:default>${#Project#version}</con:default><con:path xsi:nil="true"/><con:description xsi:nil="true"/></con:parameter></con:parameters></con:config></con:testStep><con:testStep type="httprequest" name="http-getlegend" id="2438ff01-143d-43dd-85ed-6541399327ba"><con:settings/><con:config method="GET" xsi:type="con:HttpRequest" id="324d0c80-05d8-4e8d-a3ed-7cfa1a999be3" name="http-getlegend" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings/><con:endpoint>${#TestCase#legendEndpoint}</con:endpoint><con:request/><con:assertion type="Valid HTTP Status Codes" id="abe25bd4-b6e5-40ab-bbb7-8e168b0ecc30" name="Valid HTTP Status Codes"><con:configuration><codes>200</codes></con:configuration></con:assertion><con:assertion type="Response SLA Assertion" id="7ad6eaa8-24d4-4554-a688-96bba3b91d11" name="Response SLA"><con:configuration><SLA>30000</SLA></con:configuration></con:assertion><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters/></con:config></con:testStep><con:testStep type="groovy" name="check-legend-by-layer" id="5e34e3d0-61d2-4914-9c34-3a92328fae58"><con:settings/><con:config><script>import de.interactive_instruments.etf.suim.TranslatableAssertionError;
+def tc = testRunner.testCase.testSuite.project.testSuites["GetCapabilities_Operation"].testCases["initial-testcase"];
+def response = tc.getTestStepByName("http-request").getPropertyValue("Response");
+def capabilities = new XmlSlurper(false, true).parseText(response);
+
+testRunner.testCase.setPropertyValue('language', '');
+testRunner.testCase.setPropertyValue('legendEndpoint', '');
+def defaultLanguage = capabilities.Capability.ExtendedCapabilities.SupportedLanguages.DefaultLanguage.Language.toString();
+def supportedLanguages = [];
+supportedLanguages &lt;&lt; capabilities.Capability.ExtendedCapabilities.SupportedLanguages.DefaultLanguage.Language;
+for (x in capabilities.Capability.ExtendedCapabilities.SupportedLanguages.SupportedLanguage){
+	supportedLanguages &lt;&lt; x.Language;
+}
+
+def tsGetCapabilities = testRunner.testCase.testSuite.project.testSuites["GetCapabilities_Operation"].testCases["kenmerk5-legenda-per-layer-style"].getTestStepByName('http-getcapabilities');
+def tsGetLegend = testRunner.testCase.testSuite.project.testSuites["GetCapabilities_Operation"].testCases["kenmerk5-legenda-per-layer-style"].getTestStepByName('http-getlegend');
+
+for (x in supportedLanguages){
+	testRunner.testCase.setPropertyValue('language', x.toString());
+	tsGetCapabilities.setDisabled(false);
+	tsGetCapabilities.run(testRunner, context);
+	capabilitiesLanguaged = new XmlSlurper(false, true).parseText(tsGetCapabilities.getPropertyValue("Response"));
+
+	def layers = capabilities.Capability.depthFirst().findAll{it.name()=='Layer'};
+	layers.each{layer ->
+		def styles = layer.Style;
+		styles.each{style ->
+			if(style.LegendURL.size() == 1){
+				if(style.LegendURL.OnlineResource.size() != 1){
+					String[] assertParams = ['element', 'Layer/Style/LegendURL/OnlineResource'];
+					throw new TranslatableAssertionError('TR.multiplicityShallBeOne', assertParams);
+				}
+				if(style.LegendURL.OnlineResource.@'xlink:href'.toString().length() != 0){
+					testRunner.testCase.setPropertyValue('legendEndpoint', style.LegendURL.OnlineResource.@'xlink:href'.toString());
+					tsGetLegend.setDisabled(false);
+					tsGetLegend.run(testRunner, context);
+					if(tsGetLegend.testRequest.response.responseHeaders.get('Content-Type')[0] != style.LegendURL.Format.toString()){
+                        String[] assertParams = ['layer', layer.Name, 'legendURL', style.LegendURL.OnlineResource.@'xlink:href'.toString()];
+						throw new TranslatableAssertionError("TR.invalidLegendFormat", assertParams);
+					}
+				}
+				else{
+					String[] assertParams = ['element', 'Layer/Style/LegendURL/OnlineResource/@xlink:href'];
+					throw new TranslatableAssertionError('TR.valueShallNotBeEmpty', assertParams);
+				}
+			}
+			else if(style.LegendURL.size() != 0){
+				String[] assertParams = ['element', 'Layer/Style/LegendURL'];
+				throw new TranslatableAssertionError('TR.multiplicityShallBeZeroOrOne', assertParams);
+			}
+		}
+	}
+}
+tsGetCapabilities.setDisabled(true);
+tsGetLegend.setDisabled(true);</script></con:config></con:testStep><con:properties><con:property><con:name>language</con:name><con:value>dut</con:value></con:property><con:property><con:name>legendEndpoint</con:name><con:value>http://geodata.nationaalgeoregister.nl/mosselenoesterhabitats/ows?service=WMS&amp;request=GetLegendGraphic&amp;format=image%2Fpng&amp;width=20&amp;height=20&amp;layer=mosselenoesterhabitats</con:value></con:property></con:properties></con:testCase><con:testCase id="af88a929-d9ae-4f81-9cef-94f1a01e05af" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="kenmerk7-getfeatureinfo-format-xml" searchProperties="true"><con:description><![CDATA[<p>Kenmerk 7.  Indien de WMS de functie GetFeatureInfo ondersteunt, dient de respons tenminste volgens hetformaat text/xml geleverd te worden. Indien mogelijk hiervoor het subType= gml/3.1.1 gebruiken.</p>]]></con:description><con:settings/><con:testStep type="testcasedependency" name="check-initial-testcase" id="fdacbfa5-9192-488f-bc4f-57b2b40527ae"><con:settings/><con:config xsi:type="con:RunTestCaseStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:targetTestCase>452f3b7c-9db1-47c7-9621-6f76b761feea</con:targetTestCase><con:properties/><con:returnProperties/><con:runMode>PARALLELL</con:runMode></con:config></con:testStep><con:testStep type="groovy" name="check-getfeatureinfo-operation-metadata" id="a81ce2d6-0fb2-454c-a3f2-3ccf9136e9f3"><con:settings/><con:config><script>import de.interactive_instruments.etf.suim.TranslatableAssertionError;
+def tc = testRunner.testCase.testSuite.project.testSuites["GetCapabilities_Operation"].testCases["initial-testcase"];
+def response = tc.getTestStepByName("http-request").getPropertyValue("Response");
+def capabilities = new XmlSlurper(false, true).parseText(response);
+
+def getFInfoOperation = capabilities.Capability.Request.GetFeatureInfo;
+def atLeastOneFormatValid = false;
+
+getFInfoOperation.Format.each{format ->
+	if(format == 'text/xml' || format == 'text/xml; subtype=gml/3.1.1'){
+		atLeastOneFormatValid = true;
+	}
+}
+if(!atLeastOneFormatValid &amp;&amp; getFInfoOperation.size() > 0){
+	throw new TranslatableAssertionError("TR.wrongGetFeatureInfoFormat");
+}</script></con:config></con:testStep><con:properties/></con:testCase><con:properties/></con:testSuite><con:testSuite id="c473835f-b004-4eda-b31e-ede4b8ba0d18" name="Metadata"><con:settings/><con:runType>SEQUENTIAL</con:runType><con:testCase id="231a8027-7417-4038-a89c-7e8c1251a483" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="kenmerk4a-minimaal_1_metadataURL" searchProperties="true"><con:description><![CDATA[<p>Kenmerk 4. De WMS dient metadata over de service en data beschikbaar te stellen.</p>
+<ul>
+    <li>a. Per WMS layer dient voor elke node direct, via een parent of via een child een MetadataURL opgenomen te worden. De MetadataURL dient te verwijzen naar een metadata  bestand opgebouwd  volgens  Nederlandse  profiel  op  ISO  19115  voor  geografie, versie 1.3.1 of een actuelere versie.</li>
+    <li>b. (niet volledig getest) De metadata voor geografie (dus van de dataset) dient gepubliceerd te zijn in een catalog (CSW 2.0.2) die publiek toegankelijk is.</li>
+    <li>c. (niet getest) De metadata over services dient opgeslagen te worden volgens het Nederlandse profiel op ISO 19119 voor services, versie 1.2.1 of een actuelere versie</li>
+    <li>d. (niet getest) De  metadata  over  services  dient  gepubliceerd  te  worden  in  een  catalog  (CSW  2.0.2) die  publiek toegankelijk is.</li>
+</ul>]]></con:description><con:settings/><con:testStep type="testcasedependency" name="check-initial-testcase" id="b7141241-376e-40da-8ed9-1a7cf885cd9f"><con:settings/><con:config xsi:type="con:RunTestCaseStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:targetTestCase>452f3b7c-9db1-47c7-9621-6f76b761feea</con:targetTestCase><con:properties/><con:returnProperties/><con:runMode>PARALLELL</con:runMode></con:config></con:testStep><con:testStep type="groovy" name="check-minimal-1-metadataURL" id="3805c2a3-9935-499f-9e9f-9968406b6522"><con:settings/><con:config><script><![CDATA[import de.interactive_instruments.etf.suim.TranslatableAssertionError;
+def tc = testRunner.testCase.testSuite.project.testSuites["GetCapabilities_Operation"].testCases["initial-testcase"];
+def response = tc.getTestStepByName("http-request").getPropertyValue("Response");
+def capabilities = new XmlSlurper(false, true).parseText(response);
+
+// Geonovum TODO: deal with child nodes?
+
+// def cascadedLayers = capabilities.Capability.depthFirst().findAll{it.name()=='Layer' && it.@cascaded.size() > 0 && it.@cascaded.toInteger() > 0};
+def cascadedLayers = capabilities.Capability.depthFirst().findAll{it.name()=='Layer' && it.Name.size() > 0} ;
+def nrMetadataURLs = 0
+if(cascadedLayers.size() != 0){
+	cascadedLayers.each{layer ->
+		// Check: if layer has a Name
+		def metadataURL = "";
+		def layerParent = layer.parent();
+		while(layerParent.name() == 'Layer'){
+			if(layerParent.MetadataURL.OnlineResource.@'xlink:href'.size() != 0){
+				layerParent.MetadataURL.OnlineResource.each{ url ->
+					nrMetadataURLs += 1;
+				}
+			}
+			layerParent = layerParent.parent();
+		}
+		// check for metadata URL of Layer itself
+		if (layer.MetadataURL.OnlineResource.@'xlink:href'.size() > 0 && layer.MetadataURL.OnlineResource.@'xlink:href'.toString().length() > 0) {
+			nrMetadataURLs += 1;
+		}
+	}
+	if (nrMetadataURLs == 0) {
+		// TODO: custom error message
+		String[] assertParams = ['element', 'Layer/MetadataURL/OnlineResource/@xlink:href'];
+		throw new TranslatableAssertionError('TR.valueShallNotBeEmpty', assertParams);
+	}
+}]]></script></con:config></con:testStep><con:properties><con:property><con:name>metadataEndpoint</con:name><con:value>https://www.nationaalgeoregister.nl/geonetwork/srv/dut/xml.metadata.get?uuid=8829e5dd-c861-4639-a6c8-fdbb6e3440d2</con:value></con:property></con:properties></con:testCase><con:testCase id="c1b65eae-7b7d-4604-bbd9-0dd908c35afd" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="kenmerk4a-metadataURL-per-layer" searchProperties="true"><con:description><![CDATA[<p>Kenmerk 4. De WMS dient metadata over de service en data beschikbaar te stellen.</p>
+<ul>
+    <li>a. Per WMS layer dient voor elke node direct, via een parent of via een child een MetadataURL opgenomen te worden. De MetadataURL dient te verwijzen naar een metadata  bestand opgebouwd  volgens  Nederlandse  profiel  op  ISO  19115  voor  geografie, versie 1.3.1 of een actuelere versie.</li>
+    <li>b. (niet volledig getest) De metadata voor geografie (dus van de dataset) dient gepubliceerd te zijn in een catalog (CSW 2.0.2) die publiek toegankelijk is.</li>
+    <li>c. (niet getest) De metadata over services dient opgeslagen te worden volgens het Nederlandse profiel op ISO 19119 voor services, versie 1.2.1 of een actuelere versie</li>
+    <li>d. (niet getest) De  metadata  over  services  dient  gepubliceerd  te  worden  in  een  catalog  (CSW  2.0.2) die  publiek toegankelijk is.</li>
+</ul>]]></con:description><con:settings/><con:testStep type="testcasedependency" name="check-initial-testcase" id="14e2cd3a-c465-47e9-b27d-d50d32faaecf"><con:settings/><con:config xsi:type="con:RunTestCaseStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:targetTestCase>452f3b7c-9db1-47c7-9621-6f76b761feea</con:targetTestCase><con:properties/><con:returnProperties/><con:runMode>PARALLELL</con:runMode></con:config></con:testStep><con:testStep type="httprequest" name="http-request-layer-metadata" id="25732f37-8fb9-4eb4-97a0-7bb22b1408ba" disabled="true"><con:settings/><con:config method="GET" xsi:type="con:HttpRequest" id="bd16d083-6baa-462f-b4e7-7ba9b26fcfc8" name="http-request-layer-metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:endpoint>${#TestCase#metadataEndpoint}</con:endpoint><con:request/><con:assertion type="Valid HTTP Status Codes" id="7954a77c-76ad-4804-a18a-ab333e44310b" name="Valid HTTP Status Codes"><con:configuration><codes>200</codes></con:configuration></con:assertion><con:assertion type="Response SLA Assertion" id="bd1db81e-21de-4208-b28e-a21476958697" name="Response SLA"><con:configuration><SLA>30000</SLA></con:configuration></con:assertion><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters/></con:config></con:testStep><con:testStep type="groovy" name="check-xml-schema-valid" id="1bb516b5-7e38-4dcf-beeb-fe81d05885b2" disabled="true"><con:settings/><con:config><script>import javax.xml.transform.stream.StreamSource;
+import javax.xml.validation.SchemaFactory;
+import javax.xml.XMLConstants;
+import de.interactive_instruments.etf.suim.TranslatableAssertionError;
+
+xsdUrl = 'http://schemas.opengis.net/iso/19139/20060504/gmd/gmd.xsd'
+xmlUrl = testRunner.testCase.getPropertyValue("metadataEndpoint");
+
+try{
+	new URL( xsdUrl ).withInputStream { xsd ->
+	  new URL( xmlUrl ).withInputStream { xml ->
+	    SchemaFactory.newInstance( XMLConstants.W3C_XML_SCHEMA_NS_URI )
+	                 .newSchema( new StreamSource( xsd ) )
+	                 .newValidator()
+	                 .validate( new StreamSource( xml ) )
+
+	  }
+	}
+}
+catch (Exception e){
+	String[] assertParams = ['error', e];
+	throw new TranslatableAssertionError('TR.invalidSchema', assertParams);
+}
+</script></con:config></con:testStep><con:testStep type="groovy" name="check-cascaded-layers-metadata" id="9bca320b-ce1b-41d3-b1e5-4cee748e8c29"><con:settings/><con:config><script><![CDATA[import de.interactive_instruments.etf.suim.TranslatableAssertionError;
+def tc = testRunner.testCase.testSuite.project.testSuites["GetCapabilities_Operation"].testCases["initial-testcase"];
+def response = tc.getTestStepByName("http-request").getPropertyValue("Response");
+def capabilities = new XmlSlurper(false, true).parseText(response);
+
+tc = testRunner.testCase.testSuite.project.testSuites["Metadata"].testCases["kenmerk4a-metadataURL-per-layer"];
+tsURL = tc.getTestStepByName('http-request-layer-metadata');
+tsXSD = tc.getTestStepByName('check-xml-schema-valid');
+testRunner.testCase.setPropertyValue("metadataEndpoint", '');
+
+// Geonovum: deal with inherited URLs, like for CRS
+// don't use the cascaded attribute here
+// def cascadedLayers = capabilities.Capability.depthFirst().findAll{it.name()=='Layer' && it.@cascaded.size() > 0 && it.@cascaded.toInteger() > 0};
+
+def cascadedLayers = capabilities.Capability.depthFirst().findAll{it.name()=='Layer' && it.Name.size() > 0} ;
+if(cascadedLayers.size() != 0){
+	cascadedLayers.each{layer ->
+		// Check: if layer has a Name
+		def metadataURL = "";
+		def layerParent = layer.parent();
+		while(layerParent.name() == 'Layer'){
+			if(layerParent.MetadataURL.OnlineResource.@'xlink:href'.size() != 0){
+				layerParent.MetadataURL.OnlineResource.each{ url ->
+					metadataURL = url;
+				}
+			}
+			layerParent = layerParent.parent();
+		}
+		// check for metadata URL of Layer itself
+		if (layer.MetadataURL.OnlineResource.@'xlink:href'.size() > 0) {
+			metadataURL = layer.MetadataURL.OnlineResource.@'xlink:href'
+		}
+		if (metadataURL.size() == 0){
+			String[] assertParams = ['element', 'Layer/MetadataURL/OnlineResource/@xlink:href', 'layer', layer.Name , 'element2', 'Layer/MetadataURL/OnlineResource/@xlink:href'];
+			throw new TranslatableAssertionError('TR.multiplicityShallBeOneOrMoreCascadedLayer', assertParams);
+		}
+		else if(metadataURL.toString().length() == 0){
+            String[] assertParams = ['element', 'Layer/MetadataURL/OnlineResource/@xlink:href', 'layer', layer.Name , 'element2', 'Layer/MetadataURL/OnlineResource/@xlink:href'];
+            throw new TranslatableAssertionError('TR.multiplicityShallBeOneOrMoreCascadedLayer', assertParams);
+		}
+		else{
+			testRunner.testCase.setPropertyValue("metadataEndpoint", metadataURL.toString());
+			tsURL.setDisabled(false);
+			tsURL.run(testRunner, context);
+			def metadata = new XmlSlurper(false, true).parseText(tsURL.getPropertyValue("Response"));
+			if(metadata.name() != 'MD_Metadata' && metadata.MD_Metadata.size() == 0){
+                String[] assertParams = ['layer', layer.Name , 'url', metadataURL.toString()];
+				throw new TranslatableAssertionError("TR.cascadedLayerMetadataNamedLayer");
+			}
+			tsXSD.setDisabled(false);
+			tsURL.run(testRunner, context);
+		}
+
+	}
+}
+tsURL.setDisabled(true);
+tsXSD.setDisabled(true)]]></script></con:config></con:testStep><con:properties><con:property><con:name>metadataEndpoint</con:name><con:value>http://www.nationaalgeoregister.nl/geonetwork/srv/dut/xml.metadata.get?uuid=3d59fd06-9aec-4744-91e7-65e119f74569</con:value></con:property></con:properties></con:testCase><con:properties/></con:testSuite><con:testSuite id="7a16f8b2-5248-4ba5-a783-bd0c5534f153" name="GetMap_Operation"><con:settings/><con:runType>SEQUENTIAL</con:runType><con:testCase id="6df93a6b-172c-4125-8658-f0e5d0a4bdf2" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="getmap-default-parameters" searchProperties="true"><con:settings/><con:testStep type="testcasedependency" name="check-initial-testcase" id="5eae2d19-2ade-4c27-8254-2293e456f4f9"><con:settings/><con:config xsi:type="con:RunTestCaseStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:targetTestCase>452f3b7c-9db1-47c7-9621-6f76b761feea</con:targetTestCase><con:properties/><con:returnProperties/><con:runMode>PARALLELL</con:runMode></con:config></con:testStep><con:testStep type="httprequest" name="http-request-getmap-default-parameters" id="d52190a7-167e-41f5-99b6-9db7b8ef56e4"><con:settings/><con:config method="GET" xsi:type="con:HttpRequest" id="76164cd6-dc7b-4ade-ad26-c4cbb01a3874" name="http-request-getmap-default-parameters" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:endpoint>${#TestSuite#getMapEndpoint}</con:endpoint><con:request/><con:assertion type="Valid HTTP Status Codes" id="5114db8b-3ea8-42a3-9107-e3735194f994" name="Valid HTTP Status Codes"><con:configuration><codes>200</codes></con:configuration></con:assertion><con:assertion type="OwsExceptionReportAssertion" id="2fca2634-8e01-452d-a1cc-201931723c78" name="Fail if service returns OWS Exception Report"/><con:assertion type="GroovyScriptAssertion" id="797a26b6-e559-473a-a7e0-0928b6261a3f" name="check-content-type"><con:configuration><scriptText>/*
+def httpResponseHeaders = context.testCase.testSteps["http-request-getmap-default-parameters"].testRequest.response.responseHeaders;
+def format_requested = context.expand( '${#TestSuite#format}' );
+def format_response = httpResponseHeaders["Content-Type"][0];
+assert (format_requested == format_response);
+*/
+def format_requested = context.expand( '${#TestSuite#format}' );
+assert (messageExchange.getResponseHeaders().get('Content-Type', 'value').contains(format_requested));</scriptText></con:configuration></con:assertion><con:assertion type="Response SLA Assertion" id="51e0114d-be2f-496c-9e71-f23c9e408f47" name="Response SLA"><con:configuration><SLA>30000</SLA></con:configuration></con:assertion><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters><con:parameter><con:name>REQUEST</con:name><con:value>GetMap</con:value><con:style>QUERY</con:style></con:parameter><con:parameter required="false" disableUrlEncoding="false"><con:name>SERVICE</con:name><con:value>${#Project#service}</con:value><con:style>QUERY</con:style><con:type xmlns:xs="http://www.w3.org/2001/XMLSchema">xs:string</con:type><con:default/><con:description xsi:nil="true"/></con:parameter><con:parameter><con:name>VERSION</con:name><con:value>${#Project#version}</con:value><con:style>QUERY</con:style></con:parameter><con:parameter><con:name>LAYERS</con:name><con:value>${#TestSuite#layers}</con:value><con:style>QUERY</con:style></con:parameter><con:parameter><con:name>STYLES</con:name><con:value>${#TestSuite#styles}</con:value><con:style>QUERY</con:style></con:parameter><con:parameter><con:name>CRS</con:name><con:value>${#TestSuite#crs}</con:value><con:style>QUERY</con:style></con:parameter><con:parameter><con:name>BBOX</con:name><con:value>${#TestSuite#bbox}</con:value><con:style>QUERY</con:style></con:parameter><con:parameter><con:name>WIDTH</con:name><con:value>${#TestSuite#width}</con:value><con:style>QUERY</con:style></con:parameter><con:parameter><con:name>HEIGHT</con:name><con:value>${#TestSuite#height}</con:value><con:style>QUERY</con:style></con:parameter><con:parameter><con:name>FORMAT</con:name><con:value>${#TestSuite#format}</con:value><con:style>QUERY</con:style></con:parameter></con:parameters></con:config></con:testStep><con:properties/></con:testCase>
+<con:testCase id="58f0a89f-2e8b-445e-b071-217d781685d7" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="kenmerk8-getmap-transparent-parameter" searchProperties="true"><con:description><![CDATA[Kenmerk 8 De WMS dient achtergrondtransparantie te ondersteunen (TRANSPARENT = TRUE). Indien de WMS alleen beeldmateriaal aanbiedt in JPEG bestandsformaat en niet voor INSPIRE aangewezen is, is transparantie op de betreffende WMS lagen niet vereist.]]></con:description><con:settings/><con:testStep type="testcasedependency" name="check-initial-testcase" id="0eb10db1-30d7-4b8d-bf07-02a49fd31584"><con:settings/><con:config xsi:type="con:RunTestCaseStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:targetTestCase>452f3b7c-9db1-47c7-9621-6f76b761feea</con:targetTestCase><con:properties/><con:returnProperties/><con:runMode>PARALLELL</con:runMode></con:config></con:testStep><con:testStep type="httprequest" name="http-request-getmap-transparent-true" id="f94ffb9c-5e27-4a9f-bb41-eb10ba2d7968"><con:settings/><con:config method="GET" xsi:type="con:HttpRequest" id="0d0805eb-6091-4ed2-9c40-82d8afff2fcb" name="http-request-getmap-transparent-true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:endpoint>${#TestSuite#getMapEndpoint}</con:endpoint><con:request/><con:assertion type="Valid HTTP Status Codes" id="de92c21d-a97c-4bcb-90db-174e49838b6d" name="Valid HTTP Status Codes"><con:configuration><codes>200</codes></con:configuration></con:assertion><con:assertion type="OwsExceptionReportAssertion" id="99e7bddc-1c91-4fcd-841b-44bcfa88d616" name="Fail if service returns OWS Exception Report"/><con:assertion type="GroovyScriptAssertion" id="0f443084-c9bb-4f7a-b166-6e5442e27aa4" name="check-content-type"><con:configuration><scriptText>def format_requested = context.expand( '${#TestSuite#format}' );
+assert (messageExchange.getResponseHeaders().get('Content-Type', 'value').contains(format_requested));</scriptText></con:configuration></con:assertion><con:assertion type="Response SLA Assertion" id="27711021-2cc1-4c4b-bf4d-ee985c844a59" name="Response SLA"><con:configuration><SLA>30000</SLA></con:configuration></con:assertion><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters><con:parameter><con:name>REQUEST</con:name><con:value>GetMap</con:value><con:style>QUERY</con:style></con:parameter><con:parameter><con:name>SERVICE</con:name><con:value>${#Project#service}</con:value><con:style>QUERY</con:style></con:parameter><con:parameter><con:name>VERSION</con:name><con:value>${#Project#version}</con:value><con:style>QUERY</con:style></con:parameter><con:parameter><con:name>LAYERS</con:name><con:value>${#TestSuite#layers}</con:value><con:style>QUERY</con:style></con:parameter><con:parameter><con:name>STYLES</con:name><con:value>${#TestSuite#styles}</con:value><con:style>QUERY</con:style></con:parameter><con:parameter><con:name>CRS</con:name><con:value>${#TestSuite#crs}</con:value><con:style>QUERY</con:style></con:parameter><con:parameter><con:name>BBOX</con:name><con:value>${#TestSuite#bbox}</con:value><con:style>QUERY</con:style></con:parameter><con:parameter><con:name>WIDTH</con:name><con:value>${#TestSuite#width}</con:value><con:style>QUERY</con:style></con:parameter><con:parameter><con:name>HEIGHT</con:name><con:value>${#TestSuite#height}</con:value><con:style>QUERY</con:style></con:parameter><con:parameter><con:name>FORMAT</con:name><con:value>${#TestSuite#format}</con:value><con:style>QUERY</con:style></con:parameter><con:parameter><con:name>TRANSPARENT</con:name><con:value>true</con:value><con:style>QUERY</con:style></con:parameter></con:parameters></con:config></con:testStep><con:testStep type="httprequest" name="http-request-getmap-transparent-false" id="9cb1ef58-2572-4019-9af9-2db3b65ec027"><con:settings/><con:config method="GET" xsi:type="con:HttpRequest" id="3d7b1841-5e2d-4412-a3e7-795d6e511347" name="http-request-getmap-transparent-false" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:endpoint>${#TestSuite#getMapEndpoint}</con:endpoint><con:request/><con:assertion type="Valid HTTP Status Codes" id="b9786075-e99a-4c26-bbe9-805697bfe5bb" name="Valid HTTP Status Codes"><con:configuration><codes>200</codes></con:configuration></con:assertion><con:assertion type="OwsExceptionReportAssertion" id="d2614d9a-4ba1-4c76-a9c1-e2b73314d382" name="Fail if service returns OWS Exception Report"/><con:assertion type="GroovyScriptAssertion" id="fa2519c2-2103-49ec-b848-d5f48bb76754" name="check-content-type"><con:configuration><scriptText>def format_requested = context.expand( '${#TestSuite#format}' );
+assert (messageExchange.getResponseHeaders().get('Content-Type', 'value').contains(format_requested));</scriptText></con:configuration></con:assertion><con:assertion type="Response SLA Assertion" id="5c7ec18d-ad6b-4e25-9d25-a32a9e8a0a2c" name="Response SLA"><con:configuration><SLA>30000</SLA></con:configuration></con:assertion><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters><con:parameter><con:name>REQUEST</con:name><con:value>GetMap</con:value><con:style>QUERY</con:style><con:default>GetMap</con:default><con:path xsi:nil="true"/><con:description xsi:nil="true"/></con:parameter><con:parameter><con:name>SERVICE</con:name><con:value>${#Project#service}</con:value><con:style>QUERY</con:style><con:default>${#Project#service}</con:default><con:path xsi:nil="true"/><con:description xsi:nil="true"/></con:parameter><con:parameter><con:name>VERSION</con:name><con:value>${#Project#version}</con:value><con:style>QUERY</con:style></con:parameter><con:parameter><con:name>LAYERS</con:name><con:value>${#TestSuite#layers}</con:value><con:style>QUERY</con:style></con:parameter><con:parameter><con:name>STYLES</con:name><con:value>${#TestSuite#styles}</con:value><con:style>QUERY</con:style></con:parameter><con:parameter><con:name>CRS</con:name><con:value>${#TestSuite#crs}</con:value><con:style>QUERY</con:style></con:parameter><con:parameter><con:name>BBOX</con:name><con:value>${#TestSuite#bbox}</con:value><con:style>QUERY</con:style></con:parameter><con:parameter><con:name>WIDTH</con:name><con:value>${#TestSuite#width}</con:value><con:style>QUERY</con:style></con:parameter><con:parameter><con:name>HEIGHT</con:name><con:value>${#TestSuite#height}</con:value><con:style>QUERY</con:style></con:parameter><con:parameter><con:name>FORMAT</con:name><con:value>${#TestSuite#format}</con:value><con:style>QUERY</con:style></con:parameter><con:parameter><con:name>TRANSPARENT</con:name><con:value>false</con:value><con:style>QUERY</con:style></con:parameter></con:parameters></con:config></con:testStep><con:testStep type="httprequest" name="http-request-getmap-wrong-transparent" id="039aa028-54cb-4bc9-be99-c223983bcc69" disabled="true"><con:settings/><con:config method="GET" xsi:type="con:HttpRequest" id="561f4a88-83c6-446c-a1dc-c3033cc4135b" name="http-request-getmap-wrong-transparent" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:endpoint>${#TestSuite#getMapEndpoint}</con:endpoint><con:request/><con:assertion type="Valid HTTP Status Codes" id="7d8a55bc-ae58-43ff-9907-2220bae92d2d" name="Valid HTTP Status Codes"><con:configuration><codes>200</codes></con:configuration></con:assertion><con:assertion type="GroovyScriptAssertion" id="00ed8677-bf7e-492e-8b68-91e9cae1a7d5" name="Fail if service does not return OWS Exception Report"><con:configuration><scriptText>import de.interactive_instruments.etf.suim.TranslatableAssertionError;
+String[] assertParams = ['parameter', 'transparent'];
+if(messageExchange.getResponseHeaders().get('Content-Type', 'value').contains('xml')){
+	def xml_root = new XmlSlurper().parseText(messageExchange.response.responseContent);
+	if (!(xml_root.ServiceException.size() == 1 || xml_root.Exception.size() == 1)){
+		throw new TranslatableAssertionError('TR.getMapWrongParameter', assertParams);
+	}
+}
+else{
+	throw new TranslatableAssertionError('TR.getMapWrongParameter', assertParams);
+}</scriptText></con:configuration></con:assertion><con:assertion type="Response SLA Assertion" id="3c34cf27-d717-4663-b10d-0e64921d60fd" name="Response SLA"><con:configuration><SLA>30000</SLA></con:configuration></con:assertion><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters><con:parameter><con:name>REQUEST</con:name><con:value>GetMap</con:value><con:style>QUERY</con:style></con:parameter><con:parameter><con:name>SERVICE</con:name><con:value>${#Project#service}</con:value><con:style>QUERY</con:style></con:parameter><con:parameter><con:name>VERSION</con:name><con:value>${#Project#version}</con:value><con:style>QUERY</con:style></con:parameter><con:parameter><con:name>LAYERS</con:name><con:value>${#TestSuite#layers}</con:value><con:style>QUERY</con:style></con:parameter><con:parameter><con:name>STYLES</con:name><con:value>${#TestSuite#styles}</con:value><con:style>QUERY</con:style></con:parameter><con:parameter><con:name>CRS</con:name><con:value>${#TestSuite#crs}</con:value><con:style>QUERY</con:style></con:parameter><con:parameter><con:name>BBOX</con:name><con:value>${#TestSuite#bbox}</con:value><con:style>QUERY</con:style></con:parameter><con:parameter><con:name>WIDTH</con:name><con:value>${#TestSuite#width}</con:value><con:style>QUERY</con:style></con:parameter><con:parameter><con:name>HEIGHT</con:name><con:value>${#TestSuite#height}</con:value><con:style>QUERY</con:style></con:parameter><con:parameter><con:name>FORMAT</con:name><con:value>${#TestSuite#format}</con:value><con:style>QUERY</con:style></con:parameter><con:parameter><con:name>TRANSPARENT</con:name><con:value>${#TestSuite#wrongValue}</con:value><con:style>QUERY</con:style></con:parameter></con:parameters></con:config></con:testStep><con:properties/></con:testCase>
+<con:properties><con:property><con:name>getMapEndpoint</con:name><con:value>http://geodata.nationaalgeoregister.nl/mosselenoesterhabitats/ows?SERVICE=WMS&amp;</con:value></con:property><con:property><con:name>layers</con:name><con:value>mosselenoesterhabitats</con:value></con:property><con:property><con:name>styles</con:name><con:value>mosselenoesterhabitats:mossel_en_oesterhabitats</con:value></con:property><con:property><con:name>crs</con:name><con:value>EPSG:28992</con:value></con:property><con:property><con:name>bbox</con:name><con:value>115224.205934321,547769.315991642,260359.961102296,616814.234426936</con:value></con:property><con:property><con:name>width</con:name><con:value>500</con:value></con:property><con:property><con:name>height</con:name><con:value>500</con:value></con:property><con:property><con:name>format</con:name><con:value>image/png</con:value></con:property><con:property><con:name>wrongValue</con:name><con:value>zzzz</con:value></con:property></con:properties></con:testSuite><con:properties><con:property><con:name>serviceEndpoint</con:name><con:value>http://geodata.nationaalgeoregister.nl/mosselenoesterhabitats/wms?&amp;request=GetCapabilities&amp;service=WMS</con:value></con:property><con:property><con:name>service</con:name><con:value>WMS</con:value></con:property><con:property><con:name>version</con:name><con:value>1.3.0</con:value></con:property><con:property><con:name>lastServiceEndpoint</con:name><con:value>http://geodata.nationaalgeoregister.nl/mosselenoesterhabitats/wms?&amp;request=GetCapabilities&amp;service=WMS</con:value></con:property><con:property><con:name>authUser</con:name><con:value/></con:property><con:property><con:name>authPwd</con:name><con:value/></con:property><con:property><con:name>etf.ignore.properties</con:name><con:value>service, version, extended_capabilities_scenario, lastServiceEndpoint, authUser, authPwd</con:value></con:property><con:property><con:name>etf.tag.ids</con:name><con:value>EID544ea4d4-f4a4-4a66-af87-742c04b2cf26</con:value></con:property><con:property><con:name>etf.translation.template.collection.id</con:name><con:value>EIDc03a1c6d-716d-4fba-95be-9b8841934934</con:value></con:property><con:property><con:name>etf.supported.test.object.type.ids</con:name><con:value>EID88311f83-818c-46ed-8a9a-cec4f3707365</con:value></con:property><con:property><con:name>etf.author</con:name><con:value>Geonovum, op basis van code van https://github.com/inspire-eu-validation/ets-repository</con:value></con:property><con:property><con:name>etf.creation.date</con:name><con:value>2019-02-06T00:00:00</con:value></con:property><con:property><con:name>etf.last.editor</con:name><con:value>Geonovum</con:value></con:property><con:property><con:name>etf.last.update.date</con:name><con:value>2019-02-06T00:00:00</con:value></con:property><con:property><con:name>etf.version</con:name><con:value>0.1.0</con:value></con:property><con:property><con:name>etf.reference</con:name><con:value>https://github.com/Geonovum/etf-test-projects-nl</con:value></con:property></con:properties><con:wssContainer/><con:oAuth2ProfileContainer/><con:oAuth1ProfileContainer/><con:sensitiveInformation/></con:soapui-project>

@@ -1,0 +1,53 @@
+<TranslationTemplateBundle xmlns="http://www.interactive-instruments.de/etf/2.0"
+	id="EIDc03a1c6d-716d-4fba-95be-9b8841934934"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.interactive-instruments.de/etf/2.0 https://resources.etf-validator.net/schema/v2/service/service.xsd">
+  <parent ref="EIDfa68eb83-a25a-4009-84dd-036de4539c93"/>
+	<translationTemplateCollections>
+		<LangTranslationTemplateCollection name="TR.multiplicityShallBeOneOrMoreCascadedLayer">
+			<translationTemplates>
+				<TranslationTemplate language="en" name="TR.multiplicityShallBeOneOrMoreCascadedLayer">The multiplicity of '{element}' shall be one or more. For Layer '{layer}' no '{element2}' is found for the layer itself or for one of it's parents.</TranslationTemplate>
+			</translationTemplates>
+		</LangTranslationTemplateCollection>
+		<LangTranslationTemplateCollection name="TR.multiplicityShallBeOneNamedLayer">
+			<translationTemplates>
+				<TranslationTemplate language="en" name="TR.multiplicityShallBeOneNamedLayer">The multiplicity of element '{element}' shall be one. For Layer '{layer}' this is not the case.</TranslationTemplate>
+			</translationTemplates>
+		</LangTranslationTemplateCollection>
+		<LangTranslationTemplateCollection name="TR.valueShallNotBeEmptyNamedLayer">
+			<translationTemplates>
+				<TranslationTemplate language="en" name="TR.valueShallNotBeEmptyNamedLayer">For Layer '{layer}' the value of '{element}' shall not be empty.</TranslationTemplate>
+			</translationTemplates>
+		</LangTranslationTemplateCollection>
+		<LangTranslationTemplateCollection name="TR.wrongGetMapMetadataImageFormatNL">
+			<translationTemplates>
+				<TranslationTemplate language="en" name="TR.wrongGetMapMetadataImageFormatNL">Either PNG ('image/png') or GIF ('image/gif') format shall be supported. For services offering only othophotos / aerial imagery, JPEG is also allowed.</TranslationTemplate>
+			</translationTemplates>
+		</LangTranslationTemplateCollection>
+		<LangTranslationTemplateCollection name="TR.requiredLayerCRSMissing">
+			<translationTemplates>
+				<TranslationTemplate language="en" name="TR.requiredLayerCRSMissing">For layer '{layer}' a CRS from the profile is missing. At least one of 'EPSG:28992', 'EPSG:25830', 'EPSG:25831', 'EPSG:25832', 'EPSG:3034', 'EPSG:3035', 'EPSG:4326' shall be provided, either in the layer itself or in one of it's parent layers. List of provided CRSes: {providedCRSes}</TranslationTemplate>
+			</translationTemplates>
+		</LangTranslationTemplateCollection>
+		<LangTranslationTemplateCollection name="TR.wrongGetFeatureInfoFormat">
+			<translationTemplates>
+				<TranslationTemplate language="en" name="TR.wrongGetFeatureInfoFormat">The WMS supports GetFeatureInfo, but the required response format 'text/xml' is not supported.</TranslationTemplate>
+			</translationTemplates>
+		</LangTranslationTemplateCollection>
+		<LangTranslationTemplateCollection name="TR.invalidLegendFormat">
+			<translationTemplates>
+				<TranslationTemplate language="en" name="TR.invalidLegendFormat">The legend image is not returned in the expected format. Layer '{layer}' with legendURL '{legendURL}'.</TranslationTemplate>
+			</translationTemplates>
+		</LangTranslationTemplateCollection>
+		<LangTranslationTemplateCollection name="TR.cascadedLayerMetadataNamedLayer">
+			<translationTemplates>
+				<TranslationTemplate language="en" name="TR.cascadedLayerMetadataNamedLayer">For layer '{layer}' the MetadataURL ('{url}') does not refer to a correct metadata document.</TranslationTemplate>
+			</translationTemplates>
+		</LangTranslationTemplateCollection>
+		<LangTranslationTemplateCollection name="TR.notUniqueLayerStyleNameNamedLayer">
+			<translationTemplates>
+				<TranslationTemplate language="en" name="TR.notUniqueLayerStyleNameNamedLayer">The Layer '{layer}' has a style with a non unique Name.</TranslationTemplate>
+			</translationTemplates>
+		</LangTranslationTemplateCollection>
+	</translationTemplateCollections>
+</TranslationTemplateBundle>
