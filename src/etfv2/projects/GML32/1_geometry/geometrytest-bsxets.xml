@@ -56,7 +56,7 @@
                      <statementForExecution>not applicable</statementForExecution>
                      <testItemType ref="EIDf483e8e8-06b9-4900-ab36-adad0d7f22f0"/>
                      <testAssertions>
-                        <TestAssertion id="EID6c677270-ef12-11e8-3151-09173f13e4c5">
+                        <!-- <TestAssertion id="EID6c677270-ef12-11e8-3151-09173f13e4c5">
                            <label>Check CRS</label>
                            <description>...</description>
                            <parent ref="EID6c675979-ef12-11e8-9635-09173f13e4c5"/>
@@ -71,7 +71,7 @@
 										return local:addMessage('TR.example.crsNot28992', map { 'filename': local:filename($feature), 'featureType': local-name($feature), 'gmlid': string($feature/@gml:id), 'crs': data(($feature//@srsName[.!='http://www.opengis.net/def/crs/EPSG/0/28992' and .!='EPSG:28992' and .!='urn:ogc:def:crs:EPSG::28992'])[1])  }))
 </expression>
                            <testItemType ref="EIDf0edc596-49d2-48d6-a1a1-1ac581dcde0a"/>
-                        </TestAssertion>
+                        </TestAssertion> -->
                         <TestAssertion id="EID6c67594d-ef12-11e8-9113-09173f13e4c5">
                            <label>Valid GML geometry (2D) all at once</label>
                            <description>Test geometry on being valid GML geometry for 2D, all tests at once</description>

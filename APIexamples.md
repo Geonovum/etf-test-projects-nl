@@ -38,16 +38,15 @@ curl -X GET --header 'Accept: application/json' 'http://beta.validatie.geostanda
 ```
 {
   "id": "EID25266ccc-fd2e-11e7-1038-09173f13e4c5",
-  "label": "Run all dependencies",
-  "description": "Run XSD and Schematron tests for Nederlands profiel op ISO 19115 v13 INSPIRE geharmoniseerd 2014"
+  "label": "Alle tests voor metadata Nederlands profiel op ISO 19115 v13 INSPIRE geharmoniseerd 2014",
+  "description": "Schema validatie en schematron tests voor metadata Nederlands profiel op ISO 19115 v13 INSPIRE geharmoniseerd 2014"
 }
 ```
-Nota bene: in de Beta versie ontbreken nog goede beschrijvingen en labels van bepaalde validators. De migratie van de validators uit ETF v1 is namelijk nog bezig.
 
 1. gebruik de id om een test te draaien. via HTTP POST, verstuur de volgende data:
 ```
 {
-    "label": "Test run on 15:00 - 01.01.2018 with Conformance class Conformance Class: Metadata services NL profiel test API",
+    "label": "Test run on 15:00 - 01.01.2018 with Conformance class Conformance Class: Nederlands profiel op ISO 19115 v13 INSPIRE geharmoniseerd 2014",
     "executableTestSuiteIds": ["EID25266ccc-fd2e-11e7-1038-09173f13e4c5"],
     "arguments": {
         "files_to_test": ".*",
