@@ -25,13 +25,7 @@ In de testprojecten heten de schematron regels (indien in gebruik) altijd:
 schematron.sch
 ```
 
-Directe links naar schematron metadata:
-
-* metadata dataset ISO 19115 v13 2014: [src/metadata/Nederlands%20profiel%20op%20ISO%2019115%20v13%202014/schematron.sch](src/metadata/Nederlands%20profiel%20op%20ISO%2019115%20v13%202014/schematron.sch)
-* metadata dataset ISO 19115 v13 2014 plus INSPIRE: [src/metadata/Nederlands%20profiel%20op%20ISO%2019115%20v13%20INSPIRE%202014/schematron.sch](src/metadata/Nederlands%20profiel%20op%20ISO%2019115%20v13%20INSPIRE%202014/schematron.sch)
-* metadata dataset ISO 19115 v13 2014 plus INSPIRE geharmoniseerd: [src/metadata/Nederlands%20profiel%20op%20ISO%2019115%20v13%20INSPIRE%20geharmoniseerd%202014/schematron.sch](src/metadata/Nederlands%20profiel%20op%20ISO%2019115%20v13%20INSPIRE%20geharmoniseerd%202014/schematron.sch)
-* metadata services ISO 19119 v12 2014: [src/metadata/Nederlands%20profiel%20op%20ISO%2019119%20v12%202016/schematron.sch](src/metadata/Nederlands%20profiel%20op%20ISO%2019119%20v12%202016/schematron.sch)
-* metadata services ISO 19119 v12 2014 INSPIRE: [src/metadata/Nederlands%20profiel%20op%20ISO%2019119%20v12%20INSPIRE%202016/schematron.sch](src/metadata/Nederlands%20profiel%20op%20ISO%2019119%20v12%20INSPIRE%202016/schematron.sch)
+Voor metadata staan de schematron bestanden in [https://github.com/Geonovum/metadata-schematron/](https://github.com/Geonovum/metadata-schematron/).
 
 Directe links naar schematron data validatie:
 * GML 3.2 Simple Features: [src/data/GML3.2%20SF2/schematron.sch](src/data/GML3.2%20SF2/schematron.sch)
