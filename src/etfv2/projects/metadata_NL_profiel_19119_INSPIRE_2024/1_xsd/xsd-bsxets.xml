@@ -16,10 +16,10 @@
     <lastEditor>Geonovum</lastEditor>
     <lastUpdateDate>2018-12-14T10:50:53.937+02:00</lastUpdateDate>
     <tags>
-        <tag ref="EIDec1b3956-b1f9-4359-814e-7590877f4eb2"/>
+        <tag ref="EID70b94738-08db-47f0-baf1-5f312f88f2e3"/>
     </tags>
-    <testDriver ref="EID4dddc9e2-1b21-40b7-af70-6a2d156ad130"/>
-    <translationTemplateBundle ref="EID0e237782-a386-11e7-d284-09173f13e4c5"/>
+    <testDriver ref="EIDeb562f9f-00b0-4390-ae21-92145f2efa6b"/>
+    <translationTemplateBundle ref="EID5417cef6-c926-4390-a033-299a8d0c19fe"/>
     <ParameterList name="ETF Standard Parameters for XML test objects">
         <parameter name="files_to_test" required="true">
             <defaultValue>.*</defaultValue>
@@ -34,7 +34,7 @@
             <type>string</type>
         </parameter>
     </ParameterList>
-  <supportedTestObjectTypes><testObjectType ref="EID5a60dded-0cb0-4977-9b06-16c6c2321d2e"/></supportedTestObjectTypes>
+  <supportedTestObjectTypes><testObjectType ref="EIDeb562f9f-00b0-4390-ae21-92145f2efa6b"/></supportedTestObjectTypes>
     <testModules>
         <TestModule id="EID9dd36c8c-b5fe-4667-8dee-a8289133f7ad">
             <label>IGNORE</label>
@@ -82,7 +82,7 @@
                                         local:error-statistics('TR.filesWithErrors', count($allErrors[@ref eq 'TR.invalidSchema'])),
                                         $allErrors[position() le $limitErrors])
                                     </expression>
-                                    <testItemType ref="EIDf0edc596-49d2-48d6-a1a1-1ac581dcde0a"/>
+                                    <testItemType ref="EIDeb562f9f-00b0-4390-ae21-92145f2efa6b"/>
                                     <translationTemplates>
                                         <translationTemplate ref="TR.xmlSchemaError"/>
                                         <translationTemplate ref="TR.invalidSchema"/>

@@ -8,8 +8,8 @@
    <itemHash>bQ==</itemHash>
    <remoteResource>https://github.com/interactive-instruments/etf-ets-repository</remoteResource>
    <localPath>/auto</localPath>
-   <label>Schematron tests voor metadata Nederlands profiel op ISO 19115 v13 INSPIRE 2014</label>
-   <description>Schematron tests voor metadata Nederlands profiel op ISO 19115 v13 INSPIRE 2014</description>
+   <label>Schematron tests voor metadata Nederlands profiel op ISO 19119 v13 INSPIRE 2024</label>
+   <description>Schematron tests voor metadata Nederlands profiel op ISO 19119 v13 INSPIRE 2024</description>
    <reference>../../generic/ets-generic-bsxets.xq</reference>
    <version>2.0.0</version>
    <author>Geonovum</author>
@@ -17,10 +17,10 @@
    <lastEditor>Geonovum</lastEditor>
    <lastUpdateDate>2018-12-14T10:50:53.937+02:00</lastUpdateDate>
    <tags>
-      <tag ref="EIDf969a29a-0c58-4738-af67-2e17e894ef4d"/>
+      <tag ref="EID70b94738-08db-47f0-baf1-5f312f88f2e3"/>
    </tags>
    <testDriver ref="EID4dddc9e2-1b21-40b7-af70-6a2d156ad130"/>
-   <translationTemplateBundle ref="EIDabe7742e-9ef5-4700-ad3b-dd532a4cf0a9"/>
+   <translationTemplateBundle ref="EID5417cef6-c926-4390-a033-299a8d0c19fe"/>
    <ParameterList name="ETF Standard Parameters for XML test objects">
       <parameter name="files_to_test" required="true">
          <defaultValue>.*</defaultValue>
